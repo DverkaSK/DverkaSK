@@ -2,9 +2,11 @@
 
 [![wakatime](https://github-readme-stats-eight-kappa-73.vercel.app/api/wakatime?username=DverkaSK&layout=compact&langs_count=8&hide_title=true&bg_color=0d1117&title_color=58a6ff&text_color=c9d1d9&icon_color=79c0ff&border_color=30363d&hide_border=false)](https://wakatime.com/@DverkaSK)
 
-<h3 align="center">🤖 Мой стек // My Technologies 🛠️</h3>
+[![spigot](spigot.png)](https://www.spigotmc.org/members/dverkask.1954357/) [![modrinth](modrinth.png)](https://modrinth.com/user/DverkaSK)
 
-<p align="center">
+<h3 align="LEFT">🤖 Мой стек // My Technologies 🛠️</h3>
+
+<p align="LEFT">
   <!-- OpenAI -->
   <img src="https://unpkg.com/@lobehub/icons-static-svg@latest/icons/openai.svg" width="45" height="45" alt="openai" />
   <img width="16" />
@@ -24,5 +26,3 @@
   <img src="https://unpkg.com/@lobehub/icons-static-svg@latest/icons/qwen-color.svg" width="45" height="45" alt="qwen" />
   <img width="16" />
 </p>
-
-[![spigot](spigot.png)](https://www.spigotmc.org/members/dverkask.1954357/) [![modrinth](modrinth.png)](https://modrinth.com/user/DverkaSK)
