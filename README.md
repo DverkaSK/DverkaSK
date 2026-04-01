@@ -2,4 +2,17 @@
 
 [![wakatime](https://github-readme-stats-eight-kappa-73.vercel.app/api/wakatime?username=DverkaSK&layout=compact&langs_count=8&hide_title=true&bg_color=0d1117&title_color=58a6ff&text_color=c9d1d9&icon_color=79c0ff&border_color=30363d&hide_border=false)](https://wakatime.com/@DverkaSK)
 
+### 🤖 Мой стек
+
+<table>
+  <tr>
+    <td align="center"><img src="https://unpkg.com/@lobehub/icons-static-svg@latest/icons/openai.svg" height="40" alt="OpenAI"/><br/></td>
+    <td align="center"><img src="https://unpkg.com/@lobehub/icons-static-svg@latest/icons/claude-color.svg" height="40" alt="Claude"/><br/></td>
+    <td align="center"><img src="https://unpkg.com/@lobehub/icons-static-svg@latest/icons/gemini-color.svg" height="40" alt="Gemini"/><br/></td>
+    <td align="center"><img src="https://unpkg.com/@lobehub/icons-static-svg@latest/icons/deepseek-color.svg" height="40" alt="DeepSeek"/><br/></td>
+    <td align="center"><img src="https://unpkg.com/@lobehub/icons-static-svg@latest/icons/grok.svg" height="40" alt="Grok"/><br/></td>
+    <td align="center"><img src="https://unpkg.com/@lobehub/icons-static-svg@latest/icons/qwen-color.svg" height="40" alt="Qwen"/><br/></td>
+  </tr>
+</table>
+
 [![spigot](spigot.png)](https://www.spigotmc.org/members/dverkask.1954357/) [![modrinth](modrinth.png)](https://modrinth.com/user/DverkaSK)
