@@ -6,23 +6,4 @@
 
 <h3 align="LEFT">🤖 Мой стек // My Technologies 🛠️</h3>
 
-<p align="LEFT">
-  <!-- OpenAI -->
-  <img src="https://unpkg.com/@lobehub/icons-static-svg@latest/icons/openai.svg" width="45" height="45" alt="openai" />
-  <img width="16" />
-  <!-- Gemini -->
-  <img src="https://unpkg.com/@lobehub/icons-static-svg@latest/icons/gemini-color.svg" width="45" height="45" alt="gemini" />
-  <img width="16" />
-  <!-- Claude -->
-  <img src="https://unpkg.com/@lobehub/icons-static-svg@latest/icons/claude-color.svg" width="45" height="45" alt="claude" />
-  <img width="16" />
-  <!-- DeepSeek -->
-  <img src="https://unpkg.com/@lobehub/icons-static-svg@latest/icons/deepseek-color.svg" width="45" height="45" alt="deepseek" />
-  <img width="16" />
-  <!-- Grok -->
-  <img src="https://unpkg.com/@lobehub/icons-static-svg@latest/icons/grok.svg" width="45" height="45" alt="grok" />
-  <img width="16" />
-  <!-- Qwen -->
-  <img src="https://unpkg.com/@lobehub/icons-static-svg@latest/icons/qwen-color.svg" width="45" height="45" alt="qwen" />
-  <img width="16" />
-</p>
+<p align="LEFT"><img src="https://unpkg.com/@lobehub/icons-static-svg@latest/icons/openai.svg" width="45" height="45" alt="openai" />&nbsp;&nbsp;<img src="https://unpkg.com/@lobehub/icons-static-svg@latest/icons/gemini-color.svg" width="45" height="45" alt="gemini" />&nbsp;&nbsp;<img src="https://unpkg.com/@lobehub/icons-static-svg@latest/icons/claude-color.svg" width="45" height="45" alt="claude" />&nbsp;&nbsp;<img src="https://unpkg.com/@lobehub/icons-static-svg@latest/icons/deepseek-color.svg" width="45" height="45" alt="deepseek" />&nbsp;&nbsp;<img src="https://unpkg.com/@lobehub/icons-static-svg@latest/icons/grok.svg" width="45" height="45" alt="grok" />&nbsp;&nbsp;<img src="https://unpkg.com/@lobehub/icons-static-svg@latest/icons/qwen-color.svg" width="45" height="45" alt="qwen" /></p>
