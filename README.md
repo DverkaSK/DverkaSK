@@ -6,11 +6,4 @@
 
 <h3 align="LEFT">🤖 Мой стек // My Technologies 🛠️</h3>
 
-<table border="0" cellpadding="8" cellspacing="0"><tr>
-<td><img src="https://unpkg.com/@lobehub/icons-static-svg@latest/icons/openai.svg" width="45" height="45" alt="openai" /></td>
-<td><img src="https://unpkg.com/@lobehub/icons-static-svg@latest/icons/gemini-color.svg" width="45" height="45" alt="gemini" /></td>
-<td><img src="https://unpkg.com/@lobehub/icons-static-svg@latest/icons/claude-color.svg" width="45" height="45" alt="claude" /></td>
-<td><img src="https://unpkg.com/@lobehub/icons-static-svg@latest/icons/deepseek-color.svg" width="45" height="45" alt="deepseek" /></td>
-<td><img src="https://unpkg.com/@lobehub/icons-static-svg@latest/icons/grok.svg" width="45" height="45" alt="grok" /></td>
-<td><img src="https://unpkg.com/@lobehub/icons-static-svg@latest/icons/qwen-color.svg" width="45" height="45" alt="qwen" /></td>
-</tr></table>
+<img src="icons/openai.svg" width="45" height="45" alt="openai" />&nbsp;&nbsp;<img src="icons/gemini.svg" width="45" height="45" alt="gemini" />&nbsp;&nbsp;<img src="icons/claude.svg" width="45" height="45" alt="claude" />&nbsp;&nbsp;<img src="icons/deepseek.svg" width="45" height="45" alt="deepseek" />&nbsp;&nbsp;<img src="icons/grok.svg" width="45" height="45" alt="grok" />&nbsp;&nbsp;<img src="icons/qwen.svg" width="45" height="45" alt="qwen" />
