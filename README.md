@@ -21,7 +21,7 @@
 
 <h3 align="LEFT">🤖 My Stack after 2026</h3>
 
-<picture><source media="(prefers-color-scheme: dark)" srcset="icons/openai-white.svg" /><img src="icons/openai.svg" width="45" height="45" alt="openai" /></picture>&nbsp;&nbsp;<img src="icons/gemini.svg" width="45" height="45" alt="gemini" />&nbsp;&nbsp;<img src="icons/claude.svg" width="45" height="45" alt="claude" />&nbsp;&nbsp;<img src="icons/deepseek.svg" width="45" height="45" alt="deepseek" />&nbsp;&nbsp;<picture><source media="(prefers-color-scheme: dark)" srcset="icons/grok-white.svg" /><img src="icons/grok.svg" width="45" height="45" alt="grok" /></picture>&nbsp;&nbsp;<img src="icons/qwen.svg" width="45" height="45" alt="qwen" />
+<picture><source media="(prefers-color-scheme: dark)" srcset="icons/openai-white.svg" /><img src="icons/openai.svg" width="45" height="45" alt="openai" /></picture>&nbsp;&nbsp;<img src="icons/gemini.svg" width="45" height="45" alt="gemini" />&nbsp;&nbsp;<img src="icons/claude.svg" width="45" height="45" alt="claude" />&nbsp;&nbsp;<img src="icons/deepseek.svg" width="45" height="45" alt="deepseek" />&nbsp;&nbsp;<picture><source media="(prefers-color-scheme: dark)" srcset="icons/grok-white.svg" /><img src="icons/grok.svg" width="45" height="45" alt="grok" /></picture>&nbsp;&nbsp;<img src="icons/qwen.svg" width="45" height="45" alt="qwen" />&nbsp;&nbsp;<img src="icons/1c.svg" width="45" height="45" alt="1c" />
 
 </details>
 
@@ -34,6 +34,6 @@
 
 <h3 align="LEFT">🤖 Мой стек после 2026 года</h3>
 
-<picture><source media="(prefers-color-scheme: dark)" srcset="icons/openai-white.svg" /><img src="icons/openai.svg" width="45" height="45" alt="openai" /></picture>&nbsp;&nbsp;<img src="icons/gemini.svg" width="45" height="45" alt="gemini" />&nbsp;&nbsp;<img src="icons/claude.svg" width="45" height="45" alt="claude" />&nbsp;&nbsp;<img src="icons/deepseek.svg" width="45" height="45" alt="deepseek" />&nbsp;&nbsp;<picture><source media="(prefers-color-scheme: dark)" srcset="icons/grok-white.svg" /><img src="icons/grok.svg" width="45" height="45" alt="grok" /></picture>&nbsp;&nbsp;<img src="icons/qwen.svg" width="45" height="45" alt="qwen" />
+<picture><source media="(prefers-color-scheme: dark)" srcset="icons/openai-white.svg" /><img src="icons/openai.svg" width="45" height="45" alt="openai" /></picture>&nbsp;&nbsp;<img src="icons/gemini.svg" width="45" height="45" alt="gemini" />&nbsp;&nbsp;<img src="icons/claude.svg" width="45" height="45" alt="claude" />&nbsp;&nbsp;<img src="icons/deepseek.svg" width="45" height="45" alt="deepseek" />&nbsp;&nbsp;<picture><source media="(prefers-color-scheme: dark)" srcset="icons/grok-white.svg" /><img src="icons/grok.svg" width="45" height="45" alt="grok" /></picture>&nbsp;&nbsp;<img src="icons/qwen.svg" width="45" height="45" alt="qwen" />&nbsp;&nbsp;<img src="icons/1c.svg" width="45" height="45" alt="1c" />
 
 </details>
