@@ -1,4 +1,4 @@
-name: AI coding card
+name: WakaTime cards
 
 on:
   schedule:
@@ -16,13 +16,13 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Generate card
+      - name: Generate cards
         env:
           WAKATIME_API_KEY: ${{ secrets.WAKATIME_API_KEY }}
-        run: python scripts/ai_card.py
-      - name: Commit card
+        run: python scripts/wakatime_cards.py
+      - name: Commit cards
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add ai-coding.svg
-          git diff --cached --quiet || (git commit -m "Update AI coding card" && git push)
+          git add cards
+          git diff --cached --quiet || (git commit -m "Update WakaTime cards" && git push)

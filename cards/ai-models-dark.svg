@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="495" height="154" viewBox="0 0 495 154" font-family="'Segoe UI', Ubuntu, 'Helvetica Neue', Sans-Serif">
+  <title>AI Models</title>
+  <rect x="0.5" y="0.5" width="494" height="153" rx="4.5" fill="#0d1117" stroke="#30363d"/>
+  <text x="20" y="32" fill="#58a6ff" font-size="18" font-weight="600">AI Models</text>
+  <text x="475" y="32" fill="#8b949e" font-size="12" text-anchor="end">lines · all time</text>
+  <clipPath id="bar"><rect x="20" y="48" width="455" height="8" rx="4"/></clipPath>
+  <g clip-path="url(#bar)"><rect x="20" y="48" width="455" height="8" fill="#30363d"/><rect x="20.00" y="48" width="216.98" height="8" fill="#d97757"/><rect x="236.48" y="48" width="116.69" height="8" fill="#e8a26a"/><rect x="352.68" y="48" width="89.27" height="8" fill="#10a37f"/><rect x="441.44" y="48" width="27.63" height="8" fill="#b4552d"/><rect x="468.57" y="48" width="6.52" height="8" fill="#4285f4"/><rect x="474.59" y="48" width="0.91" height="8" fill="#84cc16"/></g>
+  <circle cx="25" cy="80" r="5" fill="#d97757"/>
+  <text x="36" y="84" fill="#c9d1d9" font-size="12">Claude <tspan fill="#8b949e">56.2K lines</tspan></text>
+  <circle cx="262" cy="80" r="5" fill="#e8a26a"/>
+  <text x="273" y="84" fill="#c9d1d9" font-size="12">Sonnet <tspan fill="#8b949e">30.2K lines</tspan></text>
+  <circle cx="25" cy="104" r="5" fill="#10a37f"/>
+  <text x="36" y="108" fill="#c9d1d9" font-size="12">GPT <tspan fill="#8b949e">23.1K lines</tspan></text>
+  <circle cx="262" cy="104" r="5" fill="#b4552d"/>
+  <text x="273" y="108" fill="#c9d1d9" font-size="12">Opus <tspan fill="#8b949e">7K lines</tspan></text>
+  <circle cx="25" cy="128" r="5" fill="#4285f4"/>
+  <text x="36" y="132" fill="#c9d1d9" font-size="12">Gemini <tspan fill="#8b949e">1.6K lines</tspan></text>
+  <circle cx="262" cy="128" r="5" fill="#84cc16"/>
+  <text x="273" y="132" fill="#c9d1d9" font-size="12">OpenCode <tspan fill="#8b949e">106 lines</tspan></text>
+</svg>
