@@ -21,8 +21,8 @@ FALLBACK_COLORS = ['#8b5cf6', '#f59e0b', '#ec4899', '#14b8a6', '#6366f1', '#84cc
 
 HIDDEN_LANGUAGES = {'Other', 'textmate', 'Text'}
 # desktop apps tracked by WakaTime that are not dev tools, shown on a separate card
-APPS = {'TelegramDesktop': 'Telegram', 'SteamClientWebHelper': 'Steam', 'ZoomMeetings': 'Zoom'}
-HIDDEN_EDITORS = {'Unknown Editor'}
+APPS = {'TelegramDesktop': 'Telegram', 'SteamClientWebHelper': 'Steam'}
+HIDDEN_EDITORS = {'Unknown Editor', 'ZoomMeetings'}
 
 EDITOR_COLORS = {
     'IntelliJ IDEA': '#2876e1', 'Claude Code': '#d97757', 'GoLand': '#bd4ffc', 'DataGrip': '#907cf2',
