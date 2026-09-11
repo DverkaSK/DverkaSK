@@ -51,6 +51,21 @@ def fetch_stats(api_key, stats_range):
     return None
 
 
+def fetch_week_lines(api_key):
+    """AI/human line changes for the last 7 days including today.
+
+    /stats/last_7_days ends yesterday and is recalculated once a day, while summaries are live
+    (same window as the WakaTime dashboard)."""
+    auth = 'Basic ' + base64.b64encode(api_key.encode()).decode()
+    req = urllib.request.Request('https://wakatime.com/api/v1/users/current/summaries?range=last_7_days',
+                                 headers={'Authorization': auth})
+    with urllib.request.urlopen(req, timeout=90) as r:
+        days = json.load(r)['data']
+    total = lambda f: sum(day['grand_total'].get(f) or 0 for day in days)
+    return (total('ai_additions') + total('ai_deletions'),
+            total('human_additions') + total('human_deletions'))
+
+
 def fetch_language_colors():
     try:
         url = 'https://raw.githubusercontent.com/ozh/github-colors/master/colors.json'
@@ -157,11 +172,10 @@ def time_items(entries, palette, rename=None):
     return [(n, v, hours(v), color_for(n, palette, i)) for i, (n, v) in enumerate(items)]
 
 
-def build_cards(week, all_time):
+def build_cards(week_lines, all_time):
     cards = {}
-    if week:
-        ai = week.get('ai_additions', 0) + week.get('ai_deletions', 0)
-        human = week.get('human_additions', 0) + week.get('human_deletions', 0)
+    if week_lines:
+        ai, human = week_lines
         cards['ai-coding'] = lambda t: ai_coding_card(ai, human, t)
         print(f'AI lines: {ai}, human lines: {human}')
     if all_time:
@@ -189,12 +203,12 @@ def main():
     api_key = os.environ.get('WAKATIME_API_KEY')
     if not api_key:
         sys.exit('WAKATIME_API_KEY is not set')
-    week = fetch_stats(api_key, 'last_7_days')
+    week_lines = fetch_week_lines(api_key)
     all_time = fetch_stats(api_key, 'all_time')
-    if not week or not all_time:
-        print('Some WakaTime stats are not ready yet, keeping the previous cards for them')
+    if not all_time:
+        print('All-time WakaTime stats are not ready yet, keeping the previous cards for them')
     os.makedirs(OUT_DIR, exist_ok=True)
-    for name, render in build_cards(week, all_time).items():
+    for name, render in build_cards(week_lines, all_time).items():
         for theme, t in THEMES.items():
             with open(os.path.join(OUT_DIR, f'{name}-{theme}.svg'), 'w', encoding='utf-8', newline='\n') as f:
                 f.write(render(t))
