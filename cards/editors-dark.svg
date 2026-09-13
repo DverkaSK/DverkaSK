@@ -4,17 +4,17 @@
   <text x="20" y="32" fill="#58a6ff" font-size="18" font-weight="600">Editors &amp; Tools</text>
   <text x="475" y="32" fill="#8b949e" font-size="12" text-anchor="end">all time</text>
   <clipPath id="bar"><rect x="20" y="48" width="455" height="8" rx="4"/></clipPath>
-  <g clip-path="url(#bar)"><rect x="20" y="48" width="455" height="8" fill="#30363d"/><rect x="20.00" y="48" width="400.60" height="8" fill="#2876e1"/><rect x="420.10" y="48" width="41.67" height="8" fill="#d97757"/><rect x="461.27" y="48" width="4.95" height="8" fill="#bd4ffc"/><rect x="465.72" y="48" width="3.69" height="8" fill="#907cf2"/><rect x="468.91" y="48" width="3.36" height="8" fill="#01a4ff"/><rect x="471.76" y="48" width="2.35" height="8" fill="#14c9a5"/><rect x="473.61" y="48" width="1.47" height="8" fill="#027acd"/><rect x="474.59" y="48" width="0.85" height="8" fill="#d2ee5c"/><rect x="474.94" y="48" width="0.56" height="8" fill="#f46d2d"/></g>
+  <g clip-path="url(#bar)"><rect x="20" y="48" width="455" height="8" fill="#30363d"/><rect x="20.00" y="48" width="400.54" height="8" fill="#2876e1"/><rect x="420.04" y="48" width="41.71" height="8" fill="#d97757"/><rect x="461.25" y="48" width="4.95" height="8" fill="#bd4ffc"/><rect x="465.70" y="48" width="3.69" height="8" fill="#907cf2"/><rect x="468.89" y="48" width="3.38" height="8" fill="#01a4ff"/><rect x="471.76" y="48" width="2.35" height="8" fill="#14c9a5"/><rect x="473.61" y="48" width="1.47" height="8" fill="#027acd"/><rect x="474.59" y="48" width="0.85" height="8" fill="#d2ee5c"/><rect x="474.94" y="48" width="0.56" height="8" fill="#f46d2d"/></g>
   <circle cx="25" cy="80" r="5" fill="#2876e1"/>
   <text x="36" y="84" fill="#c9d1d9" font-size="12">IntelliJ IDEA <tspan fill="#8b949e">2,111h 24m</tspan></text>
   <circle cx="262" cy="80" r="5" fill="#d97757"/>
-  <text x="273" y="84" fill="#c9d1d9" font-size="12">Claude Code <tspan fill="#8b949e">217h 14m</tspan></text>
+  <text x="273" y="84" fill="#c9d1d9" font-size="12">Claude Code <tspan fill="#8b949e">217h 30m</tspan></text>
   <circle cx="25" cy="104" r="5" fill="#bd4ffc"/>
   <text x="36" y="108" fill="#c9d1d9" font-size="12">GoLand <tspan fill="#8b949e">23h 29m</tspan></text>
   <circle cx="262" cy="104" r="5" fill="#907cf2"/>
   <text x="273" y="108" fill="#c9d1d9" font-size="12">DataGrip <tspan fill="#8b949e">16h 48m</tspan></text>
   <circle cx="25" cy="128" r="5" fill="#01a4ff"/>
-  <text x="36" y="132" fill="#c9d1d9" font-size="12">Warp <tspan fill="#8b949e">15h 4m</tspan></text>
+  <text x="36" y="132" fill="#c9d1d9" font-size="12">Warp <tspan fill="#8b949e">15h 11m</tspan></text>
   <circle cx="262" cy="128" r="5" fill="#14c9a5"/>
   <text x="273" y="132" fill="#c9d1d9" font-size="12">CLion <tspan fill="#8b949e">9h 45m</tspan></text>
   <circle cx="25" cy="152" r="5" fill="#027acd"/>
