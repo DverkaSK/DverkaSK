@@ -4,7 +4,7 @@
   <text x="20" y="32" fill="#58a6ff" font-size="18" font-weight="600">Languages</text>
   <text x="475" y="32" fill="#8b949e" font-size="12" text-anchor="end">all time</text>
   <clipPath id="bar"><rect x="20" y="48" width="455" height="8" rx="4"/></clipPath>
-  <g clip-path="url(#bar)"><rect x="20" y="48" width="455" height="8" fill="#30363d"/><rect x="20.00" y="48" width="354.36" height="8" fill="#b07219"/><rect x="373.86" y="48" width="27.35" height="8" fill="#e38c00"/><rect x="400.71" y="48" width="23.12" height="8" fill="#cb171e"/><rect x="423.34" y="48" width="7.77" height="8" fill="#0060ac"/><rect x="430.60" y="48" width="6.63" height="8" fill="#4298b8"/><rect x="436.73" y="48" width="6.41" height="8" fill="#8b949e"/><rect x="442.64" y="48" width="5.95" height="8" fill="#083fa1"/><rect x="448.09" y="48" width="4.25" height="8" fill="#A97BFF"/><rect x="451.84" y="48" width="3.92" height="8" fill="#00ADD8"/><rect x="455.26" y="48" width="3.86" height="8" fill="#3572A5"/></g>
+  <g clip-path="url(#bar)"><rect x="20" y="48" width="455" height="8" fill="#30363d"/><rect x="20.00" y="48" width="354.33" height="8" fill="#b07219"/><rect x="373.83" y="48" width="27.35" height="8" fill="#e38c00"/><rect x="400.68" y="48" width="23.12" height="8" fill="#cb171e"/><rect x="423.30" y="48" width="7.77" height="8" fill="#0060ac"/><rect x="430.57" y="48" width="6.63" height="8" fill="#4298b8"/><rect x="436.69" y="48" width="6.41" height="8" fill="#8b949e"/><rect x="442.60" y="48" width="5.97" height="8" fill="#083fa1"/><rect x="448.07" y="48" width="4.25" height="8" fill="#A97BFF"/><rect x="451.82" y="48" width="3.92" height="8" fill="#00ADD8"/><rect x="455.24" y="48" width="3.87" height="8" fill="#3572A5"/></g>
   <circle cx="25" cy="80" r="5" fill="#b07219"/>
   <text x="36" y="84" fill="#c9d1d9" font-size="12">Java <tspan fill="#8b949e">1,759h 57m</tspan></text>
   <circle cx="262" cy="80" r="5" fill="#e38c00"/>
@@ -18,11 +18,11 @@
   <circle cx="262" cy="128" r="5" fill="#8b949e"/>
   <text x="273" y="132" fill="#c9d1d9" font-size="12">JSON <tspan fill="#8b949e">29h 23m</tspan></text>
   <circle cx="25" cy="152" r="5" fill="#083fa1"/>
-  <text x="36" y="156" fill="#c9d1d9" font-size="12">Markdown <tspan fill="#8b949e">27h 5m</tspan></text>
+  <text x="36" y="156" fill="#c9d1d9" font-size="12">Markdown <tspan fill="#8b949e">27h 11m</tspan></text>
   <circle cx="262" cy="152" r="5" fill="#A97BFF"/>
   <text x="273" y="156" fill="#c9d1d9" font-size="12">Kotlin <tspan fill="#8b949e">18h 38m</tspan></text>
   <circle cx="25" cy="176" r="5" fill="#00ADD8"/>
   <text x="36" y="180" fill="#c9d1d9" font-size="12">Go <tspan fill="#8b949e">17h 1m</tspan></text>
   <circle cx="262" cy="176" r="5" fill="#3572A5"/>
-  <text x="273" y="180" fill="#c9d1d9" font-size="12">Python <tspan fill="#8b949e">16h 43m</tspan></text>
+  <text x="273" y="180" fill="#c9d1d9" font-size="12">Python <tspan fill="#8b949e">16h 45m</tspan></text>
 </svg>
