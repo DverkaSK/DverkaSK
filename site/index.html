@@ -834,11 +834,20 @@ SISTEMNIK.setLight(litColor(81.2, 3.3, 4, .12, .8));   // in the desk's shade, n
 (() => { const b = skinnedBox(ELKA), h = b.max.y - b.min.y, k = 76 * GS / h; ELKA.root.scale.setScalar(k); const b2 = skinnedBox(ELKA), ctr = b2.getCenter(new THREE.Vector3()); ELKA.root.position.x -= ctr.x - gsToThree(-80, 80, 0)[0]; ELKA.root.position.z -= ctr.z - gsToThree(-80, 80, 0)[2]; ELKA.root.position.y -= b2.min.y; ELKA.setLight(litColor(-80, 80, 40, .4, 1.3)); })();
 
 /* ---------------- DVERKA, the little door ---------------- */
+const hash2 = (x, y) => { const s = Math.sin(x * 127.1 + y * 311.7) * 43758.5453; return s - Math.floor(s); };
+/* a light wood grain multiplied over the frame, arms and legs, so they read as painted wood and not flat colour */
+const GRAIN = canvasTexture(16, 16, g => {
+  for (let y = 0; y < 16; y++) for (let x = 0; x < 16; x++) { const n = hash2(x + 40, y), v = n < .12 ? 212 : n < .3 ? 230 : n > .92 ? 255 : 244; px(g, x, y, 1, 1, `rgb(${v},${v - 6},${v - 14})`); }
+  [[3, 0, 7], [8, 4, 9], [12, 1, 6], [5, 10, 6], [14, 9, 7]].forEach(([x, y, l]) => px(g, x, y, 1, l, 'rgb(200,190,176)'));
+});
 const FACE = canvasTexture(16, 24, () => {});
 FACE.userData.s = { blink: false, mood: 'smile' };
 function drawFace() {
   const { g, s } = FACE.userData;
-  px(g, 0, 0, 16, 24, '#e08f4f'); px(g, 0, 0, 16, 1, '#f0a868'); px(g, 0, 0, 1, 24, '#f0a868'); px(g, 15, 0, 1, 24, '#a85a2a');
+  px(g, 0, 0, 16, 24, '#e08f4f');
+  for (let y = 0; y < 24; y++) for (let x = 0; x < 16; x++) { const n = hash2(x, y); if (n < .16) px(g, x, y, 1, 1, '#d27f42'); else if (n > .9) px(g, x, y, 1, 1, '#eb9d5c'); }
+  [[2, 0, 9], [6, 3, 7], [10, 1, 12], [13, 5, 8]].forEach(([x, y, l]) => px(g, x, y, 1, l, '#c9773c'));
+  px(g, 0, 0, 16, 1, '#f0a868'); px(g, 0, 0, 1, 24, '#f0a868'); px(g, 15, 0, 1, 24, '#a85a2a');
   px(g, 3, 15, 10, 1, '#b8662f'); px(g, 3, 15, 1, 7, '#b8662f'); px(g, 3, 21, 10, 1, '#f0a868'); px(g, 12, 15, 1, 7, '#f0a868');
   if (s.blink) { px(g, 3, 7, 4, 1, '#3a1f10'); px(g, 9, 7, 4, 1, '#3a1f10'); }
   else { px(g, 3, 4, 4, 5, '#fffaf0'); px(g, 9, 4, 4, 5, '#fffaf0'); px(g, 4, 5, 2, 3, '#21140d'); px(g, 10, 5, 2, 3, '#21140d'); px(g, 4, 5, 1, 1, '#fff'); px(g, 10, 5, 1, 1, '#fff'); }
@@ -846,19 +855,80 @@ function drawFace() {
   if (s.mood === 'o') px(g, 7, 10, 2, 3, '#6b2a24');
   else if (s.mood === 'grin') { px(g, 5, 10, 6, 1, '#6b2a24'); px(g, 6, 11, 4, 1, '#6b2a24'); }
   else { px(g, 6, 11, 4, 1, '#6b2a24'); px(g, 5, 10, 1, 1, '#6b2a24'); px(g, 10, 10, 1, 1, '#6b2a24'); }
-  px(g, 12, 13, 2, 2, '#ffd23a'); px(g, 12, 13, 1, 1, '#fff3b0');
+  px(g, 1, 12, 2, 4, '#8a5a1a'); px(g, 2, 13, 2, 2, '#ffd23a'); px(g, 2, 13, 1, 1, '#fff3b0');   // on the free edge, away from the hinges
   FACE.needsUpdate = true;
 }
-const VOID = canvasTexture(16, 24, g => {
-  for (let y = 0; y < 24; y++) px(g, 0, y, 16, 1, `rgb(${4 + y * .3 | 0},${3 + y * .2 | 0},${10 + y * .6 | 0})`);
-  for (let i = 0; i < 8; i++) { const k = i / 8, w = 2 + k * 12 | 0, y = 9 + k * 15 | 0; px(g, 8 - w / 2 | 0, y, 1, 1, `rgba(150,130,220,${(.08 + k * .25).toFixed(2)})`); px(g, 8 + w / 2 | 0, y, 1, 1, `rgba(150,130,220,${(.08 + k * .25).toFixed(2)})`); }
-  px(g, 7, 8, 2, 1, 'rgba(255,220,160,.35)');
+/* a "kick me" note taped to her back: a torn-off page of a squared school notebook, marker letters drawn
+   as strokes on a 4×6 grid with a little wobble so they look hand-written, and a strip of tape on top */
+const NOTE_TEXT = ['ПНИ', 'МЕНЯ'];
+const NOTE_GLYPHS = {
+  'П': [[[0, 6], [0, 0], [4, 0], [4, 6]]], 'Н': [[[0, 0], [0, 6]], [[4, 0], [4, 6]], [[0, 3], [4, 3]]],
+  'И': [[[0, 0], [0, 6], [4, 0], [4, 6]]], 'М': [[[0, 6], [0, 0], [2, 4], [4, 0], [4, 6]]],
+  'Е': [[[4, 0], [0, 0], [0, 6], [4, 6]], [[0, 3], [3, 3]]], 'Я': [[[4, 6], [4, 0], [1, 0], [0, 1], [0, 2], [1, 3], [4, 3]], [[1, 3], [0, 6]]],
+  'А': [[[0, 6], [2, 0], [4, 6]], [[1, 4], [3, 4]]], 'Ж': [[[2, 0], [2, 6]], [[0, 0], [2, 3], [4, 0]], [[0, 6], [2, 3], [4, 6]]],
+};
+const NOTE = canvasTexture(64, 48, (g, W, H) => {
+  const torn = x => H - 3 - (hash2(x, 7) * 3 | 0);   // ragged bottom edge where it was torn out
+  for (let x = 0; x < W; x++) for (let y = 3; y < torn(x); y++) { const n = hash2(x, y + 90); px(g, x, y, 1, 1, n < .1 ? '#ddd6c6' : n > .93 ? '#f6f2e8' : '#ebe5d6'); }
+  for (let x = 2; x < W; x += 5) for (let y = 3; y < torn(x); y++) px(g, x, y, 1, 1, '#c9d3dd');
+  for (let y = 6; y < H - 3; y += 5) for (let x = 0; x < W; x++) if (y < torn(x)) px(g, x, y, 1, 1, '#c9d3dd');
+  g.strokeStyle = '#1b2240'; g.lineWidth = 2.6; g.lineCap = g.lineJoin = 'round';
+  NOTE_TEXT.forEach((line, row) => {
+    const cw = 9, total = line.length * cw - 3, x0 = (W - total) / 2, y0 = 9 + row * 19;
+    [...line].forEach((ch, i) => {
+      const r = hash2(i + row * 5, 3) - .5, s = 1.35, ox = x0 + i * cw + r, oy = y0 + (hash2(i, row + 11) - .5) * 2, tilt = r * .25;
+      (NOTE_GLYPHS[ch] || []).forEach(stroke => {
+        g.beginPath();
+        stroke.forEach(([gx, gy], k) => { const x = ox + gx * s + gy * tilt, y = oy + gy * s * 1.1 + (hash2(gx + i, gy + k) - .5) * .8; k ? g.lineTo(x, y) : g.moveTo(x, y); });
+        g.stroke();
+      });
+    });
+  });
+  g.fillStyle = 'rgba(236,228,190,.75)'; g.fillRect(20, 0, 24, 7); g.fillStyle = 'rgba(255,255,255,.35)'; g.fillRect(20, 1, 24, 1);
+});
+
+/* what you see through her doorway: a little lit hallway of a flat in one-point perspective — wallpaper on
+   the side walls, a parquet floor running away, a carpet on the far wall and a bare bulb on a cord. It is
+   drawn unlit (MeshBasic), so it glows warm out of the darker room, and the contacts fly out of it. */
+const VOID = canvasTexture(32, 48, (g, W, H) => {
+  const bx0 = 11, bx1 = 21, by0 = 12, by1 = 31;   // the far wall
+  const poly = (pts, c) => { g.fillStyle = c; g.beginPath(); pts.forEach(([x, y], i) => i ? g.lineTo(x, y) : g.moveTo(x, y)); g.closePath(); g.fill(); };
+  poly([[0, 0], [W, 0], [bx1, by0], [bx0, by0]], '#b3a68a');   // ceiling
+  poly([[0, 0], [bx0, by0], [bx0, by1], [0, H]], '#b08250');   // left wall
+  poly([[W, 0], [bx1, by0], [bx1, by1], [W, H]], '#a57848');   // right wall, a touch darker
+  poly([[0, H], [W, H], [bx1, by1], [bx0, by1]], '#6e3f22');   // floor
+  poly([[bx0, by0], [bx1, by0], [bx1, by1], [bx0, by1]], '#c49660');   // far wall
+  // wallpaper stripes, closer together as they run away
+  [1.5, 4.5, 6.8, 8.5, 9.8].forEach(x => {
+    const k = x / bx0; g.fillStyle = 'rgba(90,50,20,.28)';
+    g.fillRect(x | 0, by0 * k | 0, 1, H - (H - by1) * k - by0 * k | 0); g.fillRect(W - 1 - x | 0, by0 * k | 0, 1, H - (H - by1) * k - by0 * k | 0);
+  });
+  // floor boards run to the far wall, the cross joints bunch up with depth
+  g.strokeStyle = 'rgba(40,18,6,.45)'; g.lineWidth = 1;
+  [-6, 2, 10, 16, 22, 30, 38].forEach(x => { g.beginPath(); g.moveTo(x, H); g.lineTo(bx0 + (x + 6) / 44 * (bx1 - bx0), by1); g.stroke(); });
+  [44, 39, 35.5, 33].forEach(y => { const k = (y - by1) / (H - by1); g.fillStyle = 'rgba(40,18,6,.35)'; g.fillRect(bx0 - bx0 * k | 0, y | 0, (bx1 - bx0) + (W - bx1 + bx0) * k | 0, 1); });
+  // skirting boards along the bottom of the side walls
+  g.strokeStyle = '#4a2814'; g.beginPath(); g.moveTo(0, H - 1); g.lineTo(bx0, by1); g.moveTo(W, H - 1); g.lineTo(bx1, by1); g.stroke();
+  // the carpet on the far wall
+  px(g, 13, 16, 7, 10, '#8c1f1a'); px(g, 14, 17, 5, 8, '#b8332a'); px(g, 16, 18, 1, 6, '#e0b050'); px(g, 15, 20, 3, 2, '#e0b050'); px(g, 16, 21, 1, 1, '#2a3a6a');
+  // the bulb, its cord and the light it throws
+  /* the bulb dims what it does not reach instead of painting light on top: a white-to-brown radial
+     multiplied over the hallway, so nothing washes out to a flat bright blob */
+  g.globalCompositeOperation = 'multiply';
+  const fall = g.createRadialGradient(16, 11, 2, 16, 11, 26);
+  fall.addColorStop(0, '#f2e6cf'); fall.addColorStop(.35, '#cfb189'); fall.addColorStop(1, '#5e452e');
+  g.fillStyle = fall; g.fillRect(0, 0, W, H);
+  g.globalCompositeOperation = 'lighter';
+  const halo = g.createRadialGradient(16, 9, 0, 16, 9, 4); halo.addColorStop(0, 'rgba(255,215,140,.3)'); halo.addColorStop(1, 'rgba(255,215,140,0)');
+  g.fillStyle = halo; g.fillRect(0, 0, W, H);
+  g.globalCompositeOperation = 'source-over';
+  px(g, 16, 3, 1, 5, '#2a2018'); px(g, 15, 8, 3, 2, '#fff2c0'); px(g, 16, 10, 1, 1, '#ffd98a');
 });
 
 const DV = { x: 20, y: -36, z: 0, open: 0, hover: false, mats: [] };
 (() => {
   const [root, g] = gsGroup(); DV.root = root; DV.g = g;
-  const lam = c => { const m = new THREE.MeshLambertMaterial({ color: c }); DV.mats.push([m, new THREE.Color(c)]); return m; };
+  const lam = c => { const m = new THREE.MeshLambertMaterial({ color: c, map: GRAIN }); DV.mats.push([m, new THREE.Color(c)]); return m; };
   const box = (w, h, d, m, x, y, z, parent = g) => { const o = new THREE.Mesh(new THREE.BoxGeometry(w, h, d), m); o.position.set(x, y, z); parent.add(o); return o; };
   const W = 10, H = 14, T = 3, P = 1.2, base = 2.6, dark = lam('#6b3a1c'), sole = lam('#4a2a14'), wood = lam('#c8773c');
   DV.body = new THREE.Group(); g.add(DV.body);
@@ -869,9 +939,16 @@ const DV = { x: 20, y: -36, z: 0, open: 0, hover: false, mats: [] };
   DV.pivot = new THREE.Group(); DV.pivot.position.set(.6, lw / 2, base + .6 + lh / 2); DV.body.add(DV.pivot);
   box(1, lw, lh, wood, 0, -lw / 2, 0, DV.pivot);
   const face = frontPlane(lw, lh, FACE); face.position.set(.52, -lw / 2, 0); DV.pivot.add(face); DV.mats.push([face.material, new THREE.Color('#ffffff')]);
-  DV.arms = [-1, 1].map(s => { const a = new THREE.Group(); a.position.set(0, s * (W / 2 + .5), base + 7); DV.body.add(a); box(.8, .8, 3.2, dark, 0, 0, -1.6, a); a.rotation.x = -s * .35; return a; });
+  DV.arms = [-1, 1].map(s => { const a = new THREE.Group(); a.position.set(0, s * (W / 2 + .5), base + 7); DV.body.add(a); box(.8, .8, 3.2, dark, 0, 0, -1.6, a); a.rotation.x = s * .35; return a; });
   DV.legs = [-1, 1].map(s => { const l = new THREE.Group(); l.position.set(0, s * 2.3, base); g.add(l); box(1, 1, base, dark, 0, 0, -base / 2, l); box(2.4, 1.6, .8, sole, .5, 0, -base + .4, l); return l; });
-  DV.hit = new THREE.Mesh(new THREE.BoxGeometry(12, 16, 22), new THREE.MeshBasicMaterial({ visible: false })); DV.hit.position.z = 9; g.add(DV.hit);
+  // the note on her back rides the leaf, so it swings open with it
+  const note = frontPlane(5.2, 3.9, NOTE); note.rotation.z = Math.PI; note.rotation.x = .07; note.position.set(-.53, -lw / 2 + .2, 1.6); DV.pivot.add(note);
+  DV.mats.push([note.material, new THREE.Color('#ffffff')]);
+  /* hover targets are upright cylinders, so they look the same from every side: she turns to face you when
+     hovered, and a box would swing its corners out from under the cursor, drop the hover, turn her back and
+     flicker. Once hovered, the test switches to the wider hitWide, so a cursor on the very edge stays in. */
+  const hitCyl = (r, h) => { const geo = new THREE.CylinderGeometry(r, r, h, 16); geo.rotateX(Math.PI / 2); const m = new THREE.Mesh(geo, new THREE.MeshBasicMaterial({ visible: false })); m.position.z = 9; g.add(m); return m; };
+  DV.hit = hitCyl(8, 22); DV.hitWide = hitCyl(10.5, 26);
   drawFace();
 })();
 
@@ -920,7 +997,8 @@ function updateMascot(dt, t) {
   const sw = moving ? Math.sin(MV.phase) * .9 : inAir ? .5 : 0;
   DV.legs[0].rotation.y = sw; DV.legs[1].rotation.y = inAir ? .5 : -sw;
   DV.arms[0].rotation.y = -sw * .8; DV.arms[1].rotation.y = sw * .8;
-  DV.arms[1].rotation.x = DV.hover ? -2.2 + Math.sin(t * 14) * .35 : .35;
+  DV.arms[0].rotation.x = -.35;   // the contacts pose raises it; this brings it back down
+  DV.arms[1].rotation.x = DV.hover ? 2.2 + Math.sin(t * 14) * .35 : .35;
   MV.squash += (1 - MV.squash) * Math.min(1, dt * 10);
   DV.body.position.z = moving ? Math.abs(Math.sin(MV.phase)) * 1 : Math.sin(t * 3) * .15;
   DV.body.scale.set(1 / Math.sqrt(MV.squash), 1 / Math.sqrt(MV.squash), MV.squash * (inAir ? 1.06 : 1));
@@ -1274,7 +1352,7 @@ const ctTip = $('#ct-tip');
     const grp = new THREE.Group(); grp.add(mesh); grp.visible = false; scene.add(grp);
     CT.tokens.push({ C, grp, mesh, tex: face, mats: [rim, faceMat], k: 0, s: 1, from: new THREE.Vector3(), slot: new THREE.Vector3() });
   });
-  CT.flash = new THREE.Sprite(new THREE.SpriteMaterial({ map: GLOW, color: '#b58cff', transparent: true, blending: THREE.AdditiveBlending, depthWrite: false, opacity: 0 }));
+  CT.flash = new THREE.Sprite(new THREE.SpriteMaterial({ map: GLOW, color: '#ffc878', transparent: true, blending: THREE.AdditiveBlending, depthWrite: false, opacity: 0 }));
   scene.add(CT.flash);
   /* Warm them up now, while the page is still loading. Otherwise the first frame a token becomes visible is
      the frame that uploads its texture to the GPU and compiles its shader — one long frame, right as they
@@ -1351,7 +1429,7 @@ function updateContacts(dt, t) {
   if (CT.state === 'hint-talk') {
     const L = HINT_TO[HINT.which].look;
     MV.rot = lerpAngle(MV.rot, Math.atan2(L.y - DV.y, L.x - DV.x) + .9, Math.min(1, dt * 8));
-    DV.arms[1].rotation.x = -2.3 + Math.sin(t * 12) * .3;
+    DV.arms[1].rotation.x = 2.3 + Math.sin(t * 12) * .3;
     if (CT.t > 3.4) { FACE.userData.s.mood = 'smile'; drawFace(); ctGo('hint-back', HINT_BACK[HINT.which].map(p => ({ ...p }))); }
   }
   if (CT.state === 'hint-back' && ctFollow()) { MV.zone = 'front'; ctGo('idle', []); MV.mode = 'pause'; MV.t = .4; }
@@ -1414,9 +1492,24 @@ function updateContacts(dt, t) {
     T.glow = (T.glow || 0) + ((CT.hover === i ? .28 : 0) - (T.glow || 0)) * Math.min(1, dt * 12);   // fade, so the hover glow does not blink off on click
     T.mats.forEach(m => m.emissive.setScalar(T.glow));
   });
+  /* while the tokens fly she is not a statue: every token that leaves (or comes back) kicks her — a squash,
+     a jolt back from the doorway and a little hop — and her arms throw them out or reach to catch them */
+  if (CT.state === 'open' || CT.state === 'burst' || CT.state === 'suck') {
+    const suck = CT.state === 'suck', at = i => suck ? (n - 1 - i) * .08 + .45 : CT.state === 'burst' ? i * .12 : 99;
+    let kick = 0;
+    for (let i = 0; i < n; i++) { const x = CT.t - at(i); if (x >= 0) kick = Math.max(kick, Math.exp(-x * 10)); }
+    const passed = CT.tokens.filter((T, i) => CT.t >= at(i)).length;
+    if (passed > (CT.kicks || 0)) MV.squash = Math.min(MV.squash, suck ? .86 : .8);
+    CT.kicks = passed;
+    const reach = suck ? 1.3 + Math.sin(t * 16) * .3 : CT.state === 'open' ? 1.6 : 1.9 + kick * .6 + Math.sin(t * 9) * .15;
+    DV.arms[0].rotation.x = -reach; DV.arms[1].rotation.x = reach;
+    DV.body.rotation.y = (suck ? .08 : -.14) * kick;
+    DV.body.rotation.x = suck ? Math.sin(t * 38) * .035 : 0;
+    DV.body.position.z += kick * 1.4;
+  } else { CT.kicks = 0; DV.body.rotation.x = 0; }
   if (CT.state === 'burst' && CT.tokens.every(T => T.k >= 1)) { ctGo('shown', []); CT.shownAt = t; FACE.userData.s.mood = 'smile'; drawFace(); }
   if (CT.state === 'shown') {
-    DV.arms[0].rotation.x = 2.2 + Math.sin(t * 10) * .25; DV.arms[1].rotation.x = -2.2 - Math.sin(t * 10) * .25;
+    DV.arms[0].rotation.x = -2.2 - Math.sin(t * 10) * .25; DV.arms[1].rotation.x = 2.2 + Math.sin(t * 10) * .25;
     ctTip.classList.toggle('on', CT.hover >= 0);
     if (CT.hover >= 0) {
       const T = CT.tokens[CT.hover], [x, y] = toScreen(T.grp.position.clone().add(new THREE.Vector3(0, 6 * GS, 0)));
@@ -1617,7 +1710,7 @@ canvas.addEventListener('click', e => {
   ndc.set(e.clientX / innerWidth * 2 - 1, -(e.clientY / innerHeight) * 2 + 1); pointerIn = true; ray.setFromCamera(ndc, camera);
   const tok = ctPick();
   if (tok >= 0) { ctOpenLink(tok); return; }
-  if (ray.intersectObject(DV.hit).length) { dverkaClick(); $('#hint').hidden = true; return; }
+  if (DV.hover || ray.intersectObject(DV.hit).length) { dverkaClick(); $('#hint').hidden = true; return; }
   if (ray.intersectObject(PC.hit).length) { openPCV(); return; }
   if (BAG && ray.intersectObject(BAG.mesh).length) { BAG.poke(); return; }
 });
@@ -1652,7 +1745,7 @@ function frame(now) {
   }
   camera.lookAt(lookBase);
 
-  if (pointerIn && PCV.state === 'idle') { ray.setFromCamera(ndc, camera); DV.hover = ray.intersectObject(DV.hit).length > 0; PC.hover = !DV.hover && ray.intersectObject(PC.hit).length > 0; TVH.hover = !DV.hover && !PC.hover && ray.intersectObject(TVH.hit).length > 0; if (BAG) BAG.hover = !DV.hover && !PC.hover && ray.intersectObject(BAG.mesh).length > 0; }
+  if (pointerIn && PCV.state === 'idle') { ray.setFromCamera(ndc, camera); DV.hover = ray.intersectObject(DV.hover ? DV.hitWide : DV.hit).length > 0; PC.hover = !DV.hover && ray.intersectObject(PC.hit).length > 0; TVH.hover = !DV.hover && !PC.hover && ray.intersectObject(TVH.hit).length > 0; if (BAG) BAG.hover = !DV.hover && !PC.hover && ray.intersectObject(BAG.mesh).length > 0; }
   else { DV.hover = !!window.TEST_HOVER; PC.hover = !!window.TEST_PC; TVH.hover = !!window.TEST_TV; }
   canvas.classList.toggle('hot', DV.hover || PC.hover || CT.hover >= 0 || (BAG && BAG.hover));
   PC.glow += ((PC.hover ? 1 : 0) - PC.glow) * Math.min(1, dt * (PC.hover ? 16 : 9));
@@ -1892,7 +1985,7 @@ const ESP = (() => {
   // things that are invisible or see-through in the room but would turn solid under the black override;
   // the wine glasses are see-through too, so they must not punch holes in his outline; the olivier pot
   // right beside him is left out the same way, so it never leaves a green smudge on its rim
-  const ghosts = [DV.hit, PC.hit, PC.wash, TVH.hit, TVH.wash, ...GLASSES];
+  const ghosts = [DV.hit, DV.hitWide, PC.hit, PC.wash, TVH.hit, TVH.wash, ...GLASSES];
 
   const el = $("#esp"), v = new THREE.Vector3();
   function box() {
