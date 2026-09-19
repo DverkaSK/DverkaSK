@@ -42,7 +42,8 @@ jobs:
             site/ "$USER@$HOST:./"
 
       - name: Check it is served
-        run: curl -fsS -o /dev/null -H 'Host: dverka.sk' "http://$HOST/"
+        run: |
+          curl -fsS -o /dev/null -H 'Host: dverka.sk' "http://$HOST/"
 
       - name: Remove the key
         if: always()
