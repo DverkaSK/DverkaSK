@@ -9,7 +9,7 @@ site/                    ← весь сайт, публикуется как е
   index.html             3D-комната de_zastolye (three.js r128 с cdnjs)
   assets/*.gz            модели и карта комнаты, страница качает и распаковывает их сама
   pc/index.html          сайт «на компьютере» в стиле рунета 2000-х (открывается кликом по компу)
-  404.html, favicon.*, apple-touch-icon.png, og.jpg (превью для ссылок), CNAME, robots.txt
+  404.html, favicon.*, apple-touch-icon.png, og.jpg (превью для ссылок), robots.txt
 scripts/
   wakatime_cards.py      карточки WakaTime для README + cards/wakatime.json для cmd.exe на сайте
   steam_shots.py         мои скрины MineStickman из Steam → cards/steam-shots.json для фотоальбома
@@ -36,27 +36,19 @@ python -m http.server 8000
 
 ## Деплой
 
-GitHub Pages, workflow `.github/workflows/pages.yml`: любой пуш в `main`, который меняет `site/`,
-выкладывает папку на https://dverka.sk. Руками — Actions → Deploy dverka.sk → Run workflow.
+Свой сервер `82.21.150.38` (Debian 12, тот же, где тестовый Minecraft), nginx.
+Workflow `.github/workflows/deploy.yml`: любой пуш в `main`, который меняет `site/`, заливает папку по rsync
+в `/var/www/dverka.sk`. Руками — Actions → Deploy dverka.sk → Run workflow.
 
-### Один раз при подключении
+На сервере:
+- конфиг nginx — `/etc/nginx/sites-available/dverka.sk`; `www` редиректит на голый домен;
+  `assets/*.gz` отдаются как есть, без `Content-Encoding` — страница распаковывает их сама;
+- HTTPS — Let's Encrypt через `certbot --nginx`, продлевается сам (`certbot.timer`);
+- заливает пользователь `site-deploy`; его ключ в `authorized_keys` прибит к
+  `rrsync /var/www/dverka.sk`, так что шелла и других каталогов у него нет.
 
-1. GitHub → репозиторий DverkaSK → Settings → Pages → Source: **GitHub Actions**.
-2. У регистратора (Netim) в DNS зоны `dverka.sk` удалить старые A/AAAA/CNAME для `@` и `www` и добавить:
+Секреты репозитория (Settings → Secrets and variables → Actions):
+- `SITE_DEPLOY_KEY` — приватный ключ `site-deploy`;
+- `SITE_KNOWN_HOSTS` — строка `ssh-keyscan -t ed25519 82.21.150.38`.
 
-   | Тип   | Имя   | Значение              |
-   |-------|-------|-----------------------|
-   | A     | @     | 185.199.108.153       |
-   | A     | @     | 185.199.109.153       |
-   | A     | @     | 185.199.110.153       |
-   | A     | @     | 185.199.111.153       |
-   | AAAA  | @     | 2606:50c0:8000::153   |
-   | AAAA  | @     | 2606:50c0:8001::153   |
-   | AAAA  | @     | 2606:50c0:8002::153   |
-   | AAAA  | @     | 2606:50c0:8003::153   |
-   | CNAME | www   | dverkask.github.io.   |
-
-3. Settings → Pages → Custom domain: `dverka.sk` → Save. Когда проверка DNS пройдёт и выпустится сертификат
-   (от минут до суток), включить **Enforce HTTPS**.
-4. По желанию: GitHub → Settings (аккаунта) → Pages → Add a verified domain. GitHub даст TXT-запись
-   `_github-pages-challenge-DverkaSK`; с ней никто другой не сможет привязать dverka.sk к своему репозиторию.
+DNS у Netim: A-записи `dverka.sk` и `www.dverka.sk` → `82.21.150.38`. MX, SPF и NS не трогать — это почта и сам домен.

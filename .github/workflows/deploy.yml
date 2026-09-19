@@ -1,0 +1,49 @@
+name: Deploy dverka.sk
+
+on:
+  push:
+    branches: [main]
+    paths: ['site/**', '.github/workflows/deploy.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: deploy-site
+  cancel-in-progress: true
+
+env:
+  HOST: 82.21.150.38
+  USER: site-deploy
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Prepare ssh
+        env:
+          SITE_DEPLOY_KEY: ${{ secrets.SITE_DEPLOY_KEY }}
+          SITE_KNOWN_HOSTS: ${{ secrets.SITE_KNOWN_HOSTS }}
+        run: |
+          mkdir -p ~/.ssh && chmod 700 ~/.ssh
+          printf '%s\n' "$SITE_DEPLOY_KEY" > ~/.ssh/deploy_key
+          printf '%s\n' "$SITE_KNOWN_HOSTS" > ~/.ssh/known_hosts
+          chmod 600 ~/.ssh/deploy_key ~/.ssh/known_hosts
+
+      # The key is pinned to rrsync on the server, so the target path is
+      # relative to /var/www/dverka.sk and nothing outside it is reachable
+      - name: Upload site/
+        run: |
+          rsync -rlz --delete --chmod=D755,F644 \
+            -e "ssh -i ~/.ssh/deploy_key -o StrictHostKeyChecking=yes" \
+            site/ "$USER@$HOST:./"
+
+      - name: Check it is served
+        run: curl -fsS -o /dev/null -H 'Host: dverka.sk' "http://$HOST/"
+
+      - name: Remove the key
+        if: always()
+        run: rm -f ~/.ssh/deploy_key
