@@ -31,10 +31,15 @@ jobs:
           [ -n "$SITE_DEPLOY_KEY" ] || { echo "::error::secret SITE_DEPLOY_KEY is not set"; exit 1; }
           [ -n "$SITE_KNOWN_HOSTS" ] || { echo "::error::secret SITE_KNOWN_HOSTS is not set"; exit 1; }
           mkdir -p ~/.ssh && chmod 700 ~/.ssh
-          printf '%s\n' "$SITE_DEPLOY_KEY" > ~/.ssh/deploy_key
-          printf '%s\n' "$SITE_KNOWN_HOSTS" > ~/.ssh/known_hosts
+          # values pasted on Windows may carry \r, which ssh refuses to parse
+          printf '%s\n' "$SITE_DEPLOY_KEY" | tr -d '\r' > ~/.ssh/deploy_key
+          printf '%s\n' "$SITE_KNOWN_HOSTS" | tr -d '\r' > ~/.ssh/known_hosts
           chmod 600 ~/.ssh/deploy_key ~/.ssh/known_hosts
-          ssh-keygen -y -f ~/.ssh/deploy_key > /dev/null || { echo "::error::SITE_DEPLOY_KEY is not a readable private key"; exit 1; }
+          if ! ssh-keygen -y -f ~/.ssh/deploy_key > /dev/null; then
+            grep -q 'BEGIN OPENSSH PRIVATE KEY' ~/.ssh/deploy_key && hdr=yes || hdr=no
+            echo "::error::SITE_DEPLOY_KEY is not a readable private key ($(wc -l < ~/.ssh/deploy_key) lines, private key header: $hdr)"
+            exit 1
+          fi
 
       # The key is pinned to rrsync on the server, so the target path is
       # relative to /var/www/dverka.sk and nothing outside it is reachable
