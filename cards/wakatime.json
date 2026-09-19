@@ -1,0 +1,328 @@
+{
+ "updated": "2026-09-19T20:09:51Z",
+ "week": {
+  "ai_lines": 10491,
+  "human_lines": 413,
+  "days": [
+   {
+    "date": "2026-09-13",
+    "seconds": 18058
+   },
+   {
+    "date": "2026-09-14",
+    "seconds": 20842
+   },
+   {
+    "date": "2026-09-15",
+    "seconds": 40828
+   },
+   {
+    "date": "2026-09-16",
+    "seconds": 15411
+   },
+   {
+    "date": "2026-09-17",
+    "seconds": 35090
+   },
+   {
+    "date": "2026-09-18",
+    "seconds": 33243
+   },
+   {
+    "date": "2026-09-19",
+    "seconds": 27728
+   }
+  ]
+ },
+ "all_time": {
+  "total_seconds": 8241062,
+  "daily_average": 9147,
+  "start": "2023-01-01T21:00:00Z",
+  "languages": [
+   {
+    "name": "Java",
+    "seconds": 6339286
+   },
+   {
+    "name": "SQL",
+    "seconds": 481152
+   },
+   {
+    "name": "YAML",
+    "seconds": 405209
+   },
+   {
+    "name": "XML",
+    "seconds": 130120
+   },
+   {
+    "name": "Groovy",
+    "seconds": 109705
+   },
+   {
+    "name": "JSON",
+    "seconds": 105901
+   },
+   {
+    "name": "Markdown",
+    "seconds": 103444
+   },
+   {
+    "name": "Kotlin",
+    "seconds": 67107
+   },
+   {
+    "name": "Python",
+    "seconds": 64525
+   },
+   {
+    "name": "Go",
+    "seconds": 61314
+   },
+   {
+    "name": "Gradle",
+    "seconds": 58315
+   },
+   {
+    "name": "HTML",
+    "seconds": 49410
+   },
+   {
+    "name": "TypeScript",
+    "seconds": 36828
+   },
+   {
+    "name": "C++",
+    "seconds": 33393
+   },
+   {
+    "name": "GitIgnore file",
+    "seconds": 28156
+   },
+   {
+    "name": "Docker",
+    "seconds": 18295
+   },
+   {
+    "name": "Java Properties",
+    "seconds": 14997
+   },
+   {
+    "name": "Properties",
+    "seconds": 12090
+   },
+   {
+    "name": "JavaScript",
+    "seconds": 11561
+   },
+   {
+    "name": "Bash",
+    "seconds": 7391
+   },
+   {
+    "name": "CSS",
+    "seconds": 5820
+   },
+   {
+    "name": "TOML",
+    "seconds": 4536
+   },
+   {
+    "name": "C#",
+    "seconds": 4178
+   },
+   {
+    "name": "Nginx configuration file",
+    "seconds": 2945
+   },
+   {
+    "name": "Groff",
+    "seconds": 2851
+   },
+   {
+    "name": "PowerShell",
+    "seconds": 2680
+   },
+   {
+    "name": "Shell Script",
+    "seconds": 1895
+   },
+   {
+    "name": "Assembly",
+    "seconds": 1556
+   },
+   {
+    "name": "Rust",
+    "seconds": 1132
+   },
+   {
+    "name": "CLASS",
+    "seconds": 1126
+   },
+   {
+    "name": "Git Config",
+    "seconds": 1115
+   },
+   {
+    "name": "Dockerfile",
+    "seconds": 1114
+   },
+   {
+    "name": "Batchfile",
+    "seconds": 1060
+   },
+   {
+    "name": "go.mod",
+    "seconds": 957
+   },
+   {
+    "name": "Scala",
+    "seconds": 913
+   },
+   {
+    "name": "HCL",
+    "seconds": 895
+   },
+   {
+    "name": "Mustache",
+    "seconds": 624
+   },
+   {
+    "name": "pack.mcmeta JSON",
+    "seconds": 527
+   },
+   {
+    "name": "Terraform",
+    "seconds": 482
+   },
+   {
+    "name": "SPI",
+    "seconds": 419
+   },
+   {
+    "name": "TeX",
+    "seconds": 396
+   },
+   {
+    "name": "Mixin Configuration",
+    "seconds": 369
+   },
+   {
+    "name": "SSH Config",
+    "seconds": 344
+   },
+   {
+    "name": ".env file",
+    "seconds": 311
+   },
+   {
+    "name": "Spring Boot Imports",
+    "seconds": 192
+   },
+   {
+    "name": "CSV",
+    "seconds": 163
+   },
+   {
+    "name": "CSV/TSV",
+    "seconds": 149
+   },
+   {
+    "name": "ActionScript",
+    "seconds": 142
+   },
+   {
+    "name": "TikZ picture file",
+    "seconds": 132
+   },
+   {
+    "name": "INI",
+    "seconds": 132
+   },
+   {
+    "name": "TSConfig",
+    "seconds": 97
+   },
+   {
+    "name": "Git",
+    "seconds": 87
+   },
+   {
+    "name": "HTTP Request",
+    "seconds": 82
+   },
+   {
+    "name": "IDEA_MODULE",
+    "seconds": 75
+   },
+   {
+    "name": "Ezhil",
+    "seconds": 68
+   }
+  ],
+  "editors": [
+   {
+    "name": "IntelliJ IDEA",
+    "seconds": 7602097
+   },
+   {
+    "name": "Claude Code",
+    "seconds": 824841
+   },
+   {
+    "name": "GoLand",
+    "seconds": 84566
+   },
+   {
+    "name": "Warp",
+    "seconds": 75093
+   },
+   {
+    "name": "DataGrip",
+    "seconds": 60521
+   },
+   {
+    "name": "CLion",
+    "seconds": 35154
+   },
+   {
+    "name": "VS Code",
+    "seconds": 18521
+   },
+   {
+    "name": "PyCharm",
+    "seconds": 6587
+   },
+   {
+    "name": "RustRover",
+    "seconds": 1209
+   }
+  ],
+  "models": [
+   {
+    "name": "Claude",
+    "lines": 56241
+   },
+   {
+    "name": "Sonnet",
+    "lines": 30419
+   },
+   {
+    "name": "GPT",
+    "lines": 23061
+   },
+   {
+    "name": "Opus",
+    "lines": 20802
+   },
+   {
+    "name": "Gemini",
+    "lines": 1564
+   },
+   {
+    "name": "OpenCode",
+    "lines": 106
+   }
+  ]
+ }
+}
