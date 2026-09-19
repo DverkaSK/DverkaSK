@@ -52,7 +52,7 @@ jobs:
 
       - name: Check it is served
         run: |
-          curl -fsS -o /dev/null -H 'Host: dverka.sk' "http://$HOST/"
+          curl -fsS -o /dev/null --resolve "dverka.sk:443:$HOST" https://dverka.sk/
 
       - name: Remove the key
         if: always()

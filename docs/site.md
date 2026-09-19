@@ -36,14 +36,14 @@ python -m http.server 8000
 
 ## Деплой
 
-Свой сервер `82.21.150.38` (Debian 12, тот же, где тестовый Minecraft), nginx.
+Свой сервер `82.21.150.38` (Debian 12, тот же, где тестовый Minecraft), Caddy.
 Workflow `.github/workflows/deploy.yml`: любой пуш в `main`, который меняет `site/`, заливает папку по rsync
 в `/var/www/dverka.sk`. Руками — Actions → Deploy dverka.sk → Run workflow.
 
 На сервере:
-- конфиг nginx — `/etc/nginx/sites-available/dverka.sk`; `www` редиректит на голый домен;
+- конфиг — `/etc/caddy/Caddyfile`; `www` редиректит на голый домен;
   `assets/*.gz` отдаются как есть, без `Content-Encoding` — страница распаковывает их сама;
-- HTTPS — Let's Encrypt через `certbot --nginx`, продлевается сам (`certbot.timer`);
+- HTTPS (Let's Encrypt), продление и редирект с http Caddy делает сам; HTTP/3 — через открытый 443/udp;
 - заливает пользователь `site-deploy`; его ключ в `authorized_keys` прибит к
   `rrsync /var/www/dverka.sk`, так что шелла и других каталогов у него нет.
 
