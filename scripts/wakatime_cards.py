@@ -62,8 +62,9 @@ def fetch_week_lines(api_key):
     with urllib.request.urlopen(req, timeout=90) as r:
         days = json.load(r)['data']
     total = lambda f: sum(day['grand_total'].get(f) or 0 for day in days)
+    daily = [(day['range']['date'], day['grand_total'].get('total_seconds') or 0) for day in days]
     return (total('ai_additions') + total('ai_deletions'),
-            total('human_additions') + total('human_deletions'))
+            total('human_additions') + total('human_deletions'), daily)
 
 
 def fetch_language_colors():
@@ -175,7 +176,7 @@ def time_items(entries, palette, rename=None):
 def build_cards(week_lines, all_time):
     cards = {}
     if week_lines:
-        ai, human = week_lines
+        ai, human, _ = week_lines
         cards['ai-coding'] = lambda t: ai_coding_card(ai, human, t)
         print(f'AI lines: {ai}, human lines: {human}')
     if all_time:
@@ -199,6 +200,28 @@ def build_cards(week_lines, all_time):
     return cards
 
 
+def build_json(week_lines, all_time):
+    """Raw numbers for the dverka.sk page: it draws them itself, so it only needs names and seconds."""
+    out = {'updated': time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime())}
+    if week_lines:
+        ai, human, daily = week_lines
+        out['week'] = {'ai_lines': ai, 'human_lines': human, 'days': [{'date': d, 'seconds': round(sec)} for d, sec in daily]}
+    if all_time:
+        pick = lambda entries, hide: [{'name': e['name'], 'seconds': round(e.get('total_seconds') or 0)}
+                                      for e in entries if e['name'] not in hide and not e['name'].startswith('Image')
+                                      and (e.get('total_seconds') or 0) >= 60]
+        out['all_time'] = {
+            'total_seconds': round(all_time.get('total_seconds') or 0),
+            'daily_average': round(all_time.get('daily_average') or 0),
+            'start': all_time.get('start'),
+            'languages': pick(all_time.get('languages', []), HIDDEN_LANGUAGES),
+            'editors': pick(all_time.get('editors', []), HIDDEN_EDITORS | set(APPS)),
+            'models': [{'name': m['name'], 'lines': m['lines']}
+                       for m in sorted(all_time.get('ai_model_breakdown', []), key=lambda m: -m['lines']) if m['lines'] > 0],
+        }
+    return out
+
+
 def main():
     api_key = os.environ.get('WAKATIME_API_KEY')
     if not api_key:
@@ -213,6 +236,17 @@ def main():
             with open(os.path.join(OUT_DIR, f'{name}-{theme}.svg'), 'w', encoding='utf-8', newline='\n') as f:
                 f.write(render(t))
         print(f'Generated {name}')
+    data = build_json(week_lines, all_time)
+    path = os.path.join(OUT_DIR, 'wakatime.json')
+    if not all_time and os.path.exists(path):
+        # all-time stats not ready: keep the previous all-time block, refresh the week only
+        with open(path, encoding='utf-8') as f:
+            prev = json.load(f)
+        if 'all_time' in prev:
+            data['all_time'] = prev['all_time']
+    with open(path, 'w', encoding='utf-8', newline='\n') as f:
+        json.dump(data, f, ensure_ascii=False, indent=1)
+    print('Generated wakatime.json')
 
 
 if __name__ == '__main__':

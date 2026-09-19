@@ -1,0 +1,1741 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DverkaSK</title>
+<meta name="description" content="Сайт-визитка DverkaSK, Java/Kotlin-бэкендера: новогоднее застолье в хрущёвке в духе CS 1.6, а на компьютере в комнате — домашняя страничка в стиле рунета 2000-х.">
+<meta name="theme-color" content="#07060a">
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="dverka.sk">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:title" content="DverkaSK">
+<meta property="og:description" content="Сайт-визитка DverkaSK, Java/Kotlin-бэкендера: новогоднее застолье в хрущёвке в духе CS 1.6, а на компьютере в комнате — домашняя страничка в стиле рунета 2000-х.">
+<meta property="og:image" content="https://dverka.sk/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://dverka.sk/pc/">
+<meta property="og:url" content="https://dverka.sk/pc/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lobster&family=Marck+Script&family=PT+Mono&family=Pangolin&family=Press+Start+2P&family=Rubik+Glitch&family=Silkscreen:wght@400;700&family=Unbounded:wght@700;900&display=swap">
+<!--
+  ╔══════════════════════════════════════════════════════════╗
+  ║  DverkaSK — сайт-визитка.                                ║
+  ║  Контакты правятся в одном месте: ищи в файле "EDIT-ME". ║
+  ╚══════════════════════════════════════════════════════════╝
+-->
+<style>
+:root{
+  --sky:#1a7fe0; --sky-lite:#bfeaff;
+  --w95:#c0c0c0; --navy:#000080;
+  --luna:#245edc; --start:#3c9a2e;
+  --mag:#ff00cc; --cyan:#00e5ff; --yel:#ffe600; --lime:#b6ff00;
+  --void:#0a0014; --paper:#fffbe6; --ink:#141414;
+
+  --f-ui: Tahoma, Verdana, "Segoe UI", sans-serif;
+  --f-body: "Pangolin", "Comic Sans MS", "Comic Neue", cursive;
+  --f-mono: "PT Mono", "Courier New", monospace;
+  --f-pix: "Press Start 2P", "Courier New", monospace;
+  --f-lob: "Lobster", "Brush Script MT", cursive;
+  --f-chrome: "Unbounded", "Arial Black", Impact, sans-serif;
+  --f-glitch: "Rubik Glitch", Impact, sans-serif;
+  --f-script: "Marck Script", "Segoe Script", cursive;
+  --f-badge: "Silkscreen", "Press Start 2P", monospace;
+
+  --noise: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+*,*::before,*::after{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth;background:var(--void)}
+body{
+  margin:0; min-height:100vh; overflow-x:hidden; padding-bottom:64px;
+  color:var(--paper); font:17px/1.5 var(--f-body);
+  background-color:var(--void);
+  background-image:
+    radial-gradient(circle 1px at 20px 30px,#fff 98%,transparent),
+    radial-gradient(circle 1px at 90px 110px,#ffd 98%,transparent),
+    radial-gradient(circle 1.6px at 140px 40px,#aef 98%,transparent),
+    radial-gradient(circle 1px at 170px 160px,#fff 98%,transparent),
+    radial-gradient(circle 2px at 50px 150px,#f9f 98%,transparent),
+    radial-gradient(circle 1px at 120px 80px,#fff 98%,transparent);
+  background-size:190px 190px;
+}
+a{color:#6cf}
+a:visited{color:#f6f}
+:focus-visible{outline:3px dashed var(--mag);outline-offset:2px}
+button{font:inherit;color:inherit}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* ───────── overlays ───────── */
+.crt{position:fixed;inset:0;pointer-events:none;z-index:9999;
+  background:
+    repeating-linear-gradient(180deg,rgba(0,0,0,.17) 0 1px,transparent 1px 3px),
+    radial-gradient(ellipse at center,transparent 58%,rgba(0,0,0,.5) 100%);
+  animation:flicker 4s steps(8) infinite;will-change:opacity}
+.crt::before{content:"";position:absolute;inset:-10px;background:var(--noise);opacity:.05;animation:jitter .4s steps(3) infinite;will-change:transform}
+.crt::after{content:"";position:absolute;left:0;right:0;height:120px;top:-120px;
+  background:linear-gradient(180deg,transparent,rgba(255,255,255,.05),transparent);animation:roll 7s linear infinite;will-change:transform}
+body.no-crt .crt{display:none}
+@keyframes flicker{0%,100%{opacity:1}40%{opacity:.93}42%{opacity:1}80%{opacity:.96}}
+@keyframes jitter{33%{transform:translate(-8px,5px)}66%{transform:translate(6px,-7px)}}
+@keyframes roll{to{transform:translateY(calc(100vh + 120px))}}
+
+.trail{position:fixed;inset:0;pointer-events:none;z-index:9500}
+.spark{position:fixed;font-size:16px;line-height:1;translate:-50% -50%;animation:spark .9s ease-out forwards;text-shadow:0 0 6px currentColor}
+@keyframes spark{to{transform:translateY(40px) rotate(160deg) scale(.2);opacity:0}}
+
+/* ───────── top strip + nav ───────── */
+.strip{background:#000;color:var(--yel);font:bold 14px/28px var(--f-ui);border-bottom:2px solid var(--mag)}
+.tick{overflow:hidden;white-space:nowrap}
+/* две одинаковые половины едут влево; когда первая ушла целиком, картинка совпадает — шов не виден */
+.tick__run{display:inline-flex;animation:tick var(--tick-dur,40s) linear infinite}
+.tick__part{flex:none;padding-right:0}
+.strip:hover .tick__run{animation-play-state:paused}
+@keyframes tick{to{transform:translateX(-50%)}}
+.is-off,.is-off *,.is-off *::before,.is-off *::after,.is-off::before,.is-off::after{animation-play-state:paused!important}
+.tick__run,.amp__ticker span{will-change:transform}
+.rainbow{background:linear-gradient(90deg,#f33,#f90,#fe0,#3d0,#0cf,#93f,#f3c,#f33) 0 0/300% 100%;
+  -webkit-background-clip:text;background-clip:text;color:transparent;animation:rbw 3s steps(24) infinite}
+@keyframes rbw{to{background-position:300% 0}}
+.blink{animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+
+.world{max-width:1280px;margin-inline:auto;padding-inline:clamp(16px,3vw,40px)}
+
+.nav{display:flex;flex-wrap:wrap;justify-content:center;gap:2px 0;margin-block:14px;
+  background:linear-gradient(180deg,#f3f6fb 0%,#b9c5d8 48%,#8595b0 52%,#d4dcea 100%);
+  border:2px solid;border-color:#fff #4a5568 #4a5568 #fff;padding:5px 8px;box-shadow:0 0 0 1px #000, 0 6px 0 rgba(255,0,204,.5)}
+.nav a{font:bold 13px/1 var(--f-ui);color:#0f2a5c;text-decoration:none;padding:5px 9px;white-space:nowrap}
+.nav a+a::before{content:"::";color:#7a8aa6;margin-right:9px;margin-left:-9px}
+.nav a:hover{color:#fff;background:linear-gradient(90deg,#f0c,#0cf);text-shadow:1px 1px #000}
+
+/* ───────── hero: Frutiger Aero wallpaper ───────── */
+.hero{position:relative;overflow:hidden;border-radius:22px;
+  border:3px solid #fff;box-shadow:0 0 0 2px #0a3c7a, 0 0 40px rgba(0,229,255,.45), inset 0 0 0 1px rgba(255,255,255,.5);
+  background:linear-gradient(180deg,#0b6fd6 0%,#3aa0ff 35%,#9ddcff 62%,#dff6ff 72%)}
+.sky{position:absolute;inset:0;pointer-events:none}
+.sun{position:absolute;right:6%;top:-70px;width:260px;aspect-ratio:1;border-radius:50%;
+  background:radial-gradient(circle,#fff 0 12%,rgba(255,255,220,.8) 20%,rgba(255,255,255,0) 62%)}
+.cloud{position:absolute;background:#fff;border-radius:50%;filter:blur(14px);opacity:.85}
+.cloud.c1{width:320px;height:70px;left:-40px;top:22%}
+.cloud.c2{width:260px;height:60px;right:18%;top:48%;opacity:.6}
+.hill{position:absolute;left:-15%;right:-15%;bottom:-62%;height:95%;border-radius:50%;
+  background:radial-gradient(ellipse at 50% 8%,#d6ff9c 0,#6fd64a 22%,#2ea83a 55%,#156b25 80%);
+  box-shadow:inset 0 14px 30px rgba(255,255,255,.55)}
+.hill2{left:40%;right:-40%;bottom:-70%;background:radial-gradient(ellipse at 40% 8%,#b8ff7a,#3fbf3a 40%,#157a2a 80%)}
+.bubble{position:absolute;bottom:-70px;left:var(--x);width:var(--s);aspect-ratio:1;border-radius:50%;
+  background:radial-gradient(circle at 30% 25%,rgba(255,255,255,.95) 0 9%,rgba(255,255,255,.18) 22%,rgba(140,210,255,.12) 55%,rgba(255,255,255,.65) 71%,transparent 73%);
+  animation:rise var(--d) linear infinite;animation-delay:var(--dl)}
+@keyframes rise{to{transform:translate(30px,-820px)}}
+
+.tape{position:absolute;right:-90px;top:34px;rotate:32deg;width:480px;z-index:3;
+  background:repeating-linear-gradient(-45deg,#111 0 16px,var(--yel) 16px 32px);padding:5px 0;box-shadow:0 4px 10px rgba(0,0,0,.4)}
+.tape span{display:block;background:var(--yel);color:#000;font:10px/1.9 var(--f-pix);text-align:center;white-space:nowrap;overflow:hidden}
+
+.hero__grid{position:relative;z-index:2;display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,.8fr);gap:24px;align-items:center;
+  padding-block:clamp(30px,5vw,60px);padding-inline:clamp(16px,4vw,52px)}
+.welcome{margin:0;font:clamp(22px,2.6vw,32px)/1 var(--f-script);color:#fff;text-shadow:0 2px 0 #0b3d8a,0 0 12px #0cf}
+.logo-wrap{position:relative;margin-block:6px 4px}
+.logo{margin:0;font-size:clamp(50px,11.2vw,146px);line-height:.95;display:flex;align-items:baseline;white-space:nowrap}
+.l{display:inline-block}
+.chrome{background:linear-gradient(180deg,#fff 0%,#e8f0fb 38%,#50607c 50%,#e3ebf8 56%,#8ea3c1 82%,#fff 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-stroke:1.5px #13223d;
+  filter:drop-shadow(4px 5px 0 rgba(10,20,60,.55))}
+.l1{font-family:var(--f-chrome);font-weight:900;rotate:-7deg}
+.l2{font-family:var(--f-lob);font-size:1.08em;color:var(--mag);text-shadow:3px 3px 0 #fff,6px 6px 0 #5a0050}
+.l3{font-family:var(--f-glitch);font-size:.92em;color:var(--lime);-webkit-text-stroke:2px #000;rotate:5deg}
+.l4{font-family:var(--f-pix);font-size:.42em;color:#fff;background:var(--navy);padding:.12em .1em;rotate:9deg;align-self:center;box-shadow:4px 4px 0 #000}
+.l5{font-family:var(--f-script);font-size:1.12em;color:var(--yel);text-shadow:3px 3px 0 var(--mag),6px 6px 0 #000}
+.l6{font-family:var(--f-body);color:var(--cyan);-webkit-text-stroke:2px #001a33;rotate:-12deg}
+.l7{font-family:var(--f-chrome);font-weight:900;margin-left:.06em;
+  background:linear-gradient(180deg,#f3c,#fe0 30%,#3d0 50%,#0cf 70%,#93f);-webkit-background-clip:text;background-clip:text;color:transparent;
+  -webkit-text-stroke:1.5px #000;filter:drop-shadow(4px 4px 0 #000)}
+.l8{font-family:var(--f-mono);font-weight:700;font-size:.56em;color:#000;background:var(--yel);border:3px solid #000;box-shadow:5px 5px 0 var(--mag);padding:0 .12em;rotate:5deg;align-self:center;margin-left:.08em}
+.logo.glitch{animation:glx .32s steps(4) 1}
+.logo.glitch .l{filter:drop-shadow(4px 0 0 var(--mag)) drop-shadow(-4px 0 0 var(--cyan))}
+@keyframes glx{
+  0%{clip-path:inset(0 0 60% 0);transform:translateX(-8px) skewX(12deg)}
+  25%{clip-path:inset(40% 0 10% 0);transform:translateX(10px)}
+  50%{clip-path:inset(10% 0 45% 0);transform:translateX(-4px) skewX(-8deg)}
+  75%{clip-path:inset(70% 0 0 0);transform:translateX(6px)}
+  100%{clip-path:inset(0);transform:none}}
+.burst{position:absolute;right:-6px;top:-46px;width:96px;aspect-ratio:1;display:grid;place-items:center;text-align:center;
+  clip-path:polygon(50% 0%,61% 17%,79% 9%,79% 29%,98% 32%,86% 48%,100% 63%,81% 70%,84% 90%,64% 86%,50% 100%,36% 86%,16% 90%,19% 70%,0% 63%,14% 48%,2% 32%,21% 29%,21% 9%,39% 17%);
+  background:var(--yel);color:#e00000;font:10px/1.35 var(--f-pix);animation:wob .7s ease-in-out infinite alternate}
+@keyframes wob{from{transform:rotate(-12deg) scale(.94)}to{transform:rotate(10deg) scale(1.06)}}
+.wordart{display:inline-block;max-width:100%;margin:6px 0 0;font:900 clamp(18px,3vw,36px)/1.05 var(--f-chrome);letter-spacing:.01em;
+  background:linear-gradient(90deg,#e00,#f90,#fe0,#2c0,#09f,#93f);-webkit-background-clip:text;background-clip:text;color:transparent;
+  -webkit-text-stroke:1px #1a1a6e;transform:perspective(380px) rotateX(20deg) skewX(-9deg);transform-origin:left;filter:drop-shadow(3px 4px 0 #1a1a6e)}
+.cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.aqua{--c1:#6fd3ff;--c2:#0a6fd0;position:relative;overflow:hidden;display:inline-flex;align-items:center;gap:8px;
+  padding:10px 20px;border-radius:999px;border:1px solid rgba(0,20,60,.45);cursor:pointer;
+  font:bold 15px/1.1 var(--f-ui);color:#fff;text-decoration:none;text-shadow:0 1px 1px rgba(0,0,0,.45);
+  background:linear-gradient(180deg,var(--c1),var(--c2));
+  box-shadow:inset 0 -8px 14px rgba(255,255,255,.35),0 4px 12px rgba(0,50,120,.35);transition:transform .15s,filter .15s}
+.aqua::before{content:"";position:absolute;left:9%;right:9%;top:2px;height:48%;border-radius:999px;
+  background:linear-gradient(180deg,rgba(255,255,255,.92),rgba(255,255,255,.08))}
+.aqua>span{position:relative}
+.aqua:visited{color:#fff}
+.aqua:hover{transform:translateY(-2px) scale(1.03);filter:saturate(1.3) brightness(1.08)}
+.aqua:active{transform:translateY(1px)}
+.aqua.green{--c1:#a6ff7a;--c2:#1f9a2e}
+.aqua.pink{--c1:#ff9be8;--c2:#c2139a}
+.aqua.silver{--c1:#ffffff;--c2:#7d8aa0;color:#0b1a33;text-shadow:0 1px 0 #fff}
+.aqua.silver:visited{color:#0b1a33}
+.hero__meta{margin:18px 0 0;font:12px/1.6 var(--f-ui);color:#fff;text-shadow:1px 1px 0 #03380f,0 0 4px #03380f}
+.hero__meta a{color:#ffe600}
+
+.hero__side{position:relative;display:grid;justify-items:center;gap:8px;padding-top:64px}
+/* «ЭТО Я!!» висит над левым верхним углом рамки, стрелка заходит в рамку сверху — оба поверх неё */
+.jmi{position:absolute;z-index:3;right:62%;bottom:calc(100% + 18px);font:bold 22px var(--f-body);color:#ff1a1a;rotate:-10deg;
+  white-space:nowrap;text-shadow:2px 2px 0 #fff,-1px -1px 0 #fff;pointer-events:none}
+.arrow{position:absolute;z-index:3;left:14%;bottom:calc(100% - 26px);width:74px;pointer-events:none;
+  filter:drop-shadow(2px 2px 0 #fff)}
+.upic{position:relative;isolation:isolate;margin:0;width:clamp(150px,19vw,220px);aspect-ratio:1;padding:9px;border-radius:6px;box-shadow:10px 12px 0 rgba(0,0,0,.35)}
+/* радужная рамка отдельным слоем: hue-rotate не должен перекрашивать скин внутри */
+.upic::before{content:"";position:absolute;inset:0;z-index:-1;border-radius:inherit;
+  background:conic-gradient(#ff3ecf,#ffe600,#3ecfff,#b6ff00,#ff3ecf);animation:hue 2.5s steps(20) infinite}
+@keyframes hue{to{filter:hue-rotate(360deg)}}
+.upic__in{display:grid;place-content:center;gap:6px;height:100%;text-align:center;background:#fff;border:2px dashed #b9b9d0;
+  color:#6a6a8a;font:15px/1.25 var(--f-body)}
+.upic__in b{font:26px/1 var(--f-mono);color:#000}
+.skin3d{position:relative;display:block;padding:0;overflow:hidden;border-style:solid;border-color:#fff;cursor:grab;
+  /* небо как в майне: пиксельные облака плывут, внизу дымка к горизонту */
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='120' shape-rendering='crispEdges'%3E%3Cg fill='%23fff' fill-opacity='.92'%3E%3Crect x='10' y='22' width='56' height='10'/%3E%3Crect x='24' y='14' width='30' height='8'/%3E%3Crect x='130' y='60' width='72' height='10'/%3E%3Crect x='146' y='52' width='40' height='8'/%3E%3Crect x='120' y='70' width='30' height='6'/%3E%3Crect x='60' y='96' width='44' height='8'/%3E%3C/g%3E%3C/svg%3E") 0 0/240px 120px repeat-x,linear-gradient(#78a7ff 0%,#9cc2ff 55%,#c9ddff 100%);
+  image-rendering:pixelated;animation:clouds 60s steps(240) infinite}
+@keyframes clouds{to{background-position:-240px 0,0 0}}
+@media (prefers-reduced-motion:reduce){.skin3d{animation:none}}
+.skin3d:active{cursor:grabbing}
+.skin3d canvas{position:absolute;inset:0;width:100%!important;height:100%!important;display:block}
+.skin3d__fb{position:absolute;inset:0;display:grid;place-content:center;gap:6px;text-align:center}
+.skin3d.ok .skin3d__fb{display:none}
+.skin3d:focus-visible{outline:3px dotted #ff3ecf;outline-offset:2px}
+a.upic__cap{text-decoration:none}a.upic__cap:hover{text-decoration:underline}
+.upic__cap{margin:0;font:11px var(--f-ui);color:#fff;background:rgba(0,0,0,.55);padding:2px 8px}
+
+/* ───────── desktop grid of windows ───────── */
+.desk{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:34px 22px;margin-block:40px}
+.desk>*{grid-column:1/-1;rotate:var(--r,0deg);translate:var(--dx,0) var(--dy,0)}
+@media (min-width:861px){
+  .s4{grid-column:span 4}.s5{grid-column:span 5}.s6{grid-column:span 6}.s7{grid-column:span 7}.s8{grid-column:span 8}.s12{grid-column:1/-1}
+}
+.divider{text-align:center;font:clamp(14px,2vw,22px)/1.2 var(--f-mono);white-space:nowrap;overflow:hidden;rotate:0deg}
+
+.win{position:relative;background:var(--w95);color:var(--ink);font:15px/1.5 var(--f-ui);
+  border:2px solid;border-color:#fff #404040 #404040 #fff;
+  box-shadow:inset -1px -1px #808080,inset 1px 1px #dfdfdf,8px 10px 0 rgba(0,0,0,.5)}
+.win:hover,.win.is-front{z-index:5}
+.win__bar{display:flex;align-items:center;gap:6px;padding:3px 3px 3px 6px;min-height:22px;user-select:none;
+  background:linear-gradient(90deg,#000080,#1084d0);color:#fff;font:bold 13px/1.2 var(--f-ui)}
+.win__ico{width:16px;height:16px;flex:0 0 auto;display:grid;place-items:center;font-size:12px;line-height:1}
+.win__title{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.win__btns{display:flex;gap:2px;flex:0 0 auto}
+.wb{width:18px;height:16px;padding:0;display:grid;place-items:center;font:bold 11px/1 var(--f-ui);color:#000;cursor:pointer;
+  background:var(--w95);border:1px solid;border-color:#fff #404040 #404040 #fff;box-shadow:inset -1px -1px #808080}
+.wb:active{border-color:#404040 #fff #fff #404040}
+.win__menu{display:flex;flex-wrap:wrap;gap:0 2px;padding:2px 4px;font:13px var(--f-ui);border-bottom:1px solid #808080}
+.win__menu button{background:none;border:0;padding:1px 6px;cursor:pointer}
+.win__menu button:hover{background:var(--navy);color:#fff}
+.win__body{padding:12px}
+.win.is-min>:not(.win__bar){display:none}
+.win.flash{animation:flash .5s steps(2) 3}
+@keyframes flash{50%{outline:5px solid var(--yel)}}
+.win.shake{animation:shake .4s linear 1}
+@keyframes shake{20%{transform:translateX(-10px)}40%{transform:translateX(9px)}60%{transform:translateX(-6px)}80%{transform:translateX(4px)}}
+@media (pointer:fine) and (min-width:861px){.win__bar{cursor:grab}.win__bar:active{cursor:grabbing}}
+
+/* XP Luna */
+.win.xp{background:#ece9d8;border:3px solid #0831d9;border-top:0;border-radius:9px 9px 0 0;box-shadow:8px 10px 0 rgba(0,0,0,.5)}
+.xp>.win__bar{margin-inline:-3px;border-radius:8px 8px 0 0;padding:5px 5px 5px 9px;min-height:30px;font-size:13px;text-shadow:1px 1px #0f1089;
+  background:linear-gradient(180deg,#0997ff 0%,#0053ee 9%,#0050ee 40%,#06f 86%,#005bff 93%,#003dd7 100%)}
+.xp .wb{width:21px;height:21px;border-radius:3px;border:1px solid #fff;color:#fff;font-size:12px;box-shadow:none;
+  background:radial-gradient(circle at 30% 20%,#8fb8ff,#2a64e6 60%,#1a4fc9)}
+.xp .wb.x{background:radial-gradient(circle at 30% 20%,#ffb49a,#e0512d 60%,#b8311a)}
+/* Aero glass */
+.win.aero{background:rgba(220,240,255,.35);backdrop-filter:blur(10px) saturate(1.4);-webkit-backdrop-filter:blur(10px) saturate(1.4);
+  border:1px solid rgba(255,255,255,.85);border-radius:10px;overflow:hidden;
+  box-shadow:0 0 0 1px rgba(0,30,70,.5),0 14px 40px rgba(0,120,255,.35),inset 0 1px 0 #fff}
+.aero>.win__bar{background:linear-gradient(180deg,rgba(255,255,255,.55),rgba(160,210,255,.25) 50%,rgba(90,160,230,.3));color:#0b1f3a;text-shadow:0 0 8px #fff;padding:6px 6px 6px 10px}
+.aero .wb{border-radius:4px;border:1px solid rgba(0,30,70,.5);background:linear-gradient(#fff,#cde3f7);box-shadow:none}
+.aero .wb.x{background:linear-gradient(#f7a38f,#c7361c);color:#fff}
+/* terminal */
+.win.term{background:#000;border-color:#c0c0c0 #404040 #404040 #c0c0c0}
+.term>.win__bar{background:linear-gradient(90deg,#1a1a1a,#555)}
+
+/* ───────── about.txt (notepad) ───────── */
+.notepad{margin:0;padding:10px 12px;background:#fff;border:2px inset #808080;max-height:460px;overflow:auto;
+  font:14px/1.5 var(--f-mono);white-space:pre-wrap;word-break:break-word;color:#000}
+.notepad b{background:var(--navy);color:#fff;font-weight:400}
+
+/* ───────── terminal ───────── */
+.ansi{margin:0;padding:12px;overflow:auto;font:clamp(9px,1.05vw,13px)/1.25 var(--f-mono);color:#c0c0c0;background:#000;height:440px;box-sizing:border-box;
+  scrollbar-color:#808080 #000}
+.ansi .fig{color:var(--lime);text-shadow:0 0 6px rgba(182,255,0,.6);display:block;margin-bottom:10px}
+.ansi .fig span:nth-child(2){color:var(--cyan)}.ansi .fig span:nth-child(3){color:var(--mag)}
+.ansi .fig span:nth-child(4){color:var(--yel)}.ansi .fig span:nth-child(5){color:#ff5a36}
+.ansi .p{color:#fff}.ansi .ok{color:#3f3}.ansi .err{color:#f44}
+.ansi .o{color:#c0c0c0}.ansi .dim{color:#5a5a6a}.ansi .bar{color:#3f3}
+.cursor{display:inline-block;width:.6em;background:#c0c0c0;animation:blink 1s steps(1) infinite}
+
+/* ───────── Paint ───────── */
+.paint{display:grid;grid-template-columns:auto minmax(0,1fr);gap:6px;padding:6px}
+.tools{display:grid;grid-template-columns:repeat(2,26px);align-content:start;gap:2px;padding:3px;border:1px solid;border-color:#808080 #fff #fff #808080}
+.tool{width:26px;height:26px;padding:0;display:grid;place-items:center;cursor:pointer;font:15px/1 var(--f-ui);color:#000;
+  background:var(--w95);border:1px solid;border-color:#fff #404040 #404040 #fff}
+.tool[aria-pressed="true"]{border-color:#404040 #fff #fff #404040;background:repeating-conic-gradient(#fff 0 25%,#c0c0c0 0 50%) 0 0/2px 2px}
+.canvaswrap{background:#808080;padding:6px;border:2px inset #808080;overflow:hidden}
+#paint{display:block;width:100%;height:auto;background:#fff;touch-action:none;cursor:crosshair;image-rendering:pixelated}
+.palette{grid-column:1/-1;display:flex;align-items:center;gap:8px;padding:2px}
+.cur{position:relative;width:34px;height:34px;flex:0 0 auto;border:1px solid;border-color:#808080 #fff #fff #808080;background:var(--w95)}
+.cur i{position:absolute;width:16px;height:16px;border:1px solid #000;left:5px;top:5px;background:#000}
+.cur i+i{left:13px;top:13px;background:#fff;z-index:-0}
+.swatches{display:grid;grid-template-columns:repeat(14,16px);gap:2px}
+.sw{width:16px;height:16px;padding:0;cursor:pointer;border:1px solid;border-color:#808080 #fff #fff #808080;box-shadow:inset 1px 1px #000}
+.status{grid-column:1/-1;display:flex;gap:4px;font:12px var(--f-ui)}
+.status span{padding:1px 6px;border:1px solid;border-color:#808080 #fff #fff #808080}
+.status span:first-child{flex:1;min-width:0;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+
+/* ───────── гостевая (GeoCities) ───────── */
+.gb{grid-column:1/-1;position:relative;padding:18px clamp(12px,3vw,28px) 22px;border:6px ridge #c0c0c0;color:#ff0;
+  background:#000 radial-gradient(circle 1px at 12px 12px,#fff 98%,transparent) 0 0/40px 40px;font:17px/1.45 var(--f-body)}
+.gb h2{margin:0;text-align:center;font:clamp(32px,5vw,58px)/1 var(--f-lob);
+  background:linear-gradient(0deg,#ff2200,#ff9900 45%,#ffee00 75%,#fff);-webkit-background-clip:text;background-clip:text;color:transparent;
+  filter:drop-shadow(0 0 8px #f60)}
+.gb__sub{text-align:center;margin:4px 0 14px;color:#0f0;font:13px var(--f-ui)}
+.gb__grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:18px}
+.gb form{display:grid;gap:8px;align-content:start;padding:10px;border:3px ridge #ff00cc;background:#200030}
+.gb label{font:13px var(--f-ui);color:#0ff}
+.gb input,.gb textarea,.gb select{width:100%;font:15px var(--f-body);padding:4px 6px;background:#fff;color:#000;border:2px inset #c0c0c0}
+.gb textarea{min-height:80px;resize:vertical}
+.gb__note{font:11px var(--f-ui);color:#aaa;margin:0}
+.entries{display:grid;gap:8px;max-height:430px;overflow:auto;padding-right:4px}
+.entry{border:3px ridge #808080;background:#000080;padding:6px 10px}
+.entry header{display:flex;flex-wrap:wrap;justify-content:space-between;gap:2px 10px;font:12px var(--f-ui);color:#0ff}
+.entry header b{color:#f6f;font-size:14px}
+.entry p{margin:2px 0 0;color:#ff0;overflow-wrap:anywhere}
+
+/* ───────── contacts: acid + 88x31 ───────── */
+.acid{grid-column:1/-1;position:relative;overflow:hidden;border:6px ridge var(--mag);padding:clamp(14px,3vw,34px)}
+.acid::before{content:"";position:absolute;left:50%;top:50%;width:var(--acid,150vmax);aspect-ratio:1;will-change:transform;translate:-50% -50%;z-index:0;
+  background:repeating-conic-gradient(from 0deg,#ff00cc 0 12deg,#00e5ff 12deg 24deg,#ffe600 24deg 36deg,#b6ff00 36deg 48deg,#6a00ff 48deg 60deg);
+  animation:spin 18s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.acid__in{position:relative;z-index:1;background:rgba(5,0,15,.86);border:2px solid #fff;padding:clamp(14px,3vw,30px);box-shadow:0 0 0 4px #000,0 0 40px #f0c}
+.acid h2{margin:0;font:clamp(26px,4.2vw,52px)/1 var(--f-glitch);color:#fff;text-shadow:3px 0 var(--mag),-3px 0 var(--cyan)}
+.acid h2 span{font-family:var(--f-lob);color:var(--yel);text-shadow:3px 3px 0 var(--mag)}
+.acid__lead{margin:8px 0 18px;max-width:60ch;color:#ddd}
+.badges{display:flex;flex-wrap:wrap;gap:6px;margin-top:20px}
+.b88{position:relative;flex:0 0 auto;width:88px;height:31px;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  font:8px/1.05 var(--f-badge);text-transform:uppercase;text-align:center;color:#fff;text-decoration:none;
+  border:1px solid #000;box-shadow:inset 1px 1px 0 rgba(255,255,255,.55),inset -1px -1px 0 rgba(0,0,0,.55)}
+.b88:visited{color:#fff}
+.b88 b{font-size:10px;font-weight:700}
+.b88:hover{outline:2px solid #fff;z-index:2}
+.b88.split{flex-direction:row;justify-content:flex-start}
+.b88 .ic{width:29px;height:29px;flex:0 0 auto;display:grid;place-items:center;font:bold 15px var(--f-ui);border-right:1px solid #000}
+.b88 .tx{flex:1;padding:0 2px}
+.bg-chrome{background:linear-gradient(180deg,#fff,#aab4c4 48%,#56627a 52%,#dfe5ee);color:#0b1a33}
+.bg-chrome:visited{color:#0b1a33}
+.bg-tg{background:linear-gradient(#5ec8ff,#1b7fd1)}
+.bg-tg .ic{background:#fff;color:#1b7fd1}
+.bg-gh{background:#111;color:#b6ff00}
+.bg-gh:visited{color:#b6ff00}
+.bg-gh .ic{background:#b6ff00;color:#000}
+.bg-ds{background:linear-gradient(#8c9eff,#4b5bd6)}
+.bg-grey{background:#c0c0c0;color:#000}
+.bg-grey:visited{color:#000}
+.bg-navy{background:#000080;color:#ff0}
+.bg-y2k{background:linear-gradient(90deg,#0cf,#93f,#f0c);}
+.bg-rss{background:linear-gradient(#ffb347,#e86a00)}
+.bg-green{background:#003300;color:#3f3;font-family:var(--f-mono);text-transform:none;font-size:10px}
+.bg-rbw{background:linear-gradient(90deg,#f33,#f90,#fe0,#3d0,#0cf,#93f) 0 0/200% 100%;animation:rbw 2s steps(16) infinite;color:#000;text-shadow:0 0 2px #fff}
+.bg-white{background:#fff;color:#000}
+.bg-black{background:#000;color:#fff}
+.b88.css{background:#fff;color:#000;align-items:flex-start;justify-content:flex-start;padding:3px 4px;overflow:visible;font:bold 12px/1.05 Arial,sans-serif;text-transform:uppercase}
+.b88.css span{white-space:nowrap}
+.b88 .blinky{animation:blink .8s steps(1) infinite}
+.code{display:grid;gap:6px;margin-top:18px;max-width:560px}
+.code label{font:12px var(--f-ui);color:#0ff}
+.code textarea{width:100%;height:58px;resize:none;background:#000;color:var(--lime);border:2px inset #808080;font:12px/1.4 var(--f-mono);padding:6px}
+
+/* ───────── footer ───────── */
+.foot{text-align:center;display:grid;gap:10px;justify-items:center;margin-block:30px 20px;font:13px/1.5 var(--f-ui);color:#ccc}
+.counter{display:flex;gap:2px;padding:3px;background:#222;border:2px inset #666}
+.counter span{width:18px;height:26px;display:grid;place-items:center;background:linear-gradient(#000,#333 50%,#000);color:#3f3;font:bold 17px var(--f-mono);font-variant-numeric:tabular-nums;text-shadow:0 0 6px #3f3}
+.ascii{font:12px var(--f-mono);color:#f6f;white-space:nowrap;max-width:100%;overflow:hidden}
+
+/* ───────── Winamp ───────── */
+.win.amp{padding:0 4px 4px;background:#232332;color:#00e800;font:12px/1.3 Arial,var(--f-ui);
+  border:1px solid;border-color:#6a6a8a #0b0b12 #0b0b12 #6a6a8a;box-shadow:inset 0 0 0 1px #34344a,8px 10px 0 rgba(0,0,0,.5)}
+.amp>.win__bar{margin:0 -4px 4px;min-height:20px;padding:2px 4px 2px 8px;color:#ecdfa8;font:10px/1 var(--f-badge);letter-spacing:.2em;text-shadow:none;
+  background:#262638 repeating-linear-gradient(180deg,transparent 0 2px,#b8993c 2px 3px) center/100% 11px no-repeat;border-bottom:1px solid #0b0b12}
+.amp .win__title{flex:0 1 auto;margin-inline:auto;padding:0 10px;background:#262638}
+.amp .win__ico{color:#ffcf40;background:#262638}
+.amp .win__btns{background:#262638;padding-left:4px}
+.amp .wb{width:14px;height:13px;font-size:9px;color:#d8d8ec;background:#3b3b52;border-color:#77779a #121219 #121219 #77779a;box-shadow:none}
+.amp__in{border:1px solid;border-color:#0b0b12 #5a5a7e #5a5a7e #0b0b12}
+.amp__main{display:grid;grid-template-columns:auto minmax(0,1fr);gap:6px;padding:6px;background:linear-gradient(#303048,#1c1c2a)}
+.amp__lcd{display:grid;grid-template-columns:auto 1fr;align-items:center;gap:4px 8px;min-width:136px;padding:6px 8px;background:#000}
+.amp__st{width:12px;font:12px/1 var(--f-ui);color:#00e800;text-align:center}
+.amp__st.load{animation:blink .6s steps(1) infinite}
+.amp__time{font:20px/1 var(--f-pix);color:#00e800;text-shadow:0 0 6px rgba(0,232,0,.5);text-align:right}
+.amp__vis{grid-column:1/-1;display:block;width:100%;height:24px;image-rendering:pixelated}
+.amp__info{display:grid;gap:6px;align-content:start;min-width:0}
+.amp__ticker{overflow:hidden;white-space:nowrap;padding:5px 6px;background:#000;font:10px/1.2 var(--f-badge);color:#00e800}
+.amp__ticker span{display:inline-block;padding-left:100%;animation:amp-tick 18s linear infinite}
+@keyframes amp-tick{to{transform:translateX(-100%)}}
+.amp__meta{display:flex;flex-wrap:wrap;align-items:center;gap:4px 8px;font:9px/1 var(--f-badge);color:#b9b9dc}
+.amp__meta b{padding:2px 4px;background:#000;color:#00e800;font-weight:400}
+.amp__meta i{font-style:normal;color:#2f4f2f}
+.amp__meta i.on{color:#00e800;text-shadow:0 0 4px #0f0}
+/* громкость как в Winamp: полоска зелёная → жёлтая → красная, заполнена до ползунка */
+.amp__vol{display:flex;align-items:center;gap:4px;margin-left:auto;cursor:pointer}
+.amp__vol input{--v:70%;-webkit-appearance:none;appearance:none;width:78px;height:8px;margin:0;border:1px solid;border-color:#101017 #5a5a78 #5a5a78 #101017;cursor:pointer;
+  background:linear-gradient(90deg,#16c616,#e7d52e 60%,#e8352a) 0 0/var(--v) 100% no-repeat,#1a1a24}
+.amp__vol input::-webkit-slider-thumb{-webkit-appearance:none;width:10px;height:12px;border:1px solid;border-color:#dcdcec #3a3a50 #3a3a50 #dcdcec;background:#9a9ab8}
+.amp__vol input::-moz-range-thumb{width:10px;height:12px;border:1px solid;border-color:#dcdcec #3a3a50 #3a3a50 #dcdcec;border-radius:0;background:#9a9ab8}
+.amp__vol input:focus-visible{outline:1px dotted #00e800;outline-offset:2px}
+.amp__seek{position:relative;height:10px;background:#101018}
+.amp__seek span{position:absolute;left:0;top:0;bottom:0;width:0;background:linear-gradient(#f1df86,#9a8330)}
+.amp__ctl{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:center;gap:3px}
+.amp__ctl button{display:grid;place-items:center;width:30px;height:22px;padding:0;cursor:pointer;color:#ececf8;font:12px/1 var(--f-ui);
+  background:linear-gradient(#62627f,#34344a);border:1px solid;border-color:#9a9ab8 #101017 #101017 #9a9ab8}
+.amp__ctl button:active{background:#262636;border-color:#101017 #9a9ab8 #9a9ab8 #101017}
+.amp__ctl .amp__tog{width:auto;padding:0 6px;font:9px/1 var(--f-badge);color:#5f8f5f}
+.amp__ctl .amp__tog[aria-pressed="true"]{color:#00ff00;text-shadow:0 0 4px #0f0}
+.amp__brand{margin-left:auto;font:14px/1 var(--f-lob);color:#ffcf40;text-shadow:1px 1px 0 #000,0 0 8px rgba(255,190,0,.5);white-space:nowrap}
+.amp__head{padding:3px 8px;background:#262638;color:#ecdfa8;font:9px/1.3 var(--f-badge);letter-spacing:.14em;text-align:center}
+.amp__pl,.amp__plug{margin-top:4px}
+.amp__list{position:relative;height:236px;margin:0;padding:3px 0;list-style:none;overflow-y:auto;background:#000;scrollbar-color:#4b4b68 #0d0d14}
+.amp__list button{display:flex;gap:6px;width:100%;padding:0 6px;border:0;background:none;color:#00e800;font:12px/1.4 Arial,sans-serif;text-align:left;cursor:pointer;white-space:nowrap}
+.amp__list button:hover{background:#0c2a0c}
+.amp__list button:focus-visible{outline:1px dotted #fff;outline-offset:-1px}
+.amp__list .sel button{background:#0000c6}
+.amp__list .is-cur button{color:#fff}
+.desk>.win{align-self:start}
+.amp__list .n{flex:0 0 2.3em;text-align:right}
+.amp__list .t{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis}
+.amp__foot{display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px;padding:4px 6px;background:#262638;font:9px/1.2 var(--f-badge);color:#00e800}
+.amp__foot a{margin-left:auto;padding:3px 7px;color:#ececf8;text-decoration:none;background:linear-gradient(#62627f,#34344a);border:1px solid;border-color:#9a9ab8 #101017 #101017 #9a9ab8}
+.amp__foot a:hover{color:#ffe600}
+.amp__plug iframe{display:block;width:100%;aspect-ratio:16/9;height:auto;border:0;background:#1b1b1b}
+.amp__seek{cursor:pointer}
+.amp__note:empty{display:none}
+.amp__note{margin:0;padding:6px 8px;background:#000;color:#ffe600;font:13px/1.35 var(--f-body)}
+.amp__note b{color:#ff4ad2}
+@media (max-width:560px){.amp__main{grid-template-columns:1fr}}
+
+/* ───────── taskbar + start ───────── */
+.taskbar{position:fixed;left:0;right:0;bottom:0;height:40px;z-index:9300;display:flex;align-items:stretch;
+  background:linear-gradient(180deg,#3168d5 0%,#4993e6 7%,#2157d7 18%,#2663e0 90%,#1941a5 100%);color:#fff;font:13px var(--f-ui)}
+.start{display:flex;align-items:center;gap:7px;padding:0 20px 0 10px;border:0;border-radius:0 14px 14px 0;cursor:pointer;
+  font:italic bold 19px/1 var(--f-ui);color:#fff;text-shadow:1px 1px 2px rgba(0,0,0,.5);
+  background:linear-gradient(180deg,#3c9a2e,#63cc50 10%,#3a9d2a 48%,#2c8520 92%,#1f6716);
+  box-shadow:inset 0 1px 0 #9f9,2px 0 5px rgba(0,0,0,.5)}
+.start[aria-expanded="true"]{filter:brightness(.85)}
+.start i{width:19px;height:17px;border-radius:3px 5px 3px 5px;skew:0 -6deg;box-shadow:1px 1px 1px rgba(0,0,0,.4);
+  background:conic-gradient(#81bc06 0 25%,#ffba08 0 50%,#05a6f0 0 75%,#f35325 0);-webkit-mask:linear-gradient(#000 0 0) 0 0/8px 7px no-repeat,linear-gradient(#000 0 0) 100% 0/8px 7px no-repeat,linear-gradient(#000 0 0) 0 100%/8px 7px no-repeat,linear-gradient(#000 0 0) 100% 100%/8px 7px no-repeat;mask:linear-gradient(#000 0 0) 0 0/8px 7px no-repeat,linear-gradient(#000 0 0) 100% 0/8px 7px no-repeat,linear-gradient(#000 0 0) 0 100%/8px 7px no-repeat,linear-gradient(#000 0 0) 100% 100%/8px 7px no-repeat}
+.tasks{flex:1;min-width:0;display:flex;gap:4px;padding:5px 6px;overflow-x:auto;scrollbar-width:none}
+.tasks::-webkit-scrollbar{display:none}
+.task{flex:0 0 auto;max-width:160px;padding:0 10px;border:1px solid #1b4fbf;border-radius:3px;cursor:pointer;
+  font:12px var(--f-ui);color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+  background:linear-gradient(180deg,#3c81f3,#2a6ae8);box-shadow:inset 0 1px 0 #7fb0ff}
+.task:hover{background:linear-gradient(180deg,#5b98ff,#3c7cf0)}
+.tray{display:flex;align-items:center;gap:6px;padding:0 10px;border-left:1px solid #092e6c;
+  background:linear-gradient(180deg,#0c59b9,#139ee9 8%,#18b5f2 12%,#139beb 88%,#1290e8);box-shadow:inset 1px 0 1px #3ad}
+.tray button{border:1px solid rgba(255,255,255,.35);background:rgba(0,0,0,.15);color:#fff;border-radius:3px;font:bold 10px var(--f-ui);padding:2px 5px;cursor:pointer}
+.tray button[aria-pressed="false"]{opacity:.55;text-decoration:line-through}
+.clock{font:12px var(--f-ui);font-variant-numeric:tabular-nums;min-width:38px;text-align:center}
+.startmenu{position:fixed;left:0;bottom:40px;z-index:9400;width:min(360px,calc(100vw - 16px));
+  background:#fff;border:2px solid #0a3db8;border-radius:8px 8px 0 0;overflow:hidden;box-shadow:4px -4px 16px rgba(0,0,0,.5);color:#000}
+.sm__head{display:flex;align-items:center;gap:10px;padding:8px 10px;background:linear-gradient(180deg,#1e62d8,#3f8cf3 40%,#1a53c4);color:#fff;font:bold 15px var(--f-ui);text-shadow:1px 1px 1px #000}
+.sm__head .pic{width:42px;height:42px;border:2px solid #fff;border-radius:4px;background:linear-gradient(135deg,#ff9be8,#6a00ff);display:grid;place-items:center;font:bold 12px var(--f-mono)}
+.sm__cols{display:grid;grid-template-columns:1fr 1fr}
+.sm__cols ul{list-style:none;margin:0;padding:6px}
+.sm__cols ul+ul{background:#d3e5fa;border-left:1px solid #95bdee}
+.sm__cols a,.sm__cols button{display:block;width:100%;text-align:left;padding:6px 8px;border:0;background:none;cursor:pointer;font:12px var(--f-ui);color:#000;text-decoration:none;border-radius:2px}
+.sm__cols a:hover,.sm__cols button:hover{background:#316ac5;color:#fff}
+.sm__cols b{display:block;font-size:13px}
+.sm__foot{display:flex;justify-content:flex-end;gap:8px;padding:6px 10px;background:linear-gradient(180deg,#3f8cf3,#1a53c4)}
+.sm__foot button{border:0;background:none;color:#fff;font:12px var(--f-ui);cursor:pointer;display:flex;align-items:center;gap:5px}
+.sm__foot i{width:20px;height:20px;border-radius:4px;display:inline-block;background:linear-gradient(#ffb49a,#d8410c);border:1px solid #fff}
+
+/* ───────── фотоальбом (скрины из Steam) ───────── */
+.album__bar{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;padding:6px 10px;font:13px var(--f-ui);border-bottom:1px solid #aca899}
+.album__bar a{color:#0033cc}
+.album__bar .aqua{margin-left:auto}
+.album__page{position:relative;padding:34px clamp(14px,3vw,40px) 30px;background:#211a15;overflow:hidden;
+  box-shadow:inset 0 0 60px rgba(0,0,0,.7)}
+.album__page::before{content:"";position:absolute;inset:0;background:var(--noise);opacity:.12;pointer-events:none}
+.album__grid{position:relative;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:30px 26px}
+.album__msg{grid-column:1/-1;margin:40px 0;text-align:center;color:#d8cbb4;font:22px var(--f-script)}
+.print{position:relative;display:block;width:100%;padding:9px 9px 34px;border:0;cursor:zoom-in;text-align:center;
+  background:#f1ead9;box-shadow:0 1px 0 #fff inset,3px 6px 14px rgba(0,0,0,.6);
+  rotate:var(--rot,0deg);translate:var(--tx,0) var(--ty,0);transition:rotate .25s,translate .25s,scale .25s,box-shadow .25s;
+  animation:develop .9s ease-out both;animation-delay:var(--dl,0s)}
+.print:hover,.print:focus-visible{rotate:0deg;scale:1.05;z-index:3;box-shadow:0 1px 0 #fff inset,8px 14px 26px rgba(0,0,0,.7)}
+@keyframes develop{from{opacity:0;filter:brightness(2.2) sepia(1)}}
+/* уголки для фото, как в старом альбоме */
+.print::before,.print::after{content:"";position:absolute;width:30px;height:30px;z-index:2;pointer-events:none;
+  background:linear-gradient(135deg,#15110e 50%,transparent 50%);filter:drop-shadow(1px 1px 1px rgba(0,0,0,.5))}
+.print::before{left:-5px;top:-5px}
+.print::after{right:-5px;bottom:-5px;rotate:180deg}
+/* у части фоток вместо уголков — кусок скотча */
+.print.taped::before{left:50%;top:-11px;width:84px;height:24px;translate:-50% 0;rotate:-3deg;filter:none;
+  background:rgba(255,250,215,.55);box-shadow:0 1px 2px rgba(0,0,0,.25)}
+.print.taped::after{display:none}
+.print__img{position:relative;display:block;overflow:hidden;background:#3a312a;aspect-ratio:var(--ar,1.888)}
+.print__img img{display:block;width:100%;height:100%;object-fit:cover;filter:sepia(.3) saturate(.85) contrast(1.06) brightness(1.03)}
+/* выцветание: засвет в углу, виньетка, зерно */
+.print__img::after{content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(circle at var(--lx,85%) var(--ly,12%),rgba(255,170,90,.32),transparent 45%),
+    radial-gradient(ellipse at center,transparent 55%,rgba(40,20,0,.45) 100%),var(--noise);
+  mix-blend-mode:multiply;opacity:.9}
+.print__img.lost{display:grid;place-items:center;color:#c9bca5;font:18px var(--f-script)}
+.print__cap{position:absolute;left:0;right:0;bottom:6px;color:#3a3a8c;font:20px/1 var(--f-script)}
+
+/* просмотр фото крупно */
+.viewer{position:fixed;inset:0;z-index:9700;display:grid;grid-template-columns:minmax(0,1fr);place-items:center;padding:16px;background:rgba(0,0,0,.82)}
+.viewer .win{width:min(1280px,100%);max-height:100%;display:flex;flex-direction:column}
+.viewer__stage{position:relative;flex:1;min-height:0;display:grid;place-items:center;background:#000;touch-action:pan-y}
+.viewer__stage img{display:block;max-width:100%;max-height:calc(100vh - 150px);object-fit:contain}
+.viewer__load{position:absolute;color:#aaa;font:13px var(--f-ui)}
+.viewer__tools{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:6px;padding:6px;font:13px var(--f-ui);
+  background:linear-gradient(#f7f6f0,#e3e0d0);border-top:1px solid #aca899}
+.viewer__tools button,.viewer__tools a{display:inline-flex;align-items:center;gap:5px;padding:3px 10px;font:13px var(--f-ui);color:#000;
+  text-decoration:none;cursor:pointer;background:linear-gradient(#fff,#e6e3d6);border:1px solid #8c8a7e;border-radius:3px}
+.viewer__tools button:hover,.viewer__tools a:hover{border-color:#e5a100;box-shadow:inset 0 0 0 1px #ffd97a}
+.viewer__n{min-width:84px;text-align:center}
+@media (max-width:860px){.album__grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 18px}}
+@media (max-width:480px){.album__grid{gap:18px 12px}.print{padding:6px 6px 26px}.print__cap{font-size:16px}.album__bar .aqua{margin-left:0}}
+
+/* ───────── shutdown ───────── */
+.fullscreen{position:fixed;inset:0;z-index:9800;display:grid;place-content:center;padding:24px}
+.shutdown{background:#000;color:#ff8a00;text-align:center;font:clamp(22px,4vw,44px)/1.3 var(--f-ui)}
+.shutdown small{display:block;margin-top:18px;font-size:14px;color:#777}
+
+/* ───────── responsive ───────── */
+@media (max-width:860px){
+  .hero__grid{grid-template-columns:1fr}
+  .hero__side{padding-top:62px}
+  .desk{gap:26px;margin-block:26px}
+  .desk>*{rotate:0deg}
+  .tape{right:-120px;top:14px;width:400px}
+  .burst{width:74px;top:-58px;right:0;font-size:8px}
+  .gb__grid{grid-template-columns:1fr}
+}
+@media (max-width:560px){
+  .paint{grid-template-columns:minmax(0,1fr)}
+  .tools{grid-template-columns:repeat(5,26px)}
+  .swatches{grid-template-columns:repeat(14,minmax(0,16px))}
+  .task{display:none}
+  .start{font-size:16px;padding-right:14px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}
+}
+</style>
+</head>
+<body>
+
+<div class="crt" aria-hidden="true"></div>
+<div class="trail" id="trail" aria-hidden="true"></div>
+
+<div class="strip">
+  <div class="tick" id="marq" aria-label="Бегущая строка">
+    <div class="tick__run">
+      <span class="tick__part">
+    <span class="rainbow">★ ДОБРО ПОЖАЛОВАТЬ НА МОЮ ДОМАШНЮЮ СТРАНИЧКУ!!! ★</span>
+    &nbsp; ты посетитель № <b id="vnum" class="vnum">0013371</b> &nbsp;
+    <span class="blink">◄ NEW! ►</span> &nbsp; ВКЛЮЧИ МУЗЫКУ В WINAMP!!! &nbsp; ✦ &nbsp; обновлено: вчера (всегда) &nbsp;
+    <span class="rainbow">★ ДОБАВЬ В ИЗБРАННОЕ ★</span> &nbsp; ✦ &nbsp;    <span class="rainbow">★ ДОБРО ПОЖАЛОВАТЬ НА МОЮ ДОМАШНЮЮ СТРАНИЧКУ!!! ★</span>
+    &nbsp; ты посетитель № <b class="vnum">0013371</b> &nbsp;
+    <span class="blink">◄ NEW! ►</span> &nbsp; ВКЛЮЧИ МУЗЫКУ В WINAMP!!! &nbsp; ✦ &nbsp; обновлено: вчера (всегда) &nbsp;
+    <span class="rainbow">★ ДОБАВЬ В ИЗБРАННОЕ ★</span> &nbsp; ✦ &nbsp;</span>
+      <span class="tick__part" aria-hidden="true">
+    <span class="rainbow">★ ДОБРО ПОЖАЛОВАТЬ НА МОЮ ДОМАШНЮЮ СТРАНИЧКУ!!! ★</span>
+    &nbsp; ты посетитель № <b class="vnum">0013371</b> &nbsp;
+    <span class="blink">◄ NEW! ►</span> &nbsp; ВКЛЮЧИ МУЗЫКУ В WINAMP!!! &nbsp; ✦ &nbsp; обновлено: вчера (всегда) &nbsp;
+    <span class="rainbow">★ ДОБАВЬ В ИЗБРАННОЕ ★</span> &nbsp; ✦ &nbsp;    <span class="rainbow">★ ДОБРО ПОЖАЛОВАТЬ НА МОЮ ДОМАШНЮЮ СТРАНИЧКУ!!! ★</span>
+    &nbsp; ты посетитель № <b class="vnum">0013371</b> &nbsp;
+    <span class="blink">◄ NEW! ►</span> &nbsp; ВКЛЮЧИ МУЗЫКУ В WINAMP!!! &nbsp; ✦ &nbsp; обновлено: вчера (всегда) &nbsp;
+    <span class="rainbow">★ ДОБАВЬ В ИЗБРАННОЕ ★</span> &nbsp; ✦ &nbsp;</span>
+    </div>
+  </div>
+</div>
+
+<div class="world" id="world">
+
+<nav class="nav" aria-label="Разделы">
+  <a href="#top">Главная</a><a href="#w-about">Обо мне</a><a href="#w-amp">Музыка</a><a href="#w-paint">Paint</a><a href="#w-photos">Фотки</a><a href="#guestbook">Гостевая</a><a href="#contacts">Связь</a>
+</nav>
+
+<!-- ═════════════ HERO ═════════════ -->
+<header class="hero" id="top">
+  <div class="sky" aria-hidden="true">
+    <div class="sun"></div>
+    <div class="cloud c1"></div><div class="cloud c2"></div>
+    <i class="bubble" style="--x:6%;--s:44px;--d:11s;--dl:-3s"></i>
+    <i class="bubble" style="--x:22%;--s:26px;--d:8s;--dl:-6s"></i>
+    <i class="bubble" style="--x:38%;--s:60px;--d:14s;--dl:-1s"></i>
+    <i class="bubble" style="--x:55%;--s:30px;--d:9s;--dl:-8s"></i>
+    <i class="bubble" style="--x:68%;--s:52px;--d:12s;--dl:-4s"></i>
+    <i class="bubble" style="--x:83%;--s:22px;--d:7s;--dl:-2s"></i>
+    <i class="bubble" style="--x:92%;--s:40px;--d:13s;--dl:-9s"></i>
+    <div class="hill"></div><div class="hill hill2"></div>
+  </div>
+  <div class="tape" aria-hidden="true"><span>⚠ САЙТ В РАЗРАБОТКЕ С 2005 ГОДА ⚠ UNDER CONSTRUCTION ⚠ САЙТ В РАЗРАБОТКЕ ⚠</span></div>
+
+  <div class="hero__grid">
+    <div>
+      <p class="welcome">~*~ добро пожаловать на ~*~</p>
+      <div class="logo-wrap">
+        <h1 class="logo" id="logo" aria-label="DverkaSK">
+          <span class="l l1 chrome" aria-hidden="true">D</span><span class="l l2" aria-hidden="true">v</span><span class="l l3" aria-hidden="true">e</span><span class="l l4" aria-hidden="true">r</span><span class="l l5" aria-hidden="true">k</span><span class="l l6" aria-hidden="true">a</span><span class="l l7" aria-hidden="true">S</span><span class="l l8" aria-hidden="true">K</span>
+        </h1>
+        <span class="burst" aria-hidden="true">NEW!<br>2026</span>
+      </div>
+      <p class="wordart">ОФИЦИАЛЬНЫЙ САЙТ-ВИЗИТКА</p><br>
+      <!-- EDIT-ME: одна строка о себе -->
+      <div class="cta">
+        <a class="aqua" href="#w-amp"><span>♫ Включить музыку</span></a>
+        <!-- EDIT-ME: ссылка на Telegram -->
+        <a class="aqua green" href="https://t.me/DverkaSK" target="_blank" rel="noopener"><span>✈ Написать</span></a>
+        <a class="aqua silver" href="#contacts"><span>все контакты ↓</span></a>
+      </div>
+      <p class="hero__meta">
+        онлайн: <b>1</b> (это ты) · гостей: 1 · пользователей: 0 ·
+        <a href="#">добавить в избранное</a> · <a href="#">сделать стартовой</a>
+      </p>
+    </div>
+
+    <div class="hero__side">
+      <figure class="upic">
+        <span class="jmi" aria-hidden="true">ЭТО Я!!</span>
+        <svg class="arrow" viewBox="0 0 90 70" aria-hidden="true"><path d="M10 8 C 44 6, 66 22, 70 54" fill="none" stroke="#ff1a1a" stroke-width="6" stroke-linecap="round"/><path d="M56 44 L70 58 L82 40" fill="none" stroke="#ff1a1a" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="upic__in skin3d" tabindex="0" role="button" aria-label="Мой скин из Minecraft. Нажми — станцую" title="Кликни — станцую. Можно покрутить мышкой"><canvas id="skin3d" aria-label="3D-модель моего скина из Minecraft"></canvas><span class="skin3d__fb"><b>(°_°)</b>скин грузится…</span></span></figure>
+      <a class="upic__cap" href="https://namemc.com/profile/DverkaSK" target="_blank" rel="noopener">DverkaSK.png · скин из майна · кликни по мне</a>
+    </div>
+  </div>
+</header>
+
+<!-- ═════════════ DESKTOP ═════════════ -->
+<main class="desk" id="desk">
+
+  <!-- about.txt -->
+  <section class="win s5" id="w-about" data-task="about.txt" style="--r:-1.2deg">
+    <div class="win__bar"><span class="win__ico">📝</span><span class="win__title">about.txt — Блокнот</span></div>
+    <div class="win__menu"><button type="button">Файл</button><button type="button">Правка</button><button type="button">Формат</button><button type="button">Вид</button><button type="button">Справка</button></div>
+    <div class="win__body">
+<!-- EDIT-ME: текст о себе -->
+<pre class="notepad">ПРИВЕТ!!!
+
+Ты попал(а) на сайт-визитку <b>DverkaSK</b>.
+Визитка — это маленькая карточка про человека.
+Эта получилась чуть больше. Примерно на весь интернет.
+
+КТО:      DverkaSK
+ЧТО:      Java / Kotlin бэкендер
+ДЕЛАЮ:    бэкенды, плагины для Minecraft
+          и всякие штуки на GitHub
+С 2026:   кодю вместе с ИИ
+
+НАВЫКИ:
+[██████████] Java
+[████████░░] Kotlin
+[███████░░░] Kafka, Kubernetes, ClickHouse
+[█░░░░░░░░░] делать нормальные сайты
+
+P.S. музыка — в Winamp чуть ниже. включай!!!
+P.P.S. связь — в кнопочках 88×31 внизу.
+       или в «Пуске». или в сердце.</pre>
+    </div>
+  </section>
+
+  <!-- cmd.exe -->
+  <section class="win term s7" id="w-term" data-task="cmd.exe" style="--r:.8deg;--dy:14px">
+    <div class="win__bar"><span class="win__ico">▮</span><span class="win__title">C:\DVERKA\cmd.exe</span></div>
+<pre class="ansi" aria-label="Терминал: моя статистика кодинга из WakaTime"><span class="fig" aria-hidden="true"><span> ____  __     __ _____  ____   _  __    _       ____   _  __</span>
+<span>|  _ \ \ \   / /| ____||  _ \ | |/ /   / \     / ___| | |/ /</span>
+<span>| | | | \ \ / / |  _|  | |_) || ' /   / _ \    \___ \ | ' / </span>
+<span>| |_| |  \ V /  | |___ |  _ &lt; | . \  / ___ \    ___) || . \ </span>
+<span>|____/    \_/   |_____||_| \_\|_|\_\/_/   \_\  |____/ |_|\_\</span></span><span id="termlog"></span><span class="cursor">&nbsp;</span></pre>
+  </section>
+
+  <div class="divider s12 rainbow" aria-hidden="true">·.¸¸.·♩♪♫ WELCOME ♫♪♩·.¸¸.·´¯`·.¸¸.· ░▒▓█ DVERKA █▓▒░ ·.¸¸.·´¯`·.¸¸.·♩♪♫ WELCOME ♫♪♩·.¸¸.·</div>
+
+  <!-- Winamp -->
+  <section class="win amp s5" id="w-amp" data-task="Winamp" style="--r:.5deg">
+    <div class="win__bar"><span class="win__ico">⚡</span><span class="win__title">WINAMP</span></div>
+    <div class="amp__main amp__in">
+      <div class="amp__lcd amp__in">
+        <span class="amp__st" id="amp-st" aria-hidden="true">■</span>
+        <span class="amp__time" id="amp-time" aria-label="Прошло времени">00:00</span>
+        <canvas class="amp__vis" id="amp-vis" width="76" height="16" aria-hidden="true"></canvas>
+      </div>
+      <div class="amp__info">
+        <div class="amp__ticker amp__in"><span id="amp-tick"></span></div>
+        <div class="amp__meta"><b>128</b>kbps <b>44</b>kHz <i id="amp-mono">mono</i><i id="amp-stereo">stereo</i><label class="amp__vol" title="Громкость"><span>VOL</span><input type="range" id="amp-vol" min="0" max="100" step="1" value="70" aria-label="Громкость"></label></div>
+        <div class="amp__seek amp__in" title="Перемотать" aria-hidden="true"><span id="amp-seek"></span></div>
+      </div>
+      <div class="amp__ctl">
+        <button type="button" data-amp="prev" aria-label="Предыдущий трек">⏮</button>
+        <button type="button" data-amp="play" aria-label="Играть">▶</button>
+        <button type="button" data-amp="pause" aria-label="Пауза">❚❚</button>
+        <button type="button" data-amp="stop" aria-label="Стоп">■</button>
+        <button type="button" data-amp="next" aria-label="Следующий трек">⏭</button>
+        <button type="button" data-amp="eject" aria-label="Открыть трек на YouTube">⏏</button>
+        <button type="button" class="amp__tog" data-amp="pl" aria-pressed="true" aria-controls="amp-pl">PL</button>
+        <span class="amp__brand">DverkaSK Radio</span>
+      </div>
+    </div>
+    <div class="amp__pl amp__in" id="amp-pl">
+      <div class="amp__head">WINAMP PLAYLIST · cs.mov</div>
+      <ol class="amp__list" id="amp-list" aria-label="Плейлист"></ol>
+      <div class="amp__foot"><span id="amp-count"></span><span id="amp-total"></span><a id="amp-yt" target="_blank" rel="noopener">▶ весь плейлист на YouTube</a></div>
+    </div>
+    <div class="amp__plug amp__in">
+      <div class="amp__head">плагин вывода: YouTube</div>
+      <iframe id="amp-frame" title="Плеер YouTube" allow="autoplay; encrypted-media; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+      <p class="amp__note" id="amp-note"></p>
+    </div>
+  </section>
+
+  <!-- Paint -->
+  <section class="win s7" id="w-paint" data-task="Paint" style="--r:-.4deg;--dy:-6px">
+    <div class="win__bar"><span class="win__ico">🎨</span><span class="win__title">безымянный — Paint</span></div>
+    <div class="win__menu"><button type="button">Файл</button><button type="button">Правка</button><button type="button">Вид</button><button type="button">Рисунок</button><button type="button">Палитра</button><button type="button">Справка</button></div>
+    <div class="paint">
+      <div class="tools" role="toolbar" aria-label="Инструменты">
+        <button class="tool" type="button" data-tool="pencil" aria-pressed="true" title="Карандаш" aria-label="Карандаш">✎</button>
+        <button class="tool" type="button" data-tool="brush" aria-pressed="false" title="Кисть" aria-label="Кисть">●</button>
+        <button class="tool" type="button" data-tool="spray" aria-pressed="false" title="Распылитель" aria-label="Распылитель">∴</button>
+        <button class="tool" type="button" data-tool="eraser" aria-pressed="false" title="Ластик" aria-label="Ластик">▭</button>
+        <button class="tool" type="button" id="pclear" title="Очистить" aria-label="Очистить холст">✖</button>
+      </div>
+      <div class="canvaswrap"><canvas id="paint" width="640" height="360" aria-label="Холст для рисования"></canvas></div>
+      <div class="palette">
+        <span class="cur" aria-hidden="true"><i id="curc"></i><i></i></span>
+        <div class="swatches" id="swatches" role="group" aria-label="Палитра"></div>
+      </div>
+      <div class="status"><span id="pstat">Нарисуй что-нибудь. Для получения справки выберите «Вызов справки» в меню «Справка».</span><span id="pxy">0, 0</span></div>
+    </div>
+  </section>
+
+  <!-- фотоальбом: мои скрины из Steam -->
+  <section class="win xp s12" id="w-photos" data-task="Фотки" style="--r:-.3deg">
+    <div class="win__bar"><span class="win__ico">📷</span><span class="win__title">Мои фотки — архив скринов из майна</span></div>
+    <div class="album__bar">
+      <span id="album-info">📷 скрины из моего Steam</span>
+      <a href="https://steamcommunity.com/profiles/76561198305206516/screenshots/?appid=749120" target="_blank" rel="noopener">все фотки в Steam ↗</a>
+      <button class="aqua sm" type="button" id="album-more"><span>🔀 Другие фотки</span></button>
+    </div>
+    <div class="album__page">
+      <div class="album__grid" id="album-grid"><p class="album__msg">фотки проявляются…</p></div>
+    </div>
+  </section>
+
+  <!-- guestbook -->
+  <section class="gb s7" id="guestbook">
+    <h2>~Гостевая книга~</h2>
+    <p class="gb__sub"><span class="blink">✦</span> распишись, не будь анонимусом <span class="blink">✦</span></p>
+    <div class="gb__grid">
+      <form id="gbform">
+        <label for="gb-name">Имя / ник:</label>
+        <input id="gb-name" maxlength="32" placeholder="xX_КиЛлЕр_Xx" required>
+        <label for="gb-mood">Смайл:</label>
+        <select id="gb-mood"><option>^_^</option><option>:-)</option><option>xD</option><option>O_o</option><option>&lt;3</option><option>( ͡° ͜ʖ ͡°)</option></select>
+        <label for="gb-msg">Сообщение:</label>
+        <textarea id="gb-msg" maxlength="300" placeholder="сайт огонь!!! заходите ко мне тоже" required></textarea>
+        <button class="aqua sm pink" type="submit"><span>Оставить запись</span></button>
+        <p class="gb__note">Запись сохранится только в твоём браузере. Как и всё в этой жизни.</p>
+      </form>
+      <div class="entries" id="entries" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <!-- contacts -->
+  <section class="acid" id="contacts">
+    <div class="acid__in">
+      <h2>СВЯЗАТЬСЯ <span>со мной</span></h2>
+      <p class="acid__lead">Жми любую кнопку — отвечу, как только увижу!!!</p>
+      <!-- EDIT-ME: основные контакты -->
+      <div class="cta">
+        <a class="aqua" href="https://t.me/DverkaSK" target="_blank" rel="noopener"><span>✈ Telegram</span></a>
+        <a class="aqua green" href="https://github.com/DverkaSK" target="_blank" rel="noopener"><span>&lt;/&gt; GitHub</span></a>
+        <button class="aqua silver" type="button" id="copynick"><span>⧉ скопировать ник</span></button>
+      </div>
+
+      <div class="badges">
+        <a class="b88 bg-chrome" href="#top"><b>DVERKA</b>SK · 2005</a>
+        <!-- EDIT-ME: те же ссылки в кнопочках -->
+        <a class="b88 split bg-tg" href="https://t.me/DverkaSK" target="_blank" rel="noopener"><span class="ic">✈</span><span class="tx">TELEGRAM<br><b>NOW!</b></span></a>
+        <a class="b88 split bg-gh" href="https://github.com/DverkaSK" target="_blank" rel="noopener"><span class="ic">&lt;/&gt;</span><span class="tx">VIEW<br>SOURCE</span></a>
+        <span class="b88 bg-grey">BEST VIEWED<br>800×600</span>
+        <span class="b88 bg-navy">MADE WITH<br><b>БЛОКНОТ</b></span>
+        <span class="b88 css"><span>CSS IS AWESOME</span></span>
+        <span class="b88 bg-y2k"><b>Y2K</b>COMPLIANT</span>
+        <span class="b88 bg-black">FLASH 9<br><span class="blinky">REQUIRED</span></span>
+        <span class="b88 split bg-rss"><span class="ic" style="background:#fff;color:#e86a00">◉</span><span class="tx">RSS<br>(НЕТ)</span></span>
+        <span class="b88 bg-green">C:\&gt; dir_</span>
+        <span class="b88 bg-rbw"><b>ANTI-UX</b>CERTIFIED</span>
+        <span class="b88 bg-white">HTML 3.2<br>✗ INVALID</span>
+        <span class="b88 split bg-white"><span class="ic" style="font-size:9px">(¬‿¬)</span><span class="tx">PROBLEM?</span></span>
+        <span class="b88 bg-black" style="color:#f0c">I ♥<br>SCANLINES</span>
+        <span class="b88 bg-grey">LOW-RES<br>JPEG INSIDE</span>
+        <span class="b88 bg-ds">ANY<br>BROWSER</span>
+        <span class="b88 bg-navy" style="color:#fff">WEBRING<br>РУНЕТА</span>
+        <span class="b88 bg-chrome">WINAMP<br>INSIDE</span>
+      </div>
+
+      <div class="code">
+        <label for="badge-code">Забери кнопочку себе на сайт:</label>
+        <textarea id="badge-code" readonly>&lt;a href="https://t.me/DverkaSK"&gt;&lt;img src="dverka88x31.gif" width="88" height="31" alt="DverkaSK"&gt;&lt;/a&gt;</textarea>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="ascii" aria-hidden="true">.·:*¨¨*:·.·:*¨¨*:·.   ░▒▓ КОНЕЦ ВИЗИТКИ ▓▒░   .·:*¨¨*:·.·:*¨¨*:·.</div>
+  <div>Ты посетитель №</div>
+  <div class="counter" id="counter" aria-label="Счётчик посещений"></div>
+  <div>© 2005–<span id="year">2026</span> DverkaSK · все права защищены от самого себя · последнее обновление: вчера</div>
+  <a href="#top" class="blink" style="color:#ff0">▲ НАВЕРХ ▲</a>
+</footer>
+
+</div><!-- /world -->
+
+<!-- просмотр фото крупно -->
+<div class="viewer" id="viewer" role="dialog" aria-modal="true" aria-labelledby="viewer-title" hidden>
+  <div class="win xp">
+    <div class="win__bar"><span class="win__ico">🖼</span><span class="win__title" id="viewer-title">Просмотр изображений и факсов</span>
+      <span class="win__btns"><button class="wb x" type="button" data-viewer="close" aria-label="Закрыть">×</button></span></div>
+    <div class="viewer__stage" id="viewer-stage">
+      <span class="viewer__load" id="viewer-load">загружаю…</span>
+      <img id="viewer-img" alt="">
+    </div>
+    <div class="viewer__tools">
+      <button type="button" data-viewer="prev">◀ Назад</button>
+      <span class="viewer__n" id="viewer-n"></span>
+      <button type="button" data-viewer="next">Вперёд ▶</button>
+      <a id="viewer-steam" target="_blank" rel="noopener">↗ в Steam</a>
+      <button type="button" data-viewer="close">✕ Закрыть</button>
+    </div>
+  </div>
+</div>
+
+<!-- start menu -->
+<div class="startmenu" id="startmenu" hidden>
+  <div class="sm__head"><span class="pic">★</span>DverkaSK</div>
+  <div class="sm__cols">
+    <ul>
+      <li><a href="#w-about"><b>Обо мне</b>about.txt</a></li>
+      <li><a href="#w-amp"><b>Музыка</b>Winamp</a></li>
+      <li><a href="#w-paint"><b>Paint</b>нарисуй что-нибудь</a></li>
+      <li><a href="#w-photos"><b>Фотки</b>архив скринов из майна</a></li>
+    </ul>
+    <ul>
+      <li><a href="#contacts">Связаться</a></li>
+      <li><a href="#guestbook">Гостевая книга</a></li>
+      <li><a href="https://github.com/DverkaSK" target="_blank" rel="noopener">Мой GitHub</a></li>
+    </ul>
+  </div>
+  <div class="sm__foot">
+    <button type="button"><i></i>Выход</button>
+    <button type="button" id="shutdownBtn"><i></i>Выключение</button>
+  </div>
+</div>
+
+<nav class="taskbar" aria-label="Панель задач">
+  <button class="start" id="startBtn" type="button" aria-expanded="false" aria-controls="startmenu"><i></i>пуск</button>
+  <div class="tasks" id="tasks"></div>
+  <div class="tray">
+    <button type="button" id="crtBtn" aria-pressed="true" title="Эффект ЭЛТ-монитора">CRT</button>
+    <span class="clock" id="clock">03:33</span>
+  </div>
+</nav>
+
+<div class="fullscreen shutdown" id="shutdown" hidden role="alertdialog" aria-label="Выключение">
+  <div>Теперь компьютер можно выключить.<small>(или кликни, чтобы вернуться)</small></div>
+</div>
+
+<noscript><p style="position:fixed;top:0;left:0;right:0;z-index:99999;background:#ff0;color:#000;text-align:center;margin:0;padding:6px;font:bold 14px Tahoma">Включите JavaScript!!! Без него тут ничего не работает :(</p></noscript>
+
+<script src="https://cdn.jsdelivr.net/npm/skinview3d@3.4.1/bundles/skinview3d.bundle.js"></script>
+<script>
+(() => {
+  const $ = (s, r = document) => r.querySelector(s);
+  const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+  const RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const rnd = (a, b) => a + Math.random() * (b - a);
+  const pick = arr => arr[Math.floor(Math.random() * arr.length)];
+  const store = {
+    get(k, d) { try { const v = localStorage.getItem(k); return v === null ? d : JSON.parse(v); } catch (e) { return d; } },
+    set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
+  };
+  const pad2 = n => String(n).padStart(2, '0');
+  const now = new Date();
+  const dmy = d => `${pad2(d.getDate())}.${pad2(d.getMonth() + 1)}.${d.getFullYear()}`;
+
+  // скорость бегущей строки — ~90 px/с при любой длине текста
+  { const run = $('#marq .tick__run'); if (run) run.style.setProperty('--tick-dur', Math.max(10, run.scrollWidth / 2 / 90) + 's'); }
+  if (RM) { const r = $('#marq .tick__run'); r && (r.style.animationPlayState = 'paused'); }
+  $('#year').textContent = now.getFullYear();
+
+  /* ── visitor counter ── */
+  const visits = store.get('dverka-visits', 0) + 1;
+  store.set('dverka-visits', visits);
+  const vnum = String(13370 + visits).padStart(7, '0');
+  document.querySelectorAll('.vnum').forEach(el => { el.textContent = vnum; });
+  $('#counter').innerHTML = [...vnum].map(d => `<span>${d}</span>`).join('');
+
+  let zTop = 10;
+
+  /* ── tray ── */
+  const crtBtn = $('#crtBtn');
+  const setCrt = on => { document.body.classList.toggle('no-crt', !on); crtBtn.setAttribute('aria-pressed', on); store.set('dverka-crt', on); };
+  setCrt(store.get('dverka-crt', true));
+  crtBtn.addEventListener('click', () => setCrt(crtBtn.getAttribute('aria-pressed') !== 'true'));
+  const clock = $('#clock');
+  const tick = () => {
+    const d = new Date();
+    clock.textContent = (!RM && Math.random() < .06) ? '25:61' : `${pad2(d.getHours())}:${pad2(d.getMinutes())}`;
+  };
+  tick(); setInterval(tick, 5000);
+
+  /* ── start menu ── */
+  const startBtn = $('#startBtn'), menu = $('#startmenu');
+  const setMenu = open => { menu.hidden = !open; startBtn.setAttribute('aria-expanded', open); };
+  startBtn.addEventListener('click', e => { e.stopPropagation(); setMenu(menu.hidden); });
+  menu.addEventListener('click', e => { if (e.target.closest('a,button')) setMenu(false); });
+  document.addEventListener('click', e => { if (!menu.hidden && !menu.contains(e.target)) setMenu(false); });
+
+  /* ── fullscreen screens ── */
+  function screen(id) {
+    const el = $(id); el.hidden = false;
+    const close = () => { el.hidden = true; removeEventListener('keydown', close); el.removeEventListener('click', close); };
+    setTimeout(() => { addEventListener('keydown', close); el.addEventListener('click', close); }, 300);
+  }
+  $('#shutdownBtn').addEventListener('click', () => screen('#shutdown'));
+  addEventListener('keydown', e => { if (e.key === 'Escape') setMenu(false); });
+
+  /* ── windows: buttons, taskbar, drag ── */
+  $$('#desk .win').forEach(win => {
+    const bar = $('.win__bar', win);
+    const btns = document.createElement('span');
+    btns.className = 'win__btns';
+    btns.innerHTML = '<button class="wb" type="button" data-act="min" aria-label="Свернуть">_</button><button class="wb" type="button" data-act="max" aria-label="Выпрямить">□</button><button class="wb x" type="button" data-act="close" aria-label="Закрыть">×</button>';
+    bar.appendChild(btns);
+    if (win.dataset.task) {
+      const t = document.createElement('button');
+      t.type = 'button'; t.className = 'task'; t.textContent = win.dataset.task;
+      t.addEventListener('click', () => {
+        win.classList.remove('is-min');
+        win.scrollIntoView({ behavior: RM ? 'auto' : 'smooth', block: 'center' });
+        win.classList.remove('flash'); void win.offsetWidth; win.classList.add('flash');
+      });
+      $('#tasks').appendChild(t);
+    }
+  });
+  document.addEventListener('click', e => {
+    const b = e.target.closest('[data-act]'); if (!b) return;
+    const win = b.closest('.win');
+    if (b.dataset.act === 'min') win.classList.toggle('is-min');
+    if (b.dataset.act === 'max') { win.style.setProperty('--r', '0deg'); win.style.setProperty('--dx', '0px'); win.style.setProperty('--dy', '0px'); }
+    if (b.dataset.act === 'close') { win.classList.remove('shake'); void win.offsetWidth; win.classList.add('shake'); }
+  });
+  document.addEventListener('pointerdown', e => {
+    const bar = e.target.closest('.win__bar');
+    if (!bar || e.target.closest('button') || e.pointerType !== 'mouse' || innerWidth <= 860) return;
+    const win = bar.closest('.win');
+    const popup = win.classList.contains('popup');
+    const cs = getComputedStyle(win);
+    const sx = e.clientX, sy = e.clientY;
+    const ox = popup ? win.offsetLeft : parseFloat(cs.getPropertyValue('--dx')) || 0;
+    const oy = popup ? win.offsetTop : parseFloat(cs.getPropertyValue('--dy')) || 0;
+    win.style.zIndex = ++zTop;
+    bar.setPointerCapture(e.pointerId);
+    const r = win.getBoundingClientRect(), vw = document.documentElement.clientWidth;
+    const minX = ox - r.left, maxX = Math.max(minX, ox + vw - r.right);
+    const minY = oy - r.top - (popup ? 0 : scrollY);
+    const move = ev => {
+      const x = Math.min(maxX, Math.max(minX, ox + ev.clientX - sx)), y = Math.max(minY, oy + ev.clientY - sy);
+      if (popup) { win.style.left = x + 'px'; win.style.top = y + 'px'; }
+      else { win.style.setProperty('--dx', x + 'px'); win.style.setProperty('--dy', y + 'px'); }
+    };
+    const up = () => { bar.removeEventListener('pointermove', move); bar.removeEventListener('pointerup', up); };
+    bar.addEventListener('pointermove', move);
+    bar.addEventListener('pointerup', up);
+  });
+
+
+  /* ── экономия: всё, что вне экрана, стоит на паузе ──
+     CSS-анимации гасим классом .is-off, 3D-скин перестаёт рендериться. */
+  {
+    const offs = [...document.querySelectorAll('.hero, .desk > *, .foot, .strip')];
+    const io = new IntersectionObserver(es => es.forEach(e => {
+      e.target.classList.toggle('is-off', !e.isIntersecting);
+      if (e.target.contains($('.skin3d'))) document.dispatchEvent(new CustomEvent('skin-vis', { detail: e.isIntersecting }));
+    }), { rootMargin: '120px' });
+    offs.forEach(el => io.observe(el));
+    const acid = $('#contacts');
+    if (acid) new ResizeObserver(() => { const r = acid.getBoundingClientRect(); acid.style.setProperty('--acid', Math.ceil(Math.hypot(r.width, r.height) + 40) + 'px'); }).observe(acid);
+  }
+
+  /* ── glitch ── */
+  if (!RM) {
+    const logo = $('#logo');
+    const glitch = () => { logo.classList.remove('glitch'); void logo.offsetWidth; logo.classList.add('glitch'); setTimeout(glitch, rnd(2200, 5200)); };
+    setTimeout(glitch, 1500);
+  }
+
+  /* ── sparkle trail ── */
+  const trail = $('#trail');
+  let lastSpark = 0;
+  addEventListener('pointermove', e => {
+    if (RM || e.pointerType !== 'mouse') return;
+    const t = performance.now(); if (t - lastSpark < 40) return; lastSpark = t;
+    const s = document.createElement('span');
+    s.className = 'spark';
+    s.textContent = pick(['✦', '✧', '★', '✶', '·']);
+    s.style.left = e.clientX + 'px'; s.style.top = e.clientY + 'px';
+    s.style.color = pick(['#ff00cc', '#00e5ff', '#ffe600', '#b6ff00', '#fff']);
+    trail.appendChild(s);
+    setTimeout(() => s.remove(), 900);
+  }, { passive: true });
+
+
+  /* ── скин из Minecraft вместо фотки ──
+     При каждом заходе случайный из трёх нарядов (история скинов с crafty.gg). Пальто — текущий, его берём живьём
+     с mineatar.io по UUID (запасной — minotar.net, потом вшитая копия; mc-heads.net отдаёт Стива). Свитшот и джинсовка вшиты.
+     Анимация своя: каждый кадр собирается поза (набор значений суставов) и плавно смешивается с предыдущей,
+     поэтому любые переходы — из «заигрывания» в танец и обратно — идут без рывков. */
+  const MC_UUID = 'b339518a45bf46608cf04d88431e74a4';
+  const OUTFITS = ['data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAGpElEQVR4Xu1aS4scVRhtBVE00figo6NNJoRkwhhn4oA6r0QmGTLBGRKIKIgrRURE1JWuFER8rBxQfOz0F+hSXWXnIrsgLnRwpQgZCGSRpXD1XDjl6VO3Xj3dTvdMPjjce7/vq1v3nPrq0VXdmpycDgfGj4R2uxNaCUOMOWi1j/bye6+Fq99/Fv7+9bsuwIeYzzdyRtIEhNIxSJbB5xs5Y3WwpQAYAzzSKSDm842cVVUAyt2JE4j5fCNnPNIqAAH/jhdAj7YKsWsqoKz8XQBWy0gJcPHzZ/a4T42lzgrQi6BfEHkL1NPG5xs6U3La8ohXCaBV4XOoEDqv+nw9KfP8JttWGhfJnThhXbifAk7QK8Ln9XlIwvOK9o/cJvsnx6L9ZwKo0xMB3M8VPMe9AnwOJ5CKc5E0xNBmC6xhzOW2bty/+2KHimvLDUhAH3VVhBRBn0vJ+j64YArB1vefrdrM90+ftrDU/hmLAnAxaHlk/UhjQwrASRiHj2OdSwVQPxetC2GM/WyBNY3b6H40ntp/tiGdAAnq7Q32b2omAPowvd3ptkpQxeB+1McFcjv26a9ruq1vT7IqcCYAF8uWpY4kTua3Nx8jlz6di3H1qZ8L1TgX3aQKNDc1V9H+Y1DLmCSUjG7gxBn37fwHUmpu5nCRQ2Or88cDsfTo0XDP7TeF9h2tCPQ9323l+KFQhrnJgxkwP6A+n8/txacWwxvPng1PLzwS53NRPb+xgbguaO+trS54vpsTdihxRx0BQJzkXQDA8yvt4vqb+3RMAe59YH9E0wrg4iaOTHYBPsRYWZ3OeBfgQ8znc+u7AG4qwPjRw40rgIvjuc9zvV8C9P0U0HNez30IcP+BhyLQ19LVPC9xYnHlRCYA+h53HDt0sAv0gzCPOohjTJ/PQWiu882Zk1cBUAFlAgC+c+LU2ulIHEDf4wQJn1mY7QL9INF5cCwCpEhs4AKAOAUAehFgYmoiTD02VSkACP909kKYnXo4a7899niMgQgFYPmrACqE+lgpzjdnKfJVAqgILE+CiwH5dz54NwIi6CIVIAnCP8yeiuTZwkcBmEtSeg3QUwR9FQB5zjdnSooA2ZQAhOamFgCA9EfrH0fMzM1kfs8HSRD++u3/gKPPCkAeK4DbuQAKCsAc55szJaZwAXhb5PWASC0AQNnPL82HL775KkIFULACPn1lKQNEeP+5mRgj+Y2NjZwQqfm0ypDrfHOmxBQqgPpcDOxUjyjHuPiB+Or51XBy+WQurhWAawBFYKsCKPmUADofha4tAInq0eaYvqI4+ty5Q8mj73FdNAQAYVYA+hACsZQAFIFElTT7zHO+OSs7wnXGfv0gpsf2hCt//hKBvseJ3y59mFUAiJM8fIiRiItAokWoLQAecTv7bo7gIy/6h9u3dI09zrHeOfROQgHQUgC/06B/6cfXI2GQRatj9FPk+y4AceHOu8OrY52MIPrwaU5dAfQ6AXicY/afWHwyzK+cz7V8lOZTpT5e+09uH1c9Gi8vL19r3XVbKzheuG9/JO5+gsKgT1IKCqCnjArguak+x/5jx5/9gaJx2Y8jkN/bvlwY7zIeefffsBu2S6zuu4BdYWtzU6VC8AGnrn/krI4AL6+dyOXAVyQA7vdoce9nSx+MzwEcb6tVCQBLEU35YCT68+lzuThjfBjy+LZYlQA40m89v5bLgS9VGTzqMIrAVmNDY1UC9HIK7DhTop98uR77ReT1XHfT2ObmZmHe0BrJb9V2NHn+BHa/29CKcG5hOqRQN48vQTzfbWgFqLK//vh9NBe+q43vA9xPQww57u+HVd1mt8WavA/wlxpNvy7jdRZfluLdft0XHENj+s0AAjT9usx3evzx5G+BPH/bzf9fwHeAFKCXChg6AeoePRi+F6gAvVQAiPNL8NCfAjjnQbbXl6D+OluvAf4lKfX/AF/P/25NBXAxnLxWAMlev3o9fkDlhbGpAGdeqvdU2pNRAJJvKgCJkLhWAMmCPETgWL8O+3qKbGAilAlQJgLjWuLoawXQ7+hFgIGZfk5XAeAjySIUfV4nUZa+Aj7GqwRIHfWUb0vG215KgCogr0wAElbyaOsKAFPCfScPI2G/CNYBcotOAQpA4ipEEwFgID4Q8jCQKPv/QNWYRPwiWCUAt/H1pGzgAhRVQJ0xiaRQdApojq/HbeCngH8uB/DfgqL/E/jYSSuKLoJ1BUgRTvm2ZCQF9PL/gqrv+/TrWHN9PX2xqt/7+r7A/zsAcHv3p/5fUPV9vwzI9bU1tX8AZa7prB8cl/MAAAAASUVORK5CYII=', 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAF7UlEQVR4Xu2av4sdVRzFt/cHaVyCuBoiJrCNlYWF2GxjGcTWWtDC/yBEsbZQYyPYGqIIgmSbNYUsWFiY1UYLA5IiTcA/QBg9A+dx3me+82Zm9+363uYdOMzMvd9753vO3Dtv7rzZ2hrAC5euNLu7Lzfe5r6292681zy680nzz+/fzlFlqmN/aweLNre3d+aOJXIR2d/aQVdZor21AToWfaUrqo79rR2GRoCGO4WbqmN/awdf6TTAVPm5NyCvdhrx2IyARcOfBni0rJUBdz9760mWJTzUPQLyJsgbon8Cc9qwv5VDisutr/iQATkq2Ecakf1mGfOpwPgpbQfhJH0SCs7EOQUokCOC/bIfi2Bc3/kVO+X81th3/pkBWchAUb/nSc9xjgD2QQFVvZM0VKftLMERcKzbEj4/y9odO55bN7CAfNRNEyqB7CvF8hxO2EZ4y/PPsgZ4fpflVqjO77rWACejra8sr7Qa2gB34nqV+Tj7SgOy3ElnIq7z/izBkXCbPE/WV+efNXShaIH58yb8FzozQPtC/txl2xSYZvg8WeYE3c77Lh+LbMv2FpsGzwxwst56qCvInfHnjceKdVn25fosy3InmvVOesooyNiqr77zt5U5jC0ixWQDCnc923GBVPXtGCe5Mrh+7fVGfPe1V1p+/fmHzTe3Dpsvb+43hz/cGkz48uWXmp2dS83Fi8/OUWWqYxlj2R/BeJrK+MmoDBAlftUNEBk/iLsfv38hjz99543WAHP/9s2WUwwQr17ZnaPLbYTFmy5jfwTbndgAggZItKaAOMUAz33P9WUZwLYnngIWKuFmGsApYbrcwkglZwMssI+q75syNIllJtu7D+rtIMV/9cGbc1xkissoRswh74QZQ6YIimVs1lUGZDn1dlAJHzIgy50M5zznv7ZKiPcE0on7+Ldf/2gOf/y5pfbFBw8ezvqrqHaKUSz1dnDaBmT9cQwQv3/7+ebGE1fbdn/efrXdSmDVTlSdRsIXTz83bECfMIrmPcD3AbpvkUyOSSazjvM/+7F5f/10rTxH9qcYbam3A4quxNOANKyad31J5XE1Z1nW1+/+Mxc652A771NvBxLBoT9lClAEk82hXyU8ZMDRRy+2Q1ntte8poPmdIyDbqk5bxVJvBxzWU+mTZjJ5D7BwDtlMOI2xcMfc+e6gQ90Q2R8vgGIUS70dUNBU8orTgCzrS7gq934aRVbt2IZ6O/jl6H5zEtJ5kQa4jHEplkLGGJB9sG60AQcHR01FiWNZRYoR82pTEJlCqng/SvupMh+vueTm8dCj8d7e3t9bXu3lgsfP/l4IJVWvpbGoYwpKVoJIXlEec7HDZ3+x73jR4kjin9q+11s/h7ErwQ02OKfYTIENjo/Z6+cNVhS5yMlFEOMIPQarDcvXDl7pceXHOMJtWH7a8FsevfRgneGYUW+EVh0pwq/EtP/YGCCk8KUjp0DfyxC+EMkpw/7WDpUoihX5HuCsboJeRGnLZTZjDccvilkb5AqRS2zGGrmaZN0GYzD07D9Uf+4wRXDeH0S/QNELFr14YTzBFyJjX3CsDCoDRL95YjxBA/gWiPH/O/h9AX9VbIBfqWVsBb4yWwkDpkyByoAp3xekeN3xV34KcMjTgL5nC7fL4U7yZ8/MacJ8zhyV2L6/2DLW+5UBFk5WRjCfM8cYA2hEGkJRop70/P++WH0fYEOYz9KQQqrh67hlGZBX2h9A+I9QfRugbwRUpz9KdeUVc6oGUFQea99x1T2gEkoDzcoAifY3APxPUfR//30GeKlcrSCXvlSuDKhMqAypboIWWX0DYGYb5iOkAX3vE5ZmQCWYQ3/RFLCYvMJKzlNA3wRoX0Pf3wcoXjFjb4I0YhAU4WSZvGJzOB+HvPKeAv5/v6Lq3I65LwW8qhzeTl6xFDSVlQH5O7+IfQbYxLyH8Bx9bSeD3wtMZYrhHB9D5iPQVJ5jUdvJ4PcCU74tEIf+33d5Hmcs81kKhp79s57fD4j57O+FUH6H4O8LVDf0//4iKpa5TcW/u4mci97gAwkAAAAASUVORK5CYII=', 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAFkklEQVR4Xu2avYolVRSF+wEUjDrRQUEYpBORkTExks4VwcTAwNhgXkFDkwmGwccQI8PRbNLJHAQDMTEQ5gGE0lX43V69ap86Vbe9Pfd23wWbOvvn/Kx99qmqW90nJx28+dbd4ezs3YGrt3V99vVXw18/Phr+fv79JZFNvhzv4ABp5PT0ziVdJOckxzs4aJdFmisJkC5hpyuRL8c7OPQqQOWexBH5cryDAzvtCUBkv/EJ8N32RNyaCpgr/0wA1XJQCXjy+LNX0uag1KkAvwnmDZFHoB+bHG/v4OT8yo73EuBVkWN4Inxct+V6KmT8mr5dsEgmScK+8DwCSTArIsfNcSCRca35Fbtmfji25t8kwI0ZKNHz3IUznhWQYySBys8igXy6bha4AMTSN8H8aRsbZNyvdICAv+p6EiqCOZaTzTlYMIngmvNvVh3I+bH5VajmxzcmgMXoys7mTqsjCWAQ/LKh+1ieALezaF8IPtqbBS4EfXwe91fzbzpilEDQH2/Cv6GbBKgt+OPO+zpBTwbzuI0F0o829qXwvtkfsp7gTQJYLFdKXUEMlo+31BWLzcfC7za3s1D3s+g1VeCx1Vit+UenlzEknIx3SOL4s1/+QKrGJoZF7g1O794b7rz30Shq//zTL8PTp7+NonbGJ7L/nJ4iX46XUNzbH34yvHP++RifSc341dAEEHbiJCLjE5DcVnK8hMiTMCUhKyvju3jy8MFrru97AkSaBCgZV05AQouoiK89Apx9znoegRz3pR0BFuQLbCVAvjdevze8f/98FLVzB5ckICXnd11XkfXS9wRI8Keu2OQ7wfNf/xx+/+PFKGq7DvGWrthq4eNi7DGqthOo4rVoF+IhlISX6sl3AshUkoRTl1SEJDnW40+/HX744rtRPD4TUSVqjmBPT74TiBA7D0F0jkBLV2yVALUzASKexJw4i0a8Anoln37Xk+8E/tLCmc0XmUqIY1KXqgKceMpcBdDeVpLvBNw983EiSdKIx2iSJKLsZwJkw1/FVzLn8/FauiT5TlBVgD9Wev4sRcovj5Zs+Kv4StKfOuO0dMUm3wnmKqCXAEmLUFUBxwRskYC0uWTJpy5JvhNAEHIuefYzEZIWof8rAdwzIJf3ESRtxCXfCb75+IPhy/tno6i9VveJfQeqBOTiqx1zka+1QdWmpC5Jvo7z8/MXJ/lOvlbPnYBYxuUOZXwl8uWxrI5oS5ckaSDyr54+a/qPOOKII24H9Krqbf8e4HEO/N7XMT7r//tU7d8DMg74u4DbdNWTABtPDY9rQTHetwknms9uj3P0YvQIc38rDiieNi8/2FoJmEsC/kUJ0HPa2/4jxuMc/iMnfYLvNonQ9wCPqeDE5ipGMXN+Kirt14ZtKsCrAJvrB4feManArvnuZdsFe2JJzM5RfQ/IGMeaRffiev5rx5oqABDws067RxD/3H1ip9DkfgQkcwsWblQFeALc5jEOfL7wufi9x9oKuDHEjziZ/q0xP4xkfII3Pd4Il37g2BtAViIC+SUp4xMiTwKVhPwKlPEvHfn/BVdNgP8WUDL2PgEJL/lbcQS0YCeYCch7QqVDOHWvBNf5sbPo19424NGVvwqr7wUiig7x7N/SSRKPQU/AUv1i1Zfh8di8v8dOkM/wOftcAnqyqwRkPPbs730uwX/ESLCje2Wo5NE5Atm/pStWC/KSXqKrzZG5WPUFet8D6J/2rZB/ocm/zPhfbCob53pbyfVcO5K4JB9dkrybS0gAJQkp9J60EpBxPfuVUO2wk+7580y7rjKlnCu9dQR6BHv+VZgj2KuAXSeAeOzZ3/tsjasmYJdHIO2g51+FPP+eCJfKLhu7LjK00ZHUPTbXc+3I/xdYq3vSWklM3WNzPdeOfNdfq4uMHwnXe6LYXM9a/APov86M3ZfVcwAAAABJRU5ErkJggg==']; // пальто, свитшот, джинсовка
+  const CAPE_PNG = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAAAgCAYAAACinX6EAAAEw0lEQVRoge2YfWwTdRjHP9ddr71eG2B1xcoYGwEM4AgGggYMkAgmGggZgg5fEo2JrxEkStT4h/7pCyaoMTH+wf5AXlTGoiagTAwhbBksC2ZjM5tL50J92ZZjIF2PdT3OP+pdr13Z5npQTPZJmv5enj73PN/7/Z779QTDMHjx+R1GLHaFsfD7A0Qba8e0Mfm2NSqYbUEQrmu3paraGM/X4bpDOR0Yxrg/nRDCC89tN3yyzKXLl0kkhnMaSZKHcDiMqqoc/6l+Qo67uzoEGFsASIvw9ZGDE7I3cUoAESCuaUiSRDgctiZUVc0wNPuS5AFA15Poup4xdj0Bx8K8w1s3YwBsqaoe085pXPaOqqpo8TgAwWDQ+jbbkEoykRi2kjfHdD2JJHksMfIhWHwbc8oqMj6v7njTmVuehctM0CfLQGo1qKpq3XGz7ZNlyyYXuq5b4kxGhOw7nKsm3QgRxOylbicYDFpCxDUtY86eZCIxTFFRkbUqJrMV7MwM30Hfn3/kFMFpRLNhLnMz4WAwiBaPjxqHVPKy10syOUIyqeP5Vwyvx8NIUs9bAEiJcDMQzQS1eJyqeVGwrptOeH9bZh2QPR42LRQAaZTDbzquOSKAyaG9e1AUL0NDVykLzWDd0juNH3/udKwgZmyBhrYe3qo5l2FQfU8ZQtnKjLFpgQDno78x8nlXxrj72QVMC5Rz+crfjgRnJg9QFprhiM9sMp4CqyorRhlULkrfeZ8sU1xcjOJXuKu0BICjF2LWvDmmyL68A/vuy89QFC/Hdm4gqFy/+OaLCOn9bsdYdD9CxwlWVVbQ3x0irmnENY1h7SojiQSQTv7ohRgPzfY7HtyxnRtQwuXUvf1M9pQBOLINREgVOPseN0oqEDpOWP3+gX7mzCm3CmEiMTLK0dELMe629bdu3maYp7vJooTLWfbSbqvfeeTDfNzlxNoC9logDPSMMjTnRVFE8SsArGlewZrmFY4FYz8LDA1dBaDl09fo/L2Pxbe7HbuOHTHXYy6bUEkI2edDVVWSySRDsSGw1aS0CKlBj+x1JLh3fviV3U+thjNf4C1fzmPvH7bmDtQ+4cg1rKeAT5ZpaOvhvnuX09XeBsCCxZU0tPXQH5Pw+wMZPzwfHaB65cvU1+wBYP3Tr/B99BMkaTrDg4OOBDdzZpAPjrVz8uQpAPY+utQRv3ZESB07o421nBu5xpPb36C+JgrA+uot7P/4XRR3Lyx5wBLhr65mLha5CDQ10zuYWqoNTc10dask9AHcJfPyCqqjvdV6/AGsXbuaXQ8u5qvO9PnikbyukMYVbazlUutxABS3i9mls5juczPd52Z26SwUd6pMXGo9TrSxFuFiBKkoNXa66Sy9gxq9gxqnm84CIBW5EC5GJh2QWQdC+3o4eOAAfX2pFWpf/k4i2l9emKzf+HDO9n9h6+Ztef9xCe3roS7yC1WnPgKgN9Kdr8tRiOObFJb5cxdSxw4ikRbOzF1mje9yyL9rfJPCEHjvcas9f+5C1m3cRCTSYn2cQnDq1VI25kFooq+4srG/L7zy+n4AdDn997h+yTTnToK3OvbVYHHkoCO+b9gK+L9wy9aAm8WUAIUOoNBMCVDoAArNlACFDqDQTAlQ6AAKzT/EY9S7q+C+CwAAAABJRU5ErkJggg==';
+  const loadImg = src => new Promise((ok, no) => { const i = new Image(); i.crossOrigin = 'anonymous'; i.onload = () => ok(i); i.onerror = no; i.src = src; });
+  const outfitN = Math.random() * OUTFITS.length | 0;
+  const skinP = outfitN ? loadImg(OUTFITS[outfitN]) : loadImg(`https://api.mineatar.io/skin/${MC_UUID}`)
+    .catch(() => loadImg('https://minotar.net/skin/DverkaSK'))
+    .catch(() => loadImg(OUTFITS[0]));
+  (() => {
+    const box = $('.skin3d'), cv = $('#skin3d');
+    if (!box || !window.skinview3d) return;
+    const S = skinview3d;
+    let v;
+    try { v = new S.SkinViewer({ canvas: cv, width: box.clientWidth, height: box.clientHeight, zoom: .58, fov: 45, pixelRatio: 1 }); }
+    catch (e) { return; }
+    v.renderer.setClearColor(0, 0);
+    v.controls.enableZoom = false; v.controls.enablePan = false;
+    new ResizeObserver(() => v.setSize(box.clientWidth, box.clientHeight)).observe(box);
+    document.addEventListener('skin-vis', e => { v.renderPaused = !e.detail; });
+    skinP.then(img => { v.loadSkin(img); box.classList.add('ok'); }).catch(() => {});
+    v.loadCape(CAPE_PNG).catch(() => {});
+
+    /* ── позы ──
+       Поза — объект «канал → число». Каналы: p — весь игрок, h — голова, b — тело, ra/la — правая/левая рука,
+       rl/ll — ноги, c — плащ; rx/ry/rz — поворот, px/py/pz — сдвиг. Правая рука на экране слева (он смотрит на нас). */
+    const TAU = Math.PI * 2, sin = Math.sin, cos = Math.cos, abs = Math.abs, max = Math.max, min = Math.min;
+    const clamp = (x, a, b) => max(a, min(b, x));
+    const smooth = x => { x = clamp(x, 0, 1); return x * x * (3 - 2 * x); };
+    const CH = ['p.px', 'p.py', 'p.rx', 'p.ry', 'p.rz', 'h.rx', 'h.ry', 'h.rz', 'h.py', 'b.rx', 'b.ry', 'b.py', 'b.pz',
+      'ra.rx', 'ra.ry', 'ra.rz', 'ra.px', 'ra.py', 'ra.pz', 'la.rx', 'la.ry', 'la.rz', 'la.px', 'la.py', 'la.pz',
+      'rl.rx', 'rl.rz', 'rl.pz', 'll.rx', 'll.rz', 'll.pz', 'c.rx', 'c.py', 'c.pz'];
+    const REST = Object.fromEntries(CH.map(k => [k, 0]));
+    Object.assign(REST, { 'ra.px': -5, 'la.px': 5, 'b.py': -6, 'ra.py': -2, 'la.py': -2, 'ra.rz': -.063, 'la.rz': .063, 'rl.pz': -.1, 'll.pz': -.1, 'c.rx': .1885, 'c.py': 8, 'c.pz': -2 });
+    const pose = o => Object.assign({}, REST, o);
+    // присед (0..1) — те же смещения, что у CrouchAnimation из skinview3d, только плавно
+    const crouch = (P, s) => {
+      P['b.rx'] += .4538 * s; P['b.pz'] -= 2.1244 * s; P['b.py'] -= 2.1037 * s;
+      P['h.py'] -= 3.6183 * s;
+      P['ra.pz'] += .1683 * s; P['la.pz'] += .1683 * s; P['ra.rx'] += .4104 * s; P['la.rx'] += .4104 * s;
+      P['ra.py'] -= 2.5394 * s; P['la.py'] -= 2.5394 * s;
+      P['rl.pz'] -= 3.45 * s; P['ll.pz'] -= 3.45 * s;
+      P['c.py'] -= 1.8512 * s; P['c.rx'] += .2942 * s; P['c.pz'] += .3366 * s;
+      return P;
+    };
+    const mix = (A, B, w) => { const P = {}; for (const k of CH) P[k] = A[k] + (B[k] - A[k]) * w; return P; };
+    const pl = v.playerObject, sk = pl.skin;
+    const OBJ = { p: pl, h: sk.head, b: sk.body, ra: sk.rightArm, la: sk.leftArm, rl: sk.rightLeg, ll: sk.leftLeg, c: pl.cape };
+    const SLOT = CH.map(k => { const [o, q] = k.split('.'); return [k, OBJ[o][q[0] === 'r' ? 'rotation' : 'position'], q[1]]; });
+    const apply = P => { for (const [k, obj, ax] of SLOT) obj[ax] = P[k]; };
+
+    // парящий блок травы под ногами: текстуры 16×16 рисуем сами, конструкторы Three берём у модели скина
+    const pxTex = kind => {
+      const c = document.createElement('canvas'); c.width = c.height = 16; const x = c.getContext('2d');
+      let seed = kind.length * 7919 + 17; const rnd = () => (seed = seed * 16807 % 2147483647) / 2147483647;
+      const G = ['#5d9b33', '#6aab3c', '#77b847', '#4f8a2b'], D = ['#86603f', '#79553a', '#966c4a', '#6b4a31', '#8f8f8f'];
+      for (let y = 0; y < 16; y++) for (let i = 0; i < 16; i++) {
+        const green = kind === 'top' || (kind === 'side' && (y < 2 || (y === 2 && rnd() < .7) || (y === 3 && rnd() < .35)));
+        const pal = green ? G : D, r = rnd();
+        x.fillStyle = pal[green ? (r * 4 | 0) : r < .04 ? 4 : (r * 4 | 0)]; x.fillRect(i, y, 1, 1);
+      }
+      return c;
+    };
+    skinP.then(() => {
+      const L = sk.head.innerLayer, Mesh = L.constructor, Box = L.geometry.constructor, Mat = L.material.constructor, Tex = v.skinTexture.constructor;
+      const mat = kind => { const t = new Tex(pxTex(kind)); t.magFilter = t.minFilter = v.skinTexture.magFilter; t.colorSpace = v.skinTexture.colorSpace; return new Mat({ map: t }); };
+      const side = mat('side');
+      const block = new Mesh(new Box(18, 18, 18), [side, side, mat('top'), mat('dirt'), side, side]);
+      pl.updateMatrixWorld(true);
+      const hip = new (pl.position.constructor)(); sk.rightLeg.getWorldPosition(hip);
+      const feet = hip.y - 12;
+      block.position.y = feet - 9;
+      v.scene.add(block);
+      // камера смотрит на середину «человек + блок», с запасом сверху под прыжок
+      const mid = feet + 12;
+      v.controls.target.set(0, mid, 0); v.camera.position.y = mid + 14; v.controls.update(); // чуть сверху — видно траву на блоке
+    }).catch(() => {});
+
+    if (RM) { v.animation = null; return; }
+
+    /* ── курсор ── */
+    let cx = 0, cy = 0, lastMove = 0;
+    addEventListener('pointermove', e => {
+      const r = box.getBoundingClientRect();
+      cx = clamp((e.clientX - (r.left + r.width / 2)) / (innerWidth * .45), -1, 1);
+      cy = clamp((e.clientY - (r.top + r.height * .3)) / (innerHeight * .6), -1, 1);
+      lastMove = performance.now();
+    }, { passive: true });
+    let lx = 0, ly = 0; // сглаженный взгляд
+
+    /* ── «увидел знакомого»: ванильные шифт, прыжок и удар ЛКМ ──
+       Три слоя, каждый включается и выключается сам по себе: фазы по 1.5–4 с со случайным набором
+       (попрыгал → перестал, шифтит и кликает → только кликает …), иногда пауза. */
+    const PHASES = ['jsh', 'sh', 'jh', 'h', 'js', 's', 'j', 'h', 'sh', 'jsh', 'jh', ''];
+    let clock = 0, phase = '', phaseEnd = 1.2, lastTick = 0;
+    let crouchS = 0, sneakDown = false, sneakNext = 0;          // шифт
+    let jy = 0, jyPrev = 0, jvy = 0, onGround = true, jumpNext = 0, jTicks = 0; // прыжок, физика по тикам (20/с)
+    let swing = -1, clickNext = 0;                              // взмах рукой, 6 тиков
+    const JUMP_SCALE = 16 * .5; // блок = 16 единиц модели; прыжок ужат вдвое, чтобы влезал в рамку
+    const idle = () => {
+      const t = clock, dt = min(.1, t - lastTick); lastTick = t;
+      const P = pose();
+      // дышит, как в игре
+      P['ra.rz'] += cos(t * 2) * .03; P['la.rz'] -= cos(t * 2) * .03; P['c.rx'] += sin(t * 2) * .01;
+      // смотрит на курсор: голова сразу, корпус догоняет
+      const still = performance.now() - lastMove > 7000;
+      const tx = still ? sin(t * .6) * .25 : cx, ty = still ? 0 : cy;
+      lx += (tx - lx) * .08; ly += (ty - ly) * .08;
+      P['p.ry'] = lx * .55; P['h.ry'] = lx * .5; P['h.rx'] = ly * .45;
+
+      // новая фаза
+      if (t >= phaseEnd) {
+        let n; do n = PHASES[Math.random() * PHASES.length | 0]; while (n === phase);
+        phase = n; phaseEnd = t + (n ? 1.5 + Math.random() * 2.5 : .8 + Math.random() * 1.7);
+      }
+      const J = phase.includes('j'), Sn = phase.includes('s'), H = phase.includes('h');
+
+      // шифт-спам: зажал/отпустил каждые 0.08–0.18 с; поза шифта почти мгновенная, как в игре
+      if (Sn) { if (t >= sneakNext) { sneakDown = !sneakDown; sneakNext = t + .08 + Math.random() * .1; } }
+      else sneakDown = false;
+      crouchS += ((sneakDown ? 1 : 0) - crouchS) * (1 - Math.exp(-dt * 45));
+      crouch(P, crouchS);
+
+      // прыжок: ванильная физика — v0 = 0.42 блока/тик, гравитация 0.08, сопротивление 0.98
+      if (onGround && J && t >= jumpNext) { jvy = .42; onGround = false; }
+      jTicks += dt * 20;
+      while (jTicks >= 1) {
+        jTicks -= 1; jyPrev = jy;
+        if (!onGround) { jy += jvy; jvy = (jvy - .08) * .98; if (jy <= 0) { jy = 0; jvy = 0; onGround = true; jumpNext = t + Math.random() * .12; } }
+      }
+      P['p.py'] += (jyPrev + (jy - jyPrev) * jTicks) * JUMP_SCALE;
+
+      // ЛКМ: 6–9 кликов в секунду; взмах 6 тиков, перезапускается, если прошёл половину — как в игре
+      if (H && t >= clickNext) {
+        if (swing < 0 || swing >= .5) swing = 0;
+        clickNext = t + 1 / (6 + Math.random() * 3);
+      }
+      if (swing >= 0) {
+        const a = swing, by = sin(Math.sqrt(a) * TAU) * .2;
+        // корпус поворачивается, плечи идут за ним
+        P['b.ry'] += by; P['ra.ry'] += by; P['la.ry'] += by; P['la.rx'] += by;
+        P['ra.px'] = -cos(by) * 5; P['ra.pz'] += sin(by) * 5; P['la.px'] = cos(by) * 5; P['la.pz'] -= sin(by) * 5;
+        let f = 1 - a; f *= f; f *= f; f = 1 - f;
+        const f1 = sin(f * Math.PI), f2 = sin(a * Math.PI) * -(P['h.rx'] - .7) * .75;
+        P['ra.rx'] -= f1 * 1.2 + f2; P['ra.ry'] += by * 2; P['ra.rz'] += sin(a * Math.PI) * .4;
+        swing += dt * 20 / 6;
+        if (swing >= 1) swing = -1;
+      }
+      return P;
+    };
+
+    /* ── танцы из тиктока ── */
+    // покадровый танец: позы по долям такта, в каждую доля «щёлкает» за первые 40%
+    const kf = (bpm, frames, extra) => t => {
+      const beat = t * bpm / 60, i = Math.floor(beat), f = beat - i;
+      const A = frames[(i - 1 + frames.length) % frames.length], B = frames[i % frames.length];
+      const P = mix(pose(A), pose(B), smooth(f / .4));
+      if (extra) extra(P, beat, t);
+      return P;
+    };
+    const bounce = (P, beat, amp = .9) => { P['p.py'] += abs(sin(beat * Math.PI)) * amp; P['h.rx'] += abs(sin(beat * Math.PI)) * .12; };
+    const DANCES = [
+      ['флосс', t => {
+        const b = t * TAU * 1.6, s = sin(b), c = cos(b), P = pose();
+        P['p.px'] = -s * 1.2; P['p.rz'] = s * .05;
+        P['ra.rz'] = -.1 + s * .6; P['la.rz'] = .1 + s * .6;
+        P['ra.rx'] = c * .5; P['la.rx'] = -c * .5;
+        P['h.rz'] = -s * .1; P['p.py'] = abs(c) * .5;
+        return P;
+      }],
+      ['гридди', t => {
+        const b = t * TAU * 2.1, s = sin(b), P = pose();
+        P['p.rx'] = .12; P['p.py'] = abs(s) * 1.2;
+        P['rl.rx'] = -max(0, s) * .85; P['ll.rx'] = -max(0, -s) * .85;
+        P['ra.rx'] = -s * 1.3 - .2; P['la.rx'] = s * 1.3 - .2;
+        P['ra.rz'] = .15; P['la.rz'] = -.15; P['h.rx'] = -.12 + abs(s) * .1;
+        return P;
+      }],
+      ['макарена', kf(126, [
+        { 'ra.rx': -1.57 },
+        { 'ra.rx': -1.57, 'la.rx': -1.57 },
+        { 'ra.rx': -1.25, 'ra.rz': .95, 'la.rx': -1.57 },
+        { 'ra.rx': -1.25, 'ra.rz': .95, 'la.rx': -1.25, 'la.rz': -.95 },
+        { 'ra.rx': -2.9, 'ra.rz': .55, 'la.rx': -1.25, 'la.rz': -.95 },
+        { 'ra.rx': -2.9, 'ra.rz': .55, 'la.rx': -2.9, 'la.rz': -.55 },
+        { 'ra.rx': -.45, 'ra.rz': .55, 'la.rx': -2.9, 'la.rz': -.55 },
+        { 'ra.rx': -.45, 'ra.rz': .55, 'la.rx': -.45, 'la.rz': -.55 }
+      ], (P, beat) => { const k = beat % 8; if (k > 6) P['p.px'] += sin((k - 6) * Math.PI * 2) * 1.3; bounce(P, beat, .5); })],
+      ['дефолт дэнс', kf(132, [
+        { 'ra.rx': -1.5, 'ra.rz': .45, 'la.rx': .35, 'll.rz': .45, 'p.px': .6 },
+        { 'la.rx': -1.5, 'la.rz': -.45, 'ra.rx': .35, 'rl.rz': -.45, 'p.px': -.6 },
+        { 'ra.rx': -1.5, 'ra.rz': .45, 'la.rx': .35, 'll.rz': .45, 'p.px': .6 },
+        { 'ra.rx': -2.7, 'la.rx': -2.7, 'ra.rz': -.3, 'la.rz': .3 },
+        { 'ra.rx': -.6, 'la.rx': -.6, 'ra.rz': .5, 'la.rz': -.5 },
+        { 'ra.rx': -2.7, 'la.rx': -2.7, 'ra.rz': -.3, 'la.rz': .3 },
+        { 'la.rx': -1.5, 'la.rz': -.45, 'ra.rx': .35, 'rl.rz': -.45, 'p.px': -.6 },
+        { 'ra.rx': -.6, 'la.rx': -.6, 'ra.rz': .5, 'la.rz': -.5 }
+      ], (P, beat) => bounce(P, beat, 1.1))],
+      ['гангнам стайл', t => {
+        const b = t * TAU * 2, s = sin(b), P = pose();
+        P['p.py'] = abs(s) * 1.6; P['p.px'] = sin(b / 4) * 1.2;
+        P['ra.rx'] = -1.25 + s * .12; P['ra.rz'] = .55; P['la.rx'] = -1.1 - s * .12; P['la.rz'] = -.55;
+        P['rl.rx'] = max(0, sin(b / 2)) * -.9; P['ll.rx'] = max(0, -sin(b / 2)) * -.9;
+        P['h.rx'] = abs(s) * .2;
+        return crouch(P, .15);
+      }],
+      ['шаффл', t => {
+        const b = t * TAU * 1.9, s = sin(b), P = pose();
+        P['p.py'] = abs(s) * .9; P['p.ry'] = sin(b / 2) * .35;
+        P['rl.rx'] = s * .7; P['ll.rx'] = -s * .7; P['rl.rz'] = -max(0, s) * .3; P['ll.rz'] = max(0, -s) * .3;
+        P['ra.rx'] = -s * 1.1 - .3; P['la.rx'] = s * 1.1 - .3;
+        P['h.rx'] = abs(s) * .2;
+        return P;
+      }],
+      ['ренегейд', kf(150, [
+        { 'ra.rx': -1.7, 'ra.rz': .7, 'la.rx': .2, 'p.px': -.7, 'h.rz': .12 },
+        { 'la.rx': -1.7, 'la.rz': -.7, 'ra.rx': .2, 'p.px': .7, 'h.rz': -.12 },
+        { 'ra.rz': -2.4, 'la.rx': -.8, 'la.rz': -.6, 'p.rz': .08 },
+        { 'la.rz': 2.4, 'ra.rx': -.8, 'ra.rz': .6, 'p.rz': -.08 },
+        { 'ra.rx': -2.6, 'ra.rz': .4, 'la.rx': -2.6, 'la.rz': -.4, 'p.py': 1.5 },
+        { 'ra.rx': -.3, 'la.rx': -.3, 'p.ry': .5 },
+        { 'ra.rx': -1.4, 'ra.rz': -.9, 'la.rx': -1.4, 'la.rz': .9, 'p.ry': -.5 },
+        { 'ra.rx': -2.2, 'ra.rz': .8, 'la.rx': .3, 'h.rx': .25 }
+      ], (P, beat) => { bounce(P, beat, .6); crouch(P, .12 + .1 * abs(sin(beat * Math.PI))); })]
+    ];
+
+    /* ── смешивание состояний ── */
+    const BLEND = .5;
+    let cur = { fn: idle, t0: 0, name: 'idle' }, prev = null, w = 1, danceEnd = 0, lastDance = -1;
+    const setState = (fn, name) => { prev = cur; cur = { fn, t0: clock, name }; w = 0; };
+    const startDance = () => {
+      let i; do i = Math.random() * DANCES.length | 0; while (i === lastDance && DANCES.length > 1);
+      lastDance = i;
+      setState(DANCES[i][1], 'dance');
+      danceEnd = clock + 7 + Math.random() * 2;
+    };
+    const toIdle = () => { phase = ''; phaseEnd = clock + 1; setState(idle, 'idle'); };
+
+    v.animation = new S.FunctionAnimation((p, _, dt) => {
+      clock += min(dt, .1);
+      if (cur.name === 'dance' && clock > danceEnd) toIdle();
+      w = min(1, w + min(dt, .1) / BLEND);
+      const P = cur.fn(clock - cur.t0);
+      apply(prev && w < 1 ? mix(prev.fn(clock - prev.t0), P, smooth(w)) : P);
+      if (w >= 1) prev = null;
+    });
+
+    // клик — случайный танец; клик во время танца — другой танец
+    let downX = 0, downY = 0;
+    box.addEventListener('pointerdown', e => { downX = e.clientX; downY = e.clientY; });
+    box.addEventListener('click', e => { if (abs(e.clientX - downX) + abs(e.clientY - downY) < 6) startDance(); });
+    box.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); startDance(); } });
+  })();
+
+  /* ── terminal: статистика WakaTime ──
+     Цифры берём из cards/wakatime.json в репозитории DverkaSK (его раз в 6 часов пересобирает GitHub Action
+     вместе с карточками для README). Не достали — показываем снимок ниже. В терминале по очереди «вводятся»
+     команды wakatime, под каждой выезжает вывод: подписи прямым текстом, полоски из █░. */
+  const log = $('#termlog');
+  const PR = 'C:\\DVERKA> ';
+  const WT_URL = 'https://raw.githubusercontent.com/DverkaSK/DverkaSK/main/cards/wakatime.json';
+  const WH = 3600;
+  const WT_SNAPSHOT = { // снято с карточек WakaTime 19.09.2026
+    updated: '2026-09-19T15:00:00Z',
+    week: { ai_lines: 9800, human_lines: 309 },
+    all_time: {
+      languages: [['Java', 1760 * WH + 54 * 60], ['SQL', 133 * WH + 39 * 60], ['YAML', 112 * WH + 33 * 60], ['XML', 36 * WH + 8 * 60], ['Groovy', 30 * WH + 28 * 60],
+        ['JSON', 29 * WH + 25 * 60], ['Markdown', 28 * WH + 44 * 60], ['Kotlin', 18 * WH + 38 * 60], ['Python', 17 * WH + 55 * 60], ['Go', 17 * WH + 60]].map(([name, seconds]) => ({ name, seconds })),
+      editors: [['IntelliJ IDEA', 2111 * WH + 41 * 60], ['Claude Code', 229 * WH + 7 * 60], ['GoLand', 23 * WH + 29 * 60], ['Warp', 20 * WH + 51 * 60], ['DataGrip', 16 * WH + 48 * 60],
+        ['CLion', 9 * WH + 45 * 60], ['VS Code', 5 * WH + 8 * 60], ['PyCharm', WH + 49 * 60]].map(([name, seconds]) => ({ name, seconds })),
+      models: [['Claude', 56200], ['Sonnet', 30400], ['GPT', 23100], ['Opus', 20800], ['Gemini', 1600], ['OpenCode', 106]].map(([name, lines]) => ({ name, lines }))
+    }
+  };
+  const WT_COLORS = {
+    Java: '#e0913a', SQL: '#e38c00', YAML: '#e84a52', XML: '#3f8fd6', Groovy: '#4298b8', JSON: '#c0c0c0', Markdown: '#6f8fe0', Kotlin: '#A97BFF',
+    Python: '#5a9bd5', Go: '#00ADD8', TypeScript: '#3178c6', JavaScript: '#f1e05a', HTML: '#e34c26', CSS: '#8d6fd1', Rust: '#dea584', Shell: '#89e051',
+    'IntelliJ IDEA': '#3b8cff', 'Claude Code': '#d97757', GoLand: '#bd4ffc', DataGrip: '#907cf2', Warp: '#01a4ff', CLion: '#14c9a5', 'VS Code': '#2c9df0',
+    PyCharm: '#d2ee5c', RustRover: '#f46d2d', WebStorm: '#00c6d7', Cursor: '#9aa6b2',
+    Claude: '#d97757', Opus: '#e07a4a', Sonnet: '#e8a26a', Haiku: '#f2c894', GPT: '#10a37f', Gemini: '#4285f4', DeepSeek: '#6b86ff', Grok: '#9ca3af', Qwen: '#8a85ff'
+  };
+  const nf = n => String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+  const hm = s => { const h = Math.floor(s / WH), m = Math.floor(s % WH / 60); return h >= 100 ? `${nf(h)} ч` : h ? `${h} ч ${String(m).padStart(2, '0')} мин` : `${m} мин`; };
+  const BAR = 24;
+  const wbar = (v, max) => { const f = max ? Math.max(v > 0 ? 1 : 0, Math.round(v / max * BAR)) : 0; return ['█'.repeat(f), '░'.repeat(BAR - f)]; };
+  const pad = (s, n) => s.length >= n ? s.slice(0, n) : s + ' '.repeat(n - s.length);
+  const lpad = (s, n) => ' '.repeat(Math.max(0, n - s.length)) + s;
+  // строка с полоской: [название] [█████░░░] [значение] [доля]
+  const row = (name, v, max, val, share, color) => {
+    const [f, e] = wbar(v, max);
+    return ['o', [['', ' ' + pad(name, 14)], ['bar', f, color || '#3f3'], ['dim', e], ['', ' ' + lpad(val, 9)], ['dim', share ? lpad(share, 5) : '']]];
+  };
+  const DAYS = ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'];
+  const ddmm = iso => { const d = new Date(iso); return `${String(d.getDate()).padStart(2, '0')}.${String(d.getMonth() + 1).padStart(2, '0')}`; };
+  const buildLines = W => {
+    const L = [], at = W.all_time || {}, wk = W.week || {};
+    const out = (t, c = 'o') => L.push([c, t]);
+    if (wk.days && wk.days.length) {
+      const tot = wk.days.reduce((a, d) => a + d.seconds, 0), mx = Math.max(...wk.days.map(d => d.seconds));
+      L.push(['p', PR + 'wakatime --week']);
+      out(` За неделю ${ddmm(wk.days[0].date)}–${ddmm(wk.days[wk.days.length - 1].date)}: ${hm(tot)}, в среднем ${hm(tot / wk.days.length)} в день`);
+      wk.days.forEach(d => { const dt = new Date(d.date); L.push(row(`${DAYS[dt.getDay()]} ${ddmm(d.date)}`, d.seconds, mx, hm(d.seconds), '', '#3f3')); });
+      out('');
+    }
+    if (wk.ai_lines || wk.human_lines) {
+      const a = wk.ai_lines || 0, h = wk.human_lines || 0, s = a + h;
+      L.push(['p', PR + 'wakatime --ai --week']);
+      out(' Кто писал код за последние 7 дней (изменённые строки):');
+      L.push(row('ИИ', a, s, nf(a), Math.round(a / s * 100) + '%', '#3b82f6'));
+      L.push(row('руками', h, s, nf(h), Math.round(h / s * 100) + '%', '#10b981'));
+      out('');
+    }
+    const list = (cmd, title, items, key, fmt, n = 6) => {
+      if (!items || !items.length) return;
+      const top = items.slice(0, n), all = items.reduce((a, x) => a + x[key], 0), mx = top[0][key];
+      L.push(['p', PR + cmd]);
+      out(title);
+      top.forEach(x => L.push(row(x.name, x[key], mx, fmt(x[key]), key === 'seconds' ? Math.round(x[key] / all * 100) + '%' : '', WT_COLORS[x.name])));
+      out('');
+    };
+    list('wakatime --languages --all-time', ' Языки за всё время:', at.languages, 'seconds', hm);
+    list('wakatime --editors --all-time', ' Редакторы за всё время:', at.editors, 'seconds', hm);
+    list('wakatime --ai-models --all-time', ' Сколько строк написали модели ИИ:', at.models, 'lines', nf);
+    const up = new Date(W.updated);
+    out(` данные WakaTime · обновлено ${ddmm(W.updated)}.${up.getFullYear()} ${String(up.getHours()).padStart(2, '0')}:${String(up.getMinutes()).padStart(2, '0')}`, 'dim');
+    L.push(['p', PR]);
+    return L;
+  };
+  const addLine = (cls, text) => {
+    const s = document.createElement('span');
+    if (Array.isArray(text)) {
+      text.forEach(([c, t, color]) => { const x = document.createElement('span'); if (c) x.className = c; if (color) x.style.color = color; x.textContent = t; s.appendChild(x); });
+    } else { if (cls) s.className = cls; s.textContent = text; }
+    log.appendChild(s);
+    const pre = log.parentElement; pre.scrollTop = pre.scrollHeight; // как в консоли: новое снизу
+    return s;
+  };
+  const wtData = Promise.race([
+    fetch(WT_URL, { cache: 'no-store' }).then(r => r.ok ? r.json() : Promise.reject()).then(d => d && d.all_time ? d : Promise.reject()),
+    new Promise((_, no) => setTimeout(no, 4000))
+  ]).catch(() => WT_SNAPSHOT);
+  const runTerm = LINES => {
+    if (RM) { LINES.forEach(([c, t], i) => { addLine(c, t); if (i < LINES.length - 1) log.appendChild(document.createTextNode('\n')); }); return; }
+    let li = 0;
+    const next = () => {
+      if (li >= LINES.length) return;
+      const [c, t] = LINES[li], typing = c === 'p';
+      const s = addLine(c, typing ? '' : t);
+      let ci = typing ? Math.min(PR.length, t.length) : t.length;
+      if (typing) s.textContent = t.slice(0, ci);
+      const step = () => {
+        if (typing && ci < t.length) { s.textContent = t.slice(0, ++ci); setTimeout(step, rnd(45, 110)); return; }
+        li++;
+        if (li < LINES.length) log.appendChild(document.createTextNode('\n'));
+        const nc = li < LINES.length ? LINES[li][0] : '';
+        // после команды — пауза «считает», вывод выезжает строка за строкой
+        setTimeout(next, typing ? 650 : nc === 'p' ? 600 : 70);
+      };
+      step();
+    };
+    next();
+  };
+  // печатать начинаем, когда окно попало в экран и данные уже есть
+  const termSeen = new Promise(ok => {
+    const term = $('#w-term');
+    if (!('IntersectionObserver' in window)) return ok();
+    const io = new IntersectionObserver(es => { if (es.some(e => e.isIntersecting)) { io.disconnect(); ok(); } }, { threshold: .3 });
+    io.observe(term);
+  });
+  Promise.all([wtData, termSeen]).then(([W]) => setTimeout(() => runTerm(buildLines(W)), 500));
+
+  /* ── Winamp: YouTube ──
+     Плейлист cs.mov (47 треков из Яндекс Музыки) сопоставлен с роликами YouTube: канал исполнителя или его
+     «- Topic», длительность ±5 с, встраивание разрешено (oEmbed). Проигрывает встроенный плеер YouTube;
+     управляем им через postMessage — тем же протоколом, что и официальный iframe_api, только без чужого скрипта:
+     шлём {event:'listening'} и {event:'command', func, args}, в ответ приходят onReady / infoDelivery / onStateChange. */
+  const YT = 'https://www.youtube-nocookie.com';
+  const AMP = [["GYpdsqEoq-Y", "Cold", "Remedy", 177], ["QSFUkYJlOKk", "Marilyn Manson", "Better Of Two Evils", 228], ["OHDEnpnhS-4", "Rise Against", "Prayer Of The Refugee", 199], ["b9pmJREP2YU", "White Comic", "This Nightmare", 185], ["pnI2siyoiFw", "Palisades", "Memories", 231], ["_z4L4DXdXLI", "Conquer Divide", "What's Left Inside", 273], ["GlWoa69crxA", "Fear and Wonder", "The Only Way", 231], ["IR6lM0U52Pw", "Nevada Tan", "Neustart", 184], ["TKj9gH0kFsQ", "Throw The Fight", "Bury Me Alive", 226], ["pYoh6gpS20I", "The Exies", "What You Deserve", 188], ["fRXDr94_SKA", "Skillet", "Comatose", 230], ["Pj2miRJ6bZs", "Motionless In White", "Another Life", 205], ["qKJW7GAaNjE", "Last Winter", "chasing lights", 240], ["XkiaozM91uQ", "A Broken Silence", "Everyday", 241], ["VVUrYCZCwY4", "Yellowcard", "For You, And Your Denial", 213], ["RVrmTL82vJY", "Rev Theory", "Far From Over", 238], ["eVTXPUF4Oz4", "Linkin Park", "In the End", 216], ["deqRQygg9bk", "Disciple", "Deafening", 191], ["aWxBrI0g1kE", "Disturbed", "Indestructible", 278], ["XKAUThJbaAY", "Disciple", "After The World", 216], ["j0Dpj_Tx4So", "The Weight Of Atlas", "All The Things She Said", 240], ["EZgheqiPBr4", "The Word Alive", "Why Am I Like This?", 193], ["PI32Bk-sJ8k", "Thousand Foot Krutch", "Anyone Else", 215], ["PhgsUpVu2CQ", "Until I Wake", "Sinking Under", 206], ["5FPl1x24CeI", "Wind Walkers", "Without Me", 199], ["mG54ABlnfpc", "Pro", "A Life Worth Dying For", 204], ["fLFa-2YJzHU", "Trust Company", "Falling Apart", 208], ["mvV4qA1TVHM", "Throw The Fight", "Lights out for Summer", 181], ["l9WKZpC9UbU", "Story Of The Year", "Until the Day I Die", 235], ["2Qnck1lFwjs", "Skillet", "The Older I Get", 218], ["H3Bc5fTBkb4", "Skillet", "Those Nights", 226], ["gBkKWuO7KuI", "Skillet", "Awake and Alive", 209], ["APP7zVub0_w", "Shinedown", "For My Sake", 227], ["pihl4kivJBw", "Hills Have Eyes", "Anyway, It´s Gone", 218], ["M1x-eRlqr5s", "Fuel", "Won't Back Down", 201], ["eDRBoMRw-qs", "Foxblood", "Carry Me", 189], ["KSE5RMgthos", "Emphatic", "Pride", 222], ["66vrdt6TA1s", "Emphatic", "Don't Forget About Me", 226], ["vMo0Uea1mmw", "Dream On Dreamer", "Let It In", 258], ["q1fC2EFSAqQ", "Earshot", "Wait", 213], ["taqDnvvGqz8", "Dead Silence Hides My Cries", "Let Me In", 202], ["nfrywApx3to", "Dead by April", "Within My Heart", 205], ["JOr0XTBfGdM", "Dangerkids", "destroy yourself", 210], ["vOzClykVdlE", "blessthefall", "Feeling Low", 214], ["VrhmL-hiJfM", "Breaking Benjamin, Adam Gontier", "Dance with the Devil", 224], ["smbN2D9GWP8", "Annisokay", "Unaware", 230], ["1Hl_NBTMELo", "Anberlin", "Paperthin Hymn", 195]]; // [videoId, артист, название, сек]
+  const ampList = $('#amp-list'), ampFrame = $('#amp-frame'), ampTime = $('#amp-time'), ampSt = $('#amp-st');
+  const ampTick = $('#amp-tick'), ampSeek = $('#amp-seek'), avx = $('#amp-vis').getContext('2d');
+  const mmss = x => { x = Math.floor(x); const h = Math.floor(x / 3600), m = Math.floor(x % 3600 / 60), s = String(x % 60).padStart(2, '0'); return h ? `${h}:${String(m).padStart(2, '0')}:${s}` : `${m}:${s}`; };
+  const AMP_TOTAL = AMP.reduce((a, t) => a + t[3], 0);
+  $('#amp-yt').href = 'https://www.youtube.com/watch_videos?video_ids=' + AMP.map(t => t[0]).join(',');
+  $('#amp-count').textContent = `${AMP.length} треков`;
+  AMP.forEach((t, i) => {
+    const li = document.createElement('li');
+    li.innerHTML = `<button type="button" data-i="${i}"><span class="n">${i + 1}.</span><span class="t"></span><span>${mmss(t[3])}</span></button>`;
+    $('.t', li).textContent = `${t[1]} - ${t[2]}`;
+    ampList.appendChild(li);
+  });
+
+  // состояния плеера YouTube: -1 не начат, 0 закончился, 1 играет, 2 пауза, 3 буферизация, 5 в очереди
+  let ready = false, started = false, stopped = false, cur = 0, ytState = -1, pos = 0, dur = 0, posAt = 0, queued = null;
+  const cmd = (func, ...args) => ampFrame.contentWindow && ampFrame.contentWindow.postMessage(JSON.stringify({ event: 'command', func, args, id: 1, channel: 'widget' }), YT);
+  const listen = () => ampFrame.contentWindow && ampFrame.contentWindow.postMessage(JSON.stringify({ event: 'listening', id: 1, channel: 'widget' }), YT);
+  // громкость: запоминаем между заходами; пока тянешь ползунок — в строке «Громкость: N%», как в Winamp
+  const ampVol = $('#amp-vol');
+  let vol = Math.max(0, Math.min(100, +store.get('amp-vol', 70) || 0)), volMsgUntil = 0;
+  const applyVol = () => { cmd('setVolume', vol); cmd(vol ? 'unMute' : 'mute'); };
+  const showVol = () => { ampVol.value = vol; ampVol.style.setProperty('--v', vol + '%'); };
+  showVol();
+  ampVol.addEventListener('input', () => {
+    vol = +ampVol.value; showVol(); applyVol(); store.set('amp-vol', vol);
+    volMsgUntil = performance.now() + 1200; ampTick.textContent = `Громкость: ${vol}%`; setTimeout(render, 1300);
+  });
+  const IDLE_TXT = '*** ПРИВЕТ!!! ТЫ НА DVERKA РАДИО *** ЖМИ ▶ ИЛИ ТЫКАЙ ПО ТРЕКУ *** плейлист cs.mov — 47 треков, качаем головой \\m/ ***';
+  const playing = () => !stopped && ytState === 1;
+  const ampNow = () => playing() ? Math.min(dur || 1e9, pos + (performance.now() - posAt) / 1000) : pos;
+  const render = () => {
+    const st = stopped ? 'stop' : ytState === 1 ? 'play' : ytState === 2 ? 'pause' : started && (ytState === 3 || ytState === -1 || ytState === 5) ? 'load' : 'stop';
+    ampSt.textContent = st === 'pause' ? '❚❚' : st === 'play' || st === 'load' ? '▶' : '■';
+    ampSt.classList.toggle('load', st === 'load');
+    [...ampList.children].forEach((li, i) => li.classList.toggle('is-cur', i === cur));
+    const txt = started ? `${cur + 1}. ${AMP[cur][1]} - ${AMP[cur][2]} (${mmss(dur || AMP[cur][3])}) ***` : IDLE_TXT;
+    if (performance.now() > volMsgUntil && ampTick.textContent !== txt) ampTick.textContent = txt;
+    $('#amp-stereo').classList.toggle('on', st === 'play');
+    const t = stopped ? 0 : ampNow();
+    ampTime.textContent = mmss(t).padStart(5, '0');
+    ampSeek.style.width = Math.min(100, t / (dur || AMP[cur][3]) * 100) + '%';
+    $('#amp-total').textContent = `${mmss(t)}/${mmss(AMP_TOTAL)}`;
+  };
+  const scrollCur = () => { const li = ampList.children[cur]; ampList.scrollTop = Math.max(0, li.offsetTop - ampList.clientHeight / 2); };
+  function play(i) {
+    cur = (i + AMP.length) % AMP.length; stopped = false; started = true; pos = 0; dur = 0; posAt = performance.now(); ytState = 3;
+    if (ready) cmd('loadVideoById', AMP[cur][0], 0); else queued = cur;
+    render(); scrollCur();
+  }
+  const actions = {
+    play: () => { if (started && !stopped && ytState === 2) cmd('playVideo'); else if (started && stopped) { stopped = false; cmd('seekTo', 0, true); cmd('playVideo'); } else if (!playing()) play(cur); },
+    pause: () => { if (ytState === 1) cmd('pauseVideo'); else if (ytState === 2 && !stopped) cmd('playVideo'); },
+    stop: () => { if (started) { cmd('pauseVideo'); cmd('seekTo', 0, true); } stopped = true; pos = 0; render(); },
+    prev: () => play(started && ampNow() > 4 ? cur : cur - 1),  // как в Winamp: в начале трека — предыдущий, иначе с начала
+    next: () => play(cur + 1),
+    eject: () => window.open(`https://www.youtube.com/watch?v=${AMP[cur][0]}`, '_blank', 'noopener'),
+    pl: b => { const on = b.getAttribute('aria-pressed') !== 'true'; b.setAttribute('aria-pressed', on); $('#amp-pl').hidden = !on; }
+  };
+  $('#w-amp').addEventListener('click', e => {
+    const b = e.target.closest('[data-amp]'); if (b) { actions[b.dataset.amp](b); return; }
+    const t = e.target.closest('[data-i]'); if (t) play(+t.dataset.i);
+  });
+  // перемотка кликом по полоске
+  $('.amp__seek').addEventListener('click', e => {
+    if (!started || !dur) return;
+    const r = e.currentTarget.getBoundingClientRect(), s = Math.max(0, Math.min(1, (e.clientX - r.left) / r.width)) * dur;
+    cmd('seekTo', s, true); pos = s; posAt = performance.now(); render();
+  });
+  addEventListener('message', e => {
+    if (e.source !== ampFrame.contentWindow || !/youtube/.test(e.origin)) return;
+    let d; try { d = typeof e.data === 'string' ? JSON.parse(e.data) : e.data; } catch (_) { return; }
+    if (!d || !d.event) return;
+    if (d.event === 'onReady' || (d.event === 'initialDelivery' && !ready)) {
+      ready = true; $('#amp-note').textContent = ''; applyVol();
+      if (queued !== null) { const q = queued; queued = null; cmd('loadVideoById', AMP[q][0], 0); }
+    }
+    const info = d.info || {};
+    if (d.event === 'onStateChange' && typeof d.info === 'number') info.playerState = d.info;
+    if (typeof info.currentTime === 'number') { pos = info.currentTime; posAt = performance.now(); }
+    if (typeof info.duration === 'number' && info.duration > 0) dur = info.duration;
+    if (typeof info.playerState === 'number') {
+      const was = ytState; ytState = info.playerState;
+      if (ytState === 1) stopped = false;
+      if (ytState === 0 && was !== 0 && started && !stopped) play(cur + 1); // трек кончился — следующий
+    }
+    if (d.event === 'onError' && started && !stopped) {
+      // 101/150 — владелец запретил встраивание, 100 — ролик удалён: пропускаем трек
+      $('#amp-note').textContent = `!!! YouTube не дал сыграть «${AMP[cur][1]} - ${AMP[cur][2]}» тут (ошибка ${d.info}). Включаю следующий… (⏏ — открыть на YouTube)`;
+      const k = cur; setTimeout(() => { if (cur === k) play(cur + 1); }, 1500);
+    }
+    if (ytState === 1) { $('#amp-note').textContent = ''; ampKick(); }
+    render();
+  });
+  document.addEventListener('securitypolicyviolation', e => {
+    if (!/youtube/.test(e.blockedURI)) return;
+    $('#amp-note').innerHTML = '!!! Этот хостинг не пускает плеер YouTube внутрь страницы :( Жми <b>⏏</b> — трек откроется на YouTube';
+  });
+  // плеер создаём сразу с первым треком (не играет, пока не нажмут ▶) — чтобы ▶ срабатывал без задержки
+  ampFrame.addEventListener('load', () => { listen(); const k = setInterval(() => { if (ready) clearInterval(k); else listen(); }, 250); setTimeout(() => clearInterval(k), 15000); });
+  ampFrame.src = `${YT}/embed/${AMP[0][0]}?enablejsapi=1&playsinline=1&rel=0&modestbranding=1&iv_load_policy=3&origin=${encodeURIComponent(location.origin)}`;
+  // настоящий звук YouTube не отдаёт — спектр рисуем «на глаз», пока играет
+  const bars = new Array(19).fill(0), peaks = new Array(19).fill(0);
+  let ampT = performance.now();
+  const ampLoop = t => {
+    const dt = Math.min(.25, (t - ampT) / 1000); ampT = t;
+    const on = playing();
+    avx.clearRect(0, 0, 76, 16);
+    for (let i = 0; i < 19; i++) {
+      const target = on ? (RM ? 5 + i * 7 % 9 : Math.random() ** 1.6 * 16 * (1 - i / 34)) : 0;
+      bars[i] += (target - bars[i]) * (on ? .45 : .2);
+      peaks[i] = Math.max(peaks[i] - dt * 9, bars[i]);
+      for (let y = 0; y < Math.round(bars[i]); y++) { avx.fillStyle = y > 11 ? '#e8352a' : y > 7 ? '#e7d52e' : '#16c616'; avx.fillRect(i * 4, 15 - y, 3, 1); }
+      if (peaks[i] > .5) { avx.fillStyle = '#9a9ab0'; avx.fillRect(i * 4, 15 - Math.round(peaks[i]), 3, 1); }
+    }
+    if (on) render();
+    if (on || bars.some(b => b > .05) || peaks.some(b => b > .5)) requestAnimationFrame(ampLoop); else ampRun = false;
+  };
+  let ampRun = false;
+  const ampKick = () => { if (!ampRun) { ampRun = true; ampT = performance.now(); requestAnimationFrame(ampLoop); } };
+  render(); ampKick();
+
+  /* ── Paint ── */
+  const pc = $('#paint'), px = pc.getContext('2d');
+  const COLORS = ['#000000','#808080','#800000','#808000','#008000','#008080','#000080','#800080','#808040','#004040','#0080ff','#004080','#8000ff','#804000',
+                  '#ffffff','#c0c0c0','#ff0000','#ffff00','#00ff00','#00ffff','#0000ff','#ff00ff','#ffff80','#00ff80','#80ffff','#8080ff','#ff0080','#ff8040'];
+  let tool = 'pencil', color = '#000000', drawing = false, last = null;
+  const sw = $('#swatches');
+  COLORS.forEach(c => {
+    const b = document.createElement('button');
+    b.type = 'button'; b.className = 'sw'; b.style.background = c; b.setAttribute('aria-label', 'Цвет ' + c);
+    b.addEventListener('click', () => { color = c; $('#curc').style.background = c; });
+    sw.appendChild(b);
+  });
+  $$('[data-tool]').forEach(b => b.addEventListener('click', () => {
+    tool = b.dataset.tool;
+    $$('[data-tool]').forEach(x => x.setAttribute('aria-pressed', x === b));
+  }));
+  function doodle() {
+    px.fillStyle = '#fff'; px.fillRect(0, 0, pc.width, pc.height);
+    px.lineCap = px.lineJoin = 'round';
+    px.strokeStyle = '#ffcc00'; px.fillStyle = '#ffff00'; px.lineWidth = 4;
+    px.beginPath(); px.arc(560, 70, 34, 0, Math.PI * 2); px.fill();
+    for (let i = 0; i < 10; i++) { const a = i / 10 * Math.PI * 2; px.beginPath(); px.moveTo(560 + Math.cos(a) * 44, 70 + Math.sin(a) * 44); px.lineTo(560 + Math.cos(a) * 62, 70 + Math.sin(a) * 62); px.stroke(); }
+    px.strokeStyle = '#008000'; px.lineWidth = 5;
+    px.beginPath(); px.moveTo(0, 334); for (let x = 0; x <= 640; x += 20) px.lineTo(x, 334 + (x / 20 % 2 ? -8 : 0)); px.stroke();
+    px.fillStyle = '#ff00ff'; px.font = '34px Pangolin, "Comic Sans MS", cursive';
+    px.fillText('НАРИСУЙ ЧТО-НИБУДЬ!!!', 24, 58);
+  }
+  (document.fonts ? document.fonts.ready : Promise.resolve()).then(doodle);
+  const ppos = e => { const r = pc.getBoundingClientRect(); return { x: (e.clientX - r.left) * pc.width / r.width, y: (e.clientY - r.top) * pc.height / r.height }; };
+  function stroke(a, b) {
+    if (tool === 'spray') {
+      px.fillStyle = color;
+      for (let i = 0; i < 22; i++) { const ang = Math.random() * Math.PI * 2, d = Math.random() * 16; px.fillRect(b.x + Math.cos(ang) * d, b.y + Math.sin(ang) * d, 1.5, 1.5); }
+      return;
+    }
+    px.lineCap = 'round';
+    px.lineWidth = tool === 'pencil' ? 2 : tool === 'brush' ? 9 : 24;
+    px.strokeStyle = tool === 'eraser' ? '#ffffff' : color;
+    px.beginPath(); px.moveTo(a.x, a.y); px.lineTo(b.x, b.y); px.stroke();
+  }
+  pc.addEventListener('pointerdown', e => { drawing = true; pc.setPointerCapture(e.pointerId); last = ppos(e); stroke(last, last); });
+  pc.addEventListener('pointermove', e => {
+    const p = ppos(e);
+    $('#pxy').textContent = `${Math.round(p.x)}, ${Math.round(p.y)}`;
+    if (!drawing) return; stroke(last, p); last = p;
+  });
+  const stop = () => { drawing = false; };
+  pc.addEventListener('pointerup', stop); pc.addEventListener('pointercancel', stop);
+  $('#pclear').addEventListener('click', () => { px.fillStyle = '#fff'; px.fillRect(0, 0, pc.width, pc.height); $('#pstat').textContent = 'Холст чист. Как история браузера.'; });
+
+  /* ── guestbook ── */
+  const DEFAULT_GB = [
+    { n: 'Гость из 2026', m: 'O_o', t: 'как я сюда попал(а)', d: dmy(now) },
+    { n: 'xX_Dark_Angel_Xx', m: '<3', t: 'ппц красиво!!! где скачать такой дизайн? ставлю 10 из 10', d: '14.02.2009' },
+    { n: 'Гоустфейс', m: 'O_o', t: 'какой твой любимый фильм ужасов?', d: '31.10.2008' },
+    { n: 'Trollface', m: '( ͡° ͜ʖ ͡°)', t: 'problem?', d: '01.04.2008' },
+    { n: 'мама', m: '^_^', t: 'иди кушать', d: '12.03.2008' },
+    { n: 'Анонимус', m: 'xD', t: 'сайт огонь!!! заходите ко мне на сайт тоже', d: '12.03.2008' }
+  ];
+  const entries = $('#entries');
+  const renderGB = () => {
+    const list = store.get('dverka-gb', []).concat(DEFAULT_GB);
+    entries.innerHTML = '';
+    list.forEach(e => {
+      const a = document.createElement('article'); a.className = 'entry';
+      a.innerHTML = '<header><b></b><span></span></header><p></p>';
+      $('b', a).textContent = e.n; $('span', a).textContent = `${e.d} · ${e.m}`; $('p', a).textContent = e.t;
+      entries.appendChild(a);
+    });
+  };
+  renderGB();
+  $('#gbform').addEventListener('submit', e => {
+    e.preventDefault();
+    const n = $('#gb-name').value.trim(), t = $('#gb-msg').value.trim();
+    if (!n || !t) return;
+    const list = store.get('dverka-gb', []);
+    list.unshift({ n, t, m: $('#gb-mood').value, d: dmy(new Date()) });
+    store.set('dverka-gb', list.slice(0, 50));
+    $('#gb-msg').value = '';
+    renderGB(); entries.scrollTop = 0;
+  });
+
+  /* ── contacts ── */
+  $('#copynick').addEventListener('click', () => {
+    const say = t => { const sp = $('#copynick span'); sp.textContent = t; setTimeout(() => { sp.textContent = '⧉ скопировать ник'; }, 1800); };
+    const done = () => say('✔ скопировано!!!'), fail = () => say('✖ не вышло :(');
+    try { navigator.clipboard ? navigator.clipboard.writeText('DverkaSK').then(done, fail) : fail(); } catch (err) { fail(); }
+  });
+  $('#badge-code').addEventListener('focus', e => e.target.select());
+  /* ── фотоальбом ──
+     Мои скрины из Minecraft, залитые в Steam под игрой MineStickman. Список берём из cards/steam-shots.json
+     в репозитории DverkaSK (его собирает scripts/steam_shots.py в GitHub Action: сам Steam CORS не отдаёт).
+     Не достали — берём снимок ниже. Картинки грузятся прямо с CDN Steam. На странице — случайные 6 штук
+     «распечатками» с выцветанием; по клику фото открывается крупно и без фильтров. */
+  (() => {
+    const ALBUM_URL = 'https://raw.githubusercontent.com/DverkaSK/DverkaSK/main/cards/steam-shots.json';
+    const UGC = 'https://images.steamusercontent.com/ugc/';
+    const ALBUM_SNAPSHOT = [ // [id, путь картинки, пропорции], снято 19.09.2026
+    ['3707849175','10214336918125191822/C704400A75E03564C11B672FBAF7DD72E0B52C22',1.888],
+    ['3707849154','12672272358017201322/5B68CC44A4416B275BD451DA02FE4AD97B864EEC',1.888],
+    ['3707849137','12825342386035459193/B08BA147767AA2E1C76A1C73FEFD6554FC9787D6',1.888],
+    ['3707849114','16805123803723554831/75ACC73896800105A65E2A27C68A0E6CE9E3D9EF',1.888],
+    ['3707849093','9539757913548027367/4C2A09BA584B1C1D7118D4F4C8E27859A4BB5955',1.888],
+    ['3707849078','9507385096034001153/B7D2A6C64A0AF7575CBFF566467C787DEA2D7D62',1.888],
+    ['3707849062','10299182071943264115/99B1C83AD7984B3326D0F646F981AC68358AA70C',1.888],
+    ['3707849045','11331965633542892556/1ACE9D1CB0F67023707E4E4891D43E46162ED997',1.888],
+    ['3707849020','12576174785384296918/8DF2534770D4DA38EDCACA2FF69206E564889909',1.888],
+    ['3707849006','13153585381419980976/D38B07291C21638BA44F0DEC10CA1FE3A3A7F3E2',1.888],
+    ['3707848989','11494424228961383616/236F10BBE1C9B539A9F68532235F89DAD8807AD9',1.888],
+    ['3707848968','16962183656094544113/9E2BD40F39EA605D01A020B1EFB929E8FA6136D8',1.888],
+    ['3707848948','13095131389589919767/16BB2D510C9DE5CB286962B59C078C21FFB6A736',1.888],
+    ['3707848932','12638288356197492054/B509F65337FDD6B7B0ABF618546886E5A6FDD141',1.888],
+    ['3707848910','16502248685651288055/19B20DAC3E4FD0B71C2B2E1C3526C1AAA68912EB',1.888],
+    ['3707848871','16733927528865086547/AC7317CF70C97B0EB6E2E0B63F6630D9058A9763',1.888],
+    ['3707848849','11281601671740215011/6D288580368CAE247D7E8AC759E29EF05C4A273A',1.888],
+    ['3707848830','17493312443880383517/38D9CA06A52CA4A981D70E347BB07A6CC2E87730',1.888],
+    ['3707848810','13807058900183501880/07A70954B340569762AD1E6213634AC50767D98A',1.888],
+    ['3707848789','16532090974924798463/7EEFBEDAF200893C066484CE4DBC512B71A72926',1.888],
+    ['3707848774','16500062609747072058/094A06840FF48B8E4BC915B29406E371207B0A93',1.888],
+    ['3707848757','11753624684255303364/D2BBE1A9D6D18C81996BA90E6DF3D9FBE2B7EAEC',1.888],
+    ['3707848741','17756202193734549433/3D9BE4E7D32022AD2C6706EFEF97E13C865DAD37',1.888],
+    ['3707848719','11066373858807195246/B501C9971C5B4932B23A560025F2455837A0C277',1.903],
+    ['3707848699','17362243896541864054/D977CBB75AFED5E2146018F4E91B8AA667BA3B3F',1.903],
+    ['3707848669','17675721387636514517/C88C0EED628A6845936381CFBA175D886AD214D8',1.903],
+    ['3707848642','14445378637242545187/50D94D5CE4DD9D5FCBB174CDD682EFD900BD9D8D',1.903],
+    ['3707848627','17369771713416641270/36E5DD1130062F61A9484D5758D8118B7218650E',1.903],
+    ['3707848610','12782298898908589058/7649E12A6EF71409F2B5599195D904DBE3508918',1.903],
+    ['3707848586','11780219712834312133/8892BB9BC154BF55E2015DB37AED3A7AA2194C5B',1.903],
+    ['3707848557','9582107043488061847/3FD9F7B4B7525B11E740192CC4FD2F2E5D4F241B',1.888],
+    ['3676470641','16495166399892375521/838655F3DCEC9FA9867DF9E6B1A48DA61F9E6A6E',1.87],
+    ['3676470583','16353831420228314911/A815FC4AD70C7485AC69BDC5027DBDD557F36684',1.87],
+    ['3676470541','16474002337366233130/B5EC6B13D62BF066C4EE9E5C0E0A2FD0E6621454',1.87],
+    ['3676470491','10458280266092433023/E52593FA824539021F9AB9EB330D9226D5BCDA47',1.87],
+    ['3676470442','14781195459809159646/6AA9F9408B6EFDD305C441F67FE36FA61B2505E8',1.87]
+    ].map(([id, p, aspect]) => ({ id, img: UGC + p + '/', aspect }));
+    const SHOW = 6;
+    const thumb = (s, w) => `${s.img}?imw=${w}&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=false`;
+    const grid = $('#album-grid'), info = $('#album-info');
+    let all = [], shown = [];
+    const num = s => all.length - all.indexOf(s); // список идёт от новых: старые фото — меньшие номера
+
+    const deal = () => {
+      // новые 6 стараемся брать из тех, что сейчас не на столе
+      const rest = all.filter(s => !shown.includes(s)), pool = rest.length >= SHOW ? rest : all;
+      shown = [...pool].sort(() => Math.random() - .5).slice(0, SHOW);
+      grid.innerHTML = '';
+      shown.forEach((s, i) => {
+        const b = document.createElement('button');
+        b.type = 'button';
+        b.className = 'print' + (Math.random() < .35 ? ' taped' : '');
+        b.setAttribute('aria-label', `Открыть фото № ${num(s)} крупно`);
+        b.style.cssText = `--rot:${rnd(-4.5, 4.5).toFixed(1)}deg;--tx:${rnd(-8, 8).toFixed(0)}px;--ty:${rnd(-8, 8).toFixed(0)}px;` +
+          `--dl:${(i * .12).toFixed(2)}s;--lx:${rnd(0, 100).toFixed(0)}%;--ly:${rnd(0, 30).toFixed(0)}%;--ar:${s.aspect}`;
+        b.innerHTML = `<span class="print__img"><img src="${thumb(s, 640)}" srcset="${thumb(s, 640)} 640w, ${thumb(s, 1024)} 1024w" sizes="(max-width:860px) 50vw, 33vw" alt="" loading="lazy" decoding="async"></span><span class="print__cap">№ ${pad2(num(s))}</span>`;
+        const img = $('img', b);
+        img.addEventListener('error', () => { const f = img.parentElement; f.classList.add('lost'); f.textContent = 'фото потерялось'; });
+        b.addEventListener('click', () => view(i, b));
+        grid.appendChild(b);
+      });
+    };
+
+    Promise.race([
+      fetch(ALBUM_URL, { cache: 'no-store' }).then(r => r.ok ? r.json() : Promise.reject()).then(d => d && d.shots && d.shots.length ? d.shots : Promise.reject()),
+      new Promise((_, no) => setTimeout(no, 4000))
+    ]).catch(() => ALBUM_SNAPSHOT).then(shots => {
+      all = shots;
+      info.textContent = `📷 ${all.length} скринов из моего Steam · на столе случайные ${Math.min(SHOW, all.length)}`;
+      deal();
+    });
+    $('#album-more').addEventListener('click', () => { if (all.length) deal(); });
+
+    /* просмотр крупно: листаем те фото, что сейчас на столе */
+    const box = $('#viewer'), big = $('#viewer-img'), load = $('#viewer-load');
+    let cur = 0, opener = null;
+    const show = i => {
+      cur = (i + shown.length) % shown.length;
+      const s = shown[cur], n = num(s);
+      load.hidden = false; load.textContent = 'загружаю…';
+      big.style.visibility = 'hidden';
+      big.onload = () => { load.hidden = true; big.style.visibility = ''; };
+      big.onerror = () => { load.textContent = 'не загрузилось :( открой в Steam'; };
+      big.src = s.img; // оригинал без фильтров: тут момент надо разглядеть
+      big.alt = `Скриншот № ${n}`;
+      $('#viewer-title').textContent = `Фото № ${pad2(n)} из ${all.length} — Просмотр изображений и факсов`;
+      $('#viewer-n').textContent = `${cur + 1} / ${shown.length}`;
+      $('#viewer-steam').href = `https://steamcommunity.com/sharedfiles/filedetails/?id=${s.id}`;
+      [1, -1].forEach(d => { new Image().src = shown[(cur + d + shown.length) % shown.length].img; });
+    };
+    const view = (i, from) => {
+      opener = from; box.hidden = false;
+      document.documentElement.style.overflow = 'hidden';
+      show(i); $('[data-viewer="close"]', box).focus();
+    };
+    const close = () => {
+      box.hidden = true; big.removeAttribute('src');
+      document.documentElement.style.overflow = '';
+      opener && opener.focus();
+    };
+    box.addEventListener('click', e => {
+      const a = e.target.closest('[data-viewer]');
+      if (a) ({ close, prev: () => show(cur - 1), next: () => show(cur + 1) })[a.dataset.viewer]();
+      else if (e.target === box) close();
+    });
+    addEventListener('keydown', e => {
+      if (box.hidden) return;
+      if (e.key === 'Escape') close();
+      if (e.key === 'ArrowLeft') show(cur - 1);
+      if (e.key === 'ArrowRight') show(cur + 1);
+      if (e.key === 'Tab') { // фокус не уходит из окна просмотра
+        const f = $$('button,a[href]', box), first = f[0], last = f[f.length - 1];
+        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+      }
+    });
+    // на телефоне листаем свайпом
+    let sx = null;
+    $('#viewer-stage').addEventListener('pointerdown', e => { sx = e.clientX; });
+    $('#viewer-stage').addEventListener('pointerup', e => {
+      if (sx !== null && Math.abs(e.clientX - sx) > 50) show(cur + (e.clientX < sx ? 1 : -1));
+      sx = null;
+    });
+  })();
+})();
+</script>
+</body>
+</html>
