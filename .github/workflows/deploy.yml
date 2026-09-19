@@ -28,6 +28,8 @@ jobs:
           SITE_DEPLOY_KEY: ${{ secrets.SITE_DEPLOY_KEY }}
           SITE_KNOWN_HOSTS: ${{ secrets.SITE_KNOWN_HOSTS }}
         run: |
+          [ -n "$SITE_DEPLOY_KEY" ] || { echo "::error::secret SITE_DEPLOY_KEY is not set"; exit 1; }
+          [ -n "$SITE_KNOWN_HOSTS" ] || { echo "::error::secret SITE_KNOWN_HOSTS is not set"; exit 1; }
           mkdir -p ~/.ssh && chmod 700 ~/.ssh
           printf '%s\n' "$SITE_DEPLOY_KEY" > ~/.ssh/deploy_key
           printf '%s\n' "$SITE_KNOWN_HOSTS" > ~/.ssh/known_hosts
