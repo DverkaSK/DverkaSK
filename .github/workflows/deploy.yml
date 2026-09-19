@@ -34,13 +34,14 @@ jobs:
           printf '%s\n' "$SITE_DEPLOY_KEY" > ~/.ssh/deploy_key
           printf '%s\n' "$SITE_KNOWN_HOSTS" > ~/.ssh/known_hosts
           chmod 600 ~/.ssh/deploy_key ~/.ssh/known_hosts
+          ssh-keygen -y -f ~/.ssh/deploy_key > /dev/null || { echo "::error::SITE_DEPLOY_KEY is not a readable private key"; exit 1; }
 
       # The key is pinned to rrsync on the server, so the target path is
       # relative to /var/www/dverka.sk and nothing outside it is reachable
       - name: Upload site/
         run: |
           rsync -rlz --delete --chmod=D755,F644 \
-            -e "ssh -i ~/.ssh/deploy_key -o StrictHostKeyChecking=yes" \
+            -e "ssh -i $HOME/.ssh/deploy_key -o BatchMode=yes -o StrictHostKeyChecking=yes" \
             site/ "$USER@$HOST:./"
 
       - name: Check it is served
