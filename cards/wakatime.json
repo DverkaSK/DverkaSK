@@ -1,13 +1,9 @@
 {
- "updated": "2026-09-21T12:12:42Z",
+ "updated": "2026-09-21T21:46:34Z",
  "week": {
-  "ai_lines": 10436,
-  "human_lines": 508,
+  "ai_lines": 4447,
+  "human_lines": 325,
   "days": [
-   {
-    "date": "2026-09-15",
-    "seconds": 40828
-   },
    {
     "date": "2026-09-16",
     "seconds": 15411
@@ -30,22 +26,26 @@
    },
    {
     "date": "2026-09-21",
-    "seconds": 9670
+    "seconds": 28730
+   },
+   {
+    "date": "2026-09-22",
+    "seconds": 0
    }
   ]
  },
  "all_time": {
-  "total_seconds": 8247315,
-  "daily_average": 9133,
+  "total_seconds": 8249203,
+  "daily_average": 9125,
   "start": "2023-01-01T21:00:00Z",
   "languages": [
    {
     "name": "Java",
-    "seconds": 6339286
+    "seconds": 6340302
    },
    {
     "name": "SQL",
-    "seconds": 481152
+    "seconds": 481345
    },
    {
     "name": "YAML",
@@ -57,11 +57,11 @@
    },
    {
     "name": "Groovy",
-    "seconds": 109705
+    "seconds": 109727
    },
    {
     "name": "JSON",
-    "seconds": 105901
+    "seconds": 105935
    },
    {
     "name": "Markdown",
@@ -73,7 +73,7 @@
    },
    {
     "name": "Python",
-    "seconds": 66414
+    "seconds": 66655
    },
    {
     "name": "Go",
@@ -81,7 +81,7 @@
    },
    {
     "name": "Gradle",
-    "seconds": 58315
+    "seconds": 58347
    },
    {
     "name": "HTML",
@@ -108,12 +108,12 @@
     "seconds": 14997
    },
    {
-    "name": "Properties",
-    "seconds": 12090
+    "name": "JavaScript",
+    "seconds": 12216
    },
    {
-    "name": "JavaScript",
-    "seconds": 11944
+    "name": "Properties",
+    "seconds": 12090
    },
    {
     "name": "Bash",
@@ -263,11 +263,11 @@
   "editors": [
    {
     "name": "IntelliJ IDEA",
-    "seconds": 7602097
+    "seconds": 7602569
    },
    {
     "name": "Claude Code",
-    "seconds": 841497
+    "seconds": 845365
    },
    {
     "name": "GoLand",
@@ -275,7 +275,7 @@
    },
    {
     "name": "Warp",
-    "seconds": 81770
+    "seconds": 84363
    },
    {
     "name": "DataGrip",
@@ -313,7 +313,7 @@
    },
    {
     "name": "Opus",
-    "lines": 21762
+    "lines": 22354
    },
    {
     "name": "Gemini",
