@@ -1,13 +1,9 @@
 {
- "updated": "2026-09-23T16:17:07Z",
+ "updated": "2026-09-23T21:11:50Z",
  "week": {
-  "ai_lines": 5014,
-  "human_lines": 325,
+  "ai_lines": 4128,
+  "human_lines": 216,
   "days": [
-   {
-    "date": "2026-09-17",
-    "seconds": 35090
-   },
    {
     "date": "2026-09-18",
     "seconds": 33243
@@ -30,13 +26,17 @@
    },
    {
     "date": "2026-09-23",
-    "seconds": 743
+    "seconds": 3044
+   },
+   {
+    "date": "2026-09-24",
+    "seconds": 0
    }
   ]
  },
  "all_time": {
   "total_seconds": 8250088,
-  "daily_average": 9116,
+  "daily_average": 9106,
   "start": "2023-01-01T21:00:00Z",
   "languages": [
    {
