@@ -4,15 +4,15 @@
   <text x="20" y="32" fill="#58a6ff" font-size="18" font-weight="600">AI Models</text>
   <text x="475" y="32" fill="#8b949e" font-size="12" text-anchor="end">lines · all time</text>
   <clipPath id="bar"><rect x="20" y="48" width="455" height="8" rx="4"/></clipPath>
-  <g clip-path="url(#bar)"><rect x="20" y="48" width="455" height="8" fill="#30363d"/><rect x="20.00" y="48" width="191.83" height="8" fill="#d97757"/><rect x="211.33" y="48" width="103.99" height="8" fill="#e8a26a"/><rect x="314.82" y="48" width="78.95" height="8" fill="#10a37f"/><rect x="393.27" y="48" width="76.55" height="8" fill="#b4552d"/><rect x="469.32" y="48" width="5.82" height="8" fill="#4285f4"/><rect x="474.64" y="48" width="0.86" height="8" fill="#84cc16"/></g>
+  <g clip-path="url(#bar)"><rect x="20" y="48" width="455" height="8" fill="#30363d"/><rect x="20.00" y="48" width="190.54" height="8" fill="#d97757"/><rect x="210.04" y="48" width="103.29" height="8" fill="#e8a26a"/><rect x="312.82" y="48" width="79.11" height="8" fill="#b4552d"/><rect x="391.43" y="48" width="78.42" height="8" fill="#10a37f"/><rect x="469.36" y="48" width="5.78" height="8" fill="#4285f4"/><rect x="474.64" y="48" width="0.86" height="8" fill="#84cc16"/></g>
   <circle cx="25" cy="80" r="5" fill="#d97757"/>
   <text x="36" y="84" fill="#c9d1d9" font-size="12">Claude <tspan fill="#8b949e">56.2K lines</tspan></text>
   <circle cx="262" cy="80" r="5" fill="#e8a26a"/>
   <text x="273" y="84" fill="#c9d1d9" font-size="12">Sonnet <tspan fill="#8b949e">30.4K lines</tspan></text>
-  <circle cx="25" cy="104" r="5" fill="#10a37f"/>
-  <text x="36" y="108" fill="#c9d1d9" font-size="12">GPT <tspan fill="#8b949e">23.1K lines</tspan></text>
-  <circle cx="262" cy="104" r="5" fill="#b4552d"/>
-  <text x="273" y="108" fill="#c9d1d9" font-size="12">Opus <tspan fill="#8b949e">22.4K lines</tspan></text>
+  <circle cx="25" cy="104" r="5" fill="#b4552d"/>
+  <text x="36" y="108" fill="#c9d1d9" font-size="12">Opus <tspan fill="#8b949e">23.3K lines</tspan></text>
+  <circle cx="262" cy="104" r="5" fill="#10a37f"/>
+  <text x="273" y="108" fill="#c9d1d9" font-size="12">GPT <tspan fill="#8b949e">23.1K lines</tspan></text>
   <circle cx="25" cy="128" r="5" fill="#4285f4"/>
   <text x="36" y="132" fill="#c9d1d9" font-size="12">Gemini <tspan fill="#8b949e">1.6K lines</tspan></text>
   <circle cx="262" cy="128" r="5" fill="#84cc16"/>
