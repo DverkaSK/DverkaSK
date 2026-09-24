@@ -1,13 +1,9 @@
 {
- "updated": "2026-09-24T16:38:59Z",
+ "updated": "2026-09-24T21:14:17Z",
  "week": {
-  "ai_lines": 4355,
-  "human_lines": 216,
+  "ai_lines": 2689,
+  "human_lines": 207,
   "days": [
-   {
-    "date": "2026-09-18",
-    "seconds": 33243
-   },
    {
     "date": "2026-09-19",
     "seconds": 30759
@@ -30,7 +26,11 @@
    },
    {
     "date": "2026-09-24",
-    "seconds": 18692
+    "seconds": 19119
+   },
+   {
+    "date": "2026-09-25",
+    "seconds": 0
    }
   ]
  },
