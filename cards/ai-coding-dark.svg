@@ -5,17 +5,17 @@
   <text x="475" y="32" fill="#8b949e" font-size="12" text-anchor="end">last 7 days</text>
   <circle cx="68" cy="96" r="40" fill="none" stroke="#30363d" stroke-width="9"/>
   <circle cx="68" cy="96" r="40" fill="none" stroke="#3b82f6" stroke-width="9" stroke-linecap="round"
-          stroke-dasharray="241.3 251.3" transform="rotate(-90 68 96)"/>
-  <text x="68" y="100" fill="#c9d1d9" font-size="24" font-weight="700" text-anchor="middle">96<tspan font-size="12" fill="#8b949e" dy="-8">%</tspan></text>
+          stroke-dasharray="245.0 251.3" transform="rotate(-90 68 96)"/>
+  <text x="68" y="100" fill="#c9d1d9" font-size="24" font-weight="700" text-anchor="middle">97<tspan font-size="12" fill="#8b949e" dy="-8">%</tspan></text>
   <text x="68" y="116" fill="#8b949e" font-size="10" text-anchor="middle">AI-driven</text>
   <rect x="128" y="58" width="168" height="76" rx="8" fill="#161b22" stroke="#30363d"/>
   <text x="141" y="80" fill="#8b949e" font-size="12">AI lines</text>
-  <text x="141" y="106" fill="#c9d1d9" font-size="22" font-weight="700">5K</text>
+  <text x="141" y="106" fill="#c9d1d9" font-size="22" font-weight="700">4K</text>
   <rect x="141" y="118" width="142" height="5" rx="2.5" fill="#30363d"/>
-  <rect x="141" y="118" width="136.3" height="5" rx="2.5" fill="#3b82f6"/>
+  <rect x="141" y="118" width="138.4" height="5" rx="2.5" fill="#3b82f6"/>
   <rect x="308" y="58" width="168" height="76" rx="8" fill="#161b22" stroke="#30363d"/>
   <text x="321" y="80" fill="#8b949e" font-size="12">Human lines</text>
-  <text x="321" y="106" fill="#c9d1d9" font-size="22" font-weight="700">207</text>
+  <text x="321" y="106" fill="#c9d1d9" font-size="22" font-weight="700">103</text>
   <rect x="321" y="118" width="142" height="5" rx="2.5" fill="#30363d"/>
-  <rect x="321" y="118" width="5.7" height="5" rx="2.5" fill="#10b981"/>
+  <rect x="321" y="118" width="3.6" height="5" rx="2.5" fill="#10b981"/>
 </svg>

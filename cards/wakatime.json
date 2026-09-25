@@ -1,13 +1,9 @@
 {
- "updated": "2026-09-25T16:44:48Z",
+ "updated": "2026-09-25T21:11:51Z",
  "week": {
-  "ai_lines": 4973,
-  "human_lines": 207,
+  "ai_lines": 4013,
+  "human_lines": 103,
   "days": [
-   {
-    "date": "2026-09-19",
-    "seconds": 30759
-   },
    {
     "date": "2026-09-20",
     "seconds": 20389
@@ -26,26 +22,30 @@
    },
    {
     "date": "2026-09-24",
-    "seconds": 19537
+    "seconds": 19656
    },
    {
     "date": "2026-09-25",
-    "seconds": 1529
+    "seconds": 2561
+   },
+   {
+    "date": "2026-09-26",
+    "seconds": 0
    }
   ]
  },
  "all_time": {
-  "total_seconds": 8250758,
-  "daily_average": 9097,
+  "total_seconds": 8252287,
+  "daily_average": 9088,
   "start": "2023-01-01T21:00:00Z",
   "languages": [
    {
     "name": "Java",
-    "seconds": 6341182
+    "seconds": 6341184
    },
    {
     "name": "SQL",
-    "seconds": 481345
+    "seconds": 481351
    },
    {
     "name": "YAML",
@@ -263,11 +263,11 @@
   "editors": [
    {
     "name": "IntelliJ IDEA",
-    "seconds": 7602648
+    "seconds": 7602661
    },
    {
     "name": "Claude Code",
-    "seconds": 849727
+    "seconds": 851243
    },
    {
     "name": "Warp",

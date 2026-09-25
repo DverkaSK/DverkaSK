@@ -4,11 +4,11 @@
   <text x="20" y="32" fill="#0969da" font-size="18" font-weight="600">Editors &amp; Tools</text>
   <text x="475" y="32" fill="#656d76" font-size="12" text-anchor="end">all time</text>
   <clipPath id="bar"><rect x="20" y="48" width="455" height="8" rx="4"/></clipPath>
-  <g clip-path="url(#bar)"><rect x="20" y="48" width="455" height="8" fill="#d0d7de"/><rect x="20.00" y="48" width="395.96" height="8" fill="#2876e1"/><rect x="415.46" y="48" width="44.70" height="8" fill="#d97757"/><rect x="459.66" y="48" width="5.09" height="8" fill="#01a4ff"/><rect x="464.26" y="48" width="4.90" height="8" fill="#bd4ffc"/><rect x="468.65" y="48" width="3.65" height="8" fill="#907cf2"/><rect x="471.80" y="48" width="2.33" height="8" fill="#14c9a5"/><rect x="473.63" y="48" width="1.46" height="8" fill="#027acd"/><rect x="474.59" y="48" width="0.84" height="8" fill="#d2ee5c"/><rect x="474.94" y="48" width="0.56" height="8" fill="#f46d2d"/></g>
+  <g clip-path="url(#bar)"><rect x="20" y="48" width="455" height="8" fill="#d0d7de"/><rect x="20.00" y="48" width="395.90" height="8" fill="#2876e1"/><rect x="415.40" y="48" width="44.77" height="8" fill="#d97757"/><rect x="459.67" y="48" width="5.09" height="8" fill="#01a4ff"/><rect x="464.26" y="48" width="4.90" height="8" fill="#bd4ffc"/><rect x="468.66" y="48" width="3.65" height="8" fill="#907cf2"/><rect x="471.80" y="48" width="2.33" height="8" fill="#14c9a5"/><rect x="473.63" y="48" width="1.46" height="8" fill="#027acd"/><rect x="474.59" y="48" width="0.84" height="8" fill="#d2ee5c"/><rect x="474.94" y="48" width="0.56" height="8" fill="#f46d2d"/></g>
   <circle cx="25" cy="80" r="5" fill="#2876e1"/>
-  <text x="36" y="84" fill="#1f2328" font-size="12">IntelliJ IDEA <tspan fill="#656d76">2,111h 50m</tspan></text>
+  <text x="36" y="84" fill="#1f2328" font-size="12">IntelliJ IDEA <tspan fill="#656d76">2,111h 51m</tspan></text>
   <circle cx="262" cy="80" r="5" fill="#d97757"/>
-  <text x="273" y="84" fill="#1f2328" font-size="12">Claude Code <tspan fill="#656d76">236h 2m</tspan></text>
+  <text x="273" y="84" fill="#1f2328" font-size="12">Claude Code <tspan fill="#656d76">236h 27m</tspan></text>
   <circle cx="25" cy="104" r="5" fill="#01a4ff"/>
   <text x="36" y="108" fill="#1f2328" font-size="12">Warp <tspan fill="#656d76">24h 31m</tspan></text>
   <circle cx="262" cy="104" r="5" fill="#bd4ffc"/>
