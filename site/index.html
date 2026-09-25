@@ -83,6 +83,11 @@ addEventListener("error", e => { const b = document.getElementById("boot"); b.hi
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
 <script>
+/* ?gl=<flags> — диагностика рендера на капризных мобильных GPU (панель с инфой + переключатели):
+   1 — WebGL1, u — кости в uniform-массиве, а не во float-текстуре, b — модели без освещения,
+   f — модели односторонние, m — текстуры моделей без мипмапов, p — mediump вместо highp */
+const GLQ = new URLSearchParams(location.search).get('gl');
+const glf = c => GLQ != null && GLQ.includes(c);
 const ASSETS = {
   bsp: "assets/bsp.gz",
   gopnik: ["assets/gopnik_0.gz", "assets/gopnik_1.gz"],
@@ -341,6 +346,7 @@ function parseMDL(buffer, textureBuffer) {
     cv.getContext('2d').putImageData(new ImageData(rgba, w, h), 0, 0);
     const map = new THREE.CanvasTexture(cv); map.encoding = THREE.sRGBEncoding; map.flipY = false;
     map.magFilter = THREE.LinearFilter; map.minFilter = THREE.LinearMipmapLinearFilter;
+    if (glf('m')) { map.minFilter = THREE.LinearFilter; map.generateMipmaps = false; }
     textures.push({ name, flags, w, h, map, canvas: cv, masked });
   }
   const skinref = []; for (let i = 0; i < numskinref; i++) skinref.push(tdv.getInt16(skinindex + i * 2, true));
@@ -416,7 +422,7 @@ function buildCharacter(mdl, { lightColor = [1, 1, 1] } = {}) {
     g.setAttribute('skinWeight', new THREE.Float32BufferAttribute(P.sw, 4));
     const chrome = P.tex && P.tex.flags & 2;
     const additive = P.tex && P.tex.flags & 0x20;
-    const mat = new THREE.MeshLambertMaterial({ map: P.tex ? P.tex.map : null, skinning: true, alphaTest: P.tex && P.tex.masked ? .5 : 0, side: THREE.DoubleSide, color: new THREE.Color(...lightColor),
+    const mat = new THREE[glf('b') ? 'MeshBasicMaterial' : 'MeshLambertMaterial']({ map: P.tex ? P.tex.map : null, skinning: true, alphaTest: P.tex && P.tex.masked ? .5 : 0, side: glf('f') ? THREE.FrontSide : THREE.DoubleSide, color: new THREE.Color(...lightColor),
       transparent: !!additive, blending: additive ? THREE.AdditiveBlending : THREE.NormalBlending, depthWrite: !additive });
     materials.push(mat);
     const mesh = new THREE.SkinnedMesh(g, mat);
@@ -473,7 +479,22 @@ function buildCharacter(mdl, { lightColor = [1, 1, 1] } = {}) {
 const $ = s => document.querySelector(s);
 const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const canvas = $('#view');
-const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, preserveDrawingBuffer: true });
+if (glf('u')) {  // three решает про кости во float-текстуре при создании рендерера — прячем vertex-текстуры заранее
+  const get = canvas.getContext.bind(canvas);
+  canvas.getContext = (...a) => { const gl = get(...a); if (gl && !gl.__u) { const p = gl.getParameter.bind(gl); gl.getParameter = k => k === gl.MAX_VERTEX_TEXTURE_IMAGE_UNITS ? 0 : p(k); gl.__u = 1; } return gl; };
+}
+const renderer = new THREE[glf('1') ? 'WebGL1Renderer' : 'WebGLRenderer']({ canvas, antialias: true, preserveDrawingBuffer: true, precision: glf('p') ? 'mediump' : 'highp' });
+if (GLQ != null) {
+  const gl = renderer.getContext(), cap = renderer.capabilities, dbg = gl.getExtension('WEBGL_debug_renderer_info');
+  const hp = s => { const f = gl.getShaderPrecisionFormat(s, gl.HIGH_FLOAT); return f.precision ? 'highp' : 'нет highp'; };
+  const box = document.createElement('pre');
+  box.style.cssText = 'position:fixed;left:4px;bottom:4px;z-index:99;margin:0;padding:6px;background:#000c;color:#0f0;font:11px monospace;white-space:pre-wrap;max-width:96vw;pointer-events:none';
+  box.textContent = [`gl=${GLQ}`, `WebGL${cap.isWebGL2 ? 2 : 1}  ${dbg ? gl.getParameter(dbg.UNMASKED_RENDERER_WEBGL) : gl.getParameter(gl.RENDERER)}`,
+    `precision ${cap.precision}; vs ${hp(gl.VERTEX_SHADER)}, fs ${hp(gl.FRAGMENT_SHADER)}`,
+    `floatVertexTextures ${cap.floatVertexTextures}; vertexTextures ${cap.maxVertexTextures}; vertexUniforms ${cap.maxVertexUniforms}`,
+    navigator.userAgent].join('\n');
+  document.body.appendChild(box);
+}
 renderer.outputEncoding = THREE.sRGBEncoding;
 const scene = new THREE.Scene();
 scene.background = new THREE.Color('#050408');
