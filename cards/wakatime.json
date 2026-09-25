@@ -1,5 +1,5 @@
 {
- "updated": "2026-09-24T21:14:17Z",
+ "updated": "2026-09-25T03:51:01Z",
  "week": {
   "ai_lines": 2689,
   "human_lines": 207,
@@ -35,13 +35,13 @@
   ]
  },
  "all_time": {
-  "total_seconds": 8250088,
-  "daily_average": 9106,
+  "total_seconds": 8250758,
+  "daily_average": 9097,
   "start": "2023-01-01T21:00:00Z",
   "languages": [
    {
     "name": "Java",
-    "seconds": 6340525
+    "seconds": 6341182
    },
    {
     "name": "SQL",
@@ -65,7 +65,7 @@
    },
    {
     "name": "Markdown",
-    "seconds": 104425
+    "seconds": 104428
    },
    {
     "name": "Kotlin",
@@ -267,11 +267,11 @@
    },
    {
     "name": "Claude Code",
-    "seconds": 848147
+    "seconds": 849727
    },
    {
     "name": "Warp",
-    "seconds": 87251
+    "seconds": 88279
    },
    {
     "name": "GoLand",
@@ -309,7 +309,7 @@
    },
    {
     "name": "Opus",
-    "lines": 23264
+    "lines": 23491
    },
    {
     "name": "GPT",
