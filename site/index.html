@@ -84,7 +84,7 @@ addEventListener("error", e => { const b = document.getElementById("boot"); b.hi
 
 <script>
 /* ?gl=<flags> — диагностика рендера на капризных мобильных GPU (панель с инфой + переключатели):
-   1 — WebGL1, u — кости в uniform-массиве, а не во float-текстуре, b — модели без освещения,
+   1 — WebGL1, t — кости во float-текстуре (по умолчанию uniform-массив, если хватает uniform'ов), b — модели без освещения,
    f — модели односторонние, m — текстуры моделей без мипмапов, p — mediump вместо highp */
 const GLQ = new URLSearchParams(location.search).get('gl');
 const glf = c => GLQ != null && GLQ.includes(c);
@@ -479,9 +479,21 @@ function buildCharacter(mdl, { lightColor = [1, 1, 1] } = {}) {
 const $ = s => document.querySelector(s);
 const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const canvas = $('#view');
-if (glf('u')) {  // three решает про кости во float-текстуре при создании рендерера — прячем vertex-текстуры заранее
+/* Кости по умолчанию в uniform-массиве, а не во float-текстуре: на Adreno 650 в мобильном Firefox модели
+   с костями из текстуры выходят чёрными. three решает это при создании рендерера, поэтому vertex-текстуры
+   прячем от него заранее — но только если uniform'ов хватит на самый костлявый MDL (gopnik, 55 костей):
+   иначе three молча выключит скиннинг. */
+if (!glf('t')) {
   const get = canvas.getContext.bind(canvas);
-  canvas.getContext = (...a) => { const gl = get(...a); if (gl && !gl.__u) { const p = gl.getParameter.bind(gl); gl.getParameter = k => k === gl.MAX_VERTEX_TEXTURE_IMAGE_UNITS ? 0 : p(k); gl.__u = 1; } return gl; };
+  canvas.getContext = (...a) => {
+    const gl = get(...a);
+    if (gl && !gl.__bones) {
+      const p = gl.getParameter.bind(gl);
+      if (p(gl.MAX_VERTEX_UNIFORM_VECTORS) >= 20 + 4 * 55) gl.getParameter = k => k === gl.MAX_VERTEX_TEXTURE_IMAGE_UNITS ? 0 : p(k);
+      gl.__bones = 1;
+    }
+    return gl;
+  };
 }
 const renderer = new THREE[glf('1') ? 'WebGL1Renderer' : 'WebGLRenderer']({ canvas, antialias: true, preserveDrawingBuffer: true, precision: glf('p') ? 'mediump' : 'highp' });
 if (GLQ != null) {
