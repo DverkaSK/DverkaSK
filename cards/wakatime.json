@@ -1,5 +1,5 @@
 {
- "updated": "2026-09-27T21:00:13Z",
+ "updated": "2026-09-28T04:08:34Z",
  "week": {
   "ai_lines": 5651,
   "human_lines": 16397,
@@ -26,22 +26,22 @@
    },
    {
     "date": "2026-09-27",
-    "seconds": 30623
+    "seconds": 30926
    },
    {
     "date": "2026-09-28",
-    "seconds": 0
+    "seconds": 120
    }
   ]
  },
  "all_time": {
-  "total_seconds": 8255711,
-  "daily_average": 9082,
+  "total_seconds": 8258151,
+  "daily_average": 9075,
   "start": "2023-01-01T21:00:00Z",
   "languages": [
    {
     "name": "Java",
-    "seconds": 6341184
+    "seconds": 6341367
    },
    {
     "name": "SQL",
@@ -53,11 +53,11 @@
    },
    {
     "name": "XML",
-    "seconds": 130120
+    "seconds": 130132
    },
    {
     "name": "Groovy",
-    "seconds": 109727
+    "seconds": 109742
    },
    {
     "name": "JSON",
@@ -65,11 +65,11 @@
    },
    {
     "name": "Markdown",
-    "seconds": 105032
+    "seconds": 105433
    },
    {
     "name": "Python",
-    "seconds": 67179
+    "seconds": 67910
    },
    {
     "name": "Kotlin",
@@ -117,7 +117,7 @@
    },
    {
     "name": "Bash",
-    "seconds": 7391
+    "seconds": 7444
    },
    {
     "name": "CSS",
@@ -161,7 +161,7 @@
    },
    {
     "name": "Git Config",
-    "seconds": 1115
+    "seconds": 1116
    },
    {
     "name": "Dockerfile",
@@ -267,11 +267,11 @@
    },
    {
     "name": "Claude Code",
-    "seconds": 858704
+    "seconds": 863508
    },
    {
     "name": "Warp",
-    "seconds": 91998
+    "seconds": 97381
    },
    {
     "name": "GoLand",
@@ -309,7 +309,7 @@
    },
    {
     "name": "Opus",
-    "lines": 23745
+    "lines": 25721
    },
    {
     "name": "GPT",

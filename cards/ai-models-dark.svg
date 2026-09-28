@@ -4,13 +4,13 @@
   <text x="20" y="32" fill="#58a6ff" font-size="18" font-weight="600">AI Models</text>
   <text x="475" y="32" fill="#8b949e" font-size="12" text-anchor="end">lines · all time</text>
   <clipPath id="bar"><rect x="20" y="48" width="455" height="8" rx="4"/></clipPath>
-  <g clip-path="url(#bar)"><rect x="20" y="48" width="455" height="8" fill="#30363d"/><rect x="20.00" y="48" width="189.86" height="8" fill="#d97757"/><rect x="209.36" y="48" width="102.92" height="8" fill="#e8a26a"/><rect x="311.78" y="48" width="80.45" height="8" fill="#b4552d"/><rect x="391.73" y="48" width="78.15" height="8" fill="#10a37f"/><rect x="469.38" y="48" width="5.77" height="8" fill="#4285f4"/><rect x="474.64" y="48" width="0.86" height="8" fill="#84cc16"/></g>
+  <g clip-path="url(#bar)"><rect x="20" y="48" width="455" height="8" fill="#30363d"/><rect x="20.00" y="48" width="187.13" height="8" fill="#d97757"/><rect x="206.63" y="48" width="101.44" height="8" fill="#e8a26a"/><rect x="307.58" y="48" width="85.85" height="8" fill="#b4552d"/><rect x="392.93" y="48" width="77.03" height="8" fill="#10a37f"/><rect x="469.46" y="48" width="5.69" height="8" fill="#4285f4"/><rect x="474.65" y="48" width="0.85" height="8" fill="#84cc16"/></g>
   <circle cx="25" cy="80" r="5" fill="#d97757"/>
   <text x="36" y="84" fill="#c9d1d9" font-size="12">Claude <tspan fill="#8b949e">56.2K lines</tspan></text>
   <circle cx="262" cy="80" r="5" fill="#e8a26a"/>
   <text x="273" y="84" fill="#c9d1d9" font-size="12">Sonnet <tspan fill="#8b949e">30.4K lines</tspan></text>
   <circle cx="25" cy="104" r="5" fill="#b4552d"/>
-  <text x="36" y="108" fill="#c9d1d9" font-size="12">Opus <tspan fill="#8b949e">23.7K lines</tspan></text>
+  <text x="36" y="108" fill="#c9d1d9" font-size="12">Opus <tspan fill="#8b949e">25.7K lines</tspan></text>
   <circle cx="262" cy="104" r="5" fill="#10a37f"/>
   <text x="273" y="108" fill="#c9d1d9" font-size="12">GPT <tspan fill="#8b949e">23.1K lines</tspan></text>
   <circle cx="25" cy="128" r="5" fill="#4285f4"/>
