@@ -1,5 +1,5 @@
 {
- "updated": "2026-09-29T21:58:02Z",
+ "updated": "2026-09-30T04:25:26Z",
  "week": {
   "ai_lines": 4024,
   "human_lines": 16506,
@@ -35,13 +35,13 @@
   ]
  },
  "all_time": {
-  "total_seconds": 8259487,
-  "daily_average": 9066,
+  "total_seconds": 8260175,
+  "daily_average": 9057,
   "start": "2023-01-01T21:00:00Z",
   "languages": [
    {
     "name": "Java",
-    "seconds": 6342119
+    "seconds": 6342743
    },
    {
     "name": "SQL",
@@ -61,11 +61,11 @@
    },
    {
     "name": "JSON",
-    "seconds": 105957
+    "seconds": 106001
    },
    {
     "name": "Markdown",
-    "seconds": 105433
+    "seconds": 105452
    },
    {
     "name": "Python",
@@ -263,15 +263,15 @@
   "editors": [
    {
     "name": "IntelliJ IDEA",
-    "seconds": 7602706
+    "seconds": 7602860
    },
    {
     "name": "Claude Code",
-    "seconds": 870100
+    "seconds": 872343
    },
    {
     "name": "Warp",
-    "seconds": 100723
+    "seconds": 101985
    },
    {
     "name": "GoLand",
@@ -309,7 +309,7 @@
    },
    {
     "name": "Opus",
-    "lines": 26664
+    "lines": 26923
    },
    {
     "name": "GPT",
