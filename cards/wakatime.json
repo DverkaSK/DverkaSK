@@ -1,13 +1,9 @@
 {
- "updated": "2026-10-01T12:36:26Z",
+ "updated": "2026-10-01T22:25:12Z",
  "week": {
-  "ai_lines": 3780,
-  "human_lines": 16562,
+  "ai_lines": 3900,
+  "human_lines": 16615,
   "days": [
-   {
-    "date": "2026-09-25",
-    "seconds": 2596
-   },
    {
     "date": "2026-09-26",
     "seconds": 26174
@@ -30,26 +26,30 @@
    },
    {
     "date": "2026-10-01",
-    "seconds": 18107
+    "seconds": 39337
+   },
+   {
+    "date": "2026-10-02",
+    "seconds": 0
    }
   ]
  },
  "all_time": {
-  "total_seconds": 8260284,
-  "daily_average": 9047,
+  "total_seconds": 8262306,
+  "daily_average": 9040,
   "start": "2023-01-01T21:00:00Z",
   "languages": [
    {
     "name": "Java",
-    "seconds": 6342771
+    "seconds": 6343279
    },
    {
     "name": "SQL",
-    "seconds": 481389
+    "seconds": 481417
    },
    {
     "name": "YAML",
-    "seconds": 405326
+    "seconds": 405632
    },
    {
     "name": "XML",
@@ -57,15 +57,15 @@
    },
    {
     "name": "Groovy",
-    "seconds": 109742
+    "seconds": 109967
    },
    {
     "name": "JSON",
-    "seconds": 106001
+    "seconds": 106034
    },
    {
     "name": "Markdown",
-    "seconds": 105452
+    "seconds": 105826
    },
    {
     "name": "Python",
@@ -81,7 +81,7 @@
    },
    {
     "name": "Gradle",
-    "seconds": 58347
+    "seconds": 58563
    },
    {
     "name": "HTML",
@@ -109,7 +109,7 @@
    },
    {
     "name": "JavaScript",
-    "seconds": 12671
+    "seconds": 12993
    },
    {
     "name": "Properties",
@@ -117,7 +117,7 @@
    },
    {
     "name": "Bash",
-    "seconds": 7455
+    "seconds": 7460
    },
    {
     "name": "CSS",
@@ -125,7 +125,7 @@
    },
    {
     "name": "TOML",
-    "seconds": 4536
+    "seconds": 4542
    },
    {
     "name": "C#",
@@ -263,15 +263,15 @@
   "editors": [
    {
     "name": "IntelliJ IDEA",
-    "seconds": 7602860
+    "seconds": 7603519
    },
    {
     "name": "Claude Code",
-    "seconds": 874624
+    "seconds": 881157
    },
    {
     "name": "Warp",
-    "seconds": 103108
+    "seconds": 110839
    },
    {
     "name": "GoLand",
@@ -309,7 +309,7 @@
    },
    {
     "name": "Opus",
-    "lines": 27214
+    "lines": 27391
    },
    {
     "name": "GPT",
