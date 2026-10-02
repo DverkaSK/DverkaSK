@@ -1,13 +1,9 @@
 {
- "updated": "2026-10-02T12:01:05Z",
+ "updated": "2026-10-02T21:54:59Z",
  "week": {
-  "ai_lines": 4404,
-  "human_lines": 16615,
+  "ai_lines": 4915,
+  "human_lines": 513,
   "days": [
-   {
-    "date": "2026-09-26",
-    "seconds": 26174
-   },
    {
     "date": "2026-09-27",
     "seconds": 30926
@@ -30,13 +26,17 @@
    },
    {
     "date": "2026-10-02",
-    "seconds": 13578
+    "seconds": 31917
+   },
+   {
+    "date": "2026-10-03",
+    "seconds": 3173
    }
   ]
  },
  "all_time": {
-  "total_seconds": 8262306,
-  "daily_average": 9040,
+  "total_seconds": 8265428,
+  "daily_average": 9033,
   "start": "2023-01-01T21:00:00Z",
   "languages": [
    {
@@ -61,15 +61,15 @@
    },
    {
     "name": "JSON",
-    "seconds": 106034
+    "seconds": 106059
    },
    {
     "name": "Markdown",
-    "seconds": 105826
+    "seconds": 105904
    },
    {
     "name": "Python",
-    "seconds": 68095
+    "seconds": 68425
    },
    {
     "name": "Kotlin",
@@ -109,7 +109,7 @@
    },
    {
     "name": "JavaScript",
-    "seconds": 12993
+    "seconds": 12998
    },
    {
     "name": "Properties",
@@ -117,7 +117,7 @@
    },
    {
     "name": "Bash",
-    "seconds": 7460
+    "seconds": 7551
    },
    {
     "name": "CSS",
@@ -267,11 +267,11 @@
    },
    {
     "name": "Claude Code",
-    "seconds": 881157
+    "seconds": 889862
    },
    {
     "name": "Warp",
-    "seconds": 110839
+    "seconds": 115772
    },
    {
     "name": "GoLand",
@@ -309,7 +309,7 @@
    },
    {
     "name": "Opus",
-    "lines": 27391
+    "lines": 28395
    },
    {
     "name": "GPT",
