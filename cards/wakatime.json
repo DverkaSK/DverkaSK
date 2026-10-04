@@ -1,13 +1,9 @@
 {
- "updated": "2026-10-03T20:41:28Z",
+ "updated": "2026-10-04T04:43:27Z",
  "week": {
-  "ai_lines": 5673,
-  "human_lines": 524,
+  "ai_lines": 3952,
+  "human_lines": 522,
   "days": [
-   {
-    "date": "2026-09-27",
-    "seconds": 30926
-   },
    {
     "date": "2026-09-28",
     "seconds": 27640
@@ -30,13 +26,17 @@
    },
    {
     "date": "2026-10-03",
-    "seconds": 44171
+    "seconds": 45459
+   },
+   {
+    "date": "2026-10-04",
+    "seconds": 9645
    }
   ]
  },
  "all_time": {
-  "total_seconds": 8265428,
-  "daily_average": 9033,
+  "total_seconds": 8272857,
+  "daily_average": 9032,
   "start": "2023-01-01T21:00:00Z",
   "languages": [
    {
@@ -53,23 +53,23 @@
    },
    {
     "name": "XML",
-    "seconds": 130132
+    "seconds": 130139
    },
    {
     "name": "Groovy",
     "seconds": 109967
    },
    {
-    "name": "JSON",
-    "seconds": 106059
+    "name": "Markdown",
+    "seconds": 106340
    },
    {
-    "name": "Markdown",
-    "seconds": 105904
+    "name": "JSON",
+    "seconds": 106068
    },
    {
     "name": "Python",
-    "seconds": 68425
+    "seconds": 69132
    },
    {
     "name": "Kotlin",
@@ -89,7 +89,7 @@
    },
    {
     "name": "TypeScript",
-    "seconds": 36828
+    "seconds": 36878
    },
    {
     "name": "C++",
@@ -141,7 +141,7 @@
    },
    {
     "name": "PowerShell",
-    "seconds": 2680
+    "seconds": 2697
    },
    {
     "name": "Shell Script",
@@ -267,11 +267,11 @@
    },
    {
     "name": "Claude Code",
-    "seconds": 889862
+    "seconds": 903464
    },
    {
     "name": "Warp",
-    "seconds": 115772
+    "seconds": 118058
    },
    {
     "name": "GoLand",
@@ -309,7 +309,7 @@
    },
    {
     "name": "Opus",
-    "lines": 28395
+    "lines": 29418
    },
    {
     "name": "GPT",
