@@ -1,13 +1,9 @@
 {
- "updated": "2026-10-05T13:51:12Z",
+ "updated": "2026-10-05T23:49:29Z",
  "week": {
-  "ai_lines": 3640,
-  "human_lines": 499,
+  "ai_lines": 3381,
+  "human_lines": 482,
   "days": [
-   {
-    "date": "2026-09-29",
-    "seconds": 22199
-   },
    {
     "date": "2026-09-30",
     "seconds": 22458
@@ -30,22 +26,26 @@
    },
    {
     "date": "2026-10-05",
-    "seconds": 19082
+    "seconds": 25150
+   },
+   {
+    "date": "2026-10-06",
+    "seconds": 0
    }
   ]
  },
  "all_time": {
-  "total_seconds": 8275227,
-  "daily_average": 9024,
+  "total_seconds": 8276239,
+  "daily_average": 9016,
   "start": "2023-01-01T21:00:00Z",
   "languages": [
    {
     "name": "Java",
-    "seconds": 6343279
+    "seconds": 6343593
    },
    {
     "name": "SQL",
-    "seconds": 481417
+    "seconds": 481419
    },
    {
     "name": "YAML",
@@ -61,7 +61,7 @@
    },
    {
     "name": "Markdown",
-    "seconds": 106359
+    "seconds": 106648
    },
    {
     "name": "JSON",
@@ -69,7 +69,7 @@
    },
    {
     "name": "Python",
-    "seconds": 69330
+    "seconds": 69471
    },
    {
     "name": "Kotlin",
@@ -141,7 +141,7 @@
    },
    {
     "name": "PowerShell",
-    "seconds": 2725
+    "seconds": 2847
    },
    {
     "name": "Shell Script",
@@ -221,7 +221,7 @@
    },
    {
     "name": "CSV",
-    "seconds": 163
+    "seconds": 191
    },
    {
     "name": "CSV/TSV",
@@ -263,15 +263,15 @@
   "editors": [
    {
     "name": "IntelliJ IDEA",
-    "seconds": 7603519
+    "seconds": 7603705
    },
    {
     "name": "Claude Code",
-    "seconds": 915356
+    "seconds": 920834
    },
    {
     "name": "Warp",
-    "seconds": 122844
+    "seconds": 125971
    },
    {
     "name": "GoLand",
@@ -309,7 +309,7 @@
    },
    {
     "name": "Opus",
-    "lines": 29673
+    "lines": 30304
    },
    {
     "name": "GPT",
