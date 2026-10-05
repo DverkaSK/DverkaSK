@@ -1,13 +1,9 @@
 {
- "updated": "2026-10-04T20:57:20Z",
+ "updated": "2026-10-05T04:31:39Z",
  "week": {
-  "ai_lines": 3952,
-  "human_lines": 522,
+  "ai_lines": 3414,
+  "human_lines": 430,
   "days": [
-   {
-    "date": "2026-09-28",
-    "seconds": 27640
-   },
    {
     "date": "2026-09-29",
     "seconds": 22199
@@ -30,13 +26,17 @@
    },
    {
     "date": "2026-10-04",
-    "seconds": 29930
+    "seconds": 30075
+   },
+   {
+    "date": "2026-10-05",
+    "seconds": 1548
    }
   ]
  },
  "all_time": {
-  "total_seconds": 8272857,
-  "daily_average": 9032,
+  "total_seconds": 8275227,
+  "daily_average": 9024,
   "start": "2023-01-01T21:00:00Z",
   "languages": [
    {
@@ -61,15 +61,15 @@
    },
    {
     "name": "Markdown",
-    "seconds": 106340
+    "seconds": 106359
    },
    {
     "name": "JSON",
-    "seconds": 106068
+    "seconds": 106088
    },
    {
     "name": "Python",
-    "seconds": 69132
+    "seconds": 69330
    },
    {
     "name": "Kotlin",
@@ -141,7 +141,7 @@
    },
    {
     "name": "PowerShell",
-    "seconds": 2697
+    "seconds": 2725
    },
    {
     "name": "Shell Script",
@@ -169,7 +169,7 @@
    },
    {
     "name": "Batchfile",
-    "seconds": 1060
+    "seconds": 1086
    },
    {
     "name": "go.mod",
@@ -267,11 +267,11 @@
    },
    {
     "name": "Claude Code",
-    "seconds": 903464
+    "seconds": 915356
    },
    {
     "name": "Warp",
-    "seconds": 118058
+    "seconds": 122844
    },
    {
     "name": "GoLand",
@@ -309,7 +309,7 @@
    },
    {
     "name": "Opus",
-    "lines": 29418
+    "lines": 29673
    },
    {
     "name": "GPT",

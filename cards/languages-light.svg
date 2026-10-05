@@ -4,7 +4,7 @@
   <text x="20" y="32" fill="#0969da" font-size="18" font-weight="600">Languages</text>
   <text x="475" y="32" fill="#656d76" font-size="12" text-anchor="end">all time</text>
   <clipPath id="bar"><rect x="20" y="48" width="455" height="8" rx="4"/></clipPath>
-  <g clip-path="url(#bar)"><rect x="20" y="48" width="455" height="8" fill="#d0d7de"/><rect x="20.00" y="48" width="352.75" height="8" fill="#b07219"/><rect x="372.25" y="48" width="27.23" height="8" fill="#e38c00"/><rect x="398.98" y="48" width="23.03" height="8" fill="#cb171e"/><rect x="421.51" y="48" width="7.73" height="8" fill="#0060ac"/><rect x="428.73" y="48" width="6.61" height="8" fill="#4298b8"/><rect x="434.84" y="48" width="6.41" height="8" fill="#083fa1"/><rect x="440.74" y="48" width="6.39" height="8" fill="#292929"/><rect x="446.63" y="48" width="4.34" height="8" fill="#3572A5"/><rect x="450.47" y="48" width="4.23" height="8" fill="#A97BFF"/><rect x="454.20" y="48" width="3.90" height="8" fill="#00ADD8"/></g>
+  <g clip-path="url(#bar)"><rect x="20" y="48" width="455" height="8" fill="#d0d7de"/><rect x="20.00" y="48" width="352.74" height="8" fill="#b07219"/><rect x="372.24" y="48" width="27.23" height="8" fill="#e38c00"/><rect x="398.97" y="48" width="23.02" height="8" fill="#cb171e"/><rect x="421.49" y="48" width="7.73" height="8" fill="#0060ac"/><rect x="428.72" y="48" width="6.61" height="8" fill="#4298b8"/><rect x="434.82" y="48" width="6.41" height="8" fill="#083fa1"/><rect x="440.73" y="48" width="6.39" height="8" fill="#292929"/><rect x="446.62" y="48" width="4.35" height="8" fill="#3572A5"/><rect x="450.47" y="48" width="4.23" height="8" fill="#A97BFF"/><rect x="454.20" y="48" width="3.90" height="8" fill="#00ADD8"/></g>
   <circle cx="25" cy="80" r="5" fill="#b07219"/>
   <text x="36" y="84" fill="#1f2328" font-size="12">Java <tspan fill="#656d76">1,762h 1m</tspan></text>
   <circle cx="262" cy="80" r="5" fill="#e38c00"/>
@@ -18,9 +18,9 @@
   <circle cx="262" cy="128" r="5" fill="#083fa1"/>
   <text x="273" y="132" fill="#1f2328" font-size="12">Markdown <tspan fill="#656d76">29h 32m</tspan></text>
   <circle cx="25" cy="152" r="5" fill="#292929"/>
-  <text x="36" y="156" fill="#1f2328" font-size="12">JSON <tspan fill="#656d76">29h 27m</tspan></text>
+  <text x="36" y="156" fill="#1f2328" font-size="12">JSON <tspan fill="#656d76">29h 28m</tspan></text>
   <circle cx="262" cy="152" r="5" fill="#3572A5"/>
-  <text x="273" y="156" fill="#1f2328" font-size="12">Python <tspan fill="#656d76">19h 12m</tspan></text>
+  <text x="273" y="156" fill="#1f2328" font-size="12">Python <tspan fill="#656d76">19h 15m</tspan></text>
   <circle cx="25" cy="176" r="5" fill="#A97BFF"/>
   <text x="36" y="180" fill="#1f2328" font-size="12">Kotlin <tspan fill="#656d76">18h 38m</tspan></text>
   <circle cx="262" cy="176" r="5" fill="#00ADD8"/>
