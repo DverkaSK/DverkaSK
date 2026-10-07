@@ -1,13 +1,9 @@
 {
- "updated": "2026-10-07T12:48:32Z",
+ "updated": "2026-10-07T22:50:10Z",
  "week": {
-  "ai_lines": 3119,
-  "human_lines": 482,
+  "ai_lines": 2967,
+  "human_lines": 373,
   "days": [
-   {
-    "date": "2026-10-01",
-    "seconds": 39372
-   },
    {
     "date": "2026-10-02",
     "seconds": 31917
@@ -26,17 +22,21 @@
    },
    {
     "date": "2026-10-06",
-    "seconds": 24121
+    "seconds": 24202
    },
    {
     "date": "2026-10-07",
-    "seconds": 0
+    "seconds": 2947
+   },
+   {
+    "date": "2026-10-08",
+    "seconds": 2974
    }
   ]
  },
  "all_time": {
-  "total_seconds": 8276931,
-  "daily_average": 9006,
+  "total_seconds": 8277117,
+  "daily_average": 8997,
   "start": "2023-01-01T21:00:00Z",
   "languages": [
    {
@@ -132,12 +132,12 @@
     "seconds": 4178
    },
    {
-    "name": "Nginx configuration file",
-    "seconds": 2945
+    "name": "PowerShell",
+    "seconds": 2980
    },
    {
-    "name": "PowerShell",
-    "seconds": 2865
+    "name": "Nginx configuration file",
+    "seconds": 2945
    },
    {
     "name": "Groff",
@@ -232,11 +232,11 @@
     "seconds": 142
    },
    {
-    "name": "TikZ picture file",
-    "seconds": 132
+    "name": "INI",
+    "seconds": 141
    },
    {
-    "name": "INI",
+    "name": "TikZ picture file",
     "seconds": 132
    },
    {
@@ -267,11 +267,11 @@
    },
    {
     "name": "Claude Code",
-    "seconds": 923092
+    "seconds": 923432
    },
    {
     "name": "Warp",
-    "seconds": 128750
+    "seconds": 129113
    },
    {
     "name": "GoLand",
@@ -309,7 +309,7 @@
    },
    {
     "name": "Opus",
-    "lines": 30333
+    "lines": 30357
    },
    {
     "name": "GPT",
