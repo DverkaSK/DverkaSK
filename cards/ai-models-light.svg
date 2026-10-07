@@ -4,7 +4,7 @@
   <text x="20" y="32" fill="#0969da" font-size="18" font-weight="600">AI Models</text>
   <text x="475" y="32" fill="#656d76" font-size="12" text-anchor="end">lines · all time</text>
   <clipPath id="bar"><rect x="20" y="48" width="455" height="8" rx="4"/></clipPath>
-  <g clip-path="url(#bar)"><rect x="20" y="48" width="455" height="8" fill="#d0d7de"/><rect x="20.00" y="48" width="181.10" height="8" fill="#d97757"/><rect x="200.60" y="48" width="98.18" height="8" fill="#e8a26a"/><rect x="298.28" y="48" width="97.81" height="8" fill="#b4552d"/><rect x="395.59" y="48" width="74.55" height="8" fill="#10a37f"/><rect x="469.64" y="48" width="5.52" height="8" fill="#4285f4"/><rect x="474.66" y="48" width="0.84" height="8" fill="#84cc16"/></g>
+  <g clip-path="url(#bar)"><rect x="20" y="48" width="455" height="8" fill="#d0d7de"/><rect x="20.00" y="48" width="181.06" height="8" fill="#d97757"/><rect x="200.56" y="48" width="98.16" height="8" fill="#e8a26a"/><rect x="298.22" y="48" width="97.88" height="8" fill="#b4552d"/><rect x="395.60" y="48" width="74.54" height="8" fill="#10a37f"/><rect x="469.64" y="48" width="5.52" height="8" fill="#4285f4"/><rect x="474.66" y="48" width="0.84" height="8" fill="#84cc16"/></g>
   <circle cx="25" cy="80" r="5" fill="#d97757"/>
   <text x="36" y="84" fill="#1f2328" font-size="12">Claude <tspan fill="#656d76">56.2K lines</tspan></text>
   <circle cx="262" cy="80" r="5" fill="#e8a26a"/>

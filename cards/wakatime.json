@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-06T22:25:41Z",
+ "updated": "2026-10-07T04:46:01Z",
  "week": {
   "ai_lines": 3119,
   "human_lines": 482,
@@ -35,13 +35,13 @@
   ]
  },
  "all_time": {
-  "total_seconds": 8276239,
-  "daily_average": 9016,
+  "total_seconds": 8276931,
+  "daily_average": 9006,
   "start": "2023-01-01T21:00:00Z",
   "languages": [
    {
     "name": "Java",
-    "seconds": 6343593
+    "seconds": 6343607
    },
    {
     "name": "SQL",
@@ -49,7 +49,7 @@
    },
    {
     "name": "YAML",
-    "seconds": 405632
+    "seconds": 405687
    },
    {
     "name": "XML",
@@ -61,7 +61,7 @@
    },
    {
     "name": "Markdown",
-    "seconds": 106648
+    "seconds": 107034
    },
    {
     "name": "JSON",
@@ -69,7 +69,7 @@
    },
    {
     "name": "Python",
-    "seconds": 69471
+    "seconds": 69480
    },
    {
     "name": "Kotlin",
@@ -121,7 +121,7 @@
    },
    {
     "name": "CSS",
-    "seconds": 5948
+    "seconds": 5964
    },
    {
     "name": "TOML",
@@ -136,12 +136,12 @@
     "seconds": 2945
    },
    {
-    "name": "Groff",
-    "seconds": 2851
+    "name": "PowerShell",
+    "seconds": 2865
    },
    {
-    "name": "PowerShell",
-    "seconds": 2847
+    "name": "Groff",
+    "seconds": 2851
    },
    {
     "name": "Shell Script",
@@ -263,15 +263,15 @@
   "editors": [
    {
     "name": "IntelliJ IDEA",
-    "seconds": 7603705
+    "seconds": 7603764
    },
    {
     "name": "Claude Code",
-    "seconds": 920834
+    "seconds": 923092
    },
    {
     "name": "Warp",
-    "seconds": 125971
+    "seconds": 128750
    },
    {
     "name": "GoLand",
@@ -309,7 +309,7 @@
    },
    {
     "name": "Opus",
-    "lines": 30304
+    "lines": 30333
    },
    {
     "name": "GPT",
