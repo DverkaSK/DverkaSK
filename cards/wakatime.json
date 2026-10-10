@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-09T22:22:09Z",
+ "updated": "2026-10-10T04:44:55Z",
  "week": {
   "ai_lines": 2155,
   "human_lines": 414,
@@ -30,18 +30,18 @@
    },
    {
     "date": "2026-10-10",
-    "seconds": 1029
+    "seconds": 1852
    }
   ]
  },
  "all_time": {
-  "total_seconds": 8277149,
-  "daily_average": 8987,
+  "total_seconds": 8278471,
+  "daily_average": 8979,
   "start": "2023-01-01T21:00:00Z",
   "languages": [
    {
     "name": "Java",
-    "seconds": 6343607
+    "seconds": 6344747
    },
    {
     "name": "SQL",
@@ -57,19 +57,19 @@
    },
    {
     "name": "Groovy",
-    "seconds": 109967
+    "seconds": 109993
    },
    {
     "name": "Markdown",
-    "seconds": 107034
+    "seconds": 107048
    },
    {
     "name": "JSON",
-    "seconds": 106088
+    "seconds": 106141
    },
    {
     "name": "Python",
-    "seconds": 69480
+    "seconds": 69482
    },
    {
     "name": "Kotlin",
@@ -109,7 +109,7 @@
    },
    {
     "name": "JavaScript",
-    "seconds": 12998
+    "seconds": 13004
    },
    {
     "name": "Properties",
@@ -133,7 +133,7 @@
    },
    {
     "name": "PowerShell",
-    "seconds": 3002
+    "seconds": 3027
    },
    {
     "name": "Nginx configuration file",
@@ -267,11 +267,11 @@
    },
    {
     "name": "Claude Code",
-    "seconds": 924878
+    "seconds": 931366
    },
    {
     "name": "Warp",
-    "seconds": 130083
+    "seconds": 132682
    },
    {
     "name": "GoLand",
@@ -304,12 +304,12 @@
     "lines": 56241
    },
    {
-    "name": "Sonnet",
-    "lines": 30419
+    "name": "Opus",
+    "lines": 31573
    },
    {
-    "name": "Opus",
-    "lines": 30358
+    "name": "Sonnet",
+    "lines": 30419
    },
    {
     "name": "GPT",
