@@ -1,13 +1,9 @@
 {
- "updated": "2026-10-12T14:38:59Z",
+ "updated": "2026-10-13T00:14:52Z",
  "week": {
-  "ai_lines": 3415,
-  "human_lines": 355,
+  "ai_lines": 4193,
+  "human_lines": 479,
   "days": [
-   {
-    "date": "2026-10-06",
-    "seconds": 24202
-   },
    {
     "date": "2026-10-07",
     "seconds": 2947
@@ -30,18 +26,22 @@
    },
    {
     "date": "2026-10-12",
-    "seconds": 21483
+    "seconds": 34477
+   },
+   {
+    "date": "2026-10-13",
+    "seconds": 874
    }
   ]
  },
  "all_time": {
-  "total_seconds": 8281119,
-  "daily_average": 8962,
+  "total_seconds": 8282642,
+  "daily_average": 8954,
   "start": "2023-01-01T21:00:00Z",
   "languages": [
    {
     "name": "Java",
-    "seconds": 6344831
+    "seconds": 6345264
    },
    {
     "name": "SQL",
@@ -49,11 +49,11 @@
    },
    {
     "name": "YAML",
-    "seconds": 405687
+    "seconds": 405688
    },
    {
     "name": "XML",
-    "seconds": 130139
+    "seconds": 130140
    },
    {
     "name": "Groovy",
@@ -61,7 +61,7 @@
    },
    {
     "name": "Markdown",
-    "seconds": 107048
+    "seconds": 107956
    },
    {
     "name": "JSON",
@@ -73,7 +73,7 @@
    },
    {
     "name": "Kotlin",
-    "seconds": 67594
+    "seconds": 67596
    },
    {
     "name": "Go",
@@ -109,7 +109,7 @@
    },
    {
     "name": "JavaScript",
-    "seconds": 13004
+    "seconds": 13084
    },
    {
     "name": "Properties",
@@ -125,7 +125,7 @@
    },
    {
     "name": "TOML",
-    "seconds": 4542
+    "seconds": 4543
    },
    {
     "name": "C#",
@@ -133,7 +133,7 @@
    },
    {
     "name": "PowerShell",
-    "seconds": 3027
+    "seconds": 3078
    },
    {
     "name": "Nginx configuration file",
@@ -263,15 +263,15 @@
   "editors": [
    {
     "name": "IntelliJ IDEA",
-    "seconds": 7603764
+    "seconds": 7604045
    },
    {
     "name": "Claude Code",
-    "seconds": 939135
+    "seconds": 944845
    },
    {
     "name": "Warp",
-    "seconds": 136956
+    "seconds": 143388
    },
    {
     "name": "GoLand",
@@ -305,7 +305,7 @@
    },
    {
     "name": "Opus",
-    "lines": 33629
+    "lines": 33727
    },
    {
     "name": "Sonnet",
