@@ -1,13 +1,9 @@
 {
- "updated": "2026-10-14T16:42:16Z",
+ "updated": "2026-10-14T21:20:51Z",
  "week": {
-  "ai_lines": 5969,
+  "ai_lines": 5968,
   "human_lines": 482,
   "days": [
-   {
-    "date": "2026-10-08",
-    "seconds": 21119
-   },
    {
     "date": "2026-10-09",
     "seconds": 18376
@@ -26,17 +22,21 @@
    },
    {
     "date": "2026-10-13",
-    "seconds": 31431
+    "seconds": 31457
    },
    {
     "date": "2026-10-14",
-    "seconds": 0
+    "seconds": 12508
+   },
+   {
+    "date": "2026-10-15",
+    "seconds": 715
    }
   ]
  },
  "all_time": {
   "total_seconds": 8284198,
-  "daily_average": 8946,
+  "daily_average": 8937,
   "start": "2023-01-01T21:00:00Z",
   "languages": [
    {
