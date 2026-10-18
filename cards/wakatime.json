@@ -1,13 +1,9 @@
 {
- "updated": "2026-10-17T20:14:46Z",
+ "updated": "2026-10-18T03:26:23Z",
  "week": {
-  "ai_lines": 6711,
-  "human_lines": 555,
+  "ai_lines": 4773,
+  "human_lines": 552,
   "days": [
-   {
-    "date": "2026-10-11",
-    "seconds": 32296
-   },
    {
     "date": "2026-10-12",
     "seconds": 34477
@@ -30,13 +26,17 @@
    },
    {
     "date": "2026-10-17",
-    "seconds": 20940
+    "seconds": 22240
+   },
+   {
+    "date": "2026-10-18",
+    "seconds": 6707
    }
   ]
  },
  "all_time": {
-  "total_seconds": 8287803,
-  "daily_average": 8921,
+  "total_seconds": 8290956,
+  "daily_average": 8915,
   "start": "2023-01-01T21:00:00Z",
   "languages": [
    {
@@ -61,7 +61,7 @@
    },
    {
     "name": "Markdown",
-    "seconds": 108248
+    "seconds": 108311
    },
    {
     "name": "JSON",
@@ -69,7 +69,7 @@
    },
    {
     "name": "Python",
-    "seconds": 70108
+    "seconds": 70766
    },
    {
     "name": "Kotlin",
@@ -85,7 +85,7 @@
    },
    {
     "name": "HTML",
-    "seconds": 50973
+    "seconds": 51163
    },
    {
     "name": "TypeScript",
@@ -125,7 +125,7 @@
    },
    {
     "name": "TOML",
-    "seconds": 4543
+    "seconds": 4548
    },
    {
     "name": "C#",
@@ -216,6 +216,10 @@
     "seconds": 311
    },
    {
+    "name": "Lua",
+    "seconds": 243
+   },
+   {
     "name": "Spring Boot Imports",
     "seconds": 192
    },
@@ -271,11 +275,11 @@
    },
    {
     "name": "Claude Code",
-    "seconds": 960505
+    "seconds": 964936
    },
    {
     "name": "Warp",
-    "seconds": 150682
+    "seconds": 154401
    },
    {
     "name": "GoLand",
@@ -309,7 +313,7 @@
    },
    {
     "name": "Opus",
-    "lines": 37156
+    "lines": 38339
    },
    {
     "name": "Sonnet",
