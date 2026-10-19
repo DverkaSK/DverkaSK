@@ -1,13 +1,9 @@
 {
- "updated": "2026-10-18T20:12:47Z",
+ "updated": "2026-10-19T03:37:47Z",
  "week": {
-  "ai_lines": 4773,
-  "human_lines": 554,
+  "ai_lines": 4675,
+  "human_lines": 547,
   "days": [
-   {
-    "date": "2026-10-12",
-    "seconds": 34477
-   },
    {
     "date": "2026-10-13",
     "seconds": 31457
@@ -30,13 +26,17 @@
    },
    {
     "date": "2026-10-18",
-    "seconds": 24113
+    "seconds": 26942
+   },
+   {
+    "date": "2026-10-19",
+    "seconds": 2876
    }
   ]
  },
  "all_time": {
-  "total_seconds": 8290956,
-  "daily_average": 8915,
+  "total_seconds": 8293445,
+  "daily_average": 8908,
   "start": "2023-01-01T21:00:00Z",
   "languages": [
    {
@@ -61,7 +61,7 @@
    },
    {
     "name": "Markdown",
-    "seconds": 108311
+    "seconds": 108345
    },
    {
     "name": "JSON",
@@ -69,7 +69,7 @@
    },
    {
     "name": "Python",
-    "seconds": 70766
+    "seconds": 70833
    },
    {
     "name": "Kotlin",
@@ -275,11 +275,11 @@
    },
    {
     "name": "Claude Code",
-    "seconds": 964936
+    "seconds": 969001
    },
    {
     "name": "Warp",
-    "seconds": 154401
+    "seconds": 163878
    },
    {
     "name": "GoLand",
@@ -313,7 +313,7 @@
    },
    {
     "name": "Opus",
-    "lines": 38339
+    "lines": 38402
    },
    {
     "name": "Sonnet",
