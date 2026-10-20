@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-19T22:04:10Z",
+ "updated": "2026-10-20T03:48:35Z",
  "week": {
   "ai_lines": 2104,
   "human_lines": 593,
@@ -30,18 +30,18 @@
    },
    {
     "date": "2026-10-20",
-    "seconds": 444
+    "seconds": 1687
    }
   ]
  },
  "all_time": {
-  "total_seconds": 8293445,
-  "daily_average": 8908,
+  "total_seconds": 8294912,
+  "daily_average": 8900,
   "start": "2023-01-01T21:00:00Z",
   "languages": [
    {
     "name": "Java",
-    "seconds": 6345934
+    "seconds": 6346683
    },
    {
     "name": "SQL",
@@ -49,7 +49,7 @@
    },
    {
     "name": "YAML",
-    "seconds": 405688
+    "seconds": 405709
    },
    {
     "name": "XML",
@@ -61,7 +61,7 @@
    },
    {
     "name": "Markdown",
-    "seconds": 108345
+    "seconds": 108384
    },
    {
     "name": "JSON",
@@ -109,7 +109,7 @@
    },
    {
     "name": "JavaScript",
-    "seconds": 13873
+    "seconds": 13983
    },
    {
     "name": "Properties",
@@ -275,11 +275,11 @@
    },
    {
     "name": "Claude Code",
-    "seconds": 969001
+    "seconds": 971652
    },
    {
     "name": "Warp",
-    "seconds": 163878
+    "seconds": 167834
    },
    {
     "name": "GoLand",
@@ -313,7 +313,7 @@
    },
    {
     "name": "Opus",
-    "lines": 38402
+    "lines": 38430
    },
    {
     "name": "Sonnet",
