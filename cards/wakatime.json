@@ -1,13 +1,9 @@
 {
- "updated": "2026-10-22T16:45:54Z",
+ "updated": "2026-10-22T21:16:24Z",
  "week": {
   "ai_lines": 1423,
   "human_lines": 592,
   "days": [
-   {
-    "date": "2026-10-16",
-    "seconds": 7938
-   },
    {
     "date": "2026-10-17",
     "seconds": 22240
@@ -30,18 +26,22 @@
    },
    {
     "date": "2026-10-22",
-    "seconds": 20803
+    "seconds": 27230
+   },
+   {
+    "date": "2026-10-23",
+    "seconds": 647
    }
   ]
  },
  "all_time": {
-  "total_seconds": 8295682,
-  "daily_average": 8882,
+  "total_seconds": 8296177,
+  "daily_average": 8873,
   "start": "2023-01-01T21:00:00Z",
   "languages": [
    {
     "name": "Java",
-    "seconds": 6347154
+    "seconds": 6347333
    },
    {
     "name": "SQL",
@@ -275,11 +275,11 @@
    },
    {
     "name": "Claude Code",
-    "seconds": 977172
+    "seconds": 982278
    },
    {
     "name": "Warp",
-    "seconds": 171598
+    "seconds": 176992
    },
    {
     "name": "GoLand",
