@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-23T21:05:28Z",
+ "updated": "2026-10-24T03:37:48Z",
  "week": {
   "ai_lines": 368,
   "human_lines": 193,
@@ -30,13 +30,13 @@
    },
    {
     "date": "2026-10-24",
-    "seconds": 193
+    "seconds": 5600
    }
   ]
  },
  "all_time": {
-  "total_seconds": 8296177,
-  "daily_average": 8873,
+  "total_seconds": 8296207,
+  "daily_average": 8863,
   "start": "2023-01-01T21:00:00Z",
   "languages": [
    {
@@ -69,7 +69,7 @@
    },
    {
     "name": "Python",
-    "seconds": 70833
+    "seconds": 70864
    },
    {
     "name": "Kotlin",
@@ -275,11 +275,11 @@
    },
    {
     "name": "Claude Code",
-    "seconds": 982278
+    "seconds": 984327
    },
    {
     "name": "Warp",
-    "seconds": 176992
+    "seconds": 178362
    },
    {
     "name": "GoLand",
@@ -313,7 +313,7 @@
    },
    {
     "name": "Opus",
-    "lines": 38579
+    "lines": 38707
    },
    {
     "name": "Sonnet",

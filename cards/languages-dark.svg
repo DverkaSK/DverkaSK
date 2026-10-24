@@ -20,7 +20,7 @@
   <circle cx="25" cy="152" r="5" fill="#8b949e"/>
   <text x="36" y="156" fill="#c9d1d9" font-size="12">JSON <tspan fill="#8b949e">29h 29m</tspan></text>
   <circle cx="262" cy="152" r="5" fill="#3572A5"/>
-  <text x="273" y="156" fill="#c9d1d9" font-size="12">Python <tspan fill="#8b949e">19h 40m</tspan></text>
+  <text x="273" y="156" fill="#c9d1d9" font-size="12">Python <tspan fill="#8b949e">19h 41m</tspan></text>
   <circle cx="25" cy="176" r="5" fill="#A97BFF"/>
   <text x="36" y="180" fill="#c9d1d9" font-size="12">Kotlin <tspan fill="#8b949e">18h 46m</tspan></text>
   <circle cx="262" cy="176" r="5" fill="#00ADD8"/>
