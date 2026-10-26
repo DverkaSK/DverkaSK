@@ -1,13 +1,9 @@
 {
- "updated": "2026-10-26T12:24:30Z",
+ "updated": "2026-10-26T22:22:42Z",
  "week": {
-  "ai_lines": 1787,
-  "human_lines": 87,
+  "ai_lines": 1638,
+  "human_lines": 69,
   "days": [
-   {
-    "date": "2026-10-20",
-    "seconds": 32260
-   },
    {
     "date": "2026-10-21",
     "seconds": 6774
@@ -30,22 +26,26 @@
    },
    {
     "date": "2026-10-26",
-    "seconds": 17057
+    "seconds": 31475
+   },
+   {
+    "date": "2026-10-27",
+    "seconds": 988
    }
   ]
  },
  "all_time": {
-  "total_seconds": 8299291,
-  "daily_average": 8848,
+  "total_seconds": 8302053,
+  "daily_average": 8841,
   "start": "2023-01-01T21:00:00Z",
   "languages": [
    {
     "name": "Java",
-    "seconds": 6347333
+    "seconds": 6349231
    },
    {
     "name": "SQL",
-    "seconds": 481708
+    "seconds": 481744
    },
    {
     "name": "YAML",
@@ -61,15 +61,15 @@
    },
    {
     "name": "Markdown",
-    "seconds": 109046
+    "seconds": 109629
    },
    {
     "name": "JSON",
-    "seconds": 106141
+    "seconds": 106169
    },
    {
     "name": "Python",
-    "seconds": 70930
+    "seconds": 70932
    },
    {
     "name": "Kotlin",
@@ -271,15 +271,15 @@
   "editors": [
    {
     "name": "IntelliJ IDEA",
-    "seconds": 7604841
+    "seconds": 7606289
    },
    {
     "name": "Claude Code",
-    "seconds": 990898
+    "seconds": 995080
    },
    {
     "name": "Warp",
-    "seconds": 184758
+    "seconds": 189721
    },
    {
     "name": "GoLand",
@@ -313,7 +313,7 @@
    },
    {
     "name": "Opus",
-    "lines": 40125
+    "lines": 40217
    },
    {
     "name": "Sonnet",

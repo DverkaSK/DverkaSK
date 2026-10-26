@@ -4,11 +4,11 @@
   <text x="20" y="32" fill="#0969da" font-size="18" font-weight="600">Languages</text>
   <text x="475" y="32" fill="#656d76" font-size="12" text-anchor="end">all time</text>
   <clipPath id="bar"><rect x="20" y="48" width="455" height="8" rx="4"/></clipPath>
-  <g clip-path="url(#bar)"><rect x="20" y="48" width="455" height="8" fill="#d0d7de"/><rect x="20.00" y="48" width="352.41" height="8" fill="#b07219"/><rect x="371.91" y="48" width="27.21" height="8" fill="#e38c00"/><rect x="398.62" y="48" width="22.99" height="8" fill="#cb171e"/><rect x="421.11" y="48" width="7.72" height="8" fill="#0060ac"/><rect x="428.33" y="48" width="6.60" height="8" fill="#4298b8"/><rect x="434.43" y="48" width="6.55" height="8" fill="#083fa1"/><rect x="440.48" y="48" width="6.38" height="8" fill="#292929"/><rect x="446.36" y="48" width="4.43" height="8" fill="#3572A5"/><rect x="450.30" y="48" width="4.25" height="8" fill="#A97BFF"/><rect x="454.04" y="48" width="3.90" height="8" fill="#00ADD8"/></g>
+  <g clip-path="url(#bar)"><rect x="20" y="48" width="455" height="8" fill="#d0d7de"/><rect x="20.00" y="48" width="352.41" height="8" fill="#b07219"/><rect x="371.91" y="48" width="27.20" height="8" fill="#e38c00"/><rect x="398.61" y="48" width="22.99" height="8" fill="#cb171e"/><rect x="421.10" y="48" width="7.71" height="8" fill="#0060ac"/><rect x="428.31" y="48" width="6.60" height="8" fill="#4298b8"/><rect x="434.41" y="48" width="6.58" height="8" fill="#083fa1"/><rect x="440.49" y="48" width="6.38" height="8" fill="#292929"/><rect x="446.37" y="48" width="4.43" height="8" fill="#3572A5"/><rect x="450.30" y="48" width="4.25" height="8" fill="#A97BFF"/><rect x="454.05" y="48" width="3.90" height="8" fill="#00ADD8"/></g>
   <circle cx="25" cy="80" r="5" fill="#b07219"/>
-  <text x="36" y="84" fill="#1f2328" font-size="12">Java <tspan fill="#656d76">1,763h 8m</tspan></text>
+  <text x="36" y="84" fill="#1f2328" font-size="12">Java <tspan fill="#656d76">1,763h 40m</tspan></text>
   <circle cx="262" cy="80" r="5" fill="#e38c00"/>
-  <text x="273" y="84" fill="#1f2328" font-size="12">SQL <tspan fill="#656d76">133h 48m</tspan></text>
+  <text x="273" y="84" fill="#1f2328" font-size="12">SQL <tspan fill="#656d76">133h 49m</tspan></text>
   <circle cx="25" cy="104" r="5" fill="#cb171e"/>
   <text x="36" y="108" fill="#1f2328" font-size="12">YAML <tspan fill="#656d76">112h 41m</tspan></text>
   <circle cx="262" cy="104" r="5" fill="#0060ac"/>
@@ -16,7 +16,7 @@
   <circle cx="25" cy="128" r="5" fill="#4298b8"/>
   <text x="36" y="132" fill="#1f2328" font-size="12">Groovy <tspan fill="#656d76">30h 34m</tspan></text>
   <circle cx="262" cy="128" r="5" fill="#083fa1"/>
-  <text x="273" y="132" fill="#1f2328" font-size="12">Markdown <tspan fill="#656d76">30h 17m</tspan></text>
+  <text x="273" y="132" fill="#1f2328" font-size="12">Markdown <tspan fill="#656d76">30h 27m</tspan></text>
   <circle cx="25" cy="152" r="5" fill="#292929"/>
   <text x="36" y="156" fill="#1f2328" font-size="12">JSON <tspan fill="#656d76">29h 29m</tspan></text>
   <circle cx="262" cy="152" r="5" fill="#3572A5"/>
