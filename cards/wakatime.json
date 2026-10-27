@@ -1,13 +1,9 @@
 {
- "updated": "2026-10-27T17:36:50Z",
+ "updated": "2026-10-27T21:53:21Z",
  "week": {
   "ai_lines": 2173,
   "human_lines": 213,
   "days": [
-   {
-    "date": "2026-10-21",
-    "seconds": 6774
-   },
    {
     "date": "2026-10-22",
     "seconds": 27230
@@ -30,22 +26,26 @@
    },
    {
     "date": "2026-10-27",
-    "seconds": 27344
+    "seconds": 31397
+   },
+   {
+    "date": "2026-10-28",
+    "seconds": 464
    }
   ]
  },
  "all_time": {
-  "total_seconds": 8302053,
-  "daily_average": 8841,
+  "total_seconds": 8304376,
+  "daily_average": 8834,
   "start": "2023-01-01T21:00:00Z",
   "languages": [
    {
     "name": "Java",
-    "seconds": 6349231
+    "seconds": 6349595
    },
    {
     "name": "SQL",
-    "seconds": 481744
+    "seconds": 481776
    },
    {
     "name": "YAML",
@@ -56,12 +56,12 @@
     "seconds": 130140
    },
    {
-    "name": "Groovy",
-    "seconds": 110078
+    "name": "Markdown",
+    "seconds": 110414
    },
    {
-    "name": "Markdown",
-    "seconds": 109629
+    "name": "Groovy",
+    "seconds": 110123
    },
    {
     "name": "JSON",
@@ -69,7 +69,7 @@
    },
    {
     "name": "Python",
-    "seconds": 70932
+    "seconds": 71014
    },
    {
     "name": "Kotlin",
@@ -105,11 +105,11 @@
    },
    {
     "name": "Java Properties",
-    "seconds": 14997
+    "seconds": 15004
    },
    {
     "name": "JavaScript",
-    "seconds": 14111
+    "seconds": 14261
    },
    {
     "name": "Properties",
@@ -133,7 +133,7 @@
    },
    {
     "name": "PowerShell",
-    "seconds": 3078
+    "seconds": 3108
    },
    {
     "name": "Nginx configuration file",
@@ -161,7 +161,7 @@
    },
    {
     "name": "Git Config",
-    "seconds": 1120
+    "seconds": 1125
    },
    {
     "name": "Dockerfile",
@@ -275,11 +275,11 @@
    },
    {
     "name": "Claude Code",
-    "seconds": 995080
+    "seconds": 1003510
    },
    {
     "name": "Warp",
-    "seconds": 189721
+    "seconds": 193231
    },
    {
     "name": "GoLand",
@@ -313,7 +313,7 @@
    },
    {
     "name": "Opus",
-    "lines": 40217
+    "lines": 40752
    },
    {
     "name": "Sonnet",
