@@ -39,24 +39,15 @@
 </details>
 
 <details>
-<summary>🧰 Что я использую</summary>
+<summary>⚡ Быстрая установка</summary>
 
-<h3 align="LEFT">🧩 Скрипты для Tampermonkey</h3>
+**Tampermonkey:** [Chrome](https://chromewebstore.google.com/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo) / [Firefox](https://addons.mozilla.org/firefox/addon/tampermonkey/)<br>
+**Violentmonkey:** [Chrome](https://chromewebstore.google.com/detail/violentmonkey/jinjaccalgkegednnccohejagnlnfdag) / [Firefox](https://addons.mozilla.org/firefox/addon/violentmonkey/)
 
-Сначала поставьте [Tampermonkey](https://www.tampermonkey.net/) или [Violentmonkey](https://violentmonkey.github.io/). Ссылка "Установить" сразу открывает окно установки скрипта, обновления потом приходят сами.
+- **YouTube Menu Downloader**: [установить](https://raw.githubusercontent.com/DverkaSK/youtube-menu-downloader/main/youtube-menu-downloader.user.js) / [GitHub](https://github.com/DverkaSK/youtube-menu-downloader)
+- **Telegram View Once**: [установить](https://raw.githubusercontent.com/DverkaSK/tg-view-once/main/tg-view-once.user.js) / [GitHub](https://github.com/DverkaSK/tg-view-once)
+- **VK Video Downloader**: [установить](https://raw.githubusercontent.com/DverkaSK/VK-Video-Downloader/main/monkeys/scripts/VK-Video-Downloader-desktop.user.js) / [мобильная](https://raw.githubusercontent.com/DverkaSK/VK-Video-Downloader/main/monkeys/scripts/VK-Video-Downloader-mobile.user.js) / [GitHub](https://github.com/DverkaSK/VK-Video-Downloader)
 
-| Скрипт | Что делает | Ссылки |
-|--------|------------|--------|
-| **YouTube Menu Downloader** | Пункт "Скачать" в меню "..." на YouTube, в Shorts и YouTube Music: MP4, WEBM, MP3, субтитры | [Установить](https://raw.githubusercontent.com/DverkaSK/youtube-menu-downloader/main/youtube-menu-downloader.user.js) &#124; [репозиторий](https://github.com/DverkaSK/youtube-menu-downloader) |
-| **Telegram View Once** | Пересылка кружков и медиа с таймером самоуничтожения в Telegram Web K | [Установить](https://raw.githubusercontent.com/DverkaSK/tg-view-once/main/tg-view-once.user.js) &#124; [репозиторий](https://github.com/DverkaSK/tg-view-once) |
-| **VK Video Downloader** | Кнопка скачивания видео ВКонтакте в нужном качестве | [Установить](https://raw.githubusercontent.com/DverkaSK/VK-Video-Downloader/main/monkeys/scripts/VK-Video-Downloader-desktop.user.js) ([мобильная](https://raw.githubusercontent.com/DverkaSK/VK-Video-Downloader/main/monkeys/scripts/VK-Video-Downloader-mobile.user.js)) &#124; [репозиторий](https://github.com/DverkaSK/VK-Video-Downloader) |
-
-**Все скрипты разом:** в Tampermonkey откройте "Панель управления", вкладку "Утилиты", вставьте в поле "Импорт из URL" ссылку ниже и нажмите "Установить":
-
-```
-https://github.com/DverkaSK/DverkaSK/releases/download/userscripts/userscripts.zip
-```
-
-Или [скачайте архив](https://github.com/DverkaSK/DverkaSK/releases/download/userscripts/userscripts.zip) и выберите его в "Импорт из файла".
+**Все скрипты одним архивом:** [userscripts.zip](https://github.com/DverkaSK/DverkaSK/releases/download/userscripts/userscripts.zip)
 
 </details>
