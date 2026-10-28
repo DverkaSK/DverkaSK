@@ -1,0 +1,33 @@
+name: Userscripts bundle
+
+on:
+  schedule:
+    - cron: '0 3 * * *'
+  push:
+    branches: [main]
+    paths: ['scripts/userscripts.txt', '.github/workflows/userscripts.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  bundle:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download scripts
+        run: |
+          mkdir bundle
+          grep -vE '^\s*(#|$)' scripts/userscripts.txt | while read -r url; do
+            curl -fsSL "$url" -o "bundle/$(basename "$url")"
+          done
+          cd bundle && zip -q ../userscripts.zip *.user.js
+      - name: Publish release asset
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release view userscripts > /dev/null 2>&1 || gh release create userscripts \
+            --title "Userscripts" \
+            --notes "Все мои userscripts одним архивом для импорта в Tampermonkey. Обновляется автоматически."
+          gh release upload userscripts userscripts.zip --clobber

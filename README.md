@@ -37,3 +37,26 @@
 <picture><source media="(prefers-color-scheme: dark)" srcset="icons/openai-white.svg" /><img src="icons/openai.svg" width="45" height="45" alt="openai" /></picture>&nbsp;&nbsp;<img src="icons/gemini.svg" width="45" height="45" alt="gemini" />&nbsp;&nbsp;<img src="icons/claude.svg" width="45" height="45" alt="claude" />&nbsp;&nbsp;<img src="icons/deepseek.svg" width="45" height="45" alt="deepseek" />&nbsp;&nbsp;<picture><source media="(prefers-color-scheme: dark)" srcset="icons/grok-white.svg" /><img src="icons/grok.svg" width="45" height="45" alt="grok" /></picture>&nbsp;&nbsp;<img src="icons/qwen.svg" width="45" height="45" alt="qwen" />&nbsp;&nbsp;<img src="icons/1c.svg" width="45" height="45" alt="1c" />
 
 </details>
+
+<details>
+<summary>🧰 Что я использую</summary>
+
+<h3 align="LEFT">🧩 Скрипты для Tampermonkey</h3>
+
+Сначала поставьте [Tampermonkey](https://www.tampermonkey.net/) или [Violentmonkey](https://violentmonkey.github.io/). Ссылка "Установить" сразу открывает окно установки скрипта, обновления потом приходят сами.
+
+| Скрипт | Что делает | Ссылки |
+|--------|------------|--------|
+| **YouTube Menu Downloader** | Пункт "Скачать" в меню "..." на YouTube, в Shorts и YouTube Music: MP4, WEBM, MP3, субтитры | [Установить](https://raw.githubusercontent.com/DverkaSK/youtube-menu-downloader/main/youtube-menu-downloader.user.js) &#124; [репозиторий](https://github.com/DverkaSK/youtube-menu-downloader) |
+| **Telegram View Once** | Пересылка кружков и медиа с таймером самоуничтожения в Telegram Web K | [Установить](https://raw.githubusercontent.com/DverkaSK/tg-view-once/main/tg-view-once.user.js) &#124; [репозиторий](https://github.com/DverkaSK/tg-view-once) |
+| **VK Video Downloader** | Кнопка скачивания видео ВКонтакте в нужном качестве | [Установить](https://raw.githubusercontent.com/DverkaSK/VK-Video-Downloader/main/monkeys/scripts/VK-Video-Downloader-desktop.user.js) ([мобильная](https://raw.githubusercontent.com/DverkaSK/VK-Video-Downloader/main/monkeys/scripts/VK-Video-Downloader-mobile.user.js)) &#124; [репозиторий](https://github.com/DverkaSK/VK-Video-Downloader) |
+
+**Все скрипты разом:** в Tampermonkey откройте "Панель управления", вкладку "Утилиты", вставьте в поле "Импорт из URL" ссылку ниже и нажмите "Установить":
+
+```
+https://github.com/DverkaSK/DverkaSK/releases/download/userscripts/userscripts.zip
+```
+
+Или [скачайте архив](https://github.com/DverkaSK/DverkaSK/releases/download/userscripts/userscripts.zip) и выберите его в "Импорт из файла".
+
+</details>

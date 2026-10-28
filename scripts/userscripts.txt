@@ -1,0 +1,4 @@
+# Скрипты для архива userscripts.zip, по одной raw-ссылке в строке
+https://raw.githubusercontent.com/DverkaSK/youtube-menu-downloader/main/youtube-menu-downloader.user.js
+https://raw.githubusercontent.com/DverkaSK/tg-view-once/main/tg-view-once.user.js
+https://raw.githubusercontent.com/DverkaSK/VK-Video-Downloader/main/monkeys/scripts/VK-Video-Downloader-desktop.user.js
