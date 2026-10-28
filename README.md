@@ -26,7 +26,7 @@
 </details>
 
 <details>
-<summary>Фаст сетап</summary>
+<summary>Стартер пак</summary>
 
 **Tampermonkey:** [сайт](https://www.tampermonkey.net/) / [Chrome](https://chromewebstore.google.com/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo) / [Firefox](https://addons.mozilla.org/firefox/addon/tampermonkey/)<br>
 **Violentmonkey:** [сайт](https://violentmonkey.github.io/) / [Chrome](https://chromewebstore.google.com/detail/violentmonkey/jinjaccalgkegednnccohejagnlnfdag) / [Firefox](https://addons.mozilla.org/firefox/addon/violentmonkey/)
