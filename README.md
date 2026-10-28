@@ -41,13 +41,20 @@
 <details>
 <summary>⚡ Быстрая установка</summary>
 
-**Tampermonkey:** [Chrome](https://chromewebstore.google.com/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo) / [Firefox](https://addons.mozilla.org/firefox/addon/tampermonkey/)<br>
-**Violentmonkey:** [Chrome](https://chromewebstore.google.com/detail/violentmonkey/jinjaccalgkegednnccohejagnlnfdag) / [Firefox](https://addons.mozilla.org/firefox/addon/violentmonkey/)
+**Tampermonkey:** [сайт](https://www.tampermonkey.net/) / [Chrome](https://chromewebstore.google.com/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo) / [Firefox](https://addons.mozilla.org/firefox/addon/tampermonkey/)<br>
+**Violentmonkey:** [сайт](https://violentmonkey.github.io/) / [Chrome](https://chromewebstore.google.com/detail/violentmonkey/jinjaccalgkegednnccohejagnlnfdag) / [Firefox](https://addons.mozilla.org/firefox/addon/violentmonkey/)
 
 - **YouTube Menu Downloader**: [установить](https://raw.githubusercontent.com/DverkaSK/youtube-menu-downloader/main/youtube-menu-downloader.user.js) / [GitHub](https://github.com/DverkaSK/youtube-menu-downloader)
 - **Telegram View Once**: [установить](https://raw.githubusercontent.com/DverkaSK/tg-view-once/main/tg-view-once.user.js) / [GitHub](https://github.com/DverkaSK/tg-view-once)
 - **VK Video Downloader**: [установить](https://raw.githubusercontent.com/DverkaSK/VK-Video-Downloader/main/monkeys/scripts/VK-Video-Downloader-desktop.user.js) / [мобильная](https://raw.githubusercontent.com/DverkaSK/VK-Video-Downloader/main/monkeys/scripts/VK-Video-Downloader-mobile.user.js) / [GitHub](https://github.com/DverkaSK/VK-Video-Downloader)
 
 **Все скрипты одним архивом:** [userscripts.zip](https://github.com/DverkaSK/DverkaSK/releases/download/userscripts/userscripts.zip)
+
+**Программы**
+
+- **Yandex Music Liberty**: [скачать](https://github.com/gagayhhad-tech/YandexMusicLiberty/releases/latest) / [GitHub](https://github.com/gagayhhad-tech/YandexMusicLiberty)
+- **TG WS Proxy**: [Windows](https://github.com/Flowseal/tg-ws-proxy/releases/latest/download/TgWsProxy_windows.exe) / [Android](https://github.com/amurcanov/tg-ws-proxy-android/releases/latest) / [GitHub](https://github.com/Flowseal/tg-ws-proxy) / [GitHub Android](https://github.com/amurcanov/tg-ws-proxy-android)
+- **Win11Debloat**: [скачать](https://github.com/Raphire/Win11Debloat/releases/latest/download/Get.ps1) / [GitHub](https://github.com/Raphire/Win11Debloat)
+- **VibeVM**: [скачать](https://github.com/vibevm/vibevm/releases/latest/download/install.cmd) / [GitHub](https://github.com/vibevm/vibevm)
 
 </details>
