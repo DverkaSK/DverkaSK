@@ -25,6 +25,7 @@
 
 </details>
 
+<!--
 <details>
 <summary>Стартер пак</summary>
 
@@ -45,3 +46,4 @@
 - **VibeVM**: [скачать](https://github.com/vibevm/vibevm/releases/latest/download/install.cmd) / [GitHub](https://github.com/vibevm/vibevm)
 
 </details>
+-->
