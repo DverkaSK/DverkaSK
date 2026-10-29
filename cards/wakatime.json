@@ -1,13 +1,9 @@
 {
- "updated": "2026-10-29T12:26:08Z",
+ "updated": "2026-10-29T22:30:21Z",
  "week": {
-  "ai_lines": 2173,
+  "ai_lines": 2162,
   "human_lines": 213,
   "days": [
-   {
-    "date": "2026-10-23",
-    "seconds": 6956
-   },
    {
     "date": "2026-10-24",
     "seconds": 31351
@@ -30,26 +26,30 @@
    },
    {
     "date": "2026-10-29",
-    "seconds": 12148
+    "seconds": 27469
+   },
+   {
+    "date": "2026-10-30",
+    "seconds": 0
    }
   ]
  },
  "all_time": {
-  "total_seconds": 8304376,
-  "daily_average": 8825,
+  "total_seconds": 8304738,
+  "daily_average": 8816,
   "start": "2023-01-01T21:00:00Z",
   "languages": [
    {
     "name": "Java",
-    "seconds": 6349595
+    "seconds": 6349701
    },
    {
     "name": "SQL",
-    "seconds": 481776
+    "seconds": 481777
    },
    {
     "name": "YAML",
-    "seconds": 405709
+    "seconds": 405800
    },
    {
     "name": "XML",
@@ -57,15 +57,15 @@
    },
    {
     "name": "Markdown",
-    "seconds": 110414
+    "seconds": 110477
    },
    {
     "name": "Groovy",
-    "seconds": 110123
+    "seconds": 110149
    },
    {
     "name": "JSON",
-    "seconds": 106169
+    "seconds": 106195
    },
    {
     "name": "Python",
@@ -117,7 +117,7 @@
    },
    {
     "name": "Bash",
-    "seconds": 7683
+    "seconds": 7730
    },
    {
     "name": "CSS",
@@ -275,11 +275,11 @@
    },
    {
     "name": "Claude Code",
-    "seconds": 1003510
+    "seconds": 1007543
    },
    {
     "name": "Warp",
-    "seconds": 193231
+    "seconds": 202586
    },
    {
     "name": "GoLand",
@@ -313,7 +313,7 @@
    },
    {
     "name": "Opus",
-    "lines": 40752
+    "lines": 40869
    },
    {
     "name": "Sonnet",
