@@ -101,11 +101,11 @@ window.CV = {
       },
       "about": {
         "ru": [
-          "2,5 года коммерческой разработки на Java / Spring Boot в InsurTech/FinTech. Делаю микросервисную платформу актуарных расчётов и регуляторной отчётности для НПФ, страховых компаний и банков. В основном работаю над backend-ом: аудит и безопасность, оркестрация расчётов, интеграции через Kafka, отчётность.",
+          "Более 3 лет коммерческой разработки, из них 2,5 года на Java / Spring Boot в InsurTech/FinTech. Делаю микросервисную платформу актуарных расчётов и регуляторной отчётности для НПФ, страховых компаний и банков. В основном работаю над backend-ом: аудит и безопасность, оркестрация расчётов, интеграции через Kafka, отчётность.",
           "Внедряю LLM в продукт: с нуля сделал RAG-ассистента по документации платформы на локальной модели, каждый день работаю с Claude Code. Сам довожу сервисы до продакшена: CI/CD, Docker, мониторинг в Prometheus и Grafana."
         ],
         "en": [
-          "2.5 years of commercial Java / Spring Boot development in InsurTech/FinTech. I build a microservice platform for actuarial calculations and regulatory reporting used by pension funds, insurers and banks. Mostly backend: audit and security, calculation orchestration, Kafka integrations, reporting.",
+          "3+ years of commercial development, including 2.5 years of Java / Spring Boot in InsurTech/FinTech. I build a microservice platform for actuarial calculations and regulatory reporting used by pension funds, insurers and banks. Mostly backend: audit and security, calculation orchestration, Kafka integrations, reporting.",
           "I bring LLMs into the product: built a RAG assistant for the platform documentation from scratch on a local model, and use Claude Code every day. I take services all the way to production: CI/CD, Docker, monitoring with Prometheus and Grafana."
         ]
       },
@@ -124,8 +124,8 @@ window.CV = {
             "en": "May 2024 — present"
           },
           "summary": {
-            "ru": "Платформа актуарных расчётов и отчётности по МСФО 17 для НПФ, страховых компаний и банков (продукты ПДС, ОПС, НПО). Аналитики сами настраивают в ней таблицы, справочники, расчёты и процессы согласования через интерфейс, без программистов. Среди клиентов — СберНПФ, ВТБ, Газфонд ПН, Благосостояние и Ренессанс страхование. Стек: Java 17, Spring Boot 3, PostgreSQL, Kafka, Keycloak, OpenSearch, S3/MinIO, Vault.",
-            "en": "Platform for actuarial calculations and IFRS 17 reporting for pension funds, insurers and banks. Analysts configure tables, reference lists, calculations and approval workflows themselves through the UI, without developers. Clients include SberNPF, VTB, Gazfond, Blagosostoyanie and Renaissance Insurance. Stack: Java 17, Spring Boot 3, PostgreSQL, Kafka, Keycloak, OpenSearch, S3/MinIO, Vault."
+            "ru": "Платформа актуарных расчётов и отчётности по МСФО 17 для НПФ, страховых компаний и банков (продукты ПДС, ОПС, НПО). Аналитики сами настраивают в ней таблицы, справочники, расчёты и процессы согласования через интерфейс, без программистов. Среди клиентов — СберНПФ, ВТБ, Газфонд ПН, Благосостояние и Ренессанс страхование. Стек: Java 17, Spring Boot 3, PostgreSQL, Kafka, Keycloak, ClickHouse, MongoDB, Elasticsearch, S3/MinIO, Vault, Kubernetes.",
+            "en": "Platform for actuarial calculations and IFRS 17 reporting for pension funds, insurers and banks. Analysts configure tables, reference lists, calculations and approval workflows themselves through the UI, without developers. Clients include SberNPF, VTB, Gazfond, Blagosostoyanie and Renaissance Insurance. Stack: Java 17, Spring Boot 3, PostgreSQL, Kafka, Keycloak, ClickHouse, MongoDB, Elasticsearch, S3/MinIO, Vault, Kubernetes."
           },
           "groups": [
             {
@@ -136,14 +136,14 @@ window.CV = {
               "items": {
                 "ru": [
                   "Спроектировал журнал аудита с нуля: модель событий, сбор через Spring AOP-аспекты, серверная пагинация и фильтры, потоковый экспорт в CSV/XLSX, индексы PostgreSQL, политика хранения логов",
-                  "Вынес журнал в отдельный сервис событий и написал общую библиотеку для отправки событий через Kafka (AOP, обработка ошибок Kafka). На неё переведены сервисы задач, отчётов и файлов",
+                  "Вынес журнал в отдельный сервис событий и написал общую библиотеку для отправки событий через Kafka (AOP, обработка ошибок Kafka). На неё переведены сервисы задач, отчётов и файлов. При росте до миллионов записей перевёл его с PostgreSQL на ClickHouse, выборки ускорились в 3 раза",
                   "Подключил SIEM: выгрузка событий безопасности с IP-адресом и таймзоной, отслеживание сессий Keycloak, неуспешных входов, неавторизованных запросов и админ-событий",
                   "Секреты 5 сервисов в HashiCorp Vault, сквозной sessionId в логах через MDC, ролевая модель с историей версий",
                   "Проверка безопасности по OWASP Top 10: сканирование OWASP ZAP, защита от SQL-инъекций в фильтрах и динамических запросах к БД"
                 ],
                 "en": [
                   "Designed the audit log from scratch: event model, collection via Spring AOP aspects, server-side pagination, filtering and sorting, streaming CSV/XLSX export, PostgreSQL indexes, retention policy and log cleanup",
-                  "Moved the log into a dedicated event service and wrote a shared library for publishing events to Kafka (AOP, custom Kafka error handling); the task, report and file services were migrated to it",
+                  "Moved the log into a dedicated event service and wrote a shared library for publishing events to Kafka (AOP, custom Kafka error handling); the task, report and file services were migrated to it. When the log grew to millions of records, moved its storage from PostgreSQL to ClickHouse, making queries about 3x faster",
                   "Integrated SIEM: security events with IP address and time zone, Keycloak session tracking, failed logins and unauthorized requests, scheduled export of admin events (lockouts, password changes)",
                   "Connected 5 services to HashiCorp Vault for secrets; end-to-end sessionId in logs via MDC; role model with role version history",
                   "Security checks against the OWASP Top 10: OWASP ZAP scans, SQL injection protection in filters and dynamic database queries"
@@ -190,13 +190,13 @@ window.CV = {
               "items": {
                 "ru": [
                   "Треугольники развития убытков: логику вынес в отдельный сервис, написал алгоритм классификации, фильтрацию и разграничение доступа через RBAC",
-                  "Подключения к внешним БД, включая ClickHouse, и выгрузка данных в них через Kafka (с поддержкой составных ключей). Перевёл сервис интеграций со Spring Boot на Quarkus",
-                  "Отчёты на JasperReports и Apache POI: отчёт по доходности фондов относительно бенчмарка, генерация графиков, превью docx/pdf. Глобальный поиск по сущностям на OpenSearch"
+                  "Подключения к внешним БД, включая ClickHouse, и выгрузка данных в них через Kafka (с поддержкой составных ключей). Перевёл сервис интеграций со Spring Boot на Quarkus. Перенёс документы с глубоко вложенным JSON из PostgreSQL в MongoDB",
+                  "Отчёты на JasperReports и Apache POI: отчёт по доходности фондов относительно бенчмарка, генерация графиков, превью docx/pdf. Глобальный поиск по сущностям на Elasticsearch"
                 ],
                 "en": [
                   "Loss development triangles: moved the logic into a separate service, wrote the classification algorithm, filtering and RBAC-based access control",
-                  "Connections to external databases including ClickHouse, with data export to them over Kafka (composite keys supported). Migrated the integration service from Spring Boot to Quarkus",
-                  "Reports with JasperReports and Apache POI: fund performance against a benchmark, chart generation, docx/pdf previews. Global entity search on OpenSearch"
+                  "Connections to external databases including ClickHouse, with data export to them over Kafka (composite keys supported). Migrated the integration service from Spring Boot to Quarkus. Moved documents with deeply nested JSON from PostgreSQL to MongoDB",
+                  "Reports with JasperReports and Apache POI: fund performance against a benchmark, chart generation, docx/pdf previews. Global entity search on Elasticsearch"
                 ]
               }
             },
@@ -207,11 +207,11 @@ window.CV = {
               },
               "items": {
                 "ru": [
-                  "CI/CD в GitLab CI: сборка, тесты, Docker-образы и автодеплой на стенды; Docker Compose для тестов",
+                  "CI/CD в GitLab CI: сборка, тесты, Docker-образы и автодеплой в Kubernetes; Docker Compose для тестов",
                   "Мониторинг: health-check и метрики Micrometer / Prometheus, дашборды в Grafana, алерты на недоступность сервисов, обрывы соединений и ошибки расчётов"
                 ],
                 "en": [
-                  "GitLab CI/CD: build, tests, Docker images and automated deployment of services to environments; Docker Compose for test environments",
+                  "GitLab CI/CD: build, tests, Docker images and automated deployment to Kubernetes; Docker Compose for test environments",
                   "Monitoring: health checks and Micrometer / Prometheus metrics, Grafana dashboards, alerts on service outages, connection drops and calculation errors"
                 ]
               }
@@ -223,11 +223,11 @@ window.CV = {
               },
               "items": {
                 "ru": [
-                  "Интеграционные тесты на Testcontainers (PostgreSQL, Keycloak, OpenSearch, Vault, SeaweedFS) и WireMock с webhook-расширениями. Сценарии оркестратора покрыл тестами по диаграммам последовательности, настроил их запуск в GitLab CI",
+                  "Интеграционные тесты на Testcontainers (PostgreSQL, Keycloak, Elasticsearch, Vault) и WireMock с webhook-расширениями. Сценарии оркестратора покрыл тестами по диаграммам последовательности, настроил их запуск в GitLab CI",
                   "Разделял монолит на микросервисы: вынес в отдельные сервисы журнал событий, треугольники убытков и интеграции. Параллельно перевёл проект с Java 8 на Java 17 и Spring Boot 3"
                 ],
                 "en": [
-                  "Integration tests with Testcontainers (PostgreSQL, Keycloak, OpenSearch, Vault, SeaweedFS) and WireMock with webhook extensions; covered orchestrator scenarios from sequence diagrams and wired them into GitLab CI",
+                  "Integration tests with Testcontainers (PostgreSQL, Keycloak, Elasticsearch, Vault) and WireMock with webhook extensions; covered orchestrator scenarios from sequence diagrams and wired them into GitLab CI",
                   "Split the monolith into microservices: moved the audit log, loss triangles and integrations into separate services. Along the way migrated the project from Java 8 to Java 17 and Spring Boot 3"
                 ]
               }
@@ -244,8 +244,8 @@ window.CV = {
             "en": "VNIIZhT, railway transport research institute (project work)"
           },
           "period": {
-            "ru": "2025 — 2026",
-            "en": "2025 — 2026"
+            "ru": "2023 — 2024",
+            "en": "2023 — 2024"
           },
           "summary": {
             "ru": "АО «ВНИИЖТ» — научно-исследовательский институт железнодорожного транспорта, разработчик АПК «ЭЛЬБРУС» для управления перевозками. Сделал базу знаний «вопрос — ответ» вместо переписки по почте: специалисты подтверждают ответы, пользователи находят решения сами. Вёл проект один, от проектирования до развёртывания.",
@@ -311,8 +311,8 @@ window.CV = {
             "en": "Data"
           },
           "items": {
-            "ru": "PostgreSQL, SQL, Liquibase, ClickHouse, OpenSearch, Redis, S3/MinIO",
-            "en": "PostgreSQL, SQL, Liquibase, ClickHouse, OpenSearch, Redis, S3/MinIO"
+            "ru": "PostgreSQL, SQL, Liquibase, ClickHouse, MongoDB, Elasticsearch, Redis, S3/MinIO",
+            "en": "PostgreSQL, SQL, Liquibase, ClickHouse, MongoDB, Elasticsearch, Redis, S3/MinIO"
           }
         },
         {
@@ -320,7 +320,7 @@ window.CV = {
             "ru": "Infrastructure",
             "en": "Infrastructure"
           },
-          "items": "Git, Gradle, Kafka, Keycloak, HashiCorp Vault, Docker / Docker Compose, GitLab CI, GitHub Actions, Prometheus / Micrometer, Grafana, SIEM, Nginx, Linux / Bash"
+          "items": "Git, Gradle, Kafka, Keycloak, HashiCorp Vault, Docker / Docker Compose, Kubernetes, GitLab CI, GitHub Actions, Prometheus / Micrometer, Grafana, SIEM, Nginx, Linux / Bash"
         },
         {
           "label": {
@@ -346,11 +346,11 @@ window.CV = {
       },
       "about": {
         "ru": [
-          "Fullstack-разработчик с упором на backend: 2,5 года коммерческой разработки на Java / Spring Boot, на фронтенде пишу на React. Работаю в InsurTech/FinTech над платформой актуарных расчётов и отчётности для НПФ, страховых компаний и банков. Обычно делаю фичу целиком: схема БД и миграции, REST/SSE API, интеграция через Kafka, затем React-интерфейс.",
+          "Fullstack-разработчик с упором на backend: более 3 лет коммерческой разработки, из них 2,5 года на Java / Spring Boot, на фронтенде пишу на React. Работаю в InsurTech/FinTech над платформой актуарных расчётов и отчётности для НПФ, страховых компаний и банков. Обычно делаю фичу целиком: схема БД и миграции, REST/SSE API, интеграция через Kafka, затем React-интерфейс.",
           "Внедряю LLM в продукт: с нуля сделал RAG-ассистента по документации платформы на локальной модели, каждый день работаю с Claude Code. Занимаюсь и инфраструктурой: CI/CD в GitLab, Docker, мониторинг в Prometheus и Grafana."
         ],
         "en": [
-          "Fullstack developer with a backend focus: 2.5 years of commercial Java / Spring Boot development, React on the frontend. I work in InsurTech/FinTech on a platform for actuarial calculations and reporting for pension funds, insurers and banks. I usually ship a feature end to end: database schema and migrations, REST/SSE API, Kafka integration, then the React UI.",
+          "Fullstack developer with a backend focus: 3+ years of commercial development, including 2.5 years of Java / Spring Boot, React on the frontend. I work in InsurTech/FinTech on a platform for actuarial calculations and reporting for pension funds, insurers and banks. I usually ship a feature end to end: database schema and migrations, REST/SSE API, Kafka integration, then the React UI.",
           "I bring LLMs into the product: built a RAG assistant for the platform documentation from scratch on a local model, and use Claude Code every day. I also handle infrastructure: GitLab CI/CD, Docker, monitoring with Prometheus and Grafana."
         ]
       },
@@ -369,8 +369,8 @@ window.CV = {
             "en": "Fullstack / Backend Developer"
           },
           "summary": {
-            "ru": "Платформа актуарных расчётов и отчётности по МСФО 17 для НПФ, страховых компаний и банков. Таблицы, справочники и расчёты аналитики настраивают сами через интерфейс. Среди клиентов — СберНПФ, ВТБ, Газфонд ПН, Благосостояние и Ренессанс страхование. Backend: Java 17, Spring Boot 3, PostgreSQL, Kafka, Keycloak, OpenSearch. Frontend: React 18, MUI, Axios, Rsbuild.",
-            "en": "Platform for actuarial calculations and IFRS 17 reporting for pension funds, insurers and banks. Analysts configure tables, reference lists and calculations themselves through the UI. Clients include SberNPF, VTB, Gazfond, Blagosostoyanie and Renaissance Insurance. Backend: Java 17, Spring Boot 3, PostgreSQL, Kafka, Keycloak, OpenSearch. Frontend: React 18, MUI, Axios, Rsbuild."
+            "ru": "Платформа актуарных расчётов и отчётности по МСФО 17 для НПФ, страховых компаний и банков. Таблицы, справочники и расчёты аналитики настраивают сами через интерфейс. Среди клиентов — СберНПФ, ВТБ, Газфонд ПН, Благосостояние и Ренессанс страхование. Backend: Java 17, Spring Boot 3, PostgreSQL, Kafka, Keycloak, MongoDB, Elasticsearch, Kubernetes. Frontend: React 18, MUI, Axios, Rsbuild.",
+            "en": "Platform for actuarial calculations and IFRS 17 reporting for pension funds, insurers and banks. Analysts configure tables, reference lists and calculations themselves through the UI. Clients include SberNPF, VTB, Gazfond, Blagosostoyanie and Renaissance Insurance. Backend: Java 17, Spring Boot 3, PostgreSQL, Kafka, Keycloak, MongoDB, Elasticsearch, Kubernetes. Frontend: React 18, MUI, Axios, Rsbuild."
           },
           "groups": [
             {
@@ -381,15 +381,15 @@ window.CV = {
               "items": {
                 "ru": [
                   "Уведомления в реальном времени: SSE-эндпоинт на backend, колокольчик в шапке со счётчиком непрочитанных, одно SSE-соединение на вкладку, статус прочтения, сортировка и фильтры",
-                  "Глобальный поиск в шапке: несколько режимов поиска, подгрузка результатов, подсветка совпадений. В админке — раздел настройки индексации сущностей в OpenSearch",
+                  "Глобальный поиск в шапке: несколько режимов поиска, подгрузка результатов, подсветка совпадений. В админке — раздел настройки индексации сущностей в Elasticsearch",
                   "Переиспользуемый компонент serverTable с серверной пагинацией. На него переведены журнал аудита и вкладки CRM",
-                  "Блок состояния сервисов (Kafka, Redis, OpenSearch, сервис отчётов). Детали журнала аудита со скачиванием файлов и ссылками на связанные объекты"
+                  "Блок состояния сервисов (Kafka, Redis, Elasticsearch, сервис отчётов). Детали журнала аудита со скачиванием файлов и ссылками на связанные объекты"
                 ],
                 "en": [
                   "Real-time notifications: SSE endpoint on the backend, header bell with an unread counter, one SSE connection per tab, read status, sorting and filters",
-                  "Global search in the header: several search modes, incremental loading, match highlighting; an admin section for configuring entity indexing in OpenSearch",
+                  "Global search in the header: several search modes, incremental loading, match highlighting; an admin section for configuring entity indexing in Elasticsearch",
                   "Reusable serverTable component with server-side pagination; the audit log and CRM tabs were migrated to it",
-                  "Service health panel (Kafka, Redis, OpenSearch, reporting service); audit log details with file downloads and links to related objects"
+                  "Service health panel (Kafka, Redis, Elasticsearch, reporting service); audit log details with file downloads and links to related objects"
                 ]
               }
             },
@@ -400,13 +400,13 @@ window.CV = {
               },
               "items": {
                 "ru": [
-                  "Журнал аудита с нуля: модель событий, Spring AOP, фильтры и пагинация, потоковый экспорт CSV/XLSX, интеграция с SIEM. Затем вынес его в отдельный сервис событий с общей библиотекой на Kafka",
+                  "Журнал аудита с нуля: модель событий, Spring AOP, фильтры и пагинация, потоковый экспорт CSV/XLSX, интеграция с SIEM. Затем вынес его в отдельный сервис событий с общей библиотекой на Kafka. При росте до миллионов записей перевёл его с PostgreSQL на ClickHouse, выборки ускорились в 3 раза",
                   "Цепочки расчётов в оркестраторе по графу зависимостей (DAG): параллельный запуск независимых калькуляторов, отмена, health-check и метрики Prometheus",
                   "Отчёты на JasperReports и Apache POI: доходность фондов относительно бенчмарка, графики, превью docx/pdf. Отчётные периоды с жизненным циклом статусов",
                   "Keycloak (OAuth2/OIDC), секреты в HashiCorp Vault, полное описание API в OpenAPI/Swagger"
                 ],
                 "en": [
-                  "Audit log from scratch: event model, Spring AOP, filters and pagination, streaming CSV/XLSX export, SIEM integration; later moved it into a dedicated event service with a shared Kafka library",
+                  "Audit log from scratch: event model, Spring AOP, filters and pagination, streaming CSV/XLSX export, SIEM integration; later moved it into a dedicated event service with a shared Kafka library. When the log grew to millions of records, moved its storage from PostgreSQL to ClickHouse, making queries about 3x faster",
                   "Calculation chains in the orchestrator driven by a dependency graph (DAG): parallel execution of independent calculators, cancellation, health checks and Prometheus metrics",
                   "Reports with JasperReports and Apache POI: fund performance against a benchmark, charts, docx/pdf previews; reporting periods with a status lifecycle",
                   "Keycloak (OAuth2/OIDC), secrets in HashiCorp Vault, full API documentation in OpenAPI/Swagger"
@@ -436,11 +436,11 @@ window.CV = {
               },
               "items": {
                 "ru": [
-                  "CI/CD в GitLab CI: сборка, тесты, Docker-образы и автоматический деплой на стенды. Docker Compose для сервисов и тестовых окружений",
+                  "CI/CD в GitLab CI: сборка, тесты, Docker-образы и автоматический деплой в Kubernetes. Docker Compose для сервисов и тестовых окружений",
                   "Метрики Micrometer / Prometheus, дашборды Grafana и алерты на недоступность сервисов и ошибки расчётов"
                 ],
                 "en": [
-                  "GitLab CI/CD: build, tests, Docker images and automated deployment to environments; Docker Compose for services and test environments",
+                  "GitLab CI/CD: build, tests, Docker images and automated deployment to Kubernetes; Docker Compose for services and test environments",
                   "Micrometer / Prometheus metrics, Grafana dashboards and alerts on service outages and calculation errors"
                 ]
               }
@@ -471,8 +471,8 @@ window.CV = {
             "en": "VNIIZhT, railway transport research institute (project work)"
           },
           "period": {
-            "ru": "2025 — 2026",
-            "en": "2025 — 2026"
+            "ru": "2023 — 2024",
+            "en": "2023 — 2024"
           },
           "summary": {
             "ru": "АО «ВНИИЖТ» — научно-исследовательский институт железнодорожного транспорта, разработчик АПК «ЭЛЬБРУС» для управления перевозками. Сделал базу знаний «вопрос — ответ» вместо переписки по почте: специалисты подтверждают ответы, пользователи находят решения сами. Вёл проект один, от проектирования до развёртывания.",
@@ -556,14 +556,14 @@ window.CV = {
             "ru": "Data",
             "en": "Data"
           },
-          "items": "PostgreSQL, Liquibase, ClickHouse, OpenSearch, Redis, S3/MinIO"
+          "items": "PostgreSQL, Liquibase, ClickHouse, MongoDB, Elasticsearch, Redis, S3/MinIO"
         },
         {
           "label": {
             "ru": "Infrastructure",
             "en": "Infrastructure"
           },
-          "items": "Git, Gradle, Kafka, Keycloak, Vault, Docker / Compose, Nginx, GitLab CI, GitHub Actions, Prometheus, Grafana, Linux"
+          "items": "Git, Gradle, Kafka, Keycloak, Vault, Docker / Compose, Kubernetes, Nginx, GitLab CI, GitHub Actions, Prometheus, Grafana, Linux"
         },
         {
           "label": {
@@ -589,12 +589,12 @@ window.CV = {
       },
       "about": {
         "ru": [
-          "2,5 года на Java / Spring Boot в финансовом секторе. Разрабатываю платформу актуарных расчётов и регуляторной отчётности для НПФ, страховых компаний и банков. Разбираюсь в предметной области: расчёты по МСФО 17, треугольники развития убытков, актуарные предположения, отчётные периоды и согласование, отчётность по доходности фондов.",
+          "Более 3 лет в разработке, из них 2,5 года на Java / Spring Boot в финансовом секторе. Разрабатываю платформу актуарных расчётов и регуляторной отчётности для НПФ, страховых компаний и банков. Разбираюсь в предметной области: расчёты по МСФО 17, треугольники развития убытков, актуарные предположения, отчётные периоды и согласование, отчётность по доходности фондов.",
           "Внедряю LLM в продукт: с нуля сделал RAG-ассистента по документации платформы на локальной модели, каждый день работаю с Claude Code.",
           "Отвечаю за функции, которые важны для финансовых организаций: журнал аудита, интеграцию с SIEM, хранение секретов в Vault, разграничение доступа, а также надёжный запуск длительных расчётов, CI/CD и мониторинг."
         ],
         "en": [
-          "2.5 years of Java / Spring Boot in the financial sector. I build a platform for actuarial calculations and regulatory reporting for pension funds, insurers and banks. I know the domain: IFRS 17 calculations, loss development triangles, actuarial assumptions, reporting periods and approvals, fund performance reporting.",
+          "3+ years in software development, including 2.5 years of Java / Spring Boot in the financial sector. I build a platform for actuarial calculations and regulatory reporting for pension funds, insurers and banks. I know the domain: IFRS 17 calculations, loss development triangles, actuarial assumptions, reporting periods and approvals, fund performance reporting.",
           "I bring LLMs into the product: built a RAG assistant for the platform documentation from scratch on a local model, and use Claude Code every day.",
           "I own features that matter to financial institutions: the audit log, SIEM integration, secrets in Vault, access control, plus reliable execution of long-running calculations, CI/CD and monitoring."
         ]
@@ -614,8 +614,8 @@ window.CV = {
             "en": "Java Backend Developer"
           },
           "summary": {
-            "ru": "Платформа актуарных расчётов для НПФ, страховых компаний и банков (продукты ПДС, ОПС, НПО). Среди клиентов — СберНПФ, ВТБ, Газфонд ПН, Благосостояние и Ренессанс страхование. Стек: Java 17, Spring Boot 3, PostgreSQL, Kafka, Keycloak.",
-            "en": "Actuarial calculation platform for pension funds, insurers and banks (voluntary pension, mandatory pension and long-term savings products). Clients include SberNPF, VTB, Gazfond, Blagosostoyanie and Renaissance Insurance. Stack: Java 17, Spring Boot 3, PostgreSQL, Kafka, Keycloak."
+            "ru": "Платформа актуарных расчётов для НПФ, страховых компаний и банков (продукты ПДС, ОПС, НПО). Среди клиентов — СберНПФ, ВТБ, Газфонд ПН, Благосостояние и Ренессанс страхование. Стек: Java 17, Spring Boot 3, PostgreSQL, Kafka, Keycloak, ClickHouse, MongoDB, Kubernetes.",
+            "en": "Actuarial calculation platform for pension funds, insurers and banks (voluntary pension, mandatory pension and long-term savings products). Clients include SberNPF, VTB, Gazfond, Blagosostoyanie and Renaissance Insurance. Stack: Java 17, Spring Boot 3, PostgreSQL, Kafka, Keycloak, ClickHouse, MongoDB, Kubernetes."
           },
           "groups": [
             {
@@ -645,13 +645,13 @@ window.CV = {
               },
               "items": {
                 "ru": [
-                  "Журнал аудита всех действий пользователей и системы: AOP-аспекты, фильтрация, потоковый экспорт CSV/XLSX, политика хранения. Затем вынес его в отдельный сервис событий с общей библиотекой на Kafka",
+                  "Журнал аудита всех действий пользователей и системы: AOP-аспекты, фильтрация, потоковый экспорт CSV/XLSX, политика хранения. Затем вынес его в отдельный сервис событий с общей библиотекой на Kafka. При росте до миллионов записей перевёл его с PostgreSQL на ClickHouse, выборки ускорились в 3 раза",
                   "Интеграция с SIEM: события безопасности, IP-адрес, сессии и неуспешные входы через Keycloak, админ-события (блокировка, смена пароля)",
                   "Секреты в HashiCorp Vault для 5 сервисов, ролевая модель с историей версий",
                   "Проверка безопасности по OWASP Top 10: сканирование OWASP ZAP, защита от SQL-инъекций в фильтрах и динамических запросах к БД"
                 ],
                 "en": [
-                  "Audit log of all user and system actions: AOP aspects, filtering, streaming CSV/XLSX export, retention policy; later moved it into a dedicated event service with a shared Kafka library",
+                  "Audit log of all user and system actions: AOP aspects, filtering, streaming CSV/XLSX export, retention policy; later moved it into a dedicated event service with a shared Kafka library. When the log grew to millions of records, moved its storage from PostgreSQL to ClickHouse, making queries about 3x faster",
                   "SIEM integration: security events, IP address, Keycloak sessions and failed logins, admin events (lockouts, password changes)",
                   "Secrets in HashiCorp Vault for 5 services, role model with version history",
                   "Security checks against the OWASP Top 10: OWASP ZAP scans, SQL injection protection in filters and dynamic database queries"
@@ -681,16 +681,16 @@ window.CV = {
               },
               "items": {
                 "ru": [
-                  "Подключения к внешним БД, включая ClickHouse, и выгрузка данных в них через Kafka. Перевёл сервис интеграций на Quarkus",
+                  "Подключения к внешним БД, включая ClickHouse, и выгрузка данных в них через Kafka. Перевёл сервис интеграций на Quarkus. Перенёс документы с глубоко вложенным JSON из PostgreSQL в MongoDB",
                   "Разделение монолита на микросервисы с переходом с Java 8 на Java 17",
                   "Health-check, метрики Prometheus, дашборды Grafana и алерты по калькуляторам и инфраструктуре",
-                  "CI/CD в GitLab CI: тесты (Testcontainers, WireMock), Docker-образы и автоматический деплой на стенды"
+                  "CI/CD в GitLab CI: тесты (Testcontainers, WireMock), Docker-образы и автоматический деплой в Kubernetes"
                 ],
                 "en": [
-                  "Connections to external databases including ClickHouse, with data export to them over Kafka; migrated the integration service to Quarkus",
+                  "Connections to external databases including ClickHouse, with data export to them over Kafka; migrated the integration service to Quarkus. Moved documents with deeply nested JSON from PostgreSQL to MongoDB",
                   "Split the monolith into microservices while moving from Java 8 to Java 17",
                   "Health checks, Prometheus metrics, Grafana dashboards and alerts for calculators and infrastructure",
-                  "GitLab CI/CD: tests (Testcontainers, WireMock), Docker images and automated deployment to environments"
+                  "GitLab CI/CD: tests (Testcontainers, WireMock), Docker images and automated deployment to Kubernetes"
                 ]
               }
             }
@@ -706,8 +706,8 @@ window.CV = {
             "en": "VNIIZhT, railway transport research institute (project work)"
           },
           "period": {
-            "ru": "2025 — 2026",
-            "en": "2025 — 2026"
+            "ru": "2023 — 2024",
+            "en": "2023 — 2024"
           },
           "summary": {
             "ru": "АО «ВНИИЖТ» — научно-исследовательский институт железнодорожного транспорта, разработчик АПК «ЭЛЬБРУС» для управления перевозками. Сделал базу знаний «вопрос — ответ» вместо переписки по почте: специалисты подтверждают ответы, пользователи находят решения сами. Вёл проект один, от проектирования до развёртывания.",
@@ -784,14 +784,14 @@ window.CV = {
             "ru": "Data",
             "en": "Data"
           },
-          "items": "PostgreSQL, SQL, Liquibase, ClickHouse, OpenSearch, Redis, JasperReports, Apache POI"
+          "items": "PostgreSQL, SQL, Liquibase, ClickHouse, MongoDB, Elasticsearch, Redis, JasperReports, Apache POI"
         },
         {
           "label": {
             "ru": "Infrastructure",
             "en": "Infrastructure"
           },
-          "items": "Git, Gradle, Kafka, Keycloak, HashiCorp Vault, SIEM, Docker, GitLab CI, Prometheus, Grafana"
+          "items": "Git, Gradle, Kafka, Keycloak, HashiCorp Vault, SIEM, Docker, Kubernetes, GitLab CI, Prometheus, Grafana"
         },
         {
           "label": {

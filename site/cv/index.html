@@ -16,7 +16,6 @@
 <body>
 <nav class="toolbar">
   <a class="back" href="/" data-t="back">← dverka.sk</a>
-  <div class="lang variant" role="group" aria-label="Resume" id="variants"></div>
   <div class="lang" role="group" aria-label="Language">
     <button type="button" data-lang="ru">RU</button>
     <button type="button" data-lang="en">EN</button>
@@ -37,10 +36,6 @@
   // Значение поля: { ru, en } или строка, общая для обоих языков
   const pick = (v, lang) => (v && typeof v === "object" && !Array.isArray(v)) ? v[lang] : v;
   const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
-
-  const variantBox = document.getElementById("variants");
-  variantBox.innerHTML = Object.keys(cv.variants)
-    .map(k => `<button type="button" data-variant="${k}">${esc(pick(cv.variants[k].label, "ru"))}</button>`).join("");
 
   function render(lang, v) {
     const t = UI[lang];
@@ -76,24 +71,24 @@
     document.title = `${pick(cv.name, lang)} — ${pick(cur.label, lang)} CV`;
     document.querySelectorAll("[data-t]").forEach(el => el.textContent = t[el.dataset.t]);
     document.querySelectorAll("[data-lang]").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.lang === lang)));
-    document.querySelectorAll("[data-variant]").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.variant === v)));
   }
 
-  // Язык и вариант: из ссылки (?lang=en&v=fullstack), иначе последний выбранный, иначе RU / Java
+  // Вариант резюме задаётся только ссылкой (?v=java|fullstack|insurtech), по умолчанию Java.
+  // Язык: из ссылки (?lang=en), иначе последний выбранный, иначе RU
   const params = new URLSearchParams(location.search);
   const stored = key => { try { return localStorage.getItem(key); } catch (e) { return null; } };
   let lang = [params.get("lang"), stored("cv-lang"), "ru"].find(x => UI[x]);
-  let variant = [params.get("v"), stored("cv-variant"), "java"].find(x => cv.variants[x]);
+  const variant = cv.variants[params.get("v")] ? params.get("v") : "java";
 
   function update() {
     render(lang, variant);
-    history.replaceState(null, "", `?v=${variant}&lang=${lang}`);
-    try { localStorage.setItem("cv-lang", lang); localStorage.setItem("cv-variant", variant); } catch (e) {}
+    params.set("lang", lang);
+    history.replaceState(null, "", `?${params}`);
+    try { localStorage.setItem("cv-lang", lang); } catch (e) {}
   }
   render(lang, variant);
 
   document.querySelectorAll("[data-lang]").forEach(b => b.addEventListener("click", () => { lang = b.dataset.lang; update(); }));
-  document.querySelectorAll("[data-variant]").forEach(b => b.addEventListener("click", () => { variant = b.dataset.variant; update(); }));
 
   // Имя страницы становится именем PDF-файла в диалоге печати
   document.querySelector(".print").addEventListener("click", () => {
