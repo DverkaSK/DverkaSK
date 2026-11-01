@@ -1,7 +1,7 @@
 {
- "updated": "2026-10-31T21:06:29Z",
+ "updated": "2026-11-01T04:49:23Z",
  "week": {
-  "ai_lines": 838,
+  "ai_lines": 860,
   "human_lines": 144,
   "days": [
    {
@@ -30,13 +30,13 @@
    },
    {
     "date": "2026-11-01",
-    "seconds": 0
+    "seconds": 1531
    }
   ]
  },
  "all_time": {
-  "total_seconds": 8304738,
-  "daily_average": 8816,
+  "total_seconds": 8305000,
+  "daily_average": 8807,
   "start": "2023-01-01T21:00:00Z",
   "languages": [
    {
@@ -57,7 +57,7 @@
    },
    {
     "name": "Markdown",
-    "seconds": 110477
+    "seconds": 110623
    },
    {
     "name": "Groovy",
@@ -85,7 +85,7 @@
    },
    {
     "name": "HTML",
-    "seconds": 51204
+    "seconds": 51286
    },
    {
     "name": "TypeScript",
@@ -121,7 +121,7 @@
    },
    {
     "name": "CSS",
-    "seconds": 5964
+    "seconds": 5987
    },
    {
     "name": "TOML",
@@ -275,11 +275,11 @@
    },
    {
     "name": "Claude Code",
-    "seconds": 1007543
+    "seconds": 1008263
    },
    {
     "name": "Warp",
-    "seconds": 202586
+    "seconds": 203499
    },
    {
     "name": "GoLand",
@@ -313,7 +313,7 @@
    },
    {
     "name": "Opus",
-    "lines": 40869
+    "lines": 40963
    },
    {
     "name": "Sonnet",
