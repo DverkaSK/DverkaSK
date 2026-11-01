@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Дорохин Игорь — CV</title>
+<meta name="description" content="Резюме Игоря Дорохина, Middle Java Backend Developer: Spring Boot, микросервисы, Kafka, FinTech/InsurTech.">
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="canonical" href="https://dverka.sk/cv/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="cv.css">
+</head>
+<body>
+<nav class="toolbar">
+  <a class="back" href="/" data-t="back">← dverka.sk</a>
+  <div class="lang variant" role="group" aria-label="Resume" id="variants"></div>
+  <div class="lang" role="group" aria-label="Language">
+    <button type="button" data-lang="ru">RU</button>
+    <button type="button" data-lang="en">EN</button>
+  </div>
+  <button type="button" class="print" data-t="print">PDF / печать</button>
+</nav>
+
+<main class="sheet" id="cv"></main>
+
+<script src="data.js"></script>
+<script>
+(() => {
+  const cv = window.CV;
+  const UI = {
+    ru: { back: "← dverka.sk", print: "PDF / печать", about: "О кандидате", exp: "Опыт работы", projects: "Проекты", edu: "Образование", skills: "Навыки", langs: "Languages" },
+    en: { back: "← dverka.sk", print: "PDF / Print", about: "Summary", exp: "Experience", projects: "Projects", edu: "Education", skills: "Skills", langs: "Languages" }
+  };
+  // Значение поля: { ru, en } или строка, общая для обоих языков
+  const pick = (v, lang) => (v && typeof v === "object" && !Array.isArray(v)) ? v[lang] : v;
+  const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+
+  const variantBox = document.getElementById("variants");
+  variantBox.innerHTML = Object.keys(cv.variants)
+    .map(k => `<button type="button" data-variant="${k}">${esc(pick(cv.variants[k].label, "ru"))}</button>`).join("");
+
+  function render(lang, v) {
+    const t = UI[lang];
+    const cur = cv.variants[v];
+    const meta = cv.meta.map(m => {
+      const text = esc(m.text ?? pick(m, lang));
+      return m.href ? `<a href="${esc(m.href)}">${text}</a>` : `<span>${text}</span>`;
+    }).join('<span class="sep">·</span>');
+
+    const jobs = cur.jobs.map(j => `
+      <div class="job-head">
+        <div><span class="title">${pick(j.title, lang)}</span> — ${pick(j.company, lang)}</div>
+        <div class="dates">${pick(j.period, lang)}</div>
+      </div>
+      <p>${pick(j.summary, lang)}</p>
+      ${j.highlight ? `<p class="highlight">${pick(j.highlight, lang)}</p>` : ""}
+      ${j.groups.map(g => `<h3>${pick(g.title, lang)}</h3><ul>${pick(g.items, lang).map(i => `<li>${i}</li>`).join("")}</ul>`).join("")}
+    `).join("");
+
+    document.getElementById("cv").innerHTML = `
+      <h1>${pick(cv.name, lang)}</h1>
+      <div class="role">${pick(cur.role, lang)}</div>
+      <div class="meta">${meta}</div>
+      <h2>${t.about}</h2>${pick(cur.about, lang).map(p => `<p>${p}</p>`).join("")}
+      <h2>${t.exp}</h2>${jobs}
+      <h2>${t.edu}</h2>${cv.education.map(e => `
+        <div class="edu"><span><b>${pick(e.school, lang)}</b> — ${pick(e.degree, lang)}</span><span class="dates">${e.years}</span></div>`).join("")}
+      <h2>${t.skills}</h2><div class="skills">${cur.skills.map(s => `<p><b>${pick(s.label, lang)}:</b> ${pick(s.items, lang)}</p>`).join("")}
+        <p><b>${t.langs}:</b> ${cv.languages.map(l => `${pick(l.name, lang)} — ${pick(l.level, lang)}`).join(", ")}</p></div>
+    `;
+
+    document.documentElement.lang = lang;
+    document.title = `${pick(cv.name, lang)} — ${pick(cur.label, lang)} CV`;
+    document.querySelectorAll("[data-t]").forEach(el => el.textContent = t[el.dataset.t]);
+    document.querySelectorAll("[data-lang]").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.lang === lang)));
+    document.querySelectorAll("[data-variant]").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.variant === v)));
+  }
+
+  // Язык и вариант: из ссылки (?lang=en&v=fullstack), иначе последний выбранный, иначе RU / Java
+  const params = new URLSearchParams(location.search);
+  const stored = key => { try { return localStorage.getItem(key); } catch (e) { return null; } };
+  let lang = [params.get("lang"), stored("cv-lang"), "ru"].find(x => UI[x]);
+  let variant = [params.get("v"), stored("cv-variant"), "java"].find(x => cv.variants[x]);
+
+  function update() {
+    render(lang, variant);
+    history.replaceState(null, "", `?v=${variant}&lang=${lang}`);
+    try { localStorage.setItem("cv-lang", lang); localStorage.setItem("cv-variant", variant); } catch (e) {}
+  }
+  render(lang, variant);
+
+  document.querySelectorAll("[data-lang]").forEach(b => b.addEventListener("click", () => { lang = b.dataset.lang; update(); }));
+  document.querySelectorAll("[data-variant]").forEach(b => b.addEventListener("click", () => { variant = b.dataset.variant; update(); }));
+
+  // Имя страницы становится именем PDF-файла в диалоге печати
+  document.querySelector(".print").addEventListener("click", () => {
+    const title = document.title;
+    document.title = pick(cv.variants[variant].file, lang);
+    window.print();
+    document.title = title;
+  });
+})();
+</script>
+</body>
+</html>
