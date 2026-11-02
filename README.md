@@ -1,16 +1,11 @@
-[![wakatime](https://wakatime.com/badge/user/31b69023-1a97-41b5-8c73-e96120039f47.svg)](https://wakatime.com/@31b69023-1a97-41b5-8c73-e96120039f47.svg)
+<p align="center">
+  <a href="https://wakatime.com/@DverkaSK"><img src="https://wakatime.com/badge/user/31b69023-1a97-41b5-8c73-e96120039f47.svg" alt="wakatime" /></a>
+</p>
 
-<a href="https://wakatime.com/@DverkaSK"><picture><source media="(prefers-color-scheme: dark)" srcset="cards/languages-dark.svg" /><img src="cards/languages-light.svg" alt="Languages" /></picture></a>
-
-<a href="https://wakatime.com/@DverkaSK"><picture><source media="(prefers-color-scheme: dark)" srcset="cards/editors-dark.svg" /><img src="cards/editors-light.svg" alt="Editors & Tools" /></picture></a>
-
-<a href="https://wakatime.com/@DverkaSK"><picture><source media="(prefers-color-scheme: dark)" srcset="cards/ai-coding-dark.svg" /><img src="cards/ai-coding-light.svg" alt="AI Coding" /></picture></a>
-
-<a href="https://wakatime.com/@DverkaSK"><picture><source media="(prefers-color-scheme: dark)" srcset="cards/ai-models-dark.svg" /><img src="cards/ai-models-light.svg" alt="AI Models" /></picture></a>
-
-<a href="https://wakatime.com/@DverkaSK"><picture><source media="(prefers-color-scheme: dark)" srcset="cards/apps-dark.svg" /><img src="cards/apps-light.svg" alt="Other Apps" /></picture></a>
-
-[![spigot](spigot.png)](https://www.spigotmc.org/members/dverkask.1954357/) [![modrinth](modrinth.png)](https://modrinth.com/user/DverkaSK)
+<p align="center">
+  <a href="https://www.spigotmc.org/members/dverkask.1954357/"><img src="https://img.shields.io/badge/Spigot-ED8106?style=for-the-badge&logo=spigotmc&logoColor=white" alt="Spigot" /></a>
+  <a href="https://modrinth.com/user/DverkaSK"><img src="https://img.shields.io/badge/Modrinth-00AF5C?style=for-the-badge&logo=modrinth&logoColor=white" alt="Modrinth" /></a>
+</p>
 
 <h3 align="center">🛠️ My Stack before 2026</h3>
 
@@ -19,7 +14,8 @@
   <img src="icons/kotlin.svg" width="45" height="45" alt="Kotlin" title="Kotlin" />&nbsp;&nbsp;
   <img src="icons/python.svg" width="45" height="45" alt="Python" title="Python" />&nbsp;&nbsp;
   <img src="icons/go.svg" width="45" height="45" alt="Go" title="Go" />&nbsp;&nbsp;
-  <img src="icons/typescript.svg" width="45" height="45" alt="TypeScript" title="TypeScript" />
+  <img src="icons/typescript.svg" width="45" height="45" alt="TypeScript" title="TypeScript" />&nbsp;&nbsp;
+  <img src="icons/groovy.png" width="45" height="45" alt="Groovy" title="Groovy" />
 </p>
 
 <p align="center">
@@ -29,11 +25,13 @@
   <img src="icons/goland.svg" width="45" height="45" alt="GoLand" title="GoLand" />&nbsp;&nbsp;
   <img src="icons/datagrip.svg" width="45" height="45" alt="DataGrip" title="DataGrip" />&nbsp;&nbsp;
   <img src="icons/vscode.svg" width="45" height="45" alt="VS Code" title="VS Code" />&nbsp;&nbsp;
-  <img src="icons/git.svg" width="45" height="45" alt="Git" title="Git" />&nbsp;&nbsp;
-  <picture><source media="(prefers-color-scheme: dark)" srcset="icons/bash-white.svg" /><img src="icons/bash.svg" width="45" height="45" alt="Bash" title="Bash" /></picture>
+  <img src="icons/postman.svg" width="45" height="45" alt="Postman" title="Postman" />&nbsp;&nbsp;
+  <img src="icons/bruno.png" width="45" height="45" alt="Bruno" title="Bruno" />&nbsp;&nbsp;
+  <img src="icons/git.svg" width="45" height="45" alt="Git" title="Git" />
 </p>
 
 <p align="center">
+  <picture><source media="(prefers-color-scheme: dark)" srcset="icons/bash-white.svg" /><img src="icons/bash.svg" width="45" height="45" alt="Bash" title="Bash" /></picture>&nbsp;&nbsp;
   <img src="icons/spring.svg" width="45" height="45" alt="Spring Boot" title="Spring Boot" />&nbsp;&nbsp;
   <img src="icons/quarkus.svg" width="45" height="45" alt="Quarkus" title="Quarkus" />&nbsp;&nbsp;
   <img src="icons/hibernate.svg" width="45" height="45" alt="Hibernate" title="Hibernate" />&nbsp;&nbsp;
@@ -57,34 +55,38 @@
   <picture><source media="(prefers-color-scheme: dark)" srcset="icons/kafka-white.svg" /><img src="icons/kafka.svg" width="45" height="45" alt="Kafka" title="Kafka" /></picture>&nbsp;&nbsp;
   <img src="icons/rabbitmq.svg" width="45" height="45" alt="RabbitMQ" title="RabbitMQ" />&nbsp;&nbsp;
   <img src="icons/docker.svg" width="45" height="45" alt="Docker" title="Docker" />&nbsp;&nbsp;
-  <img src="icons/kubernetes.svg" width="45" height="45" alt="Kubernetes" title="Kubernetes" />
+  <img src="icons/kubernetes.svg" width="45" height="45" alt="Kubernetes" title="Kubernetes" />&nbsp;&nbsp;
+  <img src="icons/vault.svg" width="45" height="45" alt="Vault" title="Vault" />
 </p>
 
 <p align="center">
-  <img src="icons/vault.svg" width="45" height="45" alt="Vault" title="Vault" />&nbsp;&nbsp;
   <img src="icons/nginx.svg" width="45" height="45" alt="Nginx" title="Nginx" />&nbsp;&nbsp;
   <img src="icons/linux.png" width="45" height="45" alt="Linux" title="Linux" />&nbsp;&nbsp;
   <img src="icons/gitlab.svg" width="45" height="45" alt="GitLab CI" title="GitLab CI" />&nbsp;&nbsp;
   <img src="icons/githubactions.svg" width="45" height="45" alt="GitHub Actions" title="GitHub Actions" />&nbsp;&nbsp;
   <img src="icons/prometheus.svg" width="45" height="45" alt="Prometheus" title="Prometheus" />&nbsp;&nbsp;
   <img src="icons/grafana.svg" width="45" height="45" alt="Grafana" title="Grafana" />&nbsp;&nbsp;
-  <img src="icons/javascript.svg" width="45" height="45" alt="JavaScript" title="JavaScript" />&nbsp;&nbsp;
-  <img src="icons/tailwindcss.svg" width="45" height="45" alt="Tailwind" title="Tailwind" />&nbsp;&nbsp;
-  <img src="icons/vitejs.svg" width="45" height="45" alt="Vite" title="Vite" />
+  <picture><source media="(prefers-color-scheme: dark)" srcset="icons/yaml-white.svg" /><img src="icons/yaml.svg" width="45" height="45" alt="YAML" title="YAML" /></picture>&nbsp;&nbsp;
+  <img src="icons/json.svg" width="45" height="45" alt="JSON" title="JSON" />&nbsp;&nbsp;
+  <img src="icons/xml.svg" width="45" height="45" alt="XML" title="XML" />&nbsp;&nbsp;
+  <picture><source media="(prefers-color-scheme: dark)" srcset="icons/markdown-white.svg" /><img src="icons/markdown.svg" width="45" height="45" alt="Markdown" title="Markdown" /></picture>&nbsp;&nbsp;
+  <img src="icons/javascript.svg" width="45" height="45" alt="JavaScript" title="JavaScript" />
 </p>
 
 <p align="center">
+  <img src="icons/tailwindcss.svg" width="45" height="45" alt="Tailwind" title="Tailwind" />&nbsp;&nbsp;
+  <img src="icons/vitejs.svg" width="45" height="45" alt="Vite" title="Vite" />&nbsp;&nbsp;
   <img src="icons/react.svg" width="45" height="45" alt="React" title="React" />&nbsp;&nbsp;
   <img src="icons/html5.svg" width="45" height="45" alt="HTML" title="HTML" />&nbsp;&nbsp;
   <img src="icons/css3.svg" width="45" height="45" alt="CSS" title="CSS" />&nbsp;&nbsp;
   <img src="icons/paper.svg" width="45" height="45" alt="Paper" title="Paper" />&nbsp;&nbsp;
   <img src="icons/folia.svg" width="45" height="45" alt="Folia" title="Folia" />&nbsp;&nbsp;
   <img src="icons/purpur.svg" width="45" height="45" alt="Purpur" title="Purpur" />&nbsp;&nbsp;
-  <img src="icons/leaf.png" width="45" height="45" alt="Leaf" title="Leaf" />&nbsp;&nbsp;
-  <img src="icons/minestom.png" width="45" height="45" alt="Minestom" title="Minestom" />
+  <img src="icons/leaf.png" width="45" height="45" alt="Leaf" title="Leaf" />
 </p>
 
 <p align="center">
+  <img src="icons/minestom.png" width="45" height="45" alt="Minestom" title="Minestom" />&nbsp;&nbsp;
   <img src="icons/sponge.svg" width="45" height="45" alt="Sponge" title="Sponge" />&nbsp;&nbsp;
   <img src="icons/velocity.svg" width="45" height="45" alt="Velocity" title="Velocity" />&nbsp;&nbsp;
   <img src="icons/fabric.png" width="45" height="45" alt="Fabric" title="Fabric" />&nbsp;&nbsp;
@@ -112,6 +114,39 @@
   <picture><source media="(prefers-color-scheme: dark)" srcset="icons/langchain-white.svg" /><img src="icons/langchain.svg" width="45" height="45" alt="LangChain" title="LangChain" /></picture>&nbsp;&nbsp;
   <img src="icons/1c.svg" width="45" height="45" alt="1C" title="1C" />
 </p>
+
+<h3 align="center">📊 Coding stats</h3>
+
+<p align="center">
+  <a href="https://wakatime.com/@DverkaSK"><picture><source media="(prefers-color-scheme: dark)" srcset="cards/languages-dark.svg" /><img src="cards/languages-light.svg" alt="Languages" /></picture></a>
+</p>
+
+<p align="center">
+  <a href="https://wakatime.com/@DverkaSK"><picture><source media="(prefers-color-scheme: dark)" srcset="cards/editors-dark.svg" /><img src="cards/editors-light.svg" alt="Editors & Tools" /></picture></a>
+</p>
+
+<p align="center">
+  <a href="https://wakatime.com/@DverkaSK"><picture><source media="(prefers-color-scheme: dark)" srcset="cards/ai-coding-dark.svg" /><img src="cards/ai-coding-light.svg" alt="AI Coding" /></picture></a>
+</p>
+
+<p align="center">
+  <a href="https://wakatime.com/@DverkaSK"><picture><source media="(prefers-color-scheme: dark)" srcset="cards/ai-models-dark.svg" /><img src="cards/ai-models-light.svg" alt="AI Models" /></picture></a>
+</p>
+
+<p align="center">
+  <a href="https://wakatime.com/@DverkaSK"><picture><source media="(prefers-color-scheme: dark)" srcset="cards/apps-dark.svg" /><img src="cards/apps-light.svg" alt="Other Apps" /></picture></a>
+</p>
+
+<!-- playlist:start -->
+<p align="center">
+  <a href="https://music.yandex.ru/users/itsfunkylegend/playlists/1002"><picture><source media="(prefers-color-scheme: dark)" srcset="cards/playlist-head-dark.svg" /><img src="cards/playlist-head-light.svg" alt="Stood the test of time" /></picture></a><br>
+  <a href="https://music.yandex.ru/album/40429999/track/147683242"><picture><source media="(prefers-color-scheme: dark)" srcset="cards/playlist-0-dark.svg" /><img src="cards/playlist-0-light.svg" alt="chrome.fm — Daystar" /></picture></a><br>
+  <a href="https://music.yandex.ru/album/23925019/track/32291816"><picture><source media="(prefers-color-scheme: dark)" srcset="cards/playlist-1-dark.svg" /><img src="cards/playlist-1-light.svg" alt="Порнофильмы — Прости. Прощай. Привет" /></picture></a><br>
+  <a href="https://music.yandex.ru/album/5576245/track/53404"><picture><source media="(prefers-color-scheme: dark)" srcset="cards/playlist-2-dark.svg" /><img src="cards/playlist-2-light.svg" alt="Nirvana — Smells Like Teen Spirit" /></picture></a><br>
+  <a href="https://music.yandex.ru/album/675436/track/6145639"><picture><source media="(prefers-color-scheme: dark)" srcset="cards/playlist-3-dark.svg" /><img src="cards/playlist-3-light.svg" alt="Halou — Honeythief" /></picture></a><br>
+  <a href="https://music.yandex.ru/album/4246651/track/44137833"><picture><source media="(prefers-color-scheme: dark)" srcset="cards/playlist-4-dark.svg" /><img src="cards/playlist-4-light.svg" alt="Arctic Monkeys — 505" /></picture></a>
+</p>
+<!-- playlist:end -->
 
 <!--
 <details>
