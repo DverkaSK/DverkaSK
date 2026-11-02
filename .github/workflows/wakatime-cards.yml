@@ -18,7 +18,7 @@ jobs:
           python-version: '3.12'
       - name: Generate cards
         env:
-          WAKATIME_API_KEY: ${{ secrets.WAKATIME_API_KEY }}
+          WAKATIME_TOKEN: ${{ secrets.WAKATIME_TOKEN }}
         run: python scripts/wakatime_cards.py
       - name: Collect Steam screenshots
         # Steam can hiccup; the album just keeps the previous JSON then

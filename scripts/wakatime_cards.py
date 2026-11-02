@@ -1,5 +1,4 @@
 """Generates WakaTime stat cards (dark and light) into the cards/ directory."""
-import base64
 import json
 import os
 import sys
@@ -36,8 +35,7 @@ MODEL_COLORS = {
 }
 
 
-def fetch_stats(api_key, stats_range):
-    auth = 'Basic ' + base64.b64encode(api_key.encode()).decode()
+def fetch_stats(auth, stats_range):
     req = urllib.request.Request(f'https://wakatime.com/api/v1/users/current/stats/{stats_range}',
                                  headers={'Authorization': auth})
     # WakaTime answers 202 while stats are still being calculated
@@ -51,12 +49,11 @@ def fetch_stats(api_key, stats_range):
     return None
 
 
-def fetch_week_lines(api_key):
+def fetch_week_lines(auth):
     """AI/human line changes for the last 7 days including today.
 
     /stats/last_7_days ends yesterday and is recalculated once a day, while summaries are live
     (same window as the WakaTime dashboard)."""
-    auth = 'Basic ' + base64.b64encode(api_key.encode()).decode()
     req = urllib.request.Request('https://wakatime.com/api/v1/users/current/summaries?range=last_7_days',
                                  headers={'Authorization': auth})
     with urllib.request.urlopen(req, timeout=90) as r:
@@ -223,11 +220,13 @@ def build_json(week_lines, all_time):
 
 
 def main():
-    api_key = os.environ.get('WAKATIME_API_KEY')
-    if not api_key:
-        sys.exit('WAKATIME_API_KEY is not set')
-    week_lines = fetch_week_lines(api_key)
-    all_time = fetch_stats(api_key, 'all_time')
+    # API keys are write-only (plugins); reading stats needs a personal OAuth token from wakatime.com/oauth
+    token = os.environ.get('WAKATIME_TOKEN')
+    if not token:
+        sys.exit('WAKATIME_TOKEN is not set')
+    auth = 'Bearer ' + token
+    week_lines = fetch_week_lines(auth)
+    all_time = fetch_stats(auth, 'all_time')
     if not all_time:
         print('All-time WakaTime stats are not ready yet, keeping the previous cards for them')
     os.makedirs(OUT_DIR, exist_ok=True)
