@@ -1,13 +1,9 @@
 {
- "updated": "2026-11-01T12:48:10Z",
+ "updated": "2026-11-02T18:24:47Z",
  "week": {
-  "ai_lines": 1093,
-  "human_lines": 275,
+  "ai_lines": 1730,
+  "human_lines": 442,
   "days": [
-   {
-    "date": "2026-10-26",
-    "seconds": 31475
-   },
    {
     "date": "2026-10-27",
     "seconds": 31397
@@ -30,13 +26,17 @@
    },
    {
     "date": "2026-11-01",
-    "seconds": 16120
+    "seconds": 31845
+   },
+   {
+    "date": "2026-11-02",
+    "seconds": 31309
    }
   ]
  },
  "all_time": {
-  "total_seconds": 8305000,
-  "daily_average": 8807,
+  "total_seconds": 8307750,
+  "daily_average": 8801,
   "start": "2023-01-01T21:00:00Z",
   "languages": [
    {
@@ -57,7 +57,7 @@
    },
    {
     "name": "Markdown",
-    "seconds": 110623
+    "seconds": 112280
    },
    {
     "name": "Groovy",
@@ -69,7 +69,7 @@
    },
    {
     "name": "Python",
-    "seconds": 71014
+    "seconds": 71168
    },
    {
     "name": "Kotlin",
@@ -85,7 +85,7 @@
    },
    {
     "name": "HTML",
-    "seconds": 51286
+    "seconds": 51423
    },
    {
     "name": "TypeScript",
@@ -109,7 +109,7 @@
    },
    {
     "name": "JavaScript",
-    "seconds": 14261
+    "seconds": 14282
    },
    {
     "name": "Properties",
@@ -121,11 +121,11 @@
    },
    {
     "name": "CSS",
-    "seconds": 5987
+    "seconds": 6020
    },
    {
     "name": "TOML",
-    "seconds": 4548
+    "seconds": 4554
    },
    {
     "name": "C#",
@@ -133,7 +133,7 @@
    },
    {
     "name": "PowerShell",
-    "seconds": 3108
+    "seconds": 3111
    },
    {
     "name": "Nginx configuration file",
@@ -275,11 +275,11 @@
    },
    {
     "name": "Claude Code",
-    "seconds": 1008263
+    "seconds": 1014476
    },
    {
     "name": "Warp",
-    "seconds": 203499
+    "seconds": 207837
    },
    {
     "name": "GoLand",
@@ -313,7 +313,7 @@
    },
    {
     "name": "Opus",
-    "lines": 40963
+    "lines": 41390
    },
    {
     "name": "Sonnet",
