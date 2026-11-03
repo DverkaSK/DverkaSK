@@ -41,9 +41,15 @@ def poster(w, h, tints, dark, body, title, css=''):
     base = tints[0]
     bg0, bg1 = (mix(base, '#000000', .9), mix(base, '#000000', .78)) if dark else \
         (mix(base, '#ffffff', .9), mix(base, '#ffffff', .78))
+    # soft blobs are radial gradients, not a blur filter: a filter is re-rasterised on every animation frame,
+    # which made the cards stutter while they animated in
     spots = [(.12, .95, .55), (.42, .05, .42), (.92, .95, .38), (.75, .1, .3)]
-    blobs = ''.join(f'<circle cx="{w * x:.0f}" cy="{h * y:.0f}" r="{min(w, h) * .45:.0f}" fill="{tints[i % len(tints)]}" '
-                    f'opacity="{o * (1 if dark else .8):.2f}" filter="url(#bl)"/>' for i, (x, y, o) in enumerate(spots))
+    grads = ''.join(f'<radialGradient id="b{i}"><stop offset="0" stop-color="{tints[i % len(tints)]}" stop-opacity="{o * (1 if dark else .8):.2f}"/>'
+                    f'<stop offset=".45" stop-color="{tints[i % len(tints)]}" stop-opacity="{o * (.62 if dark else .5):.2f}"/>'
+                    f'<stop offset="1" stop-color="{tints[i % len(tints)]}" stop-opacity="0"/></radialGradient>'
+                    for i, (_, _, o) in enumerate(spots))
+    blobs = ''.join(f'<circle cx="{w * x:.0f}" cy="{h * y:.0f}" r="{min(w, h) * .8:.0f}" fill="url(#b{i})"/>'
+                    for i, (x, y, _) in enumerate(spots))
     return f'''<svg xmlns="http://www.w3.org/2000/svg" width="{w}" height="{h}" viewBox="0 0 {w} {h}">
   <title>{esc(title)}</title>
   <style>
@@ -55,7 +61,7 @@ def poster(w, h, tints, dark, body, title, css=''):
   </style>
   <defs><clipPath id="cl"><rect width="{w}" height="{h}" rx="16"/></clipPath>
   <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="{bg0}"/><stop offset="1" stop-color="{bg1}"/></linearGradient>
-  <filter id="bl" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="{min(w, h) * .16:.0f}"/></filter></defs>
+  {grads}</defs>
   <g clip-path="url(#cl)"><rect width="{w}" height="{h}" fill="url(#bg)"/>{blobs}
 {body}
   </g>
