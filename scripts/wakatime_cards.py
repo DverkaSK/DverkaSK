@@ -7,11 +7,12 @@ import sys
 import time
 import urllib.request
 
+import poster_style as ps
 import soundcloud_style as sc
+from poster_style import BOLD, HALF, WIDE, mix
 
 OUT_DIR = os.path.join(os.path.dirname(__file__), '..', 'cards')
-FONT = "'Segoe UI', Ubuntu, 'Helvetica Neue', Sans-Serif"
-WIDTH = 495
+APPS_WIDTH = 495
 
 THEMES = {
     'dark': dict(bg='#0d1117', border='#30363d', title='#58a6ff', text='#c9d1d9', muted='#8b949e',
@@ -98,16 +99,6 @@ def esc(s):
     return s.replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;')
 
 
-def frame(height, title, subtitle, body, t):
-    return f'''<svg xmlns="http://www.w3.org/2000/svg" width="{WIDTH}" height="{height}" viewBox="0 0 {WIDTH} {height}" font-family="{FONT}">
-  <title>{esc(title)}</title>
-  <rect x="0.5" y="0.5" width="{WIDTH - 1}" height="{height - 1}" rx="4.5" fill="{t['bg']}" stroke="{t['border']}"/>
-  <text x="20" y="32" fill="{t['title']}" font-size="18" font-weight="600">{esc(title)}</text>
-  <text x="{WIDTH - 20}" y="32" fill="{t['muted']}" font-size="12" text-anchor="end">{esc(subtitle)}</text>{body}
-</svg>
-'''
-
-
 def visible(color, t):
     """Swaps colors that would blend into the dark background (e.g. JSON's #292929) for a neutral gray."""
     r, g, b = (int(color[i:i + 2], 16) for i in (1, 3, 5)) if len(color) == 7 else (128, 128, 128)
@@ -115,28 +106,24 @@ def visible(color, t):
     return t['muted'] if t is THEMES['dark'] and luminance < 0.2 else color
 
 
-def breakdown_card(title, subtitle, items, t, limit=10):
-    """items: [(name, value, label, color)] sorted desc; bar shows each item's share of the total."""
+def hrs(seconds):
+    return f'{seconds / 3600:,.0f}h' if seconds >= 3600 else f'{seconds / 60:.0f}m'
+
+
+def breakdown_card(title, phrase, items, t, shown=6):
+    """Wrapped-style half card: total hours, then the top items with their share of the total; the rest summed up."""
+    dark = t is THEMES['dark']
+    p = ps.palette(dark)
     total = sum(v for _, v, _, _ in items) or 1
-    shown = [(n, v, label, visible(c, t)) for n, v, label, c in items[:limit]]
-    bar_x, bar_w = 20, WIDTH - 40
-    body = [f'''
-  <clipPath id="bar"><rect x="{bar_x}" y="48" width="{bar_w}" height="8" rx="4"/></clipPath>
-  <g clip-path="url(#bar)"><rect x="{bar_x}" y="48" width="{bar_w}" height="8" fill="{t['track']}"/>''']
-    x = bar_x
-    for _, value, _, color in shown:
-        w = bar_w * value / total
-        body.append(f'<rect x="{x:.2f}" y="48" width="{w + 0.5:.2f}" height="8" fill="{color}"/>')
-        x += w
-    body.append('</g>')
-    for i, (name, _, label, color) in enumerate(shown):
-        cx = 20 if i % 2 == 0 else WIDTH // 2 + 10
-        y = 84 + (i // 2) * 24
-        body.append(f'''
-  <circle cx="{cx + 5}" cy="{y - 4}" r="5" fill="{color}"/>
-  <text x="{cx + 16}" y="{y}" fill="{t['text']}" font-size="12">{esc(name)} <tspan fill="{t['muted']}">{esc(label)}</tspan></text>''')
-    height = 84 + ((len(shown) + 1) // 2 - 1) * 24 + 22
-    return frame(height, title, subtitle, ''.join(body), t)
+    rows = [(n, hrs(v), v / total, visible(c, t)) for n, v, _, c in items[:shown]]
+    rest = items[shown:]
+    body = (f'  {ps.label(28, 42, title + " · all time", p)}\n'
+            f'  {ps.hero(24, 104, f"{total / 3600:,.0f}h", 58, p, "28px 100px")}\n'
+            f'  {ps.heavy(28, 132, phrase.format(n=len(items)), 17, p["fg"])}\n'
+            + ps.toplist(28, 172, HALF - 56, rows, p, step=36, fs=17, r=12)
+            + (f'\n  <text x="28" y="{172 + shown * 36 + 4}" font-family="{BOLD}" font-size="12.5" font-weight="700" '
+               f'fill="{p["mu"]}">+ {len(rest)} more · {hrs(sum(v for _, v, _, _ in rest))}</text>' if rest else ''))
+    return ps.poster(HALF, 412, [r[3] for r in rows[:3]] or ['#7c7c86'], dark, body, title)
 
 
 # ---------- AI Coding: activity rings ----------
@@ -213,124 +200,72 @@ def ring(cx, cy, r, width, frac, k, delay=0.0, track_op=.2):
 
 def ai_coding_card(ai, human, daily, t):
     theme = 'dark' if t is THEMES['dark'] else 'light'
+    p = ps.palette(theme == 'dark')
     total = ai + human
     week_h = sum(sec for _, sec in daily) / 3600
     frac = [ai / total if total else 0, human / total if total else 0, week_h / WEEK_GOAL_H]
-    h, cx, cy = 262, 96, 116
-    rr = [(64, 15), (46, 15), (28, 15)]
+    cx, cy = 104, 170
     if daily:
         d0, d1 = time.strptime(daily[0][0], '%Y-%m-%d'), time.strptime(daily[-1][0], '%Y-%m-%d')
         fmt = lambda d: f'{time.strftime("%b", d)} {d.tm_mday}'
         span = fmt(d0) + ' – ' + (str(d1.tm_mday) if d0.tm_mon == d1.tm_mon else fmt(d1))
     else:
         span = 'last 7 days'
-    logo = ''.join(
-        f'<circle cx="31" cy="26" r="{r}" fill="none" stroke="url(#rg{k})" stroke-opacity=".25" stroke-width="2.4"/>'
-        f'<circle cx="31" cy="26" r="{r}" fill="none" stroke="url(#rg{k})" stroke-width="2.4" stroke-linecap="round" '
-        f'stroke-dasharray="{2 * math.pi * r * p:.1f} {2 * math.pi * r:.1f}" transform="rotate(-90 31 26)"/>'
-        for k, (r, p) in enumerate(((9, .8), (6, .55), (3, .7))))
-    pill_w = len(span) * 6.6 + 22
-    head = (f'{logo}\n  <text x="48" y="31" fill="{t["text"]}" font-size="17" font-weight="700">AI Coding</text>'
-            f'\n  <rect x="{WIDTH - 20 - pill_w:.0f}" y="14" width="{pill_w:.0f}" height="22" rx="11" fill="{t["box"]}" stroke="{t["border"]}"/>'
-            f'\n  <text x="{WIDTH - 20 - pill_w / 2:.0f}" y="29" fill="{t["muted"]}" font-size="11.5" font-weight="600" text-anchor="middle">{esc(span)}</text>')
-    rows = [('AI lines', short(ai), f'{frac[0] * 100:.0f}% of changes'),
-            ('Human lines', short(human), f'{frac[1] * 100:.0f}% of changes'),
-            ('Coding time', f'{week_h:.0f}h', f'of a {WEEK_GOAL_H}h week')]
-    legend = ''.join(
-        f'\n  <g class="row" style="animation-delay:{.3 + k * .15:.2f}s">'
-        f'<text x="192" y="{60 + k * 46}" fill="{t["text"]}" font-size="12.5" font-weight="600">{label}</text>'
-        f'<text x="192" y="{85 + k * 46}" fill="url(#rg{k})" font-size="24" font-weight="800">{value}</text>'
-        f'<text x="{202 + len(value) * 15}" y="{85 + k * 46}" fill="{t["muted"]}" font-size="12">{note}</text></g>'
-        for k, (label, value, note) in enumerate(rows))
-    step = (WIDTH - 40) / 7
+    rings = ''.join(ring(cx, cy, r, 15, frac[k], k, k * .25) for k, r in enumerate((66, 48, 30)))
+    stats = [('by AI', short(ai)), ('by me', short(human)), (f'of a {WEEK_GOAL_H}h week', f'{week_h:.0f}h')]
+    chips = ''.join(f'<g class="row" style="animation-delay:{.5 + k * .12:.2f}s">'
+                    f'<rect x="{214 + k * 92}" y="214" width="84" height="44" rx="10" fill="{p["chip"]}"/>'
+                    f'<rect x="{214 + k * 92}" y="224" width="4" height="24" rx="2" fill="url(#rg{k})"/>'
+                    f'{ps.heavy(226 + k * 92, 236, value, 17, p["fg"])}'
+                    f'<text x="{226 + k * 92}" y="251" font-family="{BOLD}" font-size="10.5" font-weight="700" fill="{p["mu"]}">{esc(note)}</text></g>'
+                    for k, (note, value) in enumerate(stats))
+    dx, step = 560, (WIDE - 24 - 560) / 7
     days = ''.join(
-        ring(20 + step * i + step / 2 - 22, 228, 11, 5, sec / 3600 / DAY_GOAL_H, 2, .6 + i * .06, .22)
-        + f'<text x="{20 + step * i + step / 2 - 6:.1f}" y="226" fill="{t["text"]}" font-size="11.5" font-weight="700">{sec / 3600:.1f}h</text>'
-        + f'<text x="{20 + step * i + step / 2 - 6:.1f}" y="240" fill="{t["muted"]}" font-size="10" font-weight="600">'
-          f'{time.strftime("%a", time.strptime(date, "%Y-%m-%d"))}</text>'
+        ring(dx + step * i + step / 2, 150, 13, 5, sec / 3600 / DAY_GOAL_H, 2, .6 + i * .06, .22)
+        + ps.heavy(f'{dx + step * i + step / 2:.1f}', 196, f'{sec / 3600:.1f}h', 12.5, p['fg'], 'middle')
+        + f'<text x="{dx + step * i + step / 2:.1f}" y="213" font-family="{BOLD}" font-size="11" font-weight="700" '
+          f'fill="{p["mu"]}" text-anchor="middle">{time.strftime("%a", time.strptime(date, "%Y-%m-%d"))}</text>'
         for i, (date, sec) in enumerate(daily))
-    body = ''.join(ring(cx, cy, r, w, frac[k], k, k * .25) for k, (r, w) in enumerate(rr))
+    body = (f'  <defs>{ring_gradients(theme, cx, cy, 66)}</defs>\n'
+            f'  {ps.label(28, 44, "AI Coding · " + span, p)}\n  {rings}\n'
+            f'  {ps.hero(206, 160, f"{frac[0] * 100:.0f}%", 92, p, "210px 150px")}\n'
+            f'  {ps.heavy(214, 192, "of changed lines written by AI", 17, p["fg"])}\n'
+            f'  {chips}\n  {ps.label(dx + 4, 100, "This week", p)}\n  {days}')
     css = ('\n  .arc { animation: draw 1.4s cubic-bezier(.3,.7,.2,1) both; }'
-           '\n  @keyframes draw { from { stroke-dasharray: 0 999; } }'
-           '\n  .row { animation: fade .5s ease-out both; }'
-           '\n  @keyframes fade { from { opacity: 0; transform: translateY(4px); } }'
-           '\n  @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }')
-    return (f'<svg xmlns="http://www.w3.org/2000/svg" width="{WIDTH}" height="{h}" viewBox="0 0 {WIDTH} {h}" font-family="{FONT}">'
-            f'\n  <title>AI Coding</title>\n  <style>{css}\n  </style>\n  <defs>{ring_gradients(theme, cx, cy, 64)}</defs>'
-            f'\n  <rect x="0.5" y="0.5" width="{WIDTH - 1}" height="{h - 1}" rx="4.5" fill="{t["bg"]}" stroke="{t["border"]}"/>'
-            f'\n  {head}\n  {body}{legend}'
-            f'\n  <line x1="20" y1="200" x2="{WIDTH - 20}" y2="200" stroke="{t["border"]}"/>\n  {days}\n</svg>\n')
+           '\n  @keyframes draw { from { stroke-dasharray: 0 999; } }')
+    return ps.poster(WIDE, 290, [ring_colour(h, theme) for h in RING_HUES], theme == 'dark', body, 'AI Coding', css)
 
 
 # ---------- AI Models: one band per lab, its models as chips ----------
-HEAVY = "'Segoe UI Black', 'Arial Black', 'Helvetica Neue', -apple-system, sans-serif"
-BOLD = "-apple-system, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif"
 MODEL_LAB = {'Claude': 'Anthropic', 'Opus': 'Anthropic', 'Sonnet': 'Anthropic', 'Haiku': 'Anthropic', 'GPT': 'OpenAI',
              'Gemini': 'Google', 'DeepSeek': 'DeepSeek', 'Grok': 'xAI', 'Qwen': 'Alibaba'}
 LAB_COLORS = {'Anthropic': '#d97757', 'OpenAI': '#10a37f', 'Google': '#4285f4', 'DeepSeek': '#4d6bfe', 'xAI': '#6b7280',
               'Alibaba': '#615ced'}
-LAB_LOGOS = {'Anthropic': 'claude.svg', 'OpenAI': 'openai.svg', 'Google': 'gemini.svg', 'DeepSeek': 'deepseek.svg',
-             'Alibaba': 'qwen.svg'}
-
-
-def mix(c, w, k):
-    a = [int(c[i:i + 2], 16) for i in (1, 3, 5)]
-    b = [int(w[i:i + 2], 16) for i in (1, 3, 5)]
-    return '#' + ''.join(f'{round(x + (y - x) * k):02x}' for x, y in zip(a, b))
 
 
 def ai_models_card(models, t):
+    """Giant all-time total on the left, numbered top list of models with logos on the right."""
     dark = t is THEMES['dark']
-    bg, fg, mu = ('#101010', '#ffffff', '#9a9a9a') if dark else ('#ffffff', '#111111', '#6b6b6b')
+    p = ps.palette(dark)
     total = sum(m['lines'] for m in models) or 1
+    lab = lambda m: MODEL_LAB.get(m['name'], m['name'])
+    colour = lambda m: MODEL_COLORS.get(m['name']) or LAB_COLORS.get(lab(m)) or '#7c7c86'
     labs = {}
     for m in models:
-        labs.setdefault(MODEL_LAB.get(m['name'], m['name']), []).append(m)
-    order = sorted(labs.items(), key=lambda kv: -sum(m['lines'] for m in kv[1]))
-    top = sum(m['lines'] for m in order[0][1])
-    y, out = 54, []
-    for i, (lab, items) in enumerate(order):
-        lines = sum(m['lines'] for m in items)
-        chips = [m for m in items if m['name'] != lab]
-        bh = 88 + 40 * math.sqrt(lines / top) if chips else 26 + 92 * math.sqrt(lines / top)
-        c = LAB_COLORS.get(lab) or MODEL_COLORS.get(lab) or '#7c7c86'
-        fs = min(38, max(15, bh * .3))
-        ty = y + ((bh - 40) / 2 + 4 if chips else bh / 2) + fs * .36
-        lx = 24
-        out.append(f'<g class="band" style="animation-delay:{i * 110}ms"><rect x="0" y="{y:.1f}" width="{WIDTH}" height="{bh + .6:.1f}" fill="{c}"/>')
-        if lab in LAB_LOGOS:
-            ls = round(fs * .78)
-            out.append(f'<circle cx="{lx + ls / 2}" cy="{ty - fs * .36:.1f}" r="{ls * .72:.1f}" fill="#ffffff" fill-opacity=".92"/>'
-                       f'<image href="{sc.icon_uri(LAB_LOGOS[lab])}" x="{lx}" y="{ty - fs * .36 - ls / 2:.1f}" width="{ls}" height="{ls}"/>')
-            lx += ls + 16
-        share = lines / total * 100
-        out.append(f'<text x="{lx}" y="{ty:.1f}" font-family="{HEAVY}" font-size="{fs:.1f}" font-weight="900" fill="#ffffff">{esc(lab)}</text>'
-                   f'<text x="{WIDTH - 24}" y="{ty:.1f}" font-family="{HEAVY}" font-size="{fs * .8:.1f}" font-weight="900" fill="#ffffff" text-anchor="end">'
-                   f'{"&lt;1" if share < 1 else f"{share:.0f}"}%<tspan font-family="{BOLD}" font-size="{max(11, fs * .4):.1f}" font-weight="700" fill-opacity=".8"> {short(lines)}</tspan></text>')
-        sx = 24
-        for m in chips:
-            ww = max(96, (WIDTH - 48) * m['lines'] / lines)
-            out.append(f'<rect x="{sx:.1f}" y="{y + bh - 40:.1f}" width="{ww - 5:.1f}" height="24" rx="12" fill="{mix(MODEL_COLORS.get(m["name"], c), "#000000", .18)}"/>'
-                       f'<text x="{sx + 12:.1f}" y="{y + bh - 23.5:.1f}" font-family="{BOLD}" font-size="12" font-weight="800" fill="#fff" xml:space="preserve">'
-                       f'{esc(m["name"])}  <tspan font-weight="600" fill-opacity=".8">{short(m["lines"])}</tspan></text>')
-            sx += ww
-        out.append('</g>')
-        y += bh
-    h = int(y + 16)
-    return f"""<svg xmlns="http://www.w3.org/2000/svg" width="{WIDTH}" height="{h}" viewBox="0 0 {WIDTH} {h}">
-  <title>AI Models</title>
-  <style>
-  .band {{ animation: band .7s cubic-bezier(.2,.9,.25,1) both; }}
-  @keyframes band {{ from {{ transform: translateX(-100%); }} }}
-  @media (prefers-reduced-motion: reduce) {{ * {{ animation: none !important; }} }}
-  </style>
-  <defs><clipPath id="cl"><rect width="{WIDTH}" height="{h}" rx="16"/></clipPath></defs>
-  <g clip-path="url(#cl)"><rect width="{WIDTH}" height="{h}" fill="{bg}"/>
-  <text x="24" y="37" font-family="{HEAVY}" font-size="21" font-weight="900" fill="{fg}">AI Models</text>
-  <text x="{WIDTH - 24}" y="37" font-family="{HEAVY}" font-size="21" font-weight="900" fill="{mu}" text-anchor="end">{short(total)}<tspan font-family="{BOLD}" font-size="12" font-weight="700"> lines</tspan></text>
-  {''.join(out)}</g>
-</svg>
-"""
+        labs[lab(m)] = labs.get(lab(m), 0) + m['lines']
+    top_lab, top_lines = max(labs.items(), key=lambda kv: kv[1])
+    top_model = next(m for m in models if lab(m) == top_lab)
+    rows = [(m['name'], short(m['lines']), m['lines'] / total, colour(m)) for m in models[:6]]
+    body = (f'  {ps.label(36, 58, "AI Models · all time", p)}\n'
+            f'  {ps.hero(30, 196, short(total), 118, p, "30px 200px")}\n'
+            f'  {ps.heavy(36, 236, "lines written with AI", 26, p["fg"])}\n'
+            f'  <rect x="36" y="282" width="250" height="56" rx="28" fill="{p["chip"]}"/>\n'
+            f'  {ps.disc(top_model["name"], colour(top_model), 64, 310, 18)}\n'
+            f'  <text x="92" y="305" font-family="{BOLD}" font-size="11" font-weight="800" letter-spacing="2" fill="{p["mu"]}">TOP LAB</text>\n'
+            f'  {ps.heavy(92, 325, f"{top_lab} · {top_lines / total * 100:.0f}%", 18, p["fg"])}\n'
+            + ps.toplist(452, 70, 354, rows, p))
+    tints = list(dict.fromkeys(colour(m) for m in models[:4])) + ['#10a37f', '#4285f4']
+    return ps.poster(WIDE, 380, tints, dark, body, 'AI Models')
 
 
 # ---------- Other Apps: one SoundCloud-style embed per app ----------
@@ -358,21 +293,21 @@ def other_apps_card(apps, t):
     for i, (name, sec) in enumerate(shown):
         y = 1 + i * (wh + gap)
         out.append(f"""<g>
-  <rect x=".5" y="{y + .5}" width="{WIDTH - 1}" height="{wh}" rx="2" fill="{p['bg']}" stroke="{p['line']}"/>
-  {app_artwork(name, WIDTH - wh + 1, y + 1, wh - 1)}
+  <rect x=".5" y="{y + .5}" width="{APPS_WIDTH - 1}" height="{wh}" rx="2" fill="{p['bg']}" stroke="{p['line']}"/>
+  {app_artwork(name, APPS_WIDTH - wh + 1, y + 1, wh - 1)}
   {sc.play_button(40, y + 34, 22)}
   <text x="72" y="{y + 26}" font-family="{BOLD}" font-size="11.5" fill="{p['mu']}">DverkaSK</text>
   <text x="72" y="{y + 45}" font-family="{BOLD}" font-size="15" font-weight="700" fill="{p['fg']}">{esc(name)}</text>
-  <rect x="{WIDTH - wh - 92}" y="{y + 14}" width="80" height="20" rx="3" fill="{p['box']}"/>
-  <text x="{WIDTH - wh - 52}" y="{y + 28}" font-family="{BOLD}" font-size="11" fill="{p['mu']}" text-anchor="middle">&#9654; {hours(sec)}</text>
-  {sc.wave(18, y + 62, WIDTH - wh - 34, 36, sum(map(ord, name)), sec / total, p)}
+  <rect x="{APPS_WIDTH - wh - 92}" y="{y + 14}" width="80" height="20" rx="3" fill="{p['box']}"/>
+  <text x="{APPS_WIDTH - wh - 52}" y="{y + 28}" font-family="{BOLD}" font-size="11" fill="{p['mu']}" text-anchor="middle">&#9654; {hours(sec)}</text>
+  {sc.wave(18, y + 62, APPS_WIDTH - wh - 34, 36, sum(map(ord, name)), sec / total, p)}
 </g>""")
     h = 2 + len(shown) * (wh + gap) - gap
     if rest:
         out.append(f'<text x="4" y="{h + 18}" font-family="{BOLD}" font-size="12" fill="{p["mu"]}">'
                    f'+ {esc(", ".join(f"{n} {hours(sec)}" for n, sec in rest))}</text>')
         h += 26
-    return f"""<svg xmlns="http://www.w3.org/2000/svg" width="{WIDTH}" height="{h}" viewBox="0 0 {WIDTH} {h}">
+    return f"""<svg xmlns="http://www.w3.org/2000/svg" width="{APPS_WIDTH}" height="{h}" viewBox="0 0 {APPS_WIDTH} {h}">
   <title>Other Apps</title>
   <defs>{sc.GRADIENT_DEFS}</defs>
   {''.join(out)}
@@ -407,8 +342,8 @@ def build_cards(week_lines, all_time):
                       key=lambda a: -a[1])
         models = sorted((m for m in all_time.get('ai_model_breakdown', []) if m['lines'] > 0), key=lambda m: -m['lines'])
 
-        cards['languages'] = lambda t: breakdown_card('Languages', 'all time', time_items(languages, lang_colors), t)
-        cards['editors'] = lambda t: breakdown_card('Editors & Tools', 'all time', time_items(editors, EDITOR_COLORS), t)
+        cards['languages'] = lambda t: breakdown_card('Languages', 'across {n} languages', time_items(languages, lang_colors), t)
+        cards['editors'] = lambda t: breakdown_card('Editors & Tools', 'in {n} tools', time_items(editors, EDITOR_COLORS), t)
         if models:
             cards['ai-models'] = lambda t: ai_models_card(models, t)
         if apps:

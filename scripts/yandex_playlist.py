@@ -1,4 +1,4 @@
-"""Renders a SoundCloud-style player of 5 random tracks from a Yandex Music playlist into cards/ and the README.
+"""Renders a Wrapped-poster player (SoundCloud-like waveforms) of 5 random tracks from a Yandex Music playlist into cards/ and the README.
 
 It is one SVG linked to the playlist: GitHub puts gaps between stacked images, so per-track pieces never read as one card.
 Needs YANDEX_MUSIC_TOKEN (an OAuth token of the Yandex Music app). The API is unofficial.
@@ -14,6 +14,7 @@ import urllib.request
 
 from PIL import Image
 
+import poster_style as ps
 import soundcloud_style as sc
 
 ROOT = os.path.join(os.path.dirname(__file__), '..')
@@ -23,7 +24,6 @@ API = 'https://api.music.yandex.net'
 PLAYLIST = 'Прошли проверку временем'
 TITLE = 'Stood the test of time'
 TRACKS = 5
-WIDTH = 495
 
 
 def api(token, path):
@@ -56,39 +56,32 @@ def duration(ms):
     return f'{s // 60}:{s % 60:02d}'
 
 
-HEAD, ROW = 52, 76
+TOP, ROW = 92, 74
 
 
-def row(track, art, y, i, t):
-    cs = 56
-    cy = y + (ROW - cs) / 2
-    title = sc.clip_text(track['title'] + (f" ({track['version']})" if track.get('version') else ''), 34)
-    artists = sc.clip_text(', '.join(a['name'] for a in track.get('artists', [])), 40)
-    picture = (f'<clipPath id="cv{i}"><rect x="20" y="{cy}" width="{cs}" height="{cs}" rx="6"/></clipPath>'
-               f'<image href="{art}" x="20" y="{cy}" width="{cs}" height="{cs}" clip-path="url(#cv{i})"/>' if art else
-               f'<rect x="20" y="{cy}" width="{cs}" height="{cs}" rx="6" fill="{t["box"]}"/>')
+def row(track, art, i, p):
+    y = TOP + i * ROW
+    title = sc.clip_text(track['title'] + (f" ({track['version']})" if track.get('version') else ''), 26)
+    artists = sc.clip_text(', '.join(a['name'] for a in track.get('artists', [])), 36)
+    picture = (f'<clipPath id="cv{i}"><rect x="58" y="{y + 6}" width="56" height="56" rx="8"/></clipPath>'
+               f'<image href="{art}" x="58" y="{y + 6}" width="56" height="56" clip-path="url(#cv{i})"/>' if art else
+               f'<rect x="58" y="{y + 6}" width="56" height="56" rx="8" fill="{p["chip"]}"/>')
     seed = int(track['id']) if str(track['id']).isdigit() else sum(map(ord, str(track['id'])))
-    wx = 92
-    return f'''  {picture}{sc.play_button(20 + cs / 2, y + ROW / 2)}
-  <text x="{wx}" y="{y + 22}" fill="{t['mu']}" font-size="11.5">{sc.esc(artists)}</text>
-  <text x="{wx}" y="{y + 39}" fill="{t['fg']}" font-size="14" font-weight="700">{sc.esc(title)}</text>
-  <text x="{WIDTH - 20}" y="{y + 39}" fill="{t['mu']}" font-size="12" text-anchor="end">{duration(track.get('durationMs', 0))}</text>
-  {sc.wave(wx, y + 46, WIDTH - 20 - wx - 44, 22, seed, random.uniform(.15, .85), t)}
-'''
+    return f'''  <g class="row" style="animation-delay:{.15 + i * .08:.2f}s">
+  <text x="28" y="{y + 36}" font-family="{ps.HEAVY}" font-size="25" font-weight="900" fill="{p['fg']}" fill-opacity=".35">{i + 1}</text>
+  {picture}{sc.play_button(86, y + 34, 14)}
+  <text x="132" y="{y + 22}" font-family="{ps.BOLD}" font-size="12" font-weight="700" fill="{p['mu']}">{sc.esc(artists)}</text>
+  {ps.heavy(132, y + 42, title, 18, p['fg'])}
+  {ps.heavy(ps.WIDE - 28, y + 42, duration(track.get('durationMs', 0)), 14, p['mu'], 'end')}
+  {sc.wave(420, y + 26, ps.WIDE - 28 - 420 - 56, 30, seed, random.uniform(.15, .85), dict(un=p['un'], unr=p['faint']))}</g>'''
 
 
-def card_svg(tracks, arts, t):
-    h = HEAD + ROW * len(tracks) + 4
-    lines = ''.join(f'<path d="M{20 if i else 0} {HEAD + ROW * i}.5H{WIDTH - (20 if i else 0)}" stroke="{t["line"]}"/>'
-                    for i in range(len(tracks)))
-    rows = ''.join(row(tr, art, HEAD + ROW * i, i, t) for i, (tr, art) in enumerate(zip(tracks, arts)))
-    return f'''<svg xmlns="http://www.w3.org/2000/svg" width="{WIDTH}" height="{h}" viewBox="0 0 {WIDTH} {h}" font-family="{sc.FONT}">
-  <defs>{sc.GRADIENT_DEFS}</defs>
-  <rect x=".5" y=".5" width="{WIDTH - 1}" height="{h - 1}" rx="8" fill="{t['bg']}" stroke="{t['line']}"/>
-  <text x="20" y="32" fill="{t['fg']}" font-size="17" font-weight="700">{sc.esc(TITLE)}</text>
-  {lines}
-{rows}</svg>
-'''
+def card_svg(tracks, arts, dark):
+    p = ps.palette(dark)
+    body = (f'  <defs>{sc.GRADIENT_DEFS}</defs>\n  {ps.label(28, 44, "On repeat · Yandex Music", p)}\n'
+            f'  {ps.heavy(26, 76, TITLE, 28, p["fg"])}\n'
+            + '\n'.join(row(tr, art, i, p) for i, (tr, art) in enumerate(zip(tracks, arts))))
+    return ps.poster(ps.WIDE, TOP + ROW * len(tracks) + 14, [sc.ORANGE, sc.ORANGE_LIGHT, '#c23a00'], dark, body, TITLE)
 
 
 def themed(name, alt):
@@ -103,9 +96,9 @@ def main():
     playlist_url, tracks = fetch(token)
     arts = [cover(tr.get('coverUri') or (tr.get('albums') or [{}])[0].get('coverUri')) for tr in tracks]
     os.makedirs(OUT_DIR, exist_ok=True)
-    for theme, t in sc.THEMES.items():
+    for theme in ('dark', 'light'):
         with open(os.path.join(OUT_DIR, f'playlist-{theme}.svg'), 'w', encoding='utf-8', newline='\n') as f:
-            f.write(card_svg(tracks, arts, t))
+            f.write(card_svg(tracks, arts, theme == 'dark'))
     alt = TITLE + ': ' + '; '.join(f"{', '.join(a['name'] for a in tr.get('artists', []))} — {tr['title']}" for tr in tracks)
     block = (f'<!-- playlist:start -->\n<p align="center">\n  <a href="{playlist_url}">{themed("playlist", alt)}</a>\n'
              '</p>\n<!-- playlist:end -->')

@@ -24,7 +24,10 @@
   <img src="icons/pycharm.svg" width="45" height="45" alt="PyCharm" title="PyCharm" />&nbsp;&nbsp;
   <img src="icons/goland.svg" width="45" height="45" alt="GoLand" title="GoLand" />&nbsp;&nbsp;
   <img src="icons/datagrip.svg" width="45" height="45" alt="DataGrip" title="DataGrip" />&nbsp;&nbsp;
+  <img src="icons/clion.svg" width="45" height="45" alt="CLion" title="CLion" />&nbsp;&nbsp;
+  <img src="icons/rustrover.svg" width="45" height="45" alt="RustRover" title="RustRover" />&nbsp;&nbsp;
   <img src="icons/vscode.svg" width="45" height="45" alt="VS Code" title="VS Code" />&nbsp;&nbsp;
+  <img src="icons/opencode.svg" width="45" height="45" alt="OpenCode" title="OpenCode" />&nbsp;&nbsp;
   <img src="icons/postman.svg" width="45" height="45" alt="Postman" title="Postman" />&nbsp;&nbsp;
   <img src="icons/bruno.png" width="45" height="45" alt="Bruno" title="Bruno" />&nbsp;&nbsp;
   <img src="icons/git.svg" width="45" height="45" alt="Git" title="Git" />
@@ -112,17 +115,15 @@
 <p align="center">
   <picture><source media="(prefers-color-scheme: dark)" srcset="icons/ollama-white.svg" /><img src="icons/ollama.svg" width="45" height="45" alt="Ollama" title="Ollama" /></picture>&nbsp;&nbsp;
   <picture><source media="(prefers-color-scheme: dark)" srcset="icons/langchain-white.svg" /><img src="icons/langchain.svg" width="45" height="45" alt="LangChain" title="LangChain" /></picture>&nbsp;&nbsp;
+  <picture><source media="(prefers-color-scheme: dark)" srcset="icons/warp-white.svg" /><img src="icons/warp.svg" width="45" height="45" alt="Warp" title="Warp" /></picture>&nbsp;&nbsp;
   <img src="icons/1c.svg" width="45" height="45" alt="1C" title="1C" />
 </p>
 
 <h3 align="center">📊 Coding stats</h3>
 
 <p align="center">
-  <a href="https://wakatime.com/@DverkaSK"><picture><source media="(prefers-color-scheme: dark)" srcset="cards/languages-dark.svg" /><img src="cards/languages-light.svg" alt="Languages" /></picture></a>
-</p>
-
-<p align="center">
-  <a href="https://wakatime.com/@DverkaSK"><picture><source media="(prefers-color-scheme: dark)" srcset="cards/editors-dark.svg" /><img src="cards/editors-light.svg" alt="Editors & Tools" /></picture></a>
+  <a href="https://wakatime.com/@DverkaSK"><picture><source media="(prefers-color-scheme: dark)" srcset="cards/languages-dark.svg" /><img src="cards/languages-light.svg" alt="Languages" width="49%" /></picture></a>
+  <a href="https://wakatime.com/@DverkaSK"><picture><source media="(prefers-color-scheme: dark)" srcset="cards/editors-dark.svg" /><img src="cards/editors-light.svg" alt="Editors & Tools" width="49%" /></picture></a>
 </p>
 
 <p align="center">
