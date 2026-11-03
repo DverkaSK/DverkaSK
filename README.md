@@ -15,11 +15,11 @@
   <img src="icons/python.svg" width="45" height="45" alt="Python" title="Python" />&nbsp;&nbsp;
   <img src="icons/go.svg" width="45" height="45" alt="Go" title="Go" />&nbsp;&nbsp;
   <img src="icons/typescript.svg" width="45" height="45" alt="TypeScript" title="TypeScript" />&nbsp;&nbsp;
-  <img src="icons/groovy.png" width="45" height="45" alt="Groovy" title="Groovy" />
+  <img src="icons/groovy.png" width="45" height="45" alt="Groovy" title="Groovy" />&nbsp;&nbsp;
+  <img src="icons/intellij.svg" width="45" height="45" alt="IntelliJ IDEA" title="IntelliJ IDEA" />
 </p>
 
 <p align="center">
-  <img src="icons/intellij.svg" width="45" height="45" alt="IntelliJ IDEA" title="IntelliJ IDEA" />&nbsp;&nbsp;
   <img src="icons/eclipse.svg" width="45" height="45" alt="Eclipse" title="Eclipse" />&nbsp;&nbsp;
   <img src="icons/pycharm.svg" width="45" height="45" alt="PyCharm" title="PyCharm" />&nbsp;&nbsp;
   <img src="icons/goland.svg" width="45" height="45" alt="GoLand" title="GoLand" />&nbsp;&nbsp;
@@ -28,12 +28,12 @@
   <img src="icons/rustrover.svg" width="45" height="45" alt="RustRover" title="RustRover" />&nbsp;&nbsp;
   <img src="icons/vscode.svg" width="45" height="45" alt="VS Code" title="VS Code" />&nbsp;&nbsp;
   <img src="icons/opencode.svg" width="45" height="45" alt="OpenCode" title="OpenCode" />&nbsp;&nbsp;
-  <img src="icons/postman.svg" width="45" height="45" alt="Postman" title="Postman" />&nbsp;&nbsp;
-  <img src="icons/bruno.png" width="45" height="45" alt="Bruno" title="Bruno" />&nbsp;&nbsp;
-  <img src="icons/git.svg" width="45" height="45" alt="Git" title="Git" />
+  <img src="icons/postman.svg" width="45" height="45" alt="Postman" title="Postman" />
 </p>
 
 <p align="center">
+  <img src="icons/bruno.png" width="45" height="45" alt="Bruno" title="Bruno" />&nbsp;&nbsp;
+  <img src="icons/git.svg" width="45" height="45" alt="Git" title="Git" />&nbsp;&nbsp;
   <picture><source media="(prefers-color-scheme: dark)" srcset="icons/bash-white.svg" /><img src="icons/bash.svg" width="45" height="45" alt="Bash" title="Bash" /></picture>&nbsp;&nbsp;
   <img src="icons/spring.svg" width="45" height="45" alt="Spring Boot" title="Spring Boot" />&nbsp;&nbsp;
   <img src="icons/quarkus.svg" width="45" height="45" alt="Quarkus" title="Quarkus" />&nbsp;&nbsp;
@@ -42,12 +42,12 @@
   <img src="icons/maven.svg" width="45" height="45" alt="Maven" title="Maven" />&nbsp;&nbsp;
   <img src="icons/swagger.svg" width="45" height="45" alt="Swagger" title="Swagger" />&nbsp;&nbsp;
   <img src="icons/openapi.svg" width="45" height="45" alt="OpenAPI" title="OpenAPI" />&nbsp;&nbsp;
-  <img src="icons/junit.svg" width="45" height="45" alt="JUnit 5" title="JUnit 5" />&nbsp;&nbsp;
-  <img src="icons/liquibase.svg" width="45" height="45" alt="Liquibase" title="Liquibase" />&nbsp;&nbsp;
-  <img src="icons/postgresql.svg" width="45" height="45" alt="PostgreSQL" title="PostgreSQL" />
+  <img src="icons/junit.svg" width="45" height="45" alt="JUnit 5" title="JUnit 5" />
 </p>
 
 <p align="center">
+  <img src="icons/liquibase.svg" width="45" height="45" alt="Liquibase" title="Liquibase" />&nbsp;&nbsp;
+  <img src="icons/postgresql.svg" width="45" height="45" alt="PostgreSQL" title="PostgreSQL" />&nbsp;&nbsp;
   <img src="icons/sql.svg" width="45" height="45" alt="SQL" title="SQL" />&nbsp;&nbsp;
   <img src="icons/sqlite.svg" width="45" height="45" alt="SQLite" title="SQLite" />&nbsp;&nbsp;
   <img src="icons/chromadb.svg" width="45" height="45" alt="ChromaDB" title="ChromaDB" />&nbsp;&nbsp;
@@ -58,11 +58,11 @@
   <picture><source media="(prefers-color-scheme: dark)" srcset="icons/kafka-white.svg" /><img src="icons/kafka.svg" width="45" height="45" alt="Kafka" title="Kafka" /></picture>&nbsp;&nbsp;
   <img src="icons/rabbitmq.svg" width="45" height="45" alt="RabbitMQ" title="RabbitMQ" />&nbsp;&nbsp;
   <img src="icons/docker.svg" width="45" height="45" alt="Docker" title="Docker" />&nbsp;&nbsp;
-  <img src="icons/kubernetes.svg" width="45" height="45" alt="Kubernetes" title="Kubernetes" />&nbsp;&nbsp;
-  <img src="icons/vault.svg" width="45" height="45" alt="Vault" title="Vault" />
+  <img src="icons/kubernetes.svg" width="45" height="45" alt="Kubernetes" title="Kubernetes" />
 </p>
 
 <p align="center">
+  <img src="icons/vault.svg" width="45" height="45" alt="Vault" title="Vault" />&nbsp;&nbsp;
   <img src="icons/nginx.svg" width="45" height="45" alt="Nginx" title="Nginx" />&nbsp;&nbsp;
   <img src="icons/linux.png" width="45" height="45" alt="Linux" title="Linux" />&nbsp;&nbsp;
   <img src="icons/gitlab.svg" width="45" height="45" alt="GitLab CI" title="GitLab CI" />&nbsp;&nbsp;
@@ -72,11 +72,11 @@
   <picture><source media="(prefers-color-scheme: dark)" srcset="icons/yaml-white.svg" /><img src="icons/yaml.svg" width="45" height="45" alt="YAML" title="YAML" /></picture>&nbsp;&nbsp;
   <img src="icons/json.svg" width="45" height="45" alt="JSON" title="JSON" />&nbsp;&nbsp;
   <img src="icons/xml.svg" width="45" height="45" alt="XML" title="XML" />&nbsp;&nbsp;
-  <picture><source media="(prefers-color-scheme: dark)" srcset="icons/markdown-white.svg" /><img src="icons/markdown.svg" width="45" height="45" alt="Markdown" title="Markdown" /></picture>&nbsp;&nbsp;
-  <img src="icons/javascript.svg" width="45" height="45" alt="JavaScript" title="JavaScript" />
+  <picture><source media="(prefers-color-scheme: dark)" srcset="icons/markdown-white.svg" /><img src="icons/markdown.svg" width="45" height="45" alt="Markdown" title="Markdown" /></picture>
 </p>
 
 <p align="center">
+  <img src="icons/javascript.svg" width="45" height="45" alt="JavaScript" title="JavaScript" />&nbsp;&nbsp;
   <img src="icons/tailwindcss.svg" width="45" height="45" alt="Tailwind" title="Tailwind" />&nbsp;&nbsp;
   <img src="icons/vitejs.svg" width="45" height="45" alt="Vite" title="Vite" />&nbsp;&nbsp;
   <img src="icons/react.svg" width="45" height="45" alt="React" title="React" />&nbsp;&nbsp;
@@ -84,11 +84,11 @@
   <img src="icons/css3.svg" width="45" height="45" alt="CSS" title="CSS" />&nbsp;&nbsp;
   <img src="icons/paper.svg" width="45" height="45" alt="Paper" title="Paper" />&nbsp;&nbsp;
   <img src="icons/folia.svg" width="45" height="45" alt="Folia" title="Folia" />&nbsp;&nbsp;
-  <img src="icons/purpur.svg" width="45" height="45" alt="Purpur" title="Purpur" />&nbsp;&nbsp;
-  <img src="icons/leaf.png" width="45" height="45" alt="Leaf" title="Leaf" />
+  <img src="icons/purpur.svg" width="45" height="45" alt="Purpur" title="Purpur" />
 </p>
 
 <p align="center">
+  <img src="icons/leaf.png" width="45" height="45" alt="Leaf" title="Leaf" />&nbsp;&nbsp;
   <img src="icons/minestom.png" width="45" height="45" alt="Minestom" title="Minestom" />&nbsp;&nbsp;
   <img src="icons/sponge.svg" width="45" height="45" alt="Sponge" title="Sponge" />&nbsp;&nbsp;
   <img src="icons/velocity.svg" width="45" height="45" alt="Velocity" title="Velocity" />&nbsp;&nbsp;
@@ -96,7 +96,6 @@
   <img src="icons/neoforge.png" width="45" height="45" alt="NeoForge" title="NeoForge" />&nbsp;&nbsp;
   <img src="icons/quilt.png" width="45" height="45" alt="Quilt" title="Quilt" />
 </p>
-
 <h3 align="center">🤖 My Stack after 2026</h3>
 
 <p align="center">
