@@ -139,12 +139,7 @@
 
 <!-- playlist:start -->
 <p align="center">
-  <a href="https://music.yandex.ru/users/itsfunkylegend/playlists/1002"><picture><source media="(prefers-color-scheme: dark)" srcset="cards/playlist-head-dark.svg" /><img src="cards/playlist-head-light.svg" alt="Stood the test of time" /></picture></a><br>
-  <a href="https://music.yandex.ru/album/40429999/track/147683242"><picture><source media="(prefers-color-scheme: dark)" srcset="cards/playlist-0-dark.svg" /><img src="cards/playlist-0-light.svg" alt="chrome.fm — Daystar" /></picture></a><br>
-  <a href="https://music.yandex.ru/album/23925019/track/32291816"><picture><source media="(prefers-color-scheme: dark)" srcset="cards/playlist-1-dark.svg" /><img src="cards/playlist-1-light.svg" alt="Порнофильмы — Прости. Прощай. Привет" /></picture></a><br>
-  <a href="https://music.yandex.ru/album/5576245/track/53404"><picture><source media="(prefers-color-scheme: dark)" srcset="cards/playlist-2-dark.svg" /><img src="cards/playlist-2-light.svg" alt="Nirvana — Smells Like Teen Spirit" /></picture></a><br>
-  <a href="https://music.yandex.ru/album/675436/track/6145639"><picture><source media="(prefers-color-scheme: dark)" srcset="cards/playlist-3-dark.svg" /><img src="cards/playlist-3-light.svg" alt="Halou — Honeythief" /></picture></a><br>
-  <a href="https://music.yandex.ru/album/4246651/track/44137833"><picture><source media="(prefers-color-scheme: dark)" srcset="cards/playlist-4-dark.svg" /><img src="cards/playlist-4-light.svg" alt="Arctic Monkeys — 505" /></picture></a>
+  <a href="https://music.yandex.ru/users/itsfunkylegend/playlists/1002"><picture><source media="(prefers-color-scheme: dark)" srcset="cards/playlist-dark.svg" /><img src="cards/playlist-light.svg" alt="Stood the test of time: chrome.fm — Daystar; Порнофильмы — Прости. Прощай. Привет; Nirvana — Smells Like Teen Spirit; Halou — Honeythief; Arctic Monkeys — 505" /></picture></a>
 </p>
 <!-- playlist:end -->
 
