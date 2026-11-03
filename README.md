@@ -133,9 +133,11 @@
   <a href="https://wakatime.com/@DverkaSK"><picture><source media="(prefers-color-scheme: dark)" srcset="cards/ai-models-dark.svg" /><img src="cards/ai-models-light.svg" alt="AI Models" /></picture></a>
 </p>
 
+<!--
 <p align="center">
   <a href="https://wakatime.com/@DverkaSK"><picture><source media="(prefers-color-scheme: dark)" srcset="cards/apps-dark.svg" /><img src="cards/apps-light.svg" alt="Other Apps" /></picture></a>
 </p>
+-->
 
 <!-- playlist:start -->
 <p align="center">
