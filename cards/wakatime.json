@@ -1,13 +1,9 @@
 {
- "updated": "2026-11-02T18:24:47Z",
+ "updated": "2026-11-03T00:39:03Z",
  "week": {
-  "ai_lines": 1730,
-  "human_lines": 442,
+  "ai_lines": 2747,
+  "human_lines": 423,
   "days": [
-   {
-    "date": "2026-10-27",
-    "seconds": 31397
-   },
    {
     "date": "2026-10-28",
     "seconds": 10434
@@ -30,26 +26,30 @@
    },
    {
     "date": "2026-11-02",
-    "seconds": 31309
+    "seconds": 40646
+   },
+   {
+    "date": "2026-11-03",
+    "seconds": 1379
    }
   ]
  },
  "all_time": {
-  "total_seconds": 8307750,
-  "daily_average": 8801,
+  "total_seconds": 8310648,
+  "daily_average": 8794,
   "start": "2023-01-01T21:00:00Z",
   "languages": [
    {
     "name": "Java",
-    "seconds": 6349701
+    "seconds": 6350434
    },
    {
     "name": "SQL",
-    "seconds": 481777
+    "seconds": 481784
    },
    {
     "name": "YAML",
-    "seconds": 405800
+    "seconds": 405893
    },
    {
     "name": "XML",
@@ -57,7 +57,7 @@
    },
    {
     "name": "Markdown",
-    "seconds": 112280
+    "seconds": 112584
    },
    {
     "name": "Groovy",
@@ -69,7 +69,7 @@
    },
    {
     "name": "Python",
-    "seconds": 71168
+    "seconds": 71948
    },
    {
     "name": "Kotlin",
@@ -101,7 +101,7 @@
    },
    {
     "name": "Docker",
-    "seconds": 18295
+    "seconds": 18296
    },
    {
     "name": "Java Properties",
@@ -117,7 +117,7 @@
    },
    {
     "name": "Bash",
-    "seconds": 7730
+    "seconds": 7765
    },
    {
     "name": "CSS",
@@ -275,11 +275,11 @@
    },
    {
     "name": "Claude Code",
-    "seconds": 1014476
+    "seconds": 1022952
    },
    {
     "name": "Warp",
-    "seconds": 207837
+    "seconds": 215162
    },
    {
     "name": "GoLand",
@@ -313,7 +313,7 @@
    },
    {
     "name": "Opus",
-    "lines": 41390
+    "lines": 43280
    },
    {
     "name": "Sonnet",
