@@ -12,7 +12,7 @@
   <radialGradient id="b0"><stop offset="0" stop-color="#b07219" stop-opacity="0.44"/><stop offset=".45" stop-color="#b07219" stop-opacity="0.28"/><stop offset="1" stop-color="#b07219" stop-opacity="0"/></radialGradient><radialGradient id="b1"><stop offset="0" stop-color="#e38c00" stop-opacity="0.34"/><stop offset=".45" stop-color="#e38c00" stop-opacity="0.21"/><stop offset="1" stop-color="#e38c00" stop-opacity="0"/></radialGradient><radialGradient id="b2"><stop offset="0" stop-color="#cb171e" stop-opacity="0.30"/><stop offset=".45" stop-color="#cb171e" stop-opacity="0.19"/><stop offset="1" stop-color="#cb171e" stop-opacity="0"/></radialGradient><radialGradient id="b3"><stop offset="0" stop-color="#b07219" stop-opacity="0.24"/><stop offset=".45" stop-color="#b07219" stop-opacity="0.15"/><stop offset="1" stop-color="#b07219" stop-opacity="0"/></radialGradient></defs>
   <g clip-path="url(#cl)"><rect width="413" height="412" fill="url(#bg)"/><circle cx="50" cy="391" r="330" fill="url(#b0)"/><circle cx="173" cy="21" r="330" fill="url(#b1)"/><circle cx="380" cy="391" r="330" fill="url(#b2)"/><circle cx="310" cy="41" r="330" fill="url(#b3)"/>
   <text x="28" y="42" font-family="-apple-system, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12.5" font-weight="800" letter-spacing="3" fill="#1b1410a0">LANGUAGES · ALL TIME</text>
-  <g class="pop" style="transform-origin:28px 100px"><text x="24" y="104" font-family="'Segoe UI Black', 'Arial Black', 'Helvetica Neue', -apple-system, sans-serif" font-size="58" font-weight="900" fill="#1b1410" letter-spacing="-1.9">2,282h</text></g>
+  <g class="pop" style="transform-origin:28px 100px"><text x="24" y="104" font-family="'Segoe UI Black', 'Arial Black', 'Helvetica Neue', -apple-system, sans-serif" font-size="58" font-weight="900" fill="#1b1410" letter-spacing="-1.9">2,283h</text></g>
   <text x="28" y="132" font-family="'Segoe UI Black', 'Arial Black', 'Helvetica Neue', -apple-system, sans-serif" font-size="17" font-weight="900" fill="#1b1410" text-anchor="start">across 57 languages</text>
   <g class="row" style="animation-delay:0.15s">
   <text x="28" y="178.5" font-family="'Segoe UI Black', 'Arial Black', 'Helvetica Neue', -apple-system, sans-serif" font-size="18" font-weight="900" fill="#1b1410" fill-opacity=".35">1</text>
@@ -56,6 +56,6 @@
   <text x="385" y="358.5" font-family="'Segoe UI Black', 'Arial Black', 'Helvetica Neue', -apple-system, sans-serif" font-size="13.9" font-weight="900" fill="#1b1410" text-anchor="end">31h<tspan font-family="-apple-system, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="11" font-weight="700" fill="#1b1410a0"> 1%</tspan></text>
   <rect x="88" y="366.5" width="297" height="4" rx="2" fill="#1b14101c"/>
   <rect x="88" y="366.5" width="4.0" height="4" rx="2" fill="#4298b8"/></g>
-  <text x="28" y="392" font-family="-apple-system, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12.5" font-weight="700" fill="#1b1410a0">+ 51 more · 173h</text>
+  <text x="28" y="392" font-family="-apple-system, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12.5" font-weight="700" fill="#1b1410a0">+ 51 more · 174h</text>
   </g>
 </svg>

@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-03T22:58:03Z",
+ "updated": "2026-11-04T05:11:02Z",
  "week": {
   "ai_lines": 4238,
   "human_lines": 1446,
@@ -35,21 +35,21 @@
   ]
  },
  "all_time": {
-  "total_seconds": 8310648,
-  "daily_average": 8794,
+  "total_seconds": 8313258,
+  "daily_average": 8788,
   "start": "2023-01-01T21:00:00Z",
   "languages": [
    {
     "name": "Java",
-    "seconds": 6350434
+    "seconds": 6351205
    },
    {
     "name": "SQL",
-    "seconds": 481784
+    "seconds": 481798
    },
    {
     "name": "YAML",
-    "seconds": 405893
+    "seconds": 405908
    },
    {
     "name": "XML",
@@ -57,7 +57,7 @@
    },
    {
     "name": "Markdown",
-    "seconds": 112584
+    "seconds": 112867
    },
    {
     "name": "Groovy",
@@ -65,11 +65,11 @@
    },
    {
     "name": "JSON",
-    "seconds": 106195
+    "seconds": 106296
    },
    {
     "name": "Python",
-    "seconds": 71948
+    "seconds": 72733
    },
    {
     "name": "Kotlin",
@@ -85,7 +85,7 @@
    },
    {
     "name": "HTML",
-    "seconds": 51423
+    "seconds": 51427
    },
    {
     "name": "TypeScript",
@@ -109,7 +109,7 @@
    },
    {
     "name": "JavaScript",
-    "seconds": 14282
+    "seconds": 14353
    },
    {
     "name": "Properties",
@@ -271,15 +271,15 @@
   "editors": [
    {
     "name": "IntelliJ IDEA",
-    "seconds": 7606289
+    "seconds": 7606475
    },
    {
     "name": "Claude Code",
-    "seconds": 1022952
+    "seconds": 1031230
    },
    {
     "name": "Warp",
-    "seconds": 215162
+    "seconds": 225679
    },
    {
     "name": "GoLand",
@@ -313,7 +313,7 @@
    },
    {
     "name": "Opus",
-    "lines": 43280
+    "lines": 44990
    },
    {
     "name": "Sonnet",
