@@ -1,13 +1,9 @@
 {
- "updated": "2026-11-04T13:53:57Z",
+ "updated": "2026-11-04T23:18:10Z",
  "week": {
-  "ai_lines": 4394,
-  "human_lines": 1448,
+  "ai_lines": 4369,
+  "human_lines": 1449,
   "days": [
-   {
-    "date": "2026-10-29",
-    "seconds": 27544
-   },
    {
     "date": "2026-10-30",
     "seconds": 0
@@ -30,13 +26,17 @@
    },
    {
     "date": "2026-11-04",
-    "seconds": 15498
+    "seconds": 21636
+   },
+   {
+    "date": "2026-11-05",
+    "seconds": 4083
    }
   ]
  },
  "all_time": {
-  "total_seconds": 8313258,
-  "daily_average": 8788,
+  "total_seconds": 8314483,
+  "daily_average": 8780,
   "start": "2023-01-01T21:00:00Z",
   "languages": [
    {
@@ -57,7 +57,7 @@
    },
    {
     "name": "Markdown",
-    "seconds": 112867
+    "seconds": 112890
    },
    {
     "name": "Groovy",
@@ -65,11 +65,11 @@
    },
    {
     "name": "JSON",
-    "seconds": 106296
+    "seconds": 106298
    },
    {
     "name": "Python",
-    "seconds": 72733
+    "seconds": 73549
    },
    {
     "name": "Kotlin",
@@ -85,7 +85,7 @@
    },
    {
     "name": "HTML",
-    "seconds": 51427
+    "seconds": 51442
    },
    {
     "name": "TypeScript",
@@ -109,7 +109,7 @@
    },
    {
     "name": "JavaScript",
-    "seconds": 14353
+    "seconds": 14384
    },
    {
     "name": "Properties",
@@ -237,7 +237,7 @@
    },
    {
     "name": "INI",
-    "seconds": 141
+    "seconds": 142
    },
    {
     "name": "TikZ picture file",
@@ -275,11 +275,11 @@
    },
    {
     "name": "Claude Code",
-    "seconds": 1031230
+    "seconds": 1034965
    },
    {
     "name": "Warp",
-    "seconds": 225679
+    "seconds": 231222
    },
    {
     "name": "GoLand",
@@ -313,7 +313,7 @@
    },
    {
     "name": "Opus",
-    "lines": 44990
+    "lines": 45238
    },
    {
     "name": "Sonnet",
