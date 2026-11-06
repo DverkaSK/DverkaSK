@@ -1,13 +1,9 @@
 {
- "updated": "2026-11-05T14:09:05Z",
+ "updated": "2026-11-06T05:29:56Z",
  "week": {
-  "ai_lines": 4759,
-  "human_lines": 1460,
+  "ai_lines": 4840,
+  "human_lines": 1490,
   "days": [
-   {
-    "date": "2026-10-30",
-    "seconds": 0
-   },
    {
     "date": "2026-10-31",
     "seconds": 10189
@@ -30,18 +26,22 @@
    },
    {
     "date": "2026-11-05",
-    "seconds": 16799
+    "seconds": 41768
+   },
+   {
+    "date": "2026-11-06",
+    "seconds": 8144
    }
   ]
  },
  "all_time": {
-  "total_seconds": 8314483,
-  "daily_average": 8780,
+  "total_seconds": 8316608,
+  "daily_average": 8773,
   "start": "2023-01-01T21:00:00Z",
   "languages": [
    {
     "name": "Java",
-    "seconds": 6351205
+    "seconds": 6351528
    },
    {
     "name": "SQL",
@@ -49,7 +49,7 @@
    },
    {
     "name": "YAML",
-    "seconds": 405908
+    "seconds": 405933
    },
    {
     "name": "XML",
@@ -57,19 +57,19 @@
    },
    {
     "name": "Markdown",
-    "seconds": 112890
+    "seconds": 113794
    },
    {
     "name": "Groovy",
-    "seconds": 110149
+    "seconds": 110150
    },
    {
     "name": "JSON",
-    "seconds": 106298
+    "seconds": 106420
    },
    {
     "name": "Python",
-    "seconds": 73549
+    "seconds": 73759
    },
    {
     "name": "Kotlin",
@@ -232,11 +232,11 @@
     "seconds": 149
    },
    {
-    "name": "ActionScript",
+    "name": "INI",
     "seconds": 142
    },
    {
-    "name": "INI",
+    "name": "ActionScript",
     "seconds": 142
    },
    {
@@ -275,11 +275,11 @@
    },
    {
     "name": "Claude Code",
-    "seconds": 1034965
+    "seconds": 1049534
    },
    {
     "name": "Warp",
-    "seconds": 231222
+    "seconds": 240945
    },
    {
     "name": "GoLand",
@@ -313,7 +313,7 @@
    },
    {
     "name": "Opus",
-    "lines": 45238
+    "lines": 45692
    },
    {
     "name": "Sonnet",
