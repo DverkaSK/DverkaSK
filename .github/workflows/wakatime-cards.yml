@@ -21,10 +21,8 @@ jobs:
           WAKATIME_TOKEN: ${{ secrets.WAKATIME_TOKEN }}
         run: python scripts/wakatime_cards.py
       - name: Render the playlist player
-        # unofficial Yandex Music API: if it fails, the README keeps the previous tracks
-        continue-on-error: true
-        env:
-          YANDEX_MUSIC_TOKEN: ${{ secrets.YANDEX_MUSIC_TOKEN }}
+        # Yandex Music blocks GitHub runners (HTTP 451): tracks come from cards/playlist.json,
+        # refreshed locally with `python scripts/yandex_playlist.py --sync`
         run: |
           pip install --quiet pillow
           python scripts/yandex_playlist.py

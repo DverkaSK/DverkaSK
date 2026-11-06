@@ -141,7 +141,7 @@
 
 <!-- playlist:start -->
 <p align="center">
-  <a href="https://music.yandex.ru/users/itsfunkylegend/playlists/1002"><picture><source media="(prefers-color-scheme: dark)" srcset="cards/playlist-dark.svg" /><img src="cards/playlist-light.svg" alt="Stood the test of time: chrome.fm — Daystar; Порнофильмы — Прости. Прощай. Привет; Nirvana — Smells Like Teen Spirit; Halou — Honeythief; Arctic Monkeys — 505" /></picture></a>
+  <a href="https://music.yandex.ru/users/itsfunkylegend/playlists/1002"><picture><source media="(prefers-color-scheme: dark)" srcset="cards/playlist-dark.svg" /><img src="cards/playlist-light.svg" alt="Stood the test of time: Halou — Honeythief; Грибы, Sимптом — Копы; Земфира — П.М.М.Л.; chrome.fm — Like Waves; VIOLENT VIRA — I Don't Care" /></picture></a>
 </p>
 <!-- playlist:end -->
 
