@@ -1,13 +1,9 @@
 {
- "updated": "2026-11-07T12:36:06Z",
+ "updated": "2026-11-07T21:31:06Z",
  "week": {
-  "ai_lines": 5637,
-  "human_lines": 1497,
+  "ai_lines": 7882,
+  "human_lines": 1356,
   "days": [
-   {
-    "date": "2026-11-01",
-    "seconds": 31845
-   },
    {
     "date": "2026-11-02",
     "seconds": 40646
@@ -30,13 +26,17 @@
    },
    {
     "date": "2026-11-07",
-    "seconds": 13050
+    "seconds": 34008
+   },
+   {
+    "date": "2026-11-08",
+    "seconds": 1749
    }
   ]
  },
  "all_time": {
-  "total_seconds": 8317777,
-  "daily_average": 8765,
+  "total_seconds": 8322194,
+  "daily_average": 8760,
   "start": "2023-01-01T21:00:00Z",
   "languages": [
    {
@@ -53,11 +53,11 @@
    },
    {
     "name": "XML",
-    "seconds": 130140
+    "seconds": 130141
    },
    {
     "name": "Markdown",
-    "seconds": 114567
+    "seconds": 114753
    },
    {
     "name": "Groovy",
@@ -65,15 +65,15 @@
    },
    {
     "name": "JSON",
-    "seconds": 106436
+    "seconds": 106451
    },
    {
     "name": "Python",
-    "seconds": 73795
+    "seconds": 75248
    },
    {
     "name": "Kotlin",
-    "seconds": 67596
+    "seconds": 68658
    },
    {
     "name": "Go",
@@ -275,11 +275,11 @@
    },
    {
     "name": "Claude Code",
-    "seconds": 1055247
+    "seconds": 1062971
    },
    {
     "name": "Warp",
-    "seconds": 251198
+    "seconds": 257341
    },
    {
     "name": "GoLand",
@@ -313,7 +313,7 @@
    },
    {
     "name": "Opus",
-    "lines": 46593
+    "lines": 48501
    },
    {
     "name": "Sonnet",
@@ -326,6 +326,10 @@
    {
     "name": "Gemini",
     "lines": 1564
+   },
+   {
+    "name": "Opencode-Cli",
+    "lines": 403
    },
    {
     "name": "OpenCode",
