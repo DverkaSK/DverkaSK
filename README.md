@@ -141,7 +141,7 @@
 
 <!-- playlist:start -->
 <p align="center">
-  <a href="https://music.yandex.ru/users/itsfunkylegend/playlists/1002"><picture><source media="(prefers-color-scheme: dark)" srcset="cards/playlist-dark.svg" /><img src="cards/playlist-light.svg" alt="Stood the test of time: Bleed — Fixate; Земфира — П.М.М.Л.; chrome.fm — Like Waves; Король и Шут — Кукла колдуна; Nirvana — Smells Like Teen Spirit" /></picture></a>
+  <a href="https://music.yandex.ru/users/itsfunkylegend/playlists/1002"><picture><source media="(prefers-color-scheme: dark)" srcset="cards/playlist-dark.svg" /><img src="cards/playlist-light.svg" alt="Stood the test of time: Земфира — ромашки; Nirvana — Smells Like Teen Spirit; Lead Horizon — Afterlife; Bleed — Through The Cylinder; Vinnie Dixie — Cyberpunk 2077" /></picture></a>
 </p>
 <!-- playlist:end -->
 
