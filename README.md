@@ -141,7 +141,7 @@
 
 <!-- playlist:start -->
 <p align="center">
-  <a href="https://music.yandex.ru/users/itsfunkylegend/playlists/1002"><picture><source media="(prefers-color-scheme: dark)" srcset="cards/playlist-dark.svg" /><img src="cards/playlist-light.svg" alt="Stood the test of time: Slaughter to Prevail — Viking; Земфира — ромашки; Another Day's Armor — Fallen For; chrome.fm — Daystar; Bleed — Through The Cylinder" /></picture></a>
+  <a href="https://music.yandex.ru/users/itsfunkylegend/playlists/1002"><picture><source media="(prefers-color-scheme: dark)" srcset="cards/playlist-dark.svg" /><img src="cards/playlist-light.svg" alt="Stood the test of time: t.A.T.u. — Я сошла с ума; Lead Horizon — Totally Spies; Bring Me The Horizon — Can You Feel My Heart; Bleed — Through The Cylinder; pyrokinesis — Девочка из Кони-Айленд" /></picture></a>
 </p>
 <!-- playlist:end -->
 
