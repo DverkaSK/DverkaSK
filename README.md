@@ -141,7 +141,7 @@
 
 <!-- playlist:start -->
 <p align="center">
-  <a href="https://music.yandex.ru/users/itsfunkylegend/playlists/1002"><picture><source media="(prefers-color-scheme: dark)" srcset="cards/playlist-dark.svg" /><img src="cards/playlist-light.svg" alt="Stood the test of time: Arctic Monkeys — 505; Thirty Seconds to Mars — Edge Of The Earth; mzlff, STED.D — однополярности; pyrokinesis — Сахарная вата; VIOLENT VIRA — Saccharine" /></picture></a>
+  <a href="https://music.yandex.ru/users/itsfunkylegend/playlists/1002"><picture><source media="(prefers-color-scheme: dark)" srcset="cards/playlist-dark.svg" /><img src="cards/playlist-light.svg" alt="Stood the test of time: Thirty Seconds to Mars — Edge Of The Earth; Halou — Honeythief; Земфира — П.М.М.Л.; Король и Шут — Кукла колдуна; Cryptospital — Death's Hourglass" /></picture></a>
 </p>
 <!-- playlist:end -->
 
