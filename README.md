@@ -141,7 +141,7 @@
 
 <!-- playlist:start -->
 <p align="center">
-  <a href="https://music.yandex.ru/users/itsfunkylegend/playlists/1002"><picture><source media="(prefers-color-scheme: dark)" srcset="cards/playlist-dark.svg" /><img src="cards/playlist-light.svg" alt="Stood the test of time: Thirty Seconds to Mars — Edge Of The Earth; Slaughter to Prevail — Viking; Земфира — ромашки; t.A.T.u. — Нас не догонят; Halou — Honeythief" /></picture></a>
+  <a href="https://music.yandex.ru/users/itsfunkylegend/playlists/1002"><picture><source media="(prefers-color-scheme: dark)" srcset="cards/playlist-dark.svg" /><img src="cards/playlist-light.svg" alt="Stood the test of time: VIOLENT VIRA — Saccharine; Bleed — Fixate; Arctic Monkeys — 505; t.A.T.u. — Нас не догонят; Bleed — Slip" /></picture></a>
 </p>
 <!-- playlist:end -->
 

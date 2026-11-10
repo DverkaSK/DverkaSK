@@ -1,13 +1,9 @@
 {
- "updated": "2026-11-09T15:26:44Z",
+ "updated": "2026-11-10T01:15:20Z",
  "week": {
-  "ai_lines": 7091,
-  "human_lines": 1328,
+  "ai_lines": 5627,
+  "human_lines": 1193,
   "days": [
-   {
-    "date": "2026-11-03",
-    "seconds": 38011
-   },
    {
     "date": "2026-11-04",
     "seconds": 21636
@@ -30,13 +26,17 @@
    },
    {
     "date": "2026-11-09",
-    "seconds": 23915
+    "seconds": 40964
+   },
+   {
+    "date": "2026-11-10",
+    "seconds": 9879
    }
   ]
  },
  "all_time": {
-  "total_seconds": 8325038,
-  "daily_average": 8754,
+  "total_seconds": 8331816,
+  "daily_average": 8752,
   "start": "2023-01-01T21:00:00Z",
   "languages": [
    {
@@ -53,11 +53,11 @@
    },
    {
     "name": "XML",
-    "seconds": 130141
+    "seconds": 130537
    },
    {
     "name": "Markdown",
-    "seconds": 115460
+    "seconds": 115764
    },
    {
     "name": "Groovy",
@@ -69,7 +69,7 @@
    },
    {
     "name": "Python",
-    "seconds": 75574
+    "seconds": 75784
    },
    {
     "name": "Kotlin",
@@ -85,7 +85,7 @@
    },
    {
     "name": "HTML",
-    "seconds": 51461
+    "seconds": 51507
    },
    {
     "name": "TypeScript",
@@ -104,12 +104,12 @@
     "seconds": 18296
    },
    {
-    "name": "Java Properties",
-    "seconds": 15004
+    "name": "JavaScript",
+    "seconds": 15070
    },
    {
-    "name": "JavaScript",
-    "seconds": 14855
+    "name": "Java Properties",
+    "seconds": 15004
    },
    {
     "name": "Properties",
@@ -122,6 +122,10 @@
    {
     "name": "CSS",
     "seconds": 6020
+   },
+   {
+    "name": "Smali",
+    "seconds": 4826
    },
    {
     "name": "TOML",
@@ -148,12 +152,12 @@
     "seconds": 1895
    },
    {
-    "name": "Assembly",
-    "seconds": 1556
+    "name": "Rust",
+    "seconds": 1671
    },
    {
-    "name": "Rust",
-    "seconds": 1132
+    "name": "Assembly",
+    "seconds": 1556
    },
    {
     "name": "CLASS",
@@ -275,11 +279,11 @@
    },
    {
     "name": "Claude Code",
-    "seconds": 1070391
+    "seconds": 1076147
    },
    {
     "name": "Warp",
-    "seconds": 261396
+    "seconds": 269116
    },
    {
     "name": "GoLand",
@@ -313,11 +317,11 @@
    },
    {
     "name": "Opus",
-    "lines": 49720
+    "lines": 49880
    },
    {
     "name": "Sonnet",
-    "lines": 30419
+    "lines": 30643
    },
    {
     "name": "GPT",
@@ -329,7 +333,7 @@
    },
    {
     "name": "Opencode-Cli",
-    "lines": 403
+    "lines": 500
    },
    {
     "name": "OpenCode",
