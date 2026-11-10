@@ -1,13 +1,9 @@
 {
- "updated": "2026-11-10T14:27:59Z",
+ "updated": "2026-11-10T22:55:03Z",
  "week": {
-  "ai_lines": 8163,
-  "human_lines": 1518,
+  "ai_lines": 8238,
+  "human_lines": 1534,
   "days": [
-   {
-    "date": "2026-11-04",
-    "seconds": 21636
-   },
    {
     "date": "2026-11-05",
     "seconds": 41768
@@ -30,18 +26,22 @@
    },
    {
     "date": "2026-11-10",
-    "seconds": 23683
+    "seconds": 44559
+   },
+   {
+    "date": "2026-11-11",
+    "seconds": 6772
    }
   ]
  },
  "all_time": {
-  "total_seconds": 8331816,
-  "daily_average": 8752,
+  "total_seconds": 8339100,
+  "daily_average": 8750,
   "start": "2023-01-01T21:00:00Z",
   "languages": [
    {
     "name": "Java",
-    "seconds": 6351528
+    "seconds": 6351596
    },
    {
     "name": "SQL",
@@ -57,7 +57,7 @@
    },
    {
     "name": "Markdown",
-    "seconds": 115764
+    "seconds": 119395
    },
    {
     "name": "Groovy",
@@ -65,11 +65,11 @@
    },
    {
     "name": "JSON",
-    "seconds": 106451
+    "seconds": 106484
    },
    {
     "name": "Python",
-    "seconds": 75784
+    "seconds": 76849
    },
    {
     "name": "Kotlin",
@@ -85,7 +85,7 @@
    },
    {
     "name": "HTML",
-    "seconds": 51507
+    "seconds": 51519
    },
    {
     "name": "TypeScript",
@@ -105,7 +105,7 @@
    },
    {
     "name": "JavaScript",
-    "seconds": 15070
+    "seconds": 15381
    },
    {
     "name": "Java Properties",
@@ -125,7 +125,7 @@
    },
    {
     "name": "Smali",
-    "seconds": 4826
+    "seconds": 5035
    },
    {
     "name": "TOML",
@@ -160,6 +160,10 @@
     "seconds": 1556
    },
    {
+    "name": "Batchfile",
+    "seconds": 1221
+   },
+   {
     "name": "CLASS",
     "seconds": 1126
    },
@@ -170,10 +174,6 @@
    {
     "name": "Dockerfile",
     "seconds": 1114
-   },
-   {
-    "name": "Batchfile",
-    "seconds": 1096
    },
    {
     "name": "go.mod",
@@ -260,6 +260,10 @@
     "seconds": 82
    },
    {
+    "name": "mcfunction",
+    "seconds": 78
+   },
+   {
     "name": "IDEA_MODULE",
     "seconds": 75
    },
@@ -279,11 +283,11 @@
    },
    {
     "name": "Claude Code",
-    "seconds": 1076147
+    "seconds": 1086609
    },
    {
     "name": "Warp",
-    "seconds": 269116
+    "seconds": 278842
    },
    {
     "name": "GoLand",
@@ -317,11 +321,11 @@
    },
    {
     "name": "Opus",
-    "lines": 49880
+    "lines": 52514
    },
    {
     "name": "Sonnet",
-    "lines": 30643
+    "lines": 30649
    },
    {
     "name": "GPT",
