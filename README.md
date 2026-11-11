@@ -141,7 +141,7 @@
 
 <!-- playlist:start -->
 <p align="center">
-  <a href="https://music.yandex.ru/users/itsfunkylegend/playlists/1002"><picture><source media="(prefers-color-scheme: dark)" srcset="cards/playlist-dark.svg" /><img src="cards/playlist-light.svg" alt="Stood the test of time: Nirvana — Smells Like Teen Spirit; VIOLENT VIRA — Saccharine; Король и Шут — Кукла колдуна; Lead Horizon — Afterlife; Земфира — ромашки" /></picture></a>
+  <a href="https://music.yandex.ru/users/itsfunkylegend/playlists/1002"><picture><source media="(prefers-color-scheme: dark)" srcset="cards/playlist-dark.svg" /><img src="cards/playlist-light.svg" alt="Stood the test of time: VIOLENT VIRA — I Don't Care; mzlff, STED.D — однополярности; Bleed — Through The Cylinder; t.A.T.u. — Нас не догонят; chrome.fm — Like Waves" /></picture></a>
 </p>
 <!-- playlist:end -->
 
