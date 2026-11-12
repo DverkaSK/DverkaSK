@@ -141,7 +141,7 @@
 
 <!-- playlist:start -->
 <p align="center">
-  <a href="https://music.yandex.ru/users/itsfunkylegend/playlists/1002"><picture><source media="(prefers-color-scheme: dark)" srcset="cards/playlist-dark.svg" /><img src="cards/playlist-light.svg" alt="Stood the test of time: chrome.fm — Like Waves; Земфира — ромашки; Грибы, Sимптом — Копы; Король и Шут — Кукла колдуна; Cryptospital — Death's Hourglass" /></picture></a>
+  <a href="https://music.yandex.ru/users/itsfunkylegend/playlists/1002"><picture><source media="(prefers-color-scheme: dark)" srcset="cards/playlist-dark.svg" /><img src="cards/playlist-light.svg" alt="Stood the test of time: Король и Шут — Кукла колдуна; Halou — Honeythief; Земфира — П.М.М.Л.; Bring Me The Horizon — Can You Feel My Heart; Bleed — Through The Cylinder" /></picture></a>
 </p>
 <!-- playlist:end -->
 
