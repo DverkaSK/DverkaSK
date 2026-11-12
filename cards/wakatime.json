@@ -1,13 +1,9 @@
 {
- "updated": "2026-11-12T14:45:13Z",
+ "updated": "2026-11-12T23:16:44Z",
  "week": {
-  "ai_lines": 10389,
-  "human_lines": 1629,
+  "ai_lines": 10491,
+  "human_lines": 2286,
   "days": [
-   {
-    "date": "2026-11-06",
-    "seconds": 26673
-   },
    {
     "date": "2026-11-07",
     "seconds": 34008
@@ -30,18 +26,22 @@
    },
    {
     "date": "2026-11-12",
-    "seconds": 18583
+    "seconds": 41056
+   },
+   {
+    "date": "2026-11-13",
+    "seconds": 8190
    }
   ]
  },
  "all_time": {
-  "total_seconds": 8345127,
-  "daily_average": 8748,
+  "total_seconds": 8347921,
+  "daily_average": 8741,
   "start": "2023-01-01T21:00:00Z",
   "languages": [
    {
     "name": "Java",
-    "seconds": 6353284
+    "seconds": 6353695
    },
    {
     "name": "SQL",
@@ -53,11 +53,11 @@
    },
    {
     "name": "XML",
-    "seconds": 130537
+    "seconds": 130554
    },
    {
     "name": "Markdown",
-    "seconds": 119658
+    "seconds": 120142
    },
    {
     "name": "Groovy",
@@ -69,7 +69,7 @@
    },
    {
     "name": "Python",
-    "seconds": 77377
+    "seconds": 77700
    },
    {
     "name": "Kotlin",
@@ -105,7 +105,7 @@
    },
    {
     "name": "JavaScript",
-    "seconds": 15381
+    "seconds": 15390
    },
    {
     "name": "Java Properties",
@@ -121,11 +121,11 @@
    },
    {
     "name": "CSS",
-    "seconds": 6020
+    "seconds": 6052
    },
    {
     "name": "Smali",
-    "seconds": 5035
+    "seconds": 5042
    },
    {
     "name": "TOML",
@@ -224,6 +224,10 @@
     "seconds": 243
    },
    {
+    "name": "GLSL",
+    "seconds": 202
+   },
+   {
     "name": "Spring Boot Imports",
     "seconds": 192
    },
@@ -232,12 +236,12 @@
     "seconds": 191
    },
    {
-    "name": "GLSL",
-    "seconds": 168
-   },
-   {
     "name": "CSV/TSV",
     "seconds": 149
+   },
+   {
+    "name": "V shell",
+    "seconds": 145
    },
    {
     "name": "INI",
@@ -250,10 +254,6 @@
    {
     "name": "TikZ picture file",
     "seconds": 132
-   },
-   {
-    "name": "V shell",
-    "seconds": 117
    },
    {
     "name": "TSConfig",
@@ -291,11 +291,11 @@
    },
    {
     "name": "Claude Code",
-    "seconds": 1100770
+    "seconds": 1108531
    },
    {
     "name": "Warp",
-    "seconds": 284328
+    "seconds": 290208
    },
    {
     "name": "GoLand",
@@ -329,7 +329,7 @@
    },
    {
     "name": "Opus",
-    "lines": 55344
+    "lines": 56224
    },
    {
     "name": "Sonnet",
