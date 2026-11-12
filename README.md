@@ -141,7 +141,7 @@
 
 <!-- playlist:start -->
 <p align="center">
-  <a href="https://music.yandex.ru/users/itsfunkylegend/playlists/1002"><picture><source media="(prefers-color-scheme: dark)" srcset="cards/playlist-dark.svg" /><img src="cards/playlist-light.svg" alt="Stood the test of time: Порнофильмы — Праздник; Thirty Seconds to Mars — Edge Of The Earth; Грибы, Sимптом — Копы; Bleed — Through The Cylinder; Halou — Honeythief" /></picture></a>
+  <a href="https://music.yandex.ru/users/itsfunkylegend/playlists/1002"><picture><source media="(prefers-color-scheme: dark)" srcset="cards/playlist-dark.svg" /><img src="cards/playlist-light.svg" alt="Stood the test of time: chrome.fm — Like Waves; Земфира — ромашки; Грибы, Sимптом — Копы; Король и Шут — Кукла колдуна; Cryptospital — Death's Hourglass" /></picture></a>
 </p>
 <!-- playlist:end -->
 
