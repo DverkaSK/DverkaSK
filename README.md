@@ -141,7 +141,7 @@
 
 <!-- playlist:start -->
 <p align="center">
-  <a href="https://music.yandex.ru/users/itsfunkylegend/playlists/1002"><picture><source media="(prefers-color-scheme: dark)" srcset="cards/playlist-dark.svg" /><img src="cards/playlist-light.svg" alt="Stood the test of time: t.A.T.u. — Нас не догонят; Bleed — Cynical; Земфира — П.М.М.Л.; Bleed — Through The Cylinder; mzlff, STED.D — однополярности" /></picture></a>
+  <a href="https://music.yandex.ru/users/itsfunkylegend/playlists/1002"><picture><source media="(prefers-color-scheme: dark)" srcset="cards/playlist-dark.svg" /><img src="cards/playlist-light.svg" alt="Stood the test of time: Порнофильмы — Прости. Прощай. Привет; Vinnie Dixie — Cyberpunk 2077; mzlff, STED.D — однополярности; Bring Me The Horizon — Can You Feel My Heart; chrome.fm — Daystar" /></picture></a>
 </p>
 <!-- playlist:end -->
 
