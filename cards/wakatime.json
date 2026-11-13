@@ -1,13 +1,9 @@
 {
- "updated": "2026-11-13T14:03:32Z",
+ "updated": "2026-11-13T23:19:05Z",
  "week": {
-  "ai_lines": 14090,
-  "human_lines": 2301,
+  "ai_lines": 14647,
+  "human_lines": 2403,
   "days": [
-   {
-    "date": "2026-11-07",
-    "seconds": 34008
-   },
    {
     "date": "2026-11-08",
     "seconds": 27043
@@ -30,18 +26,22 @@
    },
    {
     "date": "2026-11-13",
-    "seconds": 27609
+    "seconds": 51485
+   },
+   {
+    "date": "2026-11-14",
+    "seconds": 6774
    }
   ]
  },
  "all_time": {
-  "total_seconds": 8347921,
-  "daily_average": 8741,
+  "total_seconds": 8361030,
+  "daily_average": 8746,
   "start": "2023-01-01T21:00:00Z",
   "languages": [
    {
     "name": "Java",
-    "seconds": 6353695
+    "seconds": 6356815
    },
    {
     "name": "SQL",
@@ -49,15 +49,15 @@
    },
    {
     "name": "YAML",
-    "seconds": 405947
+    "seconds": 405963
    },
    {
     "name": "XML",
-    "seconds": 130554
+    "seconds": 130750
    },
    {
     "name": "Markdown",
-    "seconds": 120142
+    "seconds": 122329
    },
    {
     "name": "Groovy",
@@ -65,11 +65,11 @@
    },
    {
     "name": "JSON",
-    "seconds": 106493
+    "seconds": 106502
    },
    {
     "name": "Python",
-    "seconds": 77700
+    "seconds": 79300
    },
    {
     "name": "Kotlin",
@@ -85,7 +85,7 @@
    },
    {
     "name": "HTML",
-    "seconds": 51519
+    "seconds": 51524
    },
    {
     "name": "TypeScript",
@@ -105,11 +105,11 @@
    },
    {
     "name": "JavaScript",
-    "seconds": 15390
+    "seconds": 15447
    },
    {
     "name": "Java Properties",
-    "seconds": 15004
+    "seconds": 15065
    },
    {
     "name": "Properties",
@@ -117,11 +117,11 @@
    },
    {
     "name": "Bash",
-    "seconds": 7988
+    "seconds": 7998
    },
    {
     "name": "CSS",
-    "seconds": 6052
+    "seconds": 6074
    },
    {
     "name": "Smali",
@@ -137,7 +137,7 @@
    },
    {
     "name": "PowerShell",
-    "seconds": 3203
+    "seconds": 3214
    },
    {
     "name": "Nginx configuration file",
@@ -196,6 +196,10 @@
     "seconds": 527
    },
    {
+    "name": "GLSL",
+    "seconds": 497
+   },
+   {
     "name": "Terraform",
     "seconds": 482
    },
@@ -224,8 +228,8 @@
     "seconds": 243
    },
    {
-    "name": "GLSL",
-    "seconds": 202
+    "name": "V shell",
+    "seconds": 226
    },
    {
     "name": "Spring Boot Imports",
@@ -238,10 +242,6 @@
    {
     "name": "CSV/TSV",
     "seconds": 149
-   },
-   {
-    "name": "V shell",
-    "seconds": 145
    },
    {
     "name": "INI",
@@ -291,11 +291,11 @@
    },
    {
     "name": "Claude Code",
-    "seconds": 1108531
+    "seconds": 1136396
    },
    {
     "name": "Warp",
-    "seconds": 290208
+    "seconds": 298391
    },
    {
     "name": "GoLand",
@@ -324,12 +324,12 @@
   ],
   "models": [
    {
-    "name": "Claude",
-    "lines": 56241
+    "name": "Opus",
+    "lines": 61298
    },
    {
-    "name": "Opus",
-    "lines": 56224
+    "name": "Claude",
+    "lines": 56241
    },
    {
     "name": "Sonnet",
