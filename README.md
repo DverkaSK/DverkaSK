@@ -141,7 +141,7 @@
 
 <!-- playlist:start -->
 <p align="center">
-  <a href="https://music.yandex.ru/users/itsfunkylegend/playlists/1002"><picture><source media="(prefers-color-scheme: dark)" srcset="cards/playlist-dark.svg" /><img src="cards/playlist-light.svg" alt="Stood the test of time: Lead Horizon — Totally Spies; Порнофильмы — Праздник; Земфира — ромашки; Cryptospital — Death's Hourglass; Darke Complex — Void" /></picture></a>
+  <a href="https://music.yandex.ru/users/itsfunkylegend/playlists/1002"><picture><source media="(prefers-color-scheme: dark)" srcset="cards/playlist-dark.svg" /><img src="cards/playlist-light.svg" alt="Stood the test of time: Vinnie Dixie — Cyberpunk 2077; chrome.fm — Daystar; Bleed — Slip; Lead Horizon — Afterlife; Bring Me The Horizon — Can You Feel My Heart" /></picture></a>
 </p>
 <!-- playlist:end -->
 
