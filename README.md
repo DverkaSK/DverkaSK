@@ -141,7 +141,7 @@
 
 <!-- playlist:start -->
 <p align="center">
-  <a href="https://music.yandex.ru/users/itsfunkylegend/playlists/1002"><picture><source media="(prefers-color-scheme: dark)" srcset="cards/playlist-dark.svg" /><img src="cards/playlist-light.svg" alt="Stood the test of time: Bleed — Cynical; mzlff, STED.D — однополярности; Lead Horizon — Afterlife; Земфира — ромашки; Thirty Seconds to Mars — Edge Of The Earth" /></picture></a>
+  <a href="https://music.yandex.ru/users/itsfunkylegend/playlists/1002"><picture><source media="(prefers-color-scheme: dark)" srcset="cards/playlist-dark.svg" /><img src="cards/playlist-light.svg" alt="Stood the test of time: Bleed — Slip; SEREBRO — СЛАДКО; chrome.fm — Daystar; Halou — Honeythief; t.A.T.u. — Нас не догонят" /></picture></a>
 </p>
 <!-- playlist:end -->
 

@@ -1,8 +1,8 @@
 {
- "updated": "2026-11-14T22:02:49Z",
+ "updated": "2026-11-15T05:15:19Z",
  "week": {
   "ai_lines": 14575,
-  "human_lines": 2482,
+  "human_lines": 2493,
   "days": [
    {
     "date": "2026-11-09",
@@ -30,18 +30,18 @@
    },
    {
     "date": "2026-11-15",
-    "seconds": 3714
+    "seconds": 12691
    }
   ]
  },
  "all_time": {
-  "total_seconds": 8361030,
+  "total_seconds": 8369583,
   "daily_average": 8746,
   "start": "2023-01-01T21:00:00Z",
   "languages": [
    {
     "name": "Java",
-    "seconds": 6356815
+    "seconds": 6358827
    },
    {
     "name": "SQL",
@@ -49,15 +49,15 @@
    },
    {
     "name": "YAML",
-    "seconds": 405963
+    "seconds": 406025
    },
    {
     "name": "XML",
-    "seconds": 130750
+    "seconds": 130831
    },
    {
     "name": "Markdown",
-    "seconds": 122329
+    "seconds": 123160
    },
    {
     "name": "Groovy",
@@ -69,11 +69,11 @@
    },
    {
     "name": "Python",
-    "seconds": 79300
+    "seconds": 79490
    },
    {
     "name": "Kotlin",
-    "seconds": 68817
+    "seconds": 68953
    },
    {
     "name": "Go",
@@ -109,7 +109,7 @@
    },
    {
     "name": "Java Properties",
-    "seconds": 15065
+    "seconds": 15109
    },
    {
     "name": "Properties",
@@ -117,7 +117,7 @@
    },
    {
     "name": "Bash",
-    "seconds": 7998
+    "seconds": 8015
    },
    {
     "name": "CSS",
@@ -161,7 +161,7 @@
    },
    {
     "name": "Batchfile",
-    "seconds": 1221
+    "seconds": 1225
    },
    {
     "name": "CLASS",
@@ -229,7 +229,7 @@
    },
    {
     "name": "V shell",
-    "seconds": 226
+    "seconds": 240
    },
    {
     "name": "Spring Boot Imports",
@@ -291,11 +291,11 @@
    },
    {
     "name": "Claude Code",
-    "seconds": 1136396
+    "seconds": 1162493
    },
    {
     "name": "Warp",
-    "seconds": 298391
+    "seconds": 301127
    },
    {
     "name": "GoLand",
@@ -325,7 +325,7 @@
   "models": [
    {
     "name": "Opus",
-    "lines": 61298
+    "lines": 63968
    },
    {
     "name": "Claude",
