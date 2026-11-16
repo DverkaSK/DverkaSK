@@ -141,7 +141,7 @@
 
 <!-- playlist:start -->
 <p align="center">
-  <a href="https://music.yandex.ru/users/itsfunkylegend/playlists/1002"><picture><source media="(prefers-color-scheme: dark)" srcset="cards/playlist-dark.svg" /><img src="cards/playlist-light.svg" alt="Stood the test of time: Thirty Seconds to Mars — Edge Of The Earth; Bleed — Slip; Земфира — П.М.М.Л.; Bleed — Cynical; Lead Horizon — Afterlife" /></picture></a>
+  <a href="https://music.yandex.ru/users/itsfunkylegend/playlists/1002"><picture><source media="(prefers-color-scheme: dark)" srcset="cards/playlist-dark.svg" /><img src="cards/playlist-light.svg" alt="Stood the test of time: Bleed — Cynical; t.A.T.u. — Нас не догонят; pyrokinesis — Девочка из Кони-Айленд; Bleed — Slip; VIOLENT VIRA — Saccharine" /></picture></a>
 </p>
 <!-- playlist:end -->
 
