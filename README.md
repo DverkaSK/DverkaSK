@@ -141,7 +141,7 @@
 
 <!-- playlist:start -->
 <p align="center">
-  <a href="https://music.yandex.ru/users/itsfunkylegend/playlists/1002"><picture><source media="(prefers-color-scheme: dark)" srcset="cards/playlist-dark.svg" /><img src="cards/playlist-light.svg" alt="Stood the test of time: Bleed — Slip; Порнофильмы — Праздник; VIOLENT VIRA — Saccharine; Порнофильмы — Прости. Прощай. Привет; Arctic Monkeys — 505" /></picture></a>
+  <a href="https://music.yandex.ru/users/itsfunkylegend/playlists/1002"><picture><source media="(prefers-color-scheme: dark)" srcset="cards/playlist-dark.svg" /><img src="cards/playlist-light.svg" alt="Stood the test of time: Thirty Seconds to Mars — Edge Of The Earth; Bleed — Slip; Земфира — П.М.М.Л.; Bleed — Cynical; Lead Horizon — Afterlife" /></picture></a>
 </p>
 <!-- playlist:end -->
 
