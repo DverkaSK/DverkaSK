@@ -1,3 +1,12 @@
+<!-- Шапка, вариант «ленты 1337» (отложен, генератор в header/drafts/tapes):
+<p align="center"><img src="header/drafts/tapes/header-tapes-e.svg" width="100%" alt="DverkaSK" /></p>
+<p align="center"><img src="header/drafts/tapes/header-tapes-f.svg" width="100%" alt="DverkaSK" /></p>
+-->
+
+<!-- Шапка, вариант «лучи 1337» (отложен, генератор в header/drafts/beams, шрифты — Google Fonts в ../fonts):
+<p align="center"><img src="header/drafts/beams/header-beams.svg" width="100%" alt="DverkaSK" /></p>
+-->
+
 <p align="center">
   <a href="https://wakatime.com/@DverkaSK"><img src="https://wakatime.com/badge/user/31b69023-1a97-41b5-8c73-e96120039f47.svg" alt="wakatime" /></a>
 </p>
