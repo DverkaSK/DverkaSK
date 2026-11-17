@@ -1,0 +1,61 @@
+<title>Sychevalnya</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap">
+<style>
+  :root {
+    --bg: #0d0b12;
+    --paper: #f3e7c9;
+    --ink: #1c1420;
+    --dim: #9c8fa8;
+    --warm: #ffcf7a;
+    --pix: "Press Start 2P", "Courier New", monospace;
+    color-scheme: dark;
+  }
+  [hidden] { display: none !important; }
+  html, body { height: 100%; }
+  body { margin: 0; background: var(--bg); color: var(--paper); font: 11px/1.4 var(--pix); overflow: hidden; }
+  #view { position: fixed; left: 0; top: 0; display: block; image-rendering: pixelated; image-rendering: crisp-edges; }
+  .ctrl { position: fixed; z-index: 4; right: 16px; top: calc(12px + env(safe-area-inset-top, 0px)); display: flex; flex-direction: column; align-items: flex-end; gap: 8px; }
+  .pix { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; justify-content: flex-end; font-size: 9px; color: var(--dim); text-shadow: 2px 2px 0 #000; }
+  .pix button { font: 9px/1 var(--pix); color: var(--dim); background: rgba(20,14,26,.7); border: 0; padding: 7px 8px; cursor: pointer; box-shadow: 0 0 0 2px #2a2030; }
+  .pix button:hover { color: var(--paper); }
+  .pix button.on { color: var(--ink); background: var(--warm); box-shadow: 0 0 0 2px var(--ink); }
+  .pix button:focus-visible { outline: 2px solid var(--warm); outline-offset: 2px; }
+  .vignette { position: fixed; inset: 0; z-index: 1; pointer-events: none; background: radial-gradient(ellipse 75% 70% at 50% 45%, transparent 55%, rgba(8,5,12,.55) 100%); }
+  #view.hot { cursor: pointer; }
+  .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+
+  .bubble {
+    position: fixed; z-index: 3; left: 0; top: 0; transform: translate(-50%, calc(-100% - 10px));
+    padding: 7px 10px 7px; background: var(--paper); color: var(--ink); font: 11px/1.3 var(--pix);
+    white-space: nowrap; pointer-events: none; opacity: 0; transition: opacity .2s;
+    box-shadow: 0 0 0 2px var(--ink), 4px 4px 0 2px rgba(0,0,0,.45);
+  }
+  .bubble::after { content: ""; position: absolute; left: calc(50% - 5px); bottom: -8px; border: 5px solid transparent; border-top: 5px solid var(--paper); border-bottom: 0; filter: drop-shadow(0 2px 0 var(--ink)); }
+  .bubble.on { opacity: 1; }
+  .bubble.small { font-size: 9px; padding: 4px 7px 5px; }
+
+  .corner { position: fixed; z-index: 2; left: 16px; top: calc(16px + env(safe-area-inset-top, 0px)); font-size: 10px; color: var(--dim); pointer-events: none; text-shadow: 2px 2px 0 #000; }
+  .corner b { color: var(--warm); font-weight: 600; }
+  .hint { position: fixed; z-index: 2; left: 50%; transform: translateX(-50%); bottom: calc(16px + env(safe-area-inset-bottom, 0px)); font-size: 10px; color: var(--dim); pointer-events: none; text-shadow: 2px 2px 0 #000; white-space: nowrap; }
+  #boot { position: fixed; inset: 0; display: grid; place-items: center; color: var(--dim); font-size: 11px; }
+</style>
+
+<h1 class="sr">DverkaSK</h1>
+<canvas id="view" aria-label="Pixel diorama of a cosy Russian flat on New Year's Eve: friends at a table, the DverkaSK sign in the middle and a little door mascot running around"></canvas>
+<div class="vignette"></div>
+<div id="boot">загружаю квартиру…</div>
+<div class="corner"><b>dverka.sk</b> · концепт</div>
+<div class="ctrl">
+  <div class="pix" id="look"><span>стиль</span><button type="button" data-s="1">дизер</button><button type="button" data-s="2">палитра</button><button type="button" data-s="3">PS1</button><button type="button" data-s="0">чисто</button></div>
+  <div class="pix" id="pix"><span>пиксель</span><button type="button" data-p="0">крупно</button><button type="button" data-p="1">средне</button><button type="button" data-p="2">мелко</button></div>
+</div>
+<div class="hint" id="hint">наведи на Дверку — она приоткроется</div>
+<div class="bubble" id="m-bubble"></div>
+<div id="c-bubbles"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+  window.addEventListener('error', e => { const b = document.getElementById('boot'); if (b && !b.hidden) b.textContent = 'Ошибка: ' + (e.message || 'скрипт не загрузился'); });
+  if (!window.THREE) document.write('<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js"><\/script>');
+</script>

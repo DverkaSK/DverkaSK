@@ -1,0 +1,429 @@
+<title>Novogodnyaya Sychevalnya</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chewy&family=Neucha&display=swap">
+<style>
+  :root { --bg: #2a1d16; --ink: #1a1614; --paper: #fff8e8; --hand: "Neucha", "Comic Sans MS", cursive; color-scheme: light; }
+  [hidden] { display: none !important; }
+  html, body { height: 100%; }
+  body { margin: 0; background: var(--bg); overflow: hidden; font: 20px/1.3 var(--hand); color: var(--paper); }
+  #view { position: fixed; inset: 0; width: 100%; height: 100%; display: block; }
+  #view.hot { cursor: pointer; }
+  .corner { position: fixed; left: 16px; top: calc(12px + env(safe-area-inset-top, 0px)); font-size: 18px; color: var(--ink); background: var(--paper); padding: 2px 10px 4px; border: 3px solid var(--ink); border-radius: 12px 16px 10px 14px; transform: rotate(-1.5deg); pointer-events: none; }
+  .hint { position: fixed; right: 16px; bottom: calc(12px + env(safe-area-inset-bottom, 0px)); font-size: 18px; color: var(--ink); background: var(--paper); padding: 2px 10px 4px; border: 3px solid var(--ink); border-radius: 14px 10px 16px 12px; transform: rotate(1deg); pointer-events: none; }
+</style>
+
+<canvas id="view" aria-label="Flat cartoon of a Russian flat on New Year's Eve: Ghostface, a trollface guy, a bathrobe anon with a paper bag on his head and a cat around a table with a pot of olivier, the DverkaSK sign on the floor and a little door mascot running over it"></canvas>
+<div class="corner">dverka.sk · новогодняя сычевальня</div>
+<div class="hint" id="hint">наведи на Дверку — она приоткроется</div>
+
+<script>
+const TROLL_PNG = 'data:image/png;base64,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';
+/* ================= flash-cartoon ink: wobbly outlines that "boil" ================= */
+const $ = s => document.querySelector(s);
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const cv = $('#view'), ctx = cv.getContext('2d');
+const DW = 1600, DH = 900, INK = '#1a1614';
+let SID = 0, BOIL = 0, AMP = 1.7;
+
+function jit(id, i, k) { const s = Math.sin(id * 97.13 + i * 13.7 + k * 7.1 + BOIL * 31.7) * 43758.5453; return s - Math.floor(s) - .5; }
+function trace(pts, closed) {
+  const id = SID++, q = pts.map((p, i) => [p[0] + jit(id, i, 1) * 2 * AMP, p[1] + jit(id, i, 2) * 2 * AMP]);
+  const mid = (a, b) => [(a[0] + b[0]) / 2, (a[1] + b[1]) / 2];
+  ctx.beginPath();
+  if (closed) {
+    const s = mid(q[q.length - 1], q[0]); ctx.moveTo(s[0], s[1]);
+    for (let i = 0; i < q.length; i++) { const m = mid(q[i], q[(i + 1) % q.length]); ctx.quadraticCurveTo(q[i][0], q[i][1], m[0], m[1]); }
+    ctx.closePath();
+  } else {
+    ctx.moveTo(q[0][0], q[0][1]);
+    for (let i = 1; i < q.length - 1; i++) { const m = mid(q[i], q[i + 1]); ctx.quadraticCurveTo(q[i][0], q[i][1], m[0], m[1]); }
+    ctx.lineTo(q[q.length - 1][0], q[q.length - 1][1]);
+  }
+}
+function S(pts, fill, lw = 4) {
+  trace(pts, true);
+  if (fill) { ctx.fillStyle = fill; ctx.fill(); }
+  if (lw) { ctx.lineWidth = lw; ctx.strokeStyle = INK; ctx.lineJoin = 'round'; ctx.lineCap = 'round'; ctx.stroke(); }
+}
+function L(pts, lw = 4, col = INK) { trace(pts, false); ctx.lineWidth = lw; ctx.strokeStyle = col; ctx.lineJoin = 'round'; ctx.lineCap = 'round'; ctx.stroke(); }
+function ellPts(cx, cy, rx, ry, n = 14) { const p = []; for (let i = 0; i < n; i++) { const a = i / n * Math.PI * 2; p.push([cx + Math.cos(a) * rx, cy + Math.sin(a) * ry]); } return p; }
+function E(cx, cy, rx, ry, fill, lw = 4, n) { S(ellPts(cx, cy, rx, ry, n || Math.max(8, Math.min(20, (rx + ry) / 6 | 0))), fill, lw); }
+function rectPts(x, y, w, h, c = 6) { return [[x + c, y], [x + w / 2, y], [x + w - c, y], [x + w, y + c], [x + w, y + h / 2], [x + w, y + h - c], [x + w - c, y + h], [x + w / 2, y + h], [x + c, y + h], [x, y + h - c], [x, y + h / 2], [x, y + c]]; }
+function R(x, y, w, h, fill, lw = 4, c) { S(rectPts(x, y, w, h, c), fill, lw); }
+function flat(pts, fill) { trace(pts, true); ctx.fillStyle = fill; ctx.fill(); } // fill without ink
+function blob(cx, cy, r, fill) { ctx.fillStyle = fill; ctx.beginPath(); ctx.arc(cx, cy, r, 0, 7); ctx.fill(); }
+function group(x, y, rot, fn) { ctx.save(); ctx.translate(x, y); if (rot) ctx.rotate(rot); fn(); ctx.restore(); }
+
+/* ================= the room ================= */
+const SNOW = Array.from({ length: 70 }, () => [Math.random(), Math.random(), .4 + Math.random() * .8]);
+function drawRoom(t) {
+  // wall & floor reach past the frame so any aspect ratio is covered
+  ctx.fillStyle = '#efd6a0'; ctx.fillRect(-3000, -3000, 7600, 3640);
+  ctx.fillStyle = '#b27a48'; ctx.fillRect(-3000, 640, 7600, 3000);
+  // wallpaper squiggle-flowers
+  for (let y = 40; y < 630; y += 105) for (let x = -300 + ((y / 105 | 0) % 2) * 60; x < 1900; x += 120) {
+    L([[x, y + 14], [x + 4, y + 4], [x, y - 6]], 2, '#b88a55');
+    blob(x, y - 8, 5, '#d98f6a'); blob(x + 6, y - 4, 4, '#d98f6a');
+  }
+  ctx.fillStyle = '#6e4428'; ctx.fillRect(-3000, 626, 7600, 18);
+  L([[-3000, 626], [0, 627], [800, 625], [1600, 627], [4600, 626]], 4);
+  for (const y of [690, 750, 820, 900]) L([[-3000, y], [0, y + 2], [800, y - 2], [1600, y + 1], [4600, y]], 3, '#8a5530');
+  for (let i = 0; i < 26; i++) { const x = -300 + i * 90, y = [690, 750, 820][i % 3]; L([[x, y], [x + 3, y + ([60, 70, 80][i % 3])]], 3, '#8a5530'); }
+
+  // окно с панельками и снегом
+  R(60, 100, 320, 412, '#f4efe3', 5, 10);
+  ctx.save(); trace(rectPts(82, 122, 276, 370, 6), true); ctx.clip();
+  ctx.fillStyle = '#20295a'; ctx.fillRect(80, 120, 280, 380);
+  blob(310, 170, 22, '#fff4cf');
+  [[90, 330, 90, 170], [185, 280, 80, 220], [270, 350, 100, 150]].forEach(([x, y, w, h], i) => {
+    ctx.fillStyle = ['#3a4677', '#323d6c', '#414e82'][i]; ctx.fillRect(x, y, w, h);
+    for (let yy = y + 14; yy < y + h - 20; yy += 26) for (let xx = x + 10; xx < x + w - 14; xx += 22) { ctx.fillStyle = (xx * 7 + yy * 3) % 5 < 2 ? '#ffd86b' : '#27305a'; ctx.fillRect(xx, yy, 11, 13); }
+  });
+  ctx.fillStyle = '#eef2ff'; ctx.fillRect(80, 470, 280, 30);
+  SNOW.forEach(f => { const y = 120 + ((f[1] + t * .05 * f[2]) % 1) * 380, x = 82 + ((f[0] + Math.sin(t + f[1] * 9) * .01) % 1) * 276; blob(x, y, 2 + f[2] * 1.5, '#ffffff'); });
+  ctx.restore();
+  L([[220, 118], [221, 300], [219, 494]], 7, '#f4efe3'); L([[80, 300], [220, 302], [360, 299]], 7, '#f4efe3');
+  L([[220, 118], [221, 300], [219, 494]], 2); L([[82, 300], [220, 302], [358, 299]], 2);
+  // шторы
+  S([[30, 84], [120, 84], [112, 300], [128, 580], [22, 580], [40, 300]], '#6d8f58', 4);
+  S([[320, 84], [410, 84], [400, 300], [418, 580], [312, 580], [330, 300]], '#6d8f58', 4);
+  L([[60, 100], [55, 330], [62, 570]], 3, '#4f6d3f'); L([[360, 100], [366, 330], [358, 570]], 3, '#4f6d3f');
+  L([[10, 82], [220, 80], [430, 82]], 6);
+  // батарея с носками
+  R(110, 530, 220, 86, '#f0ede4', 4, 12);
+  for (let x = 130; x < 320; x += 22) L([[x, 538], [x + 1, 608]], 3, '#c9c4b6');
+  S([[150, 520], [178, 520], [180, 575], [196, 590], [190, 604], [160, 598], [150, 575]], '#d64545', 3);
+
+  // ковёр на стене
+  R(560, 78, 520, 346, '#b3263a', 5, 10);
+  R(582, 98, 476, 306, '#26397a', 4, 8);
+  R(600, 114, 440, 274, '#c0303e', 4, 8);
+  [[150, '#f1dfae'], [118, '#26397a'], [88, '#e38a2e'], [58, '#b3263a'], [30, '#f1dfae']].forEach(([r, c]) => S([[820, 251 - r * .72], [820 + r * 1.35, 251], [820, 251 + r * .72], [820 - r * 1.35, 251]], c, 4));
+  [[650, 150], [990, 150], [650, 352], [990, 352]].forEach(([x, y]) => S([[x, y - 22], [x + 22, y], [x, y + 22], [x - 22, y]], '#f1dfae', 3));
+  for (let x = 566; x < 1076; x += 12) L([[x, 424], [x + 1, 440]], 3, '#f1dfae');
+
+  // гирлянда под потолком
+  const gp = []; for (let x = 430; x <= 1210; x += 30) gp.push([x, 36 + Math.sin((x - 430) / 780 * Math.PI) * 26]);
+  L(gp, 3);
+  gp.forEach(([x, y], i) => { const on = Math.sin(t * 3 + i * 1.9) > -.2, c = ['#ff5252', '#ffd23f', '#5fd068', '#4fa8ff', '#e17bff'][i % 5]; if (on) blob(x, y + 12, 14, c + '44'); E(x, y + 12, 6, 8, on ? c : '#6b5a52', 3, 8); });
+
+  // ёлка в углу
+  R(1375, 596, 70, 44, '#c7423a', 4, 8); R(1400, 570, 20, 30, '#6b3f26', 3, 4);
+  [[210, 90, 150], [300, 120, 170], [400, 150, 180]].forEach(([y, hw, h], k) => S([[1410, y - 40], [1410 + hw * .5, y + h * .35], [1410 + hw * .35, y + h * .38], [1410 + hw, y + h - 10], [1410 - hw, y + h - 10], [1410 - hw * .35, y + h * .38], [1410 - hw * .5, y + h * .35]], ['#3f8f4e', '#3a8548', '#357c43'][k], 4));
+  [[1380, 300, '#ff5252'], [1450, 340, '#ffd23f'], [1360, 420, '#4fa8ff'], [1470, 470, '#ff5252'], [1405, 400, '#e17bff'], [1340, 520, '#ffd23f'], [1440, 540, '#4fa8ff']].forEach(([x, y, c]) => { E(x, y, 11, 11, c, 3, 10); blob(x - 3, y - 4, 3, '#ffffffaa'); });
+  for (let i = 0; i < 12; i++) { const y = 230 + i * 30, x = 1410 + Math.sin(i * 2.2) * (30 + i * 9); const on = Math.sin(t * 4 + i * 2.7) > 0; blob(x, y, on ? 5 : 3, on ? '#fff7b0' : '#8a8a6a'); }
+  S([[1410, 140], [1422, 166], [1450, 168], [1428, 184], [1436, 212], [1410, 196], [1384, 212], [1392, 184], [1370, 168], [1398, 166]], '#ffd23f', 3);
+
+  // люстра-абажур и тёплый свет
+  L([[820, -60], [821, 38]], 3);
+  ctx.fillStyle = 'rgba(255,220,120,.10)'; ctx.beginPath(); ctx.ellipse(820, 300, 620, 420, 0, 0, 7); ctx.fill();
+  S([[775, 38], [865, 38], [905, 96], [735, 96]], '#f2a33a', 4);
+  E(820, 104, 16, 12, '#fff3c4', 3, 10);
+
+  // диван
+  R(450, 360, 740, 210, '#7b5638', 5, 26);
+  L([[700, 372], [702, 470]], 3, '#5e3f28'); L([[940, 372], [938, 470]], 3, '#5e3f28');
+  R(420, 400, 70, 200, '#6e4b30', 5, 24); R(1150, 400, 70, 200, '#6e4b30', 5, 24);
+}
+
+/* ================= the table and the feast ================= */
+function drawTable(t) {
+  // табуретка двачера и её тень
+  flat([[250, 800], [440, 800], [430, 816], [260, 816]], 'rgba(0,0,0,.18)');
+  S([[410, 545], [1230, 545], [1262, 600], [378, 600]], '#fbf7ee', 5);
+  R(378, 598, 884, 100, '#f3ecdd', 5, 4);
+  const sc = []; for (let x = 378; x <= 1262; x += 34) { sc.push([x, 698], [x + 17, 712]); } sc.push([1262, 698]);
+  flat(sc.concat([[1262, 690], [378, 690]]), '#f3ecdd'); L(sc, 4);
+  for (let x = 420; x < 1240; x += 70) L([[x, 610], [x - 4, 690]], 2, '#d9ceb6');
+  R(420, 712, 26, 90, '#6b4228', 4, 5); R(1196, 712, 26, 90, '#6b4228', 4, 5);
+  flat([[380, 800], [1260, 800], [1240, 818], [400, 818]], 'rgba(0,0,0,.15)');
+}
+function drawFood(t) {
+  // тазик оливье: эмалированная кастрюля с цветочком, из неё торчит ложка
+  L([[845, 470], [900, 392]], 7, '#b9b9b9'); E(903, 388, 12, 7, '#cfcfcf', 3, 8);
+  S([[722, 468], [878, 468], [866, 566], [734, 566]], '#f6f6f2', 5);
+  E(800, 468, 80, 16, '#e8d68a', 5, 18);
+  for (let i = 0; i < 18; i++) blob(740 + (i * 37) % 120, 462 + (i * 13) % 12, 3.2, ['#6fb84f', '#ef8a3c', '#fff6d6', '#d86b6b'][i % 4]);
+  L([[726, 482], [800, 488], [874, 482]], 6, '#3a64c9');
+  E(800, 525, 16, 14, '#e24a4a', 3, 10); S([[782, 530], [770, 548], [786, 540]], '#5fae4f', 2); S([[818, 530], [830, 548], [814, 540]], '#5fae4f', 2);
+  E(716, 500, 10, 7, '#f6f6f2', 3, 8); E(884, 500, 10, 7, '#f6f6f2', 3, 8);
+  // шампанское
+  R(896, 440, 34, 118, '#2c5a36', 4, 12); R(903, 404, 20, 40, '#2c5a36', 4, 6); R(900, 396, 26, 20, '#e9c24a', 3, 5); R(898, 486, 30, 30, '#f3ead0', 3, 4);
+  // тарелки, селёдка под шубой, мандарины, бокалы
+  [[560, 580], [690, 588], [1000, 588], [1130, 578]].forEach(([x, y]) => E(x, y, 46, 12, '#ffffff', 4, 16));
+  E(1010, 562, 62, 16, '#ffffff', 4, 16); S([[962, 560], [1058, 560], [1052, 538], [968, 538]], '#8e2b62', 4); L([[970, 548], [1050, 547]], 3, '#f0d8e6');
+  [[575, 556], [600, 560], [588, 540], [612, 540], [625, 558]].forEach(([x, y]) => { E(x, y, 14, 13, '#ff9a2e', 3, 10); blob(x - 3, y - 5, 3, '#ffd08a'); });
+  [[660, 540], [960, 532], [1150, 540]].forEach(([x, y]) => { S([[x - 12, y - 30], [x + 12, y - 30], [x + 8, y], [x - 8, y]], 'rgba(200,230,255,.55)', 3); L([[x, y], [x, y + 14]], 3); L([[x - 10, y + 16], [x + 10, y + 16]], 3); flat([[x - 10, y - 18], [x + 10, y - 18], [x + 8, y - 2], [x - 8, y - 2]], '#f2d36a'); });
+}
+
+/* ================= the guests ================= */
+function limb(pts, w, col) { L(pts, w + 8, INK); L(pts, w, col); }
+const SKIN = '#f1cfb0', ROBE = '#1d1c24';
+
+/* the real trollface, white background flood-filled away */
+const TROLL_C = document.createElement('canvas'); TROLL_C.width = 222; TROLL_C.height = 180;
+(() => {
+  const im = new Image();
+  im.onload = () => {
+    const g = TROLL_C.getContext('2d'), W = 222, H = 180; g.drawImage(im, 0, 0, W, H);
+    const d = g.getImageData(0, 0, W, H), a = d.data, seen = new Uint8Array(W * H), q = [];
+    const light = i => a[i * 4 + 3] < 20 || (a[i * 4] > 225 && a[i * 4 + 1] > 225 && a[i * 4 + 2] > 225);
+    for (let x = 0; x < W; x++) q.push(x, (H - 1) * W + x); for (let y = 0; y < H; y++) q.push(y * W, y * W + W - 1);
+    while (q.length) { const i = q.pop(); if (seen[i] || !light(i)) continue; seen[i] = 1; a[i * 4 + 3] = 0; const x = i % W, y = i / W | 0; if (x > 0) q.push(i - 1); if (x < W - 1) q.push(i + 1); if (y > 0) q.push(i - W); if (y < H - 1) q.push(i + W); }
+    g.putImageData(d, 0, 0);
+  };
+  im.src = TROLL_PNG;
+})();
+
+const G = {
+  ghost: { x: 690, act: 0, actT: 2, talkT: 4, say: null, sayT: 0, lines: ['…', 'какой твой любимый фильм ужасов?', 'режу оливье', 'алло?'] },
+  troll: { x: 950, act: 0, actT: 3, talkT: 2, say: null, sayT: 0, lines: ['problem?', 'хе-хе', 'u mad?', 'ну, за код!'] },
+  dvach: { x: 330, act: 0, actT: 1.5, talkT: 7, say: null, sayT: 0, lines: ['ещё оливье?', 'двач торт', 'тапки не снимаю', 'С наступающим, аноны'] },
+  cat: { x: 1150, act: 0, actT: 4, talkT: 9, say: null, sayT: 0, lines: ['мяу', 'мрр', '*смотрит на селёдку*'] },
+};
+function tickGuests(dt) {
+  for (const k in G) {
+    const g = G[k];
+    g.actT -= dt; if (g.actT < 0) { g.act = g.act ? 0 : 1; g.actT = g.act ? 1.6 : 2 + Math.random() * 4; }
+    g.talkT -= dt; if (g.talkT < 0) { g.talkT = 7 + Math.random() * 8; g.say = g.lines[Math.random() * g.lines.length | 0]; g.sayT = 2.8; }
+    g.sayT -= dt; if (g.sayT <= 0) g.say = null;
+  }
+}
+
+function drawGhost(t) {
+  const g = G.ghost, tilt = Math.sin(t * .9) * .18;
+  group(g.x, 560, 0, () => {
+    S([[-96, 0], [-102, -80], [-80, -120], [-40, -134], [40, -134], [80, -120], [102, -80], [96, 0]], ROBE, 5);
+    L([[-50, -100], [-44, -30]], 3, '#3b3a46'); L([[46, -96], [40, -20]], 3, '#3b3a46');
+    group(0, -140, tilt, () => {
+      S(ellPts(0, -62, 72, 88, 16), ROBE, 5);
+      S([[-26, -140], [4, -168], [30, -138]], ROBE, 4);
+      S([[0, -130], [34, -118], [47, -80], [43, -32], [25, 6], [0, 16], [-25, 6], [-43, -32], [-47, -80], [-34, -118]], '#f6f4ee', 4);
+      S([[-34, -84], [-16, -90], [-8, -72], [-13, -44], [-24, -40], [-35, -60]], INK, 0);
+      S([[34, -84], [16, -90], [8, -72], [13, -44], [24, -40], [35, -60]], INK, 0);
+      L([[-3, -30], [0, -24], [3, -30]], 3);
+      S(ellPts(0, -6, 11, 22, 12), INK, 0);
+    });
+  });
+}
+function drawGhostArms(t) {
+  const g = G.ghost, cut = g.act ? Math.sin(t * 10) * 8 : 0;
+  limb([[g.x - 78, 450], [g.x - 88, 510], [g.x - 50, 552]], 26, ROBE); E(g.x - 44, 555, 14, 11, '#101014', 3);
+  limb([[g.x + 76, 448], [g.x + 96, 500], [g.x + 104, 492 + cut]], 26, ROBE);
+  group(g.x + 108, 490 + cut, .5, () => { S([[-5, -8], [5, -8], [5, 16], [-5, 16]], '#3a2a22', 3); S([[-4, 16], [5, 16], [3, 70], [-6, 50]], '#dfe4ea', 3); });
+  E(g.x + 104, 492 + cut, 15, 12, '#101014', 3);
+}
+
+function drawTroll(t) {
+  const g = G.troll, shake = g.act ? (BOIL % 2 ? 3 : -3) : 0;
+  group(g.x, 560 + (g.act ? Math.abs(shake) * .6 : 0), 0, () => {
+    S([[-96, 0], [-100, -80], [-72, -120], [-32, -134], [32, -134], [72, -120], [100, -80], [96, 0]], '#8d93a2', 5);
+    S([[-44, -60], [44, -60], [50, -12], [-50, -12]], '#7c8292', 3);
+    L([[-12, -128], [-14, -90]], 3, '#eeeeee'); L([[12, -128], [14, -90]], 3, '#eeeeee');
+    S([[-60, -128], [0, -140], [60, -128], [40, -118], [0, -124], [-40, -118]], '#7c8292', 3);
+    group(0, -150 + shake, Math.sin(t * .7) * .05, () => {
+      E(0, -58, 62, 66, SKIN, 4);
+      S([[-50, -110], [-20, -132], [16, -130], [52, -106], [30, -114], [0, -118], [-26, -112]], '#4a3322', 3);
+      if (TROLL_C.width) ctx.drawImage(TROLL_C, -88, -130, 176, 143);
+    });
+  });
+}
+function drawTrollArms(t) {
+  const g = G.troll, up = g.act ? 1 : 0;
+  limb([[g.x - 78, 450], [g.x - 96, 510], [g.x - 60, 552]], 26, '#8d93a2'); E(g.x - 54, 555, 14, 11, SKIN, 3);
+  if (up) { limb([[g.x + 78, 448], [g.x + 118, 430], [g.x + 128, 380]], 26, '#8d93a2'); S([[g.x + 116, 330], [g.x + 144, 330], [g.x + 140, 372], [g.x + 120, 372]], 'rgba(200,230,255,.6)', 3); flat([[g.x + 118, 346], [g.x + 142, 346], [g.x + 140, 370], [g.x + 121, 370]], '#f2d36a'); E(g.x + 130, 382, 14, 12, SKIN, 3); }
+  else { limb([[g.x + 78, 448], [g.x + 96, 510], [g.x + 62, 552]], 26, '#8d93a2'); E(g.x + 56, 555, 14, 11, SKIN, 3); }
+}
+
+function drawDvach(t) {
+  const g = G.dvach, x = g.x;
+  // стул
+  R(x - 70, 628, 140, 20, '#8a5a36', 4, 6); L([[x - 60, 648], [x - 64, 804]], 8); L([[x + 58, 648], [x + 62, 804]], 8);
+  // ноги: халат, волосатые голени, тапки
+  [[0, '#7a2230'], [26, '#8e2b3a']].forEach(([o, c], i) => {
+    limb([[x - 10, 620 + o * .2], [x + 80 + o, 626 + o * .3]], 46, c);
+    limb([[x + 82 + o, 630], [x + 90 + o, 780]], 24, SKIN);
+    for (let k = 0; k < 4; k++) L([[x + 78 + o, 670 + k * 26], [x + 84 + o, 664 + k * 26]], 2, '#6b4a3a');
+    E(x + 106 + o, 792, 40, 15, '#4f7fd0', 4, 14); E(x + 84 + o, 786, 16, 10, '#ffffff', 3, 10);
+  });
+  // халат
+  S([[x - 64, 636], [x - 72, 540], [x - 52, 478], [x, 462], [x + 52, 472], [x + 70, 540], [x + 64, 636]], '#8e2b3a', 5);
+  for (let k = -2; k <= 2; k++) L([[x + k * 22, 490], [x + k * 24, 630]], 4, '#76222f');
+  S([[x - 16, 468], [x + 18, 468], [x + 2, 530]], SKIN, 3);
+  for (let k = 0; k < 5; k++) L([[x - 6 + k * 4, 480 + (k % 2) * 12], [x - 3 + k * 4, 486 + (k % 2) * 12]], 2, '#4a3226');
+  L([[x - 66, 590], [x, 596], [x + 66, 588]], 12, '#6a1d29'); L([[x + 6, 596], [x + 14, 632]], 8, '#6a1d29');
+  // пакет на голове
+  group(x, 402, Math.sin(t * .6) * .06, () => {
+    S([[-54, -70], [-42, -80], [-30, -68], [-18, -82], [-6, -70], [6, -82], [18, -70], [30, -82], [42, -70], [54, -78], [52, 62], [-52, 62]], '#c99c63', 5);
+    L([[-38, -60], [-40, 58]], 3, '#a57a48'); L([[38, -60], [40, 58]], 3, '#a57a48'); L([[-52, -58], [52, -60]], 3, '#a57a48');
+    E(-20, -12, 12, 14, INK, 0, 10); E(20, -12, 12, 14, INK, 0, 10);
+    if (Math.sin(t * 2.3) < .95) { blob(-16, -12, 3, '#fff'); blob(24, -12, 3, '#fff'); }
+    L([[-10, 30], [0, 26], [8, 34]], 3, '#8a6038');
+  });
+}
+function drawDvachArm(t) {
+  const g = G.dvach, x = g.x, sip = g.act;
+  if (sip) { limb([[x + 50, 486], [x + 80, 470], [x + 40, 452]], 24, '#8e2b3a'); R(x + 14, 430, 34, 40, '#ffffff', 4, 6); L([[x + 48, 438], [x + 58, 446], [x + 48, 458]], 4); E(x + 36, 452, 13, 11, SKIN, 3); }
+  else { limb([[x + 50, 486], [x + 92, 520], [x + 100, 552]], 24, '#8e2b3a'); R(x + 92, 516, 34, 40, '#ffffff', 4, 6); L([[x + 126, 524], [x + 136, 534], [x + 126, 546]], 4); E(x + 104, 552, 13, 11, SKIN, 3); }
+}
+
+function drawCat(t) {
+  const g = G.cat, x = g.x, y = 562, steal = g.act;
+  const tw = Math.sin(t * 3) * 18;
+  limb([[x + 28, y - 10], [x + 60, y - 20], [x + 66 + tw * .5, y - 60], [x + 56 + tw, y - 96]], 14, '#2a2830');
+  S([[x - 34, y], [x - 38, y - 40], [x - 22, y - 76], [x + 22, y - 76], [x + 38, y - 40], [x + 34, y]], '#2a2830', 4);
+  S([[x - 14, y - 4], [x - 18, y - 40], [x, y - 62], [x + 18, y - 40], [x + 14, y - 4]], '#fbf7ee', 3);
+  E(x - 18, y + 2, 12, 7, '#fbf7ee', 3, 8);
+  if (steal) { limb([[x - 26, y - 40], [x - 70, y - 30], [x - 92, y - 18]], 12, '#2a2830'); E(x - 94, y - 16, 9, 7, '#fbf7ee', 3, 8); } else E(x + 16, y + 2, 12, 7, '#fbf7ee', 3, 8);
+  group(x, y - 100, steal ? -.25 : Math.sin(t * .8) * .08, () => {
+    S([[-40, -10], [-44, -52], [-20, -30], [20, -30], [44, -52], [40, -10], [30, 18], [0, 26], [-30, 18]], '#2a2830', 4);
+    S([[-36, -44], [-26, -34], [-34, -30]], '#e38aa0', 0); S([[36, -44], [26, -34], [34, -30]], '#e38aa0', 0);
+    const blink = Math.sin(t * 1.7) > .96;
+    [[-15, -6], [15, -6]].forEach(([ex, ey]) => { if (blink) L([[ex - 9, ey], [ex + 9, ey]], 3); else { E(ex, ey, 11, 12, '#b9e05a', 3, 10); S(ellPts(ex + (steal ? -3 : 0), ey, 3, 9, 8), INK, 0); } });
+    S([[-4, 6], [4, 6], [0, 11]], '#e38aa0', 2);
+    L([[-8, 12], [-40, 8]], 2); L([[-8, 15], [-40, 18]], 2); L([[8, 12], [40, 8]], 2); L([[8, 15], [40, 18]], 2);
+    S([[-30, -34], [8, -36], [26, -82], [0, -76]], '#d9383a', 4); E(28, -84, 9, 9, '#ffffff', 3, 8); R(-34, -40, 46, 12, '#ffffff', 3, 5);
+  });
+}
+
+/* ================= the nick on the floor ================= */
+const NICK = 'DverkaSK', NICK_Y = 872, NICK_FS = 150;
+let LETTERS = [];
+function layoutNick() {
+  ctx.save(); ctx.font = `${NICK_FS}px Chewy, "Comic Sans MS", cursive`;
+  const ws = [...NICK].map(c => ctx.measureText(c).width), gap = 6, total = ws.reduce((a, b) => a + b, 0) + gap * (NICK.length - 1);
+  let x = 800 - total / 2;
+  LETTERS = [...NICK].map((c, i) => { const m = ctx.measureText(c), L0 = { c, x, w: ws[i], top: NICK_Y - (m.actualBoundingBoxAscent || NICK_FS * .7) }; x += ws[i] + gap; return L0; });
+  ctx.restore();
+}
+function drawNick() {
+  ctx.save(); ctx.font = `${NICK_FS}px Chewy, "Comic Sans MS", cursive`; ctx.textBaseline = 'alphabetic'; ctx.lineJoin = 'round';
+  LETTERS.forEach((l, i) => {
+    const id = 500 + i, dx = jit(id, 1, 1) * 3, dy = jit(id, 2, 2) * 3, rot = jit(id, 3, 3) * .03 + (i % 2 ? .03 : -.03);
+    ctx.save(); ctx.translate(l.x + l.w / 2 + dx, NICK_Y + dy); ctx.rotate(rot);
+    ctx.fillStyle = '#6b3a1c'; ctx.fillText(l.c, -l.w / 2 + 7, 8);
+    ctx.lineWidth = 11; ctx.strokeStyle = INK; ctx.strokeText(l.c, -l.w / 2, 0);
+    ctx.fillStyle = i >= 6 ? '#ff7a4a' : '#ffcf4a'; ctx.fillText(l.c, -l.w / 2, 0);
+    ctx.restore();
+  });
+  ctx.restore();
+}
+
+/* ================= DVERKA: the little door ================= */
+const FLOOR = 892;
+const DV = { x: 520, y: FLOOR, ground: FLOOR, vx: 0, face: 1, mode: 'pause', t: 1, target: 520, fast: false, queue: [], jump: null, phase: 0, open: 0, hover: false, squash: 0, say: 'Привет! Я Дверка', sayT: 3 };
+const rand = (a, b) => a + Math.random() * (b - a);
+function planNext() {
+  if (Math.random() < .45 && LETTERS.length) {
+    const dir = Math.random() < .5 ? 1 : -1, L0 = dir > 0 ? LETTERS : LETTERS.slice().reverse();
+    DV.target = L0[0].x + L0[0].w / 2 - dir * 70; DV.mode = 'walk'; DV.fast = true;
+    DV.queue = L0.map(l => ({ x: l.x + l.w / 2, y: l.top - 2 }));
+    DV.queue.push({ x: L0[L0.length - 1].x + L0[L0.length - 1].w / 2 + dir * 80, y: FLOOR });
+  } else { DV.target = rand(120, 1480); DV.mode = 'walk'; DV.fast = Math.random() < .4; DV.queue = []; }
+}
+function startJump(to) { const dx = to.x - DV.x; DV.jump = { x0: DV.x, y0: DV.y, x1: to.x, y1: to.y, k: 0, d: .24 + Math.abs(dx) / 900, h: 40 + Math.abs(dx) * .15 + Math.max(0, DV.y - to.y) * .5 }; DV.face = dx >= 0 ? 1 : -1; DV.mode = 'jump'; }
+function tickDverka(dt) {
+  DV.squash = Math.max(0, DV.squash - dt);
+  DV.open += ((DV.hover ? 1 : 0) - DV.open) * Math.min(1, dt * 8);
+  DV.sayT -= dt; if (DV.sayT <= 0) DV.say = null;
+  if (DV.hover) return;
+  if (DV.mode === 'walk') {
+    const dx = DV.target - DV.x, sp = DV.fast ? 560 : 340;
+    if (Math.abs(dx) < 4) { DV.x = DV.target; DV.vx = 0; DV.squash = .1; if (DV.queue.length) { DV.mode = 'hop'; DV.t = rand(.12, .4); } else { DV.mode = 'pause'; DV.t = rand(.4, 1.6); } }
+    else { DV.vx += (Math.sign(dx) * Math.min(sp, Math.abs(dx) * 8) - DV.vx) * Math.min(1, dt * 12); DV.x += DV.vx * dt; DV.face = DV.vx >= 0 ? 1 : -1; DV.phase += dt * Math.abs(DV.vx) / 22; }
+  } else if (DV.mode === 'hop') { DV.t -= dt; if (DV.t <= 0) startJump(DV.queue.shift()); }
+  else if (DV.mode === 'jump') {
+    const J = DV.jump; J.k = Math.min(1, J.k + dt / J.d);
+    DV.x = J.x0 + (J.x1 - J.x0) * J.k; DV.y = J.y0 + (J.y1 - J.y0) * J.k - Math.sin(J.k * Math.PI) * J.h;
+    if (J.k >= 1) { DV.y = J.y1; DV.ground = J.y1; DV.squash = .12; if (DV.queue.length) { DV.mode = 'hop'; DV.t = .05; } else { DV.mode = 'pause'; DV.t = rand(.3, 1); } }
+  } else if (DV.mode === 'pause') { DV.t -= dt; if (DV.t <= 0) planNext(); }
+  if (DV.mode !== 'jump') DV.ground = DV.y;
+}
+function drawDverka(t) {
+  const run = DV.mode === 'walk' && Math.abs(DV.vx) > 30, air = DV.mode === 'jump', f = DV.hover ? 1 : DV.face;
+  const step = run ? Math.sin(DV.phase * 2) : 0, sq = DV.squash > 0 ? .88 : 1;
+  flat(ellPts(DV.x, DV.ground + 4, 34, 7, 12), 'rgba(0,0,0,.25)');
+  group(DV.x, DV.y, (run ? .08 * f : 0), () => {
+    ctx.scale(1 / Math.sqrt(sq), sq);
+    const la = air ? -8 : step * 8, lb = air ? -4 : -step * 8;
+    L([[-12, -18], [-14 + la, 0]], 7); L([[12, -18], [14 + lb, 0]], 7);
+    E(-16 + la, 2, 11, 6, '#3a2212', 3, 8); E(16 + lb, 2, 11, 6, '#3a2212', 3, 8);
+    const frame = [[-32, -14], [-32, -84], [-26, -100], [0, -108], [26, -100], [32, -84], [32, -14]];
+    S(frame, '#6b3a1c', 4);
+    const inner = [[-23, -20], [-23, -80], [-18, -92], [0, -98], [18, -92], [23, -80], [23, -20]];
+    S(inner, '#0b0714', 0);
+    if (DV.open > .05) { for (let i = 0; i < 6; i++) { const w = 2 + i * 3, yy = -70 + i * 9; blob(-w / 2, yy, 1.8, `rgba(170,150,240,${.25 + i * .1})`); blob(w / 2, yy, 1.8, `rgba(170,150,240,${.25 + i * .1})`); } blob(0, -78, 2.5, 'rgba(255,220,160,.8)'); }
+    const k = 1 - DV.open * .78, hx = f > 0 ? -23 : 23;
+    const leaf = inner.map(([x, y]) => [hx + (x - hx) * k, y]);
+    S(leaf, '#ee9450', 4);
+    if (k > .6) {
+      const look = f * 2;
+      [[-9, -70], [9, -70]].forEach(([ex, ey]) => { E(ex * k + hx * (1 - k), ey, 6, 8, '#ffffff', 3, 10); blob(ex * k + hx * (1 - k) + look, ey + 2, 2.8, INK); });
+      blob(-15, -56, 4, '#ff8a7a88'); blob(15, -56, 4, '#ff8a7a88');
+      L([[-6, -54], [0, -50], [6, -54]], 3);
+      E(f > 0 ? 15 : -15, -40, 4, 4, '#ffd23f', 2, 8);
+    }
+    if (DV.hover) { L([[-32, -60], [-50, -76 + Math.sin(t * 14) * 6]], 6); L([[32, -60], [46, -44]], 6); }
+    else { L([[-32, -60], [-44, -44 + step * 5]], 6); L([[32, -60], [44, -44 - step * 5]], 6); }
+  });
+}
+
+/* ================= speech bubbles, drawn in the same ink ================= */
+function bubble(x, y, text) {
+  ctx.save(); ctx.font = '26px Neucha, "Comic Sans MS", cursive';
+  const w = ctx.measureText(text).width + 30, h = 42, bx = Math.max(20, Math.min(DW - 20 - w, x - w / 2)), by = y - h - 22;
+  S([[bx, by], [bx + w / 2, by - 2], [bx + w, by], [bx + w + 2, by + h / 2], [bx + w, by + h], [x + 12, by + h], [x, by + h + 18], [x - 4, by + h], [bx, by + h], [bx - 2, by + h / 2]], '#fffdf4', 4);
+  ctx.fillStyle = INK; ctx.textAlign = 'left'; ctx.textBaseline = 'middle'; ctx.fillText(text, bx + 15, by + h / 2 + 1);
+  ctx.restore();
+}
+
+/* ================= loop ================= */
+let SC = 1, OX = 0, OY = 0, DPR = 1, pointer = null;
+function resize() {
+  DPR = Math.min(devicePixelRatio || 1, 2);
+  cv.width = Math.round(innerWidth * DPR); cv.height = Math.round(innerHeight * DPR);
+  SC = Math.min(innerWidth / DW, innerHeight / DH); OX = (innerWidth - DW * SC) / 2; OY = (innerHeight - DH * SC) / 2;
+}
+const toDesign = (cx, cy) => [(cx - OX) / SC, (cy - OY) / SC];
+const overDverka = (x, y) => Math.abs(x - DV.x) < 44 && y > DV.y - 118 && y < DV.y + 10;
+cv.addEventListener('pointermove', e => { pointer = toDesign(e.clientX, e.clientY); });
+cv.addEventListener('pointerleave', () => { pointer = null; });
+const CLICK = ['Тук-тук!', 'Туда пока нельзя. Скоро!', 'Там темно… но уютно', 'Эй, щекотно!', 'Я Дверка!', 'Скрип-скрип'];
+cv.addEventListener('click', e => {
+  const [x, y] = toDesign(e.clientX, e.clientY);
+  if (!overDverka(x, y)) return;
+  DV.say = CLICK[Math.random() * CLICK.length | 0]; DV.sayT = 2.2; $('#hint').hidden = true;
+  if (DV.mode !== 'jump') { DV.queue.unshift({ x: DV.x, y: DV.y }); startJump({ x: DV.x, y: DV.y }); DV.jump.h = 70; DV.jump.d = .4; }
+});
+
+let last = performance.now(), hoverSaid = 0;
+function frame(now) {
+  const dt = Math.min(.05, (now - last) / 1000), t = now / 1000; last = now;
+  BOIL = reduce ? 0 : Math.floor(t * 9) % 3;
+  DV.hover = pointer ? overDverka(pointer[0], pointer[1]) : false;
+  cv.classList.toggle('hot', DV.hover);
+  if (DV.hover && now - hoverSaid > 6000) { hoverSaid = now; DV.say = 'Скри-и-ип… там пока темно'; DV.sayT = 2.4; }
+  tickDverka(dt); tickGuests(dt);
+  ctx.setTransform(SC * DPR, 0, 0, SC * DPR, OX * DPR, OY * DPR);
+  SID = 0;
+  drawRoom(t);
+  drawGhost(t); drawTroll(t);
+  drawTable(t); drawFood(t);
+  drawGhostArms(t); drawTrollArms(t);
+  drawDvach(t); drawDvachArm(t);
+  drawCat(t);
+  drawNick();
+  drawDverka(t);
+  const heads = { ghost: [G.ghost.x, 262], troll: [G.troll.x, 262], dvach: [G.dvach.x, 318], cat: [G.cat.x, 430] };
+  for (const k in G) if (G[k].say) bubble(heads[k][0], heads[k][1], G[k].say);
+  if (DV.say) bubble(DV.x, DV.y - 112, DV.say);
+  requestAnimationFrame(frame);
+}
+
+addEventListener('resize', resize);
+resize();
+Promise.all([document.fonts.load('150px Chewy'), document.fonts.load('26px Neucha')]).catch(() => {}).then(() => { layoutNick(); requestAnimationFrame(frame); });
+layoutNick();
+
+</script>

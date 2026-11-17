@@ -1,0 +1,35 @@
+<title>Sychevalnya</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap">
+<style>
+  :root { --bg: #07060a; --dim: #8f8698; --warm: #ffcf7a; --pix: "Press Start 2P", "Courier New", monospace; color-scheme: dark; }
+  [hidden] { display: none !important; }
+  html, body { height: 100%; }
+  body { margin: 0; background: var(--bg); color: #f3e7c9; font: 10px/1.5 var(--pix); overflow: hidden; }
+  #view { position: fixed; inset: 0; width: 100%; height: 100%; display: block; }
+  .corner { position: fixed; left: 18px; top: calc(16px + env(safe-area-inset-top, 0px)); color: var(--dim); pointer-events: none; text-shadow: 2px 2px 0 #000; }
+  .corner b { color: var(--warm); font-weight: normal; }
+  .hint { position: fixed; left: 18px; bottom: calc(16px + env(safe-area-inset-bottom, 0px)); color: var(--dim); pointer-events: none; text-shadow: 2px 2px 0 #000; }
+  #boot { position: fixed; inset: 0; display: grid; place-items: center; color: var(--dim); }
+</style>
+
+<canvas id="view" aria-label="A night-time sychevalnya: an old wooden desk with a beige 90s computer, a huge CRT monitor glowing with an imageboard, a keyboard, a mug of tea and a desk lamp"></canvas>
+<div id="boot">включаю комп…</div>
+<div class="corner"><b>dverka.sk</b> · сычевальня · шаг 1: стол и комп</div>
+<div class="hint">подвигай мышкой</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+  window.addEventListener('error', e => { const b = document.getElementById('boot'); if (b && !b.hidden) b.textContent = 'Ошибка: ' + (e.message || 'скрипт не загрузился'); });
+  if (!window.THREE) document.write('<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js"><\/script>');
+</script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/geometries/RoundedBoxGeometry.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/environments/RoomEnvironment.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/lights/RectAreaLightUniformsLib.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/shaders/CopyShader.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/shaders/LuminosityHighPassShader.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/EffectComposer.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/RenderPass.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/ShaderPass.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/UnrealBloomPass.js"></script>

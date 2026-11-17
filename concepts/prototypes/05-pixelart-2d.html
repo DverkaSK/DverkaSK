@@ -1,0 +1,583 @@
+<title>Sychevalnya</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap">
+<style>
+  :root {
+    --bg: #0b0910;
+    --paper: #f3e7c9;
+    --ink: #1c1420;
+    --dim: #9c8fa8;
+    --warm: #ffcf7a;
+    --pix: "Press Start 2P", "Courier New", monospace;
+    color-scheme: dark;
+  }
+  [hidden] { display: none !important; }
+  html, body { height: 100%; }
+  body { margin: 0; background: var(--bg); color: var(--paper); font: 11px/1.4 var(--pix); overflow: hidden; }
+  #view { position: fixed; left: 0; top: 0; display: block; image-rendering: pixelated; image-rendering: crisp-edges; }
+  #view.hot { cursor: pointer; }
+  .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  .bubble {
+    position: fixed; z-index: 3; left: 0; top: 0; transform: translate(-50%, calc(-100% - 10px));
+    padding: 7px 10px; background: var(--paper); color: var(--ink); font: 11px/1.3 var(--pix);
+    white-space: nowrap; pointer-events: none; opacity: 0; transition: opacity .2s;
+    box-shadow: 0 0 0 2px var(--ink), 4px 4px 0 2px rgba(0,0,0,.45);
+  }
+  .bubble::after { content: ""; position: absolute; left: calc(50% - 5px); bottom: -7px; border: 5px solid transparent; border-top: 5px solid var(--paper); border-bottom: 0; }
+  .bubble.on { opacity: 1; }
+  .bubble.small { font-size: 9px; padding: 5px 7px; }
+  .corner { position: fixed; z-index: 2; left: 16px; top: calc(16px + env(safe-area-inset-top, 0px)); font-size: 10px; color: var(--dim); pointer-events: none; text-shadow: 2px 2px 0 #000; }
+  .corner b { color: var(--warm); font-weight: normal; }
+  .hint { position: fixed; z-index: 2; left: 16px; bottom: calc(14px + env(safe-area-inset-bottom, 0px)); font-size: 10px; color: var(--dim); pointer-events: none; text-shadow: 2px 2px 0 #000; white-space: nowrap; }
+  .pix { position: fixed; z-index: 4; right: 16px; top: calc(12px + env(safe-area-inset-top, 0px)); display: flex; gap: 6px; align-items: center; font-size: 9px; color: var(--dim); text-shadow: 2px 2px 0 #000; }
+  .pix button { font: 9px/1 var(--pix); color: var(--dim); background: rgba(20,14,26,.75); border: 0; padding: 7px 8px; cursor: pointer; box-shadow: 0 0 0 2px #2a2030; }
+  .pix button:hover { color: var(--paper); }
+  .pix button.on { color: var(--ink); background: var(--warm); box-shadow: 0 0 0 2px var(--ink); }
+  .pix button:focus-visible { outline: 2px solid var(--warm); outline-offset: 2px; }
+</style>
+
+<h1 class="sr">DverkaSK</h1>
+<canvas id="view" aria-label="Pixel-art room of a Russian flat on New Year's Eve: anons in trollface masks and a paper bag sit on a sofa under a wall rug, a cat on the table, the DverkaSK sign on the floor and a little door mascot running around"></canvas>
+<div class="corner"><b>dverka.sk</b> · концепт</div>
+<div class="pix" id="rip"><span>рябь</span><button type="button" data-r="1">вкл</button><button type="button" data-r="0">выкл</button></div>
+<div class="hint" id="hint">наведи на Дверку — она приоткроется</div>
+<div class="bubble" id="m-bubble"></div>
+<div id="c-bubbles"></div>
+
+<script>
+/* ================= crisp pixel primitives (no anti-aliasing anywhere) ================= */
+const $ = s => document.querySelector(s);
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+let seed = 7;
+const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+
+function mk(w, h) { const c = document.createElement('canvas'); c.width = w; c.height = h; const g = c.getContext('2d', { willReadFrequently: true }); g.imageSmoothingEnabled = false; return [c, g]; }
+function rect(g, x, y, w, h, col) { g.fillStyle = col; g.fillRect(Math.round(x), Math.round(y), Math.round(w), Math.round(h)); }
+function dot(g, x, y, col) { g.fillStyle = col; g.fillRect(Math.round(x), Math.round(y), 1, 1); }
+function poly(g, pts, col) {
+  g.fillStyle = col;
+  let y0 = Infinity, y1 = -Infinity; pts.forEach(p => { y0 = Math.min(y0, p[1]); y1 = Math.max(y1, p[1]); });
+  for (let y = Math.floor(y0); y <= Math.ceil(y1); y++) {
+    const yc = y + .5, xs = [];
+    for (let i = 0; i < pts.length; i++) {
+      const [ax, ay] = pts[i], [bx, by] = pts[(i + 1) % pts.length];
+      if ((ay <= yc && by > yc) || (by <= yc && ay > yc)) xs.push(ax + (yc - ay) / (by - ay) * (bx - ax));
+    }
+    xs.sort((a, b) => a - b);
+    for (let i = 0; i + 1 < xs.length; i += 2) { const a = Math.round(xs[i]), b = Math.round(xs[i + 1]); if (b > a) g.fillRect(a, y, b - a, 1); }
+  }
+}
+function ell(g, cx, cy, rx, ry, col) {
+  g.fillStyle = col;
+  for (let y = Math.floor(cy - ry); y <= Math.ceil(cy + ry); y++) {
+    const dy = (y + .5 - cy) / ry; if (Math.abs(dy) > 1) continue;
+    const w = rx * Math.sqrt(1 - dy * dy), a = Math.round(cx - w), b = Math.round(cx + w);
+    if (b > a) g.fillRect(a, y, b - a, 1);
+  }
+}
+function line(g, x0, y0, x1, y1, col) {
+  g.fillStyle = col; x0 = Math.round(x0); y0 = Math.round(y0); x1 = Math.round(x1); y1 = Math.round(y1);
+  const dx = Math.abs(x1 - x0), sx = x0 < x1 ? 1 : -1, dy = -Math.abs(y1 - y0), sy = y0 < y1 ? 1 : -1; let e = dx + dy;
+  for (let n = 0; n < 999; n++) { g.fillRect(x0, y0, 1, 1); if (x0 === x1 && y0 === y1) break; const e2 = 2 * e; if (e2 >= dy) { e += dy; x0 += sx; } if (e2 <= dx) { e += dx; y0 += sy; } }
+}
+function path(g, pts, col) { for (let i = 0; i + 1 < pts.length; i++) line(g, pts[i][0], pts[i][1], pts[i + 1][0], pts[i + 1][1], col); }
+/* smooth a polyline (Catmull-Rom) so curves come out as clean pixel arcs */
+function smooth(pts, n = 6) {
+  if (pts.length < 3) return pts;
+  const out = [];
+  for (let i = 0; i < pts.length - 1; i++) {
+    const p0 = pts[Math.max(0, i - 1)], p1 = pts[i], p2 = pts[i + 1], p3 = pts[Math.min(pts.length - 1, i + 2)];
+    for (let k = 0; k < n; k++) {
+      const t = k / n, t2 = t * t, t3 = t2 * t;
+      out.push([0, 1].map(j => .5 * ((2 * p1[j]) + (-p0[j] + p2[j]) * t + (2 * p0[j] - 5 * p1[j] + 4 * p2[j] - p3[j]) * t2 + (-p0[j] + 3 * p1[j] - 3 * p2[j] + p3[j]) * t3)));
+    }
+  }
+  out.push(pts[pts.length - 1]); return out;
+}
+function curve(g, pts, col) { path(g, smooth(pts), col); }
+function yAt(pts, x) { const s = smooth(pts, 10); for (let i = 0; i + 1 < s.length; i++) { const [ax, ay] = s[i], [bx, by] = s[i + 1]; if ((ax <= x && bx >= x) || (bx <= x && ax >= x)) return ay + (x - ax) / ((bx - ax) || 1) * (by - ay); } return s[s.length - 1][1]; }
+/* black outline around every opaque pixel of a sprite */
+function outline(c, col = '#111') {
+  const g = c.getContext('2d'), d = g.getImageData(0, 0, c.width, c.height), a = i => d.data[i * 4 + 3];
+  const w = c.width, h = c.height, mark = [];
+  for (let y = 0; y < h; y++) for (let x = 0; x < w; x++) {
+    const i = y * w + x; if (!a(i)) continue;
+    if (x === 0 || y === 0 || x === w - 1 || y === h - 1 || !a(i - 1) || !a(i + 1) || !a(i - w) || !a(i + w)) mark.push([x, y]);
+  }
+  mark.forEach(([x, y]) => dot(g, x, y, col));
+}
+const S = (pts, s, ox = 0, oy = 0) => pts.map(([x, y]) => [x * s + ox, y * s + oy]);
+
+/* ================= FACES — drawn big so they read instantly ================= */
+const K = '#141414';
+function trollFace(mirror) {
+  const W = 42, H = 39, s = W / 48;
+  const [c, g] = mk(W, H);
+  const head = [[9, 5], [17, 2], [26, 1], [35, 2], [42, 6], [46, 13], [47, 21], [45, 29], [40, 36], [33, 41], [25, 43], [17, 42], [10, 38], [5, 32], [2, 24], [2, 15], [5, 9]];
+  poly(g, S(head, s), '#fbfbf7');
+  poly(g, S([[37, 6], [42, 6], [46, 13], [47, 21], [45, 29], [42, 33], [44, 22], [43, 13]], s), '#e4e3dc');
+  outline(c, K);
+  const top = [[4, 21], [9, 24], [17, 26], [25, 26.5], [33, 25.5], [40, 23], [45, 18]];
+  const bot = [[4, 21], [7, 27], [13, 32], [21, 35], [29, 35], [36, 32], [42, 26], [45, 18]];
+  const mid = [[6, 24], [12, 28], [20, 30], [28, 30], [35, 28], [42, 23]];
+  poly(g, S(smooth(top.concat(bot.slice().reverse())), s), '#ffffff');
+  for (let x = 8; x < 43; x += 3.4) {
+    line(g, x * s, yAt(S(top, s), x * s) + 1, x * s, yAt(S(mid, s), x * s) - 1, K);
+    const x2 = x + 1.7; if (x2 < 42) line(g, x2 * s, yAt(S(mid, s), x2 * s) + 1, x2 * s, yAt(S(bot, s), x2 * s) - 1, K);
+  }
+  curve(g, S(top, s), K); curve(g, S(bot, s), K); curve(g, S(mid, s), K);
+  // squinting eyes looking sideways
+  curve(g, S([[10, 15], [13, 12], [17, 11], [21, 13]], s), K); curve(g, S([[11, 16], [16, 17], [20, 15]], s), K);
+  curve(g, S([[27, 12], [31, 10], [35, 10], [39, 12]], s), K); curve(g, S([[28, 14], [33, 15], [38, 13]], s), K);
+  rect(g, 17 * s, 12 * s, 2, 2, K); rect(g, 35 * s, 11 * s, 2, 2, K);
+  // raised brows, wrinkles, nose, cheek folds, chin
+  curve(g, S([[8, 10], [12, 7], [18, 6], [22, 9]], s), K); curve(g, S([[26, 8], [30, 5], [36, 5], [41, 8]], s), K);
+  curve(g, S([[20, 3.5], [24, 2.8], [28, 3.5]], s), K);
+  line(g, 23.5 * s, 11 * s, 24 * s, 13.5 * s, K);
+  curve(g, S([[23, 15], [24, 18], [22, 20], [20, 19]], s), K); dot(g, 25 * s, 19 * s, K);
+  line(g, 9 * s, 17 * s, 6 * s, 20.5 * s, K); line(g, 40 * s, 16 * s, 43.5 * s, 19 * s, K);
+  curve(g, S([[18, 38], [25, 39.8], [31, 38]], s), K); line(g, 22 * s, 41 * s, 28 * s, 41 * s, K);
+  if (!mirror) return c;
+  const [m, mg] = mk(W, H); mg.translate(W, 0); mg.scale(-1, 1); mg.drawImage(c, 0, 0); return m;
+}
+function omgFace() {
+  const W = 38, H = 40; const [c, g] = mk(W, H);
+  poly(g, [[8, 3], [19, 0], [30, 3], [36, 11], [37, 22], [34, 31], [27, 38], [19, 40], [11, 38], [4, 31], [1, 21], [2, 11]], '#fbfbf7');
+  poly(g, [[30, 3], [36, 11], [37, 22], [34, 31], [31, 30], [33, 20], [32, 10]], '#e4e3dc');
+  outline(c, K);
+  [[12, 14], [26, 14]].forEach(([x, y]) => { ell(g, x, y, 6, 6.5, K); ell(g, x, y, 5, 5.5, '#ffffff'); rect(g, x, y, 1, 1, K); });
+  curve(g, [[6, 6], [11, 4], [16, 6]], K); curve(g, [[22, 6], [27, 4], [32, 6]], K);
+  line(g, 19, 19, 20, 22, K);
+  ell(g, 19, 30, 7, 7.5, K); ell(g, 19, 32, 4.5, 3.5, '#7a1f2a'); rect(g, 15, 24, 9, 2, '#ffffff');
+  line(g, 4, 25, 7, 28, K); line(g, 34, 25, 31, 28, K);
+  return c;
+}
+function bagFace(t) {
+  const W = 38, H = 42; const [c, g] = mk(W, H);
+  rect(g, 1, 4, 36, 38, '#b98a55'); rect(g, 31, 4, 6, 38, '#a0744a');
+  for (let x = 1; x < 37; x += 3) rect(g, x, 1 + ((x / 3) % 2) * 2, 3, 4, '#c9a06a');
+  rect(g, 1, 6, 36, 2, '#caa06a');
+  line(g, 7, 8, 7, 40, '#a57a4b'); line(g, 30, 8, 30, 40, '#96693f');
+  for (let i = 0; i < 25; i++) dot(g, 2 + rnd() * 34, 8 + rnd() * 33, rnd() < .5 ? '#c29560' : '#a8784a');
+  [[9, 14], [22, 14]].forEach(([x, y]) => { rect(g, x, y, 7, 5, '#120a06'); rect(g, x + 1, y - 1, 5, 7, '#120a06'); if (!t.blink) rect(g, x + 3, y + 2, 2, 2, '#f3efe6'); });
+  rect(g, 8, 26, 22, 9, '#c0392b'); rect(g, 13, 27, 12, 2, '#f2c14e'); rect(g, 12, 29, 14, 2, '#6b3a1c'); rect(g, 13, 31, 12, 2, '#f2c14e');
+  outline(c, '#2a1a0e');
+  return c;
+}
+/* ================= THE ROOM (scene space 384×216, one-point perspective) ================= */
+const BW = { x0: 64, x1: 320, y0: 18, y1: 146 }; // back wall
+const M = 8; // parallax margin
+let W = 384, H = 216, OX = 0, OY = 0;
+const EXT = {}; // canvas corners in scene space
+const WIN = {}; // window quad for the emissive pass
+const GARLAND = [], TREE_LIGHTS = [];
+const SEATS = [123, 169, 215, 261];
+
+function wallTop(x) { return EXT.Y0 + (BW.y0 - EXT.Y0) * (x - EXT.X0) / (BW.x0 - EXT.X0); }
+function wallBot(x) { return EXT.Y1 + (BW.y1 - EXT.Y1) * (x - EXT.X0) / (BW.x0 - EXT.X0); }
+
+function drawBack(g) {
+  const { X0, Y0, X1, Y1 } = EXT;
+  // ceiling, side walls, floor
+  poly(g, [[X0, Y0], [X1, Y0], [BW.x1, BW.y0], [BW.x0, BW.y0]], '#4a3b36');
+  poly(g, [[X0, Y0], [BW.x0, BW.y0], [BW.x0, BW.y1], [X0, Y1]], '#a08a66');
+  poly(g, [[X1, Y0], [X1, Y1], [BW.x1, BW.y1], [BW.x1, BW.y0]], '#a08a66');
+  for (let i = 1; i < 9; i++) {
+    const k = Math.pow(i / 9, .75);
+    const xl = X0 + (BW.x0 - X0) * k, xr = X1 - (X1 - BW.x1) * k;
+    line(g, xl, Y0 + (BW.y0 - Y0) * k + 1, xl, Y1 + (BW.y1 - Y1) * k - 1, '#927c5a');
+    line(g, xr, Y0 + (BW.y0 - Y0) * k + 1, xr, Y1 + (BW.y1 - Y1) * k - 1, '#927c5a');
+    for (let r = 1; r < 6; r++) { const yy = (Y0 + (BW.y0 - Y0) * k) + ((Y1 + (BW.y1 - Y1) * k) - (Y0 + (BW.y0 - Y0) * k)) * r / 6; dot(g, xl + 3, yy, '#7d5a44'); dot(g, xr - 3, yy, '#7d5a44'); }
+  }
+  poly(g, [[BW.x0, BW.y1], [BW.x1, BW.y1], [X1, Y1], [X0, Y1]], '#6e4a30');
+  for (let i = 0; i <= 16; i++) line(g, BW.x0 + 16 * i, BW.y1, X0 + (X1 - X0) * i / 16, Y1, '#5b3c26');
+  for (let k = 1; k < 9; k++) { const y = BW.y1 + (Y1 - BW.y1) * Math.pow(k / 9, 1.7); const f = (y - BW.y1) / (Y1 - BW.y1); line(g, BW.x0 + (X0 - BW.x0) * f, y, BW.x1 + (X1 - BW.x1) * f, y, '#63432b'); }
+  // wallpaper on the back wall
+  rect(g, BW.x0, BW.y0, BW.x1 - BW.x0, BW.y1 - BW.y0, '#b49d76');
+  for (let x = BW.x0; x < BW.x1; x += 12) rect(g, x, BW.y0, 2, BW.y1 - BW.y0, '#a68f69');
+  for (let y = BW.y0 + 6; y < BW.y1; y += 12) for (let x = BW.x0 + 6 + ((y / 12 | 0) % 2) * 6; x < BW.x1; x += 12) { dot(g, x, y, '#8a5d45'); rect(g, x - 1, y + 1, 3, 1, '#8a5d45'); dot(g, x, y + 2, '#6f7a4a'); }
+  rect(g, BW.x0, BW.y1 - 4, BW.x1 - BW.x0, 4, '#5a3a26');
+  line(g, X0, Y1 - 2, BW.x0, BW.y1 - 1, '#5a3a26'); line(g, X1, Y1 - 2, BW.x1, BW.y1 - 1, '#5a3a26');
+  // ковёр на стене
+  const R = { x0: 122, x1: 262, y0: 26, y1: 104 };
+  rect(g, R.x0, R.y0, R.x1 - R.x0, R.y1 - R.y0, '#6e1419');
+  rect(g, R.x0 + 3, R.y0 + 3, R.x1 - R.x0 - 6, R.y1 - R.y0 - 6, '#1f2b52');
+  rect(g, R.x0 + 6, R.y0 + 6, R.x1 - R.x0 - 12, R.y1 - R.y0 - 12, '#a3262b');
+  for (let x = R.x0 + 4; x < R.x1 - 4; x += 4) { rect(g, x, R.y0 + 4, 2, 1, '#e6d3a3'); rect(g, x + 2, R.y1 - 5, 2, 1, '#e6d3a3'); }
+  for (let y = R.y0 + 6; y < R.y1 - 6; y += 4) { rect(g, R.x0 + 4, y, 1, 2, '#e6d3a3'); rect(g, R.x1 - 5, y + 2, 1, 2, '#e6d3a3'); }
+  const cx = (R.x0 + R.x1) / 2, cy = (R.y0 + R.y1) / 2;
+  [[30, '#1f2b52'], [25, '#e6d3a3'], [21, '#d88a2a'], [16, '#6e1419'], [12, '#e6d3a3'], [8, '#1f2b52'], [4, '#d88a2a']].forEach(([r, col]) => poly(g, [[cx, cy - r * .9], [cx + r * 1.6, cy], [cx, cy + r * .9], [cx - r * 1.6, cy]], col));
+  [[R.x0 + 18, R.y0 + 16], [R.x1 - 18, R.y0 + 16], [R.x0 + 18, R.y1 - 16], [R.x1 - 18, R.y1 - 16]].forEach(([x, y]) => { poly(g, [[x, y - 6], [x + 6, y], [x, y + 6], [x - 6, y]], '#e6d3a3'); poly(g, [[x, y - 3], [x + 3, y], [x, y + 3], [x - 3, y]], '#d88a2a'); });
+  for (let x = R.x0; x < R.x1; x += 2) rect(g, x, R.y1, 1, 2 + (x % 4 === 0), '#e6d3a3');
+  // окно на левой стене
+  const xl = BW.x0 - 54, xr = BW.x0 - 12;
+  const tq = x => wallTop(x) + 18, bq = x => wallBot(x) - 58;
+  poly(g, [[xl - 3, tq(xl - 3) - 3], [xr + 3, tq(xr + 3) - 3], [xr + 3, bq(xr + 3) + 3], [xl - 3, bq(xl - 3) + 3]], '#e8e4da');
+  poly(g, [[xl, tq(xl)], [xr, tq(xr)], [xr, bq(xr)], [xl, bq(xl)]], '#0e1330');
+  Object.assign(WIN, { xl, xr, tq, bq });
+  const xm = (xl + xr) / 2; line(g, xm, tq(xm), xm, bq(xm), '#e8e4da'); line(g, xm + 1, tq(xm + 1), xm + 1, bq(xm + 1), '#e8e4da');
+  line(g, xl, (tq(xl) + bq(xl)) * .42 + 0, xr, (tq(xr) + bq(xr)) * .42, '#e8e4da');
+  poly(g, [[xl - 5, bq(xl - 5) + 3], [xr + 5, bq(xr + 5) + 3], [xr + 7, bq(xr + 7) + 7], [xl - 7, bq(xl - 7) + 8]], '#d8d3c7');
+  for (let x = xl; x < xr; x += 3) { line(g, x, bq(x) + 12, x, bq(x) + 30, '#d8d3c7'); line(g, x + 1, bq(x + 1) + 12, x + 1, bq(x + 1) + 30, '#bdb8ac'); }
+  rect(g, xl + 8, bq(xl + 8) + 12, 7, 4, '#c0392b');
+  ell(g, xr - 6, bq(xr - 6) - 1, 3, 2, '#b8653b'); for (let i = -2; i <= 2; i++) line(g, xr - 6, bq(xr - 6) - 2, xr - 6 + i * 2, bq(xr - 6) - 8 + Math.abs(i), '#4d8a3e');
+  // ёлка в углу
+  const tx = 80;
+  rect(g, tx - 6, 140, 12, 8, '#a8332b'); rect(g, tx - 2, 136, 4, 6, '#6b3f26');
+  [[84, 16, 22], [96, 22, 26], [110, 28, 30]].forEach(([y, hw, h]) => { poly(g, [[tx, y], [tx + hw, y + h], [tx - hw, y + h]], '#2f6b3a'); poly(g, [[tx, y], [tx + hw, y + h], [tx + 2, y + h]], '#265a31'); for (let i = 0; i < 6; i++) dot(g, tx - hw + 3 + i * hw / 3, y + h - 1, '#1f4a28'); });
+  [[74, 104], [86, 112], [70, 126], [90, 130], [80, 120], [66, 136], [94, 138]].forEach(([x, y], i) => { ell(g, x, y, 2, 2, ['#e04848', '#ffd46a', '#6ab8ff'][i % 3]); dot(g, x - 1, y - 1, '#fff'); });
+  for (let i = 0; i < 14; i++) { const y = 92 + i * 3.4, hw = 4 + (y - 84) * .5; TREE_LIGHTS.push([tx + Math.sin(i * 2.3) * hw * .8, y, i]); }
+  // диван
+  rect(g, 84, 112, 16, 34, '#5e4f34'); rect(g, 284, 112, 16, 34, '#5e4f34');
+  rect(g, 90, 106, 204, 30, '#6b5a3c'); rect(g, 90, 106, 204, 2, '#7d6a48');
+  for (let x = 100; x < 290; x += 16) for (let y = 112; y < 132; y += 9) dot(g, x + ((y / 9 | 0) % 2) * 8, y, '#584a31');
+  rect(g, 94, 132, 196, 14, '#7a6746'); rect(g, 94, 132, 196, 2, '#8a7752');
+  rect(g, 84, 110, 16, 3, '#6d5c3e'); rect(g, 284, 110, 16, 3, '#6d5c3e');
+  // гирлянда
+  for (let x = BW.x0 + 4; x < BW.x1 - 4; x++) { const ph = ((x - BW.x0) % 32) / 32, y = 21 + Math.sin(ph * Math.PI) * 6; dot(g, x, y, '#2a2a2a'); if ((x - BW.x0) % 6 === 0) GARLAND.push([x, y + 2, GARLAND.length]); }
+  // люстра
+  line(g, 192, Y0, 192, 8, '#8a8a8a');
+  poly(g, [[184, 8], [200, 8], [205, 14], [179, 14]], '#d9c7a0'); rect(g, 179, 14, 26, 1, '#b8a47c');
+  // компьютерный стол справа (сычевальня)
+  rect(g, 292, 138, 62, 5, '#6b3f26'); rect(g, 294, 143, 4, 26, '#5a331f'); rect(g, 348, 143, 4, 26, '#5a331f');
+  rect(g, 300, 108, 32, 30, '#cfc6ad'); rect(g, 298, 136, 36, 3, '#bdb49a'); rect(g, 330, 110, 10, 26, '#bdb49a');
+  rect(g, 302, 111, 27, 22, '#2a2e2a'); rect(g, 303, 112, 25, 20, '#101410');
+  rect(g, 304, 140, 24, 3, '#b8af95'); rect(g, 340, 132, 5, 6, '#f3efe6');
+  rect(g, 338, 116, 16, 22, '#26262a'); rect(g, 336, 138, 20, 5, '#2e2e33'); rect(g, 345, 143, 2, 18, '#444');
+}
+
+function drawTable(g) {
+  poly(g, [[96, 143], [288, 143], [296, 153], [88, 153]], '#ece7da');
+  for (let x = 90; x < 296; x += 3) dot(g, x, 152, '#d6cfbc');
+  rect(g, 88, 153, 208, 15, '#e2dccd');
+  for (let x = 94; x < 296; x += 12) { rect(g, x, 154, 1, 13, '#d2cbba'); rect(g, x + 1, 154, 1, 13, '#f0ebdf'); }
+  for (let x = 88; x < 296; x += 6) ell(g, x + 3, 168, 3, 1.6, '#e2dccd');
+  rect(g, 96, 169, 4, 16, '#4a2c1c'); rect(g, 284, 169, 4, 16, '#4a2c1c');
+  rect(g, 84, 185, 216, 2, '#3a2418');
+  // праздничный стол
+  SEATS.forEach(x => { ell(g, x, 148, 8, 2.2, '#f6f3ea'); ell(g, x, 148, 5, 1.2, '#e2ddd0'); });
+  ell(g, 192, 147, 13, 4, '#d9d2bf'); ell(g, 192, 145, 11, 3.2, '#e3d18f');
+  for (let i = 0; i < 14; i++) dot(g, 183 + rnd() * 18, 143 + rnd() * 4, ['#6aa84f', '#e07b2a', '#f2e6b8', '#d97a7a'][i % 4]);
+  rect(g, 226, 140, 16, 7, '#7d2350'); rect(g, 226, 140, 16, 2, '#9a3368'); for (let i = 0; i < 6; i++) dot(g, 227 + i * 2.5, 141, '#f2e6d8');
+  [[144, 145], [148, 144], [152, 145], [146, 142], [150, 141]].forEach(([x, y]) => { ell(g, x, y, 2.4, 2.2, '#f08a1e'); dot(g, x - 1, y - 1, '#ffc06a'); });
+  rect(g, 190, 124, 6, 23, '#1f4a2a'); rect(g, 191, 118, 4, 7, '#1f4a2a'); rect(g, 190, 115, 6, 4, '#d9b650'); rect(g, 190, 132, 6, 6, '#e9dfc4'); rect(g, 190, 124, 1, 20, '#3a7a4a');
+  [[112, 141], [158, 141], [205, 141], [250, 141], [276, 141]].forEach(([x, y]) => { rect(g, x, y, 3, 5, '#a9cde8'); rect(g, x, y + 2, 3, 3, '#e8c36a'); });
+  rect(g, 272, 134, 4, 12, '#f3e7c9');
+}
+
+/* letters of the nick, extruded blocks on the floor */
+const GLYPHS = {
+  D: ['1111.', '1...1', '1...1', '1...1', '1...1', '1...1', '1111.'], v: ['.....', '.....', '1...1', '1...1', '1...1', '.1.1.', '..1..'],
+  e: ['.....', '.....', '.111.', '1...1', '11111', '1....', '.1111'], r: ['.....', '.....', '1.11.', '11..1', '1....', '1....', '1....'],
+  k: ['1....', '1....', '1..1.', '1.1..', '11...', '1.1..', '1..1.'], a: ['.....', '.....', '.111.', '....1', '.1111', '1...1', '.1111'],
+  S: ['.1111', '1....', '1....', '.111.', '....1', '....1', '1111.'], K: ['1...1', '1..1.', '1.1..', '11...', '1.1..', '1..1.', '1...1'],
+};
+const NICK = 'DverkaSK', VX = 3, BASE = 204, LETTER_TOPS = [];
+function drawLetters(g) {
+  const total = NICK.length * 6 * VX - VX, x0 = 192 - total / 2;
+  LETTER_TOPS.length = 0;
+  [...NICK].forEach((ch, li) => {
+    const G = GLYPHS[ch], lx = x0 + li * 6 * VX, sk = li >= 6;
+    const [front, hi, sh, side] = sk ? ['#ff7a59', '#ffb199', '#d4553a', '#7a2414'] : ['#ffc861', '#ffe39a', '#d0902e', '#8a5418'];
+    const cells = [];
+    G.forEach((row, ry) => [...row].forEach((c, cx) => { if (c === '1') cells.push([lx + cx * VX, BASE - (7 - ry) * VX]); }));
+    cells.forEach(([x, y]) => { rect(g, x + 1, y - 2, VX, VX, side); rect(g, x + 2, y - 2, VX, 1, hi); });
+    cells.forEach(([x, y]) => { rect(g, x, y, VX, VX, front); rect(g, x, y + VX - 1, VX, 1, sh); });
+    G.forEach((row, ry) => [...row].forEach((c, cx) => { if (c === '1' && (ry === 0 || G[ry - 1][cx] !== '1')) rect(g, lx + cx * VX, BASE - (7 - ry) * VX, VX, 1, hi); }));
+    let best = null;
+    for (let cx = 0; cx < 5; cx++) { let top = -1; for (let ry = 0; ry < 7; ry++) if (G[ry][cx] === '1') { top = ry; break; } if (top >= 0) { const sc = (7 - top) * 10 - Math.abs(cx - 2); if (!best || sc > best.sc) best = { sc, x: lx + cx * VX + 1.5, y: BASE - (7 - top) * VX - 2 }; } }
+    LETTER_TOPS.push({ x: best.x, y: best.y });
+  });
+  rect(g, x0 - 2, BASE + 1, total + 6, 2, 'rgba(0,0,0,.35)');
+}
+
+/* ================= GUESTS ================= */
+const GUESTS = [
+  { id: 'troll', cx: SEATS[0], face: trollFace(false), wear: 'track', lines: ['problem?', 'хех', 'ну, за код'] },
+  { id: 'bag', cx: SEATS[1], face: null, wear: 'hoodie', lines: ['ещё чайку?', 'без лиц, без имён', 'мне и так норм'] },
+  { id: 'troll2', cx: SEATS[2], face: trollFace(true), wear: 'hood', lines: ['u mad?', 'кто пушнул в пятницу?', 'хехехе'] },
+  { id: 'omg', cx: SEATS[3], face: omgFace(), wear: 'jacket', lines: ['ОМГ', 'прод упал?!', 'это оливье?!'] },
+];
+GUESTS.forEach(G => { G.t = { blink: false, bob: 0, act: 0 }; G.blinkT = 1 + Math.random() * 3; G.actT = 2 + Math.random() * 4; G.talkT = 3 + Math.random() * 6; G.bubbleT = 0; });
+
+function drawGuest(g, G, t) {
+  const cx = G.cx, b = G.t.bob, shake = G.id === 'troll2' && G.t.act ? (Math.floor(t * 20) % 2) : 0;
+  const body = { track: '#1d2233', hoodie: '#34443a', hood: '#4b505e', jacket: '#6d7482' }[G.wear];
+  if (G.wear === 'hood' || G.wear === 'jacket') { const hc = G.wear === 'hood' ? '#3e4350' : '#3a3f4a'; poly(g, [[cx - 23, 124], [cx - 25, 100], [cx - 19, 82 + b], [cx, 76 + b], [cx + 19, 82 + b], [cx + 25, 100], [cx + 23, 124]], hc); }
+  poly(g, [[cx - 21, 152], [cx - 20, 128 + b], [cx - 13, 121 + b], [cx + 13, 121 + b], [cx + 20, 128 + b], [cx + 21, 152]], body);
+  if (G.wear === 'track') { line(g, cx - 13, 122 + b, cx - 20, 150, '#eeeeee'); line(g, cx - 11, 122 + b, cx - 18, 150, '#eeeeee'); line(g, cx + 13, 122 + b, cx + 20, 150, '#eeeeee'); line(g, cx + 11, 122 + b, cx + 18, 150, '#eeeeee'); line(g, cx, 124 + b, cx, 150, '#8a8f9e'); }
+  if (G.wear === 'hoodie') { rect(g, cx - 5, 123 + b, 1, 8, '#cfcfcf'); rect(g, cx + 4, 123 + b, 1, 8, '#cfcfcf'); rect(g, cx - 9, 138, 18, 8, '#2c3a31'); }
+  if (G.wear === 'hood') { rect(g, cx - 4, 123 + b, 1, 7, '#cfcfcf'); rect(g, cx + 3, 123 + b, 1, 7, '#cfcfcf'); }
+  if (G.wear === 'jacket') { line(g, cx, 122 + b, cx, 150, '#4d535f'); rect(g, cx - 14, 132, 6, 1, '#4d535f'); rect(g, cx + 8, 132, 6, 1, '#4d535f'); }
+  const face = G.id === 'bag' ? (G.t.blink ? BAG1 : BAG0) : G.face;
+  const fy = 124 - face.height + b - shake;
+  g.drawImage(face, Math.round(cx - face.width / 2), Math.round(fy));
+  if (G.id === 'omg') { // hands on cheeks — the classic OMG pose
+    poly(g, [[cx - 20, 128], [cx - 25, 112], [cx - 22, 110], [cx - 16, 124]], body); rect(g, cx - 24, 104, 5, 7, '#e6c4a6'); rect(g, cx - 24, 104, 5, 1, '#c9a487');
+    poly(g, [[cx + 20, 128], [cx + 25, 112], [cx + 22, 110], [cx + 16, 124]], body); rect(g, cx + 19, 104, 5, 7, '#e6c4a6'); rect(g, cx + 19, 104, 5, 1, '#c9a487');
+  }
+}
+function drawArms(g, G, t) {
+  if (G.id === 'omg') return;
+  const cx = G.cx, body = { track: '#1d2233', hoodie: '#34443a', hood: '#4b505e' }[G.wear];
+  const lift = G.id === 'bag' && G.t.act ? 1 : 0;
+  poly(g, [[cx - 20, 140], [cx - 15, 138], [cx - 7, 147], [cx - 12, 149]], body); rect(g, cx - 10, 146, 4, 3, '#e6c4a6');
+  if (lift) { poly(g, [[cx + 20, 138], [cx + 15, 136], [cx + 10, 124], [cx + 15, 123]], body); rect(g, cx + 9, 118, 5, 6, '#f3efe6'); rect(g, cx + 14, 119, 2, 3, '#f3efe6'); rect(g, cx + 10, 122, 4, 3, '#e6c4a6'); }
+  else {
+    poly(g, [[cx + 20, 140], [cx + 15, 138], [cx + 7, 147], [cx + 12, 149]], body); rect(g, cx + 6, 146, 4, 3, '#e6c4a6');
+    if (G.id === 'bag') { rect(g, cx + 5, 141, 5, 6, '#f3efe6'); rect(g, cx + 10, 142, 2, 3, '#f3efe6'); }
+    if (G.id === 'troll') { rect(g, cx + 6, 140, 3, 6, '#a9cde8'); rect(g, cx + 6, 143, 3, 3, '#e8c36a'); }
+  }
+  if (G.wear === 'track') { line(g, cx - 19, 139, cx - 11, 148, '#eeeeee'); line(g, cx + 19, 139, cx + 11, 148, '#eeeeee'); }
+}
+const CAT = { x: 108, blink: false, blinkT: 2, look: 0, lookT: 3 };
+function drawCat(g, t) {
+  const x = CAT.x, y = 151, k = '#1d1a22';
+  const tl = Math.sin(t * 3) * 3;
+  path(g, smooth([[x + 6, y - 2], [x + 11, y - 4], [x + 13 + tl * .3, y - 10], [x + 12 + tl, y - 16]]), k);
+  path(g, smooth([[x + 7, y - 2], [x + 12, y - 4], [x + 14 + tl * .3, y - 10], [x + 13 + tl, y - 16]]), k);
+  ell(g, x, y - 7, 8, 7, k); ell(g, x - 1, y - 6, 4, 5, '#f3efe6');
+  rect(g, x - 5, y - 2, 3, 2, '#f3efe6'); rect(g, x + 1, y - 2, 3, 2, '#f3efe6');
+  ell(g, x - 1, y - 17, 6.5, 5.5, k);
+  poly(g, [[x - 7, y - 19], [x - 6, y - 26], [x - 3, y - 21]], k); poly(g, [[x + 5, y - 19], [x + 4, y - 26], [x + 1, y - 21]], k);
+  if (CAT.blink) { rect(g, x - 5, y - 18, 3, 1, '#8fe36a'); rect(g, x + 1, y - 18, 3, 1, '#8fe36a'); }
+  else { rect(g, x - 5, y - 19, 3, 3, '#8fe36a'); rect(g, x + 1, y - 19, 3, 3, '#8fe36a'); rect(g, x - 4 + CAT.look, y - 19, 1, 3, '#111'); rect(g, x + 2 + CAT.look, y - 19, 1, 3, '#111'); }
+  rect(g, x - 2, y - 15, 2, 1, '#e38aa0'); rect(g, x - 3, y - 13, 4, 2, '#f3efe6');
+  poly(g, [[x - 8, y - 22], [x + 4, y - 22], [x + 6, y - 30], [x - 2, y - 32]], '#d23b3b'); rect(g, x - 9, y - 23, 14, 3, '#f3efe6'); ell(g, x + 7, y - 30, 2, 2, '#f3efe6');
+}
+/* ================= DVERKA — the little door, hand-placed pixels ================= */
+const FLOOR = 214;
+const DV = { x: 150, y: FLOOR, ground: FLOOR, vx: 0, face: 1, mode: 'pause', t: .8, target: 150, fast: false, queue: [], jump: null, phase: 0, open: 0, hover: false, squash: 0, blinkT: 2, blink: 0 };
+const rand = (a, b) => a + Math.random() * (b - a);
+
+function planNext() {
+  if (Math.random() < .42 && LETTER_TOPS.length) {
+    const dir = Math.random() < .5 ? 1 : -1, tops = dir > 0 ? LETTER_TOPS : LETTER_TOPS.slice().reverse();
+    DV.target = tops[0].x - dir * 12; DV.mode = 'walk'; DV.fast = true;
+    DV.queue = tops.map(p => ({ x: p.x, y: p.y }));
+    DV.queue.push({ x: tops[tops.length - 1].x + dir * 16, y: FLOOR });
+  } else { DV.target = rand(40, 344); DV.mode = 'walk'; DV.fast = Math.random() < .4; DV.queue = []; }
+}
+function startJump(to) {
+  const dx = to.x - DV.x;
+  DV.jump = { x0: DV.x, y0: DV.y, x1: to.x, y1: to.y, k: 0, d: .2 + Math.abs(dx) / 240, h: 8 + Math.abs(dx) * .12 + Math.max(0, DV.y - to.y) * .4 };
+  DV.face = dx >= 0 ? 1 : -1; DV.mode = 'jump';
+}
+function updateDverka(dt) {
+  DV.blinkT -= dt; if (DV.blinkT < 0) { DV.blink = .12; DV.blinkT = 2 + Math.random() * 3; } DV.blink = Math.max(0, DV.blink - dt);
+  DV.squash = Math.max(0, DV.squash - dt);
+  DV.open += ((DV.hover ? 1 : 0) - DV.open) * Math.min(1, dt * 8);
+  if (DV.hover) { DV.vx = 0; return; }
+  if (DV.mode === 'walk') {
+    const dx = DV.target - DV.x, sp = DV.fast ? 150 : 95;
+    if (Math.abs(dx) < 1.5) { DV.x = DV.target; DV.vx = 0; DV.squash = .08; if (DV.queue.length) { DV.mode = 'hop'; DV.t = rand(.15, .5); } else { DV.mode = 'pause'; DV.t = rand(.4, 1.6); } }
+    else { DV.vx += (Math.sign(dx) * Math.min(sp, Math.abs(dx) * 9) - DV.vx) * Math.min(1, dt * 12); DV.x += DV.vx * dt; DV.face = DV.vx >= 0 ? 1 : -1; DV.phase += dt * Math.abs(DV.vx) / 6; }
+  } else if (DV.mode === 'hop') {
+    DV.t -= dt; if (DV.t <= 0) startJump(DV.queue.shift());
+  } else if (DV.mode === 'jump') {
+    const J = DV.jump; J.k = Math.min(1, J.k + dt / J.d);
+    DV.x = J.x0 + (J.x1 - J.x0) * J.k; DV.y = J.y0 + (J.y1 - J.y0) * J.k - Math.sin(J.k * Math.PI) * J.h;
+    if (J.k >= 1) { DV.y = J.y1; DV.ground = J.y1; DV.squash = .1; if (DV.queue.length) { DV.mode = 'hop'; DV.t = .05; } else { DV.mode = 'pause'; DV.t = rand(.3, 1); } }
+  } else if (DV.mode === 'pause') { DV.t -= dt; if (DV.t <= 0) planNext(); }
+  if (DV.mode !== 'jump') DV.ground = DV.y;
+}
+function drawDverka(g, t) {
+  const x = Math.round(DV.x), y = Math.round(DV.y), f = DV.hover ? 1 : DV.face;
+  const run = DV.mode === 'walk' && Math.abs(DV.vx) > 10, air = DV.mode === 'jump';
+  const step = run ? Math.floor(DV.phase) % 2 : 0, sq = DV.squash > 0 ? 1 : 0;
+  const bob = run ? step : 0, top = y - 21 + bob + sq, L = x - 7;
+  const D = '#4a2612', WOOD = '#e08f4f', HI = '#f5b077', SH = '#b8662f';
+  rect(g, x - 6, Math.round(DV.ground) + 1, 12, 1, 'rgba(0,0,0,.35)');
+  // legs
+  const la = air ? -2 : (run && step ? -1 : 0), lb = air ? -1 : (run && !step ? -1 : 0);
+  rect(g, x - 4, y - 3 + la, 2, 3, D); rect(g, x + 2, y - 3 + lb, 2, 3, D);
+  rect(g, x - 5, y - 1 + la, 3, 1, D); rect(g, x + 2, y - 1 + lb, 3, 1, D);
+  // frame
+  rect(g, L + 1, top, 12, 1, D); rect(g, L, top + 1, 14, 18 - sq, D);
+  // dark doorway with a faint path into the dark
+  rect(g, L + 2, top + 2, 10, 15 - sq, '#07040c');
+  if (DV.open > .05) { for (let i = 0; i < 5; i++) { const w = 1 + i; dot(g, x - w / 2 - .5, top + 7 + i * 2, `rgba(160,140,230,${.2 + i * .12})`); dot(g, x + w / 2, top + 7 + i * 2, `rgba(160,140,230,${.2 + i * .12})`); } dot(g, x, top + 5, 'rgba(255,220,160,.6)'); }
+  // the leaf swings open on its hinge
+  const lw = Math.max(2, Math.round(10 * (1 - DV.open * .8)));
+  const lx = f > 0 ? L + 2 : L + 12 - lw;
+  rect(g, lx, top + 2, lw, 15 - sq, WOOD);
+  rect(g, lx, top + 2, 1, 15 - sq, HI); rect(g, lx + lw - 1, top + 2, 1, 15 - sq, SH);
+  if (lw >= 8) {
+    rect(g, L + 4, top + 12, 6, 1, SH); rect(g, L + 4, top + 12, 1, 4, SH);
+    const ex1 = L + 4, ex2 = L + 8, ey = top + 5, look = f > 0 ? 1 : 0;
+    if (DV.blink > 0) { rect(g, ex1, ey + 2, 2, 1, D); rect(g, ex2, ey + 2, 2, 1, D); }
+    else { rect(g, ex1, ey, 2, 3, '#fffaf0'); rect(g, ex2, ey, 2, 3, '#fffaf0'); rect(g, ex1 + look, ey + 1, 1, 2, '#21140d'); rect(g, ex2 + look, ey + 1, 1, 2, '#21140d'); }
+    dot(g, L + 3, top + 9, '#ff8a7a'); dot(g, L + 10, top + 9, '#ff8a7a');
+    rect(g, L + 6, top + 10, 2, 1, '#6b2a24');
+    rect(g, f > 0 ? L + 10 : L + 3, top + 12, 1, 2, '#ffd23a');
+  } else { rect(g, lx + (f > 0 ? 0 : lw - 1), top + 5, 1, 2, '#fffaf0'); }
+  // arms: wave when you hover
+  if (DV.hover) { line(g, L - 1, top + 9, L - 3, top + 5 + (Math.floor(t * 8) % 2), D); line(g, L + 14, top + 9, L + 16, top + 12, D); }
+  else { line(g, L - 1, top + 9, L - 2, top + 12 + (run ? step : 0), D); line(g, L + 14, top + 9, L + 15, top + 12 + (run ? 1 - step : 0), D); }
+}
+/* ================= RENDER ================= */
+const canvas = $('#view'), ctx = canvas.getContext('2d', { willReadFrequently: true });
+let SC = 1, DPR = 1, backC, tableC, lettersC, LUM, TR, TG, TB;
+seed = 99; const BAG0 = bagFace({ blink: false }); seed = 99; const BAG1 = bagFace({ blink: true });
+/* faces are drawn after the light pass, warm-tinted but free of dither, so they always read */
+function tint(c, m) { const [o, g] = mk(c.width, c.height); g.drawImage(c, 0, 0); const d = g.getImageData(0, 0, c.width, c.height); for (let i = 0; i < d.data.length; i += 4) { d.data[i] *= m[0]; d.data[i + 1] *= m[1]; d.data[i + 2] *= m[2]; } g.putImageData(d, 0, 0); return o; }
+const WARM = [1, .93, .82];
+const FACES = { bag0: tint(BAG0, WARM), bag1: tint(BAG1, WARM) };
+GUESTS.forEach(G => { if (G.face) G.lit = tint(G.face, WARM); });
+
+const LIGHTS = [
+  { x: 192, y: 16, r: 240, i: 1.15, c: [1, .86, .66] },   // люстра
+  { x: 22, y: 84, r: 95, i: .6, c: [.6, .72, 1] },          // окно
+  { x: 316, y: 122, r: 60, i: .55, c: [.75, 1, .85] },      // монитор
+  { x: 274, y: 131, r: 38, i: .45, c: [1, .7, .4] },        // свечка
+  { x: 80, y: 116, r: 40, i: .3, c: [1, .6, .55] },         // ёлка
+  { x: 192, y: 196, r: 175, i: .85, c: [1, .82, .6] },      // тёплый свет спереди, на ник и Дверку
+];
+const AMB = { i: .3, c: [.8, .74, 1] };
+const BAY = [0, 8, 2, 10, 12, 4, 14, 6, 3, 11, 1, 9, 15, 7, 13, 5].map(v => (v + .5) / 16);
+let rip = true;
+try { if (localStorage.getItem('dverka.rip') === '0') rip = false; } catch (e) {}
+
+function resize() {
+  DPR = devicePixelRatio || 1;
+  const pw = innerWidth * DPR, ph = innerHeight * DPR;
+  SC = Math.max(1, Math.floor(Math.min(ph / 216, pw / 330)));
+  W = Math.ceil(pw / SC); H = Math.ceil(ph / SC);
+  OX = Math.round((W - 384) / 2); OY = Math.round((H - 216) / 2);
+  canvas.width = W; canvas.height = H;
+  canvas.style.width = (W * SC / DPR) + 'px'; canvas.style.height = (H * SC / DPR) + 'px';
+  ctx.imageSmoothingEnabled = false;
+  Object.assign(EXT, { X0: -OX - M, Y0: -OY - M, X1: W - OX + M, Y1: H - OY + M });
+  const layer = fn => { const [c, g] = mk(W + 2 * M, H + 2 * M); g.translate(OX + M, OY + M); fn(g); return c; };
+  GARLAND.length = 0; TREE_LIGHTS.length = 0;
+  backC = layer(drawBack); seed = 5; tableC = layer(drawTable); lettersC = layer(drawLetters);
+  // light map with a little colour per light
+  const n = W * H; LUM = new Float32Array(n); TR = new Float32Array(n); TG = new Float32Array(n); TB = new Float32Array(n);
+  for (let y = 0; y < H; y++) for (let x = 0; x < W; x++) {
+    let l = AMB.i, r = AMB.i * AMB.c[0], gg = AMB.i * AMB.c[1], b = AMB.i * AMB.c[2];
+    const sx = x - OX, sy = y - OY;
+    for (const Lg of LIGHTS) { const d = Math.hypot(sx - Lg.x, (sy - Lg.y) * 1.15); if (d < Lg.r) { const f = Math.pow(1 - d / Lg.r, 1.5) * Lg.i; l += f; r += f * Lg.c[0]; gg += f * Lg.c[1]; b += f * Lg.c[2]; } }
+    const i = y * W + x; LUM[i] = l; TR[i] = r / l; TG[i] = gg / l; TB[i] = b / l;
+  }
+}
+
+/* night view outside the window, animated snow */
+const [NIGHT, ng] = mk(40, 60);
+const BLOCKS = []; for (let i = 0; i < 5; i++) { const w = 9 + (Math.random() * 8 | 0), x = i * 9 - 3, h = 20 + (Math.random() * 28 | 0), lit = []; for (let yy = 60 - h + 3; yy < 56; yy += 4) for (let xx = x + 2; xx < x + w - 1; xx += 3) lit.push([xx, yy, Math.random() < .35]); BLOCKS.push({ x, w, h, lit }); }
+const FLAKES = Array.from({ length: 34 }, () => [Math.random() * 40, Math.random() * 60, .3 + Math.random() * .7]);
+let NIGHTD = null;
+function drawNight(t) {
+  for (let y = 0; y < 60; y++) rect(ng, 0, y, 40, 1, `rgb(${14 + y * .5 | 0},${19 + y * .4 | 0},${48 + y * .7 | 0})`);
+  rect(ng, 30, 6, 4, 4, '#f3e7c9'); rect(ng, 31, 5, 2, 6, '#f3e7c9');
+  BLOCKS.forEach(b => { rect(ng, b.x, 60 - b.h, b.w, b.h, '#262a3e'); rect(ng, b.x, 60 - b.h, b.w, 1, '#dfe6f7'); b.lit.forEach(([x, y, on]) => rect(ng, x, y, 2, 2, on ? '#ffcf6a' : '#181b28')); });
+  rect(ng, 0, 57, 40, 3, '#cfd8ee');
+  FLAKES.forEach(f => { f[1] += f[2] * .7; f[0] += Math.sin(t + f[1] * .2) * .2; if (f[1] > 60) { f[1] = 0; f[0] = Math.random() * 40; } dot(ng, f[0], f[1], '#ffffff'); });
+  NIGHTD = ng.getImageData(0, 0, 40, 60).data;
+}
+const MON = Array.from({ length: 24 }, () => [1 + (Math.random() * 3 | 0), 6 + (Math.random() * 16 | 0), Math.random() < .2]);
+
+/* ---- bubbles ---- */
+const mb = $('#m-bubble'); let mbT = 0;
+function say(text, s = 2.2) { mb.textContent = text; mb.classList.add('on'); mbT = s; }
+GUESTS.forEach(G => { const b = document.createElement('div'); b.className = 'bubble small'; $('#c-bubbles').appendChild(b); G.bubble = b; });
+const toCss = (sx, sy) => [sx * SC / DPR, sy * SC / DPR];
+
+/* ---- pointer ---- */
+const par = { x: 0, y: 0, tx: 0, ty: 0 }; let ptr = null, hoverSaid = 0;
+canvas.addEventListener('pointermove', e => { ptr = [e.clientX, e.clientY]; par.tx = e.clientX / innerWidth * 2 - 1; par.ty = e.clientY / innerHeight * 2 - 1; });
+canvas.addEventListener('pointerleave', () => { ptr = null; par.tx = par.ty = 0; });
+function overDverka(cx, cy) {
+  const pl = Math.round(par.x * 5), ql = Math.round(par.y * 2.5);
+  const sx = cx * DPR / SC - OX - pl, sy = cy * DPR / SC - OY - ql;
+  return sx > DV.x - 10 && sx < DV.x + 10 && sy > DV.y - 25 && sy < DV.y + 3;
+}
+const CLICK = ['Тук-тук!', 'Туда пока нельзя. Скоро!', 'Там темно… но уютно', 'Эй, щекотно!', 'Я Дверка!', 'Скрип-скрип'];
+canvas.addEventListener('click', e => {
+  if (!overDverka(e.clientX, e.clientY)) return;
+  say(CLICK[Math.floor(Math.random() * CLICK.length)]); $('#hint').hidden = true;
+  if (DV.mode !== 'jump') { DV.queue.unshift({ x: DV.x, y: DV.y }); startJump({ x: DV.x, y: DV.y }); DV.jump.h = 14; DV.jump.d = .35; }
+});
+document.querySelectorAll('#rip button').forEach(b => {
+  b.classList.toggle('on', (b.dataset.r === '1') === rip);
+  b.addEventListener('click', () => { rip = b.dataset.r === '1'; try { localStorage.setItem('dverka.rip', rip ? '1' : '0'); } catch (e) {} document.querySelectorAll('#rip button').forEach(x => x.classList.toggle('on', x === b)); });
+});
+
+/* ---- frame ---- */
+let last = performance.now(), nightT = 0;
+function frame(now) {
+  const dt = Math.min(.05, (now - last) / 1000), t = now / 1000; last = now;
+  par.x += (par.tx - par.x) * Math.min(1, dt * 4); par.y += (par.ty - par.y) * Math.min(1, dt * 4);
+  DV.hover = ptr ? overDverka(ptr[0], ptr[1]) : false;
+  canvas.classList.toggle('hot', DV.hover);
+  if (DV.hover && now - hoverSaid > 6000) { hoverSaid = now; say('Скри-и-ип… там пока темно'); }
+  updateDverka(dt);
+  // guests
+  GUESTS.forEach(G => {
+    G.blinkT -= dt; G.t.blink = G.blinkT < 0; if (G.blinkT < -.14) G.blinkT = 2 + Math.random() * 4;
+    G.actT -= dt; if (G.actT < 0) { G.t.act = G.t.act ? 0 : 1; G.actT = G.t.act ? 1.4 : 2.5 + Math.random() * 4; }
+    G.t.bob = Math.sin(t * 1.6 + G.cx) > .6 ? 1 : 0;
+    G.talkT -= dt; if (G.talkT < 0) { G.talkT = 7 + Math.random() * 9; G.bubble.textContent = G.lines[Math.floor(Math.random() * G.lines.length)]; G.bubble.classList.add('on'); G.bubbleT = 2.4; }
+    G.bubbleT -= dt; if (G.bubbleT <= 0) G.bubble.classList.remove('on');
+  });
+  CAT.blinkT -= dt; CAT.blink = CAT.blinkT < 0; if (CAT.blinkT < -.15) CAT.blinkT = 2 + Math.random() * 3;
+  CAT.lookT -= dt; if (CAT.lookT < 0) { CAT.look = CAT.look ? 0 : 1; CAT.lookT = 1.5 + Math.random() * 3; }
+
+  const pb = Math.round(par.x * 1.5), pc = Math.round(par.x * 2.5), pt = Math.round(par.x * 3.5), pl = Math.round(par.x * 5);
+  const qb = Math.round(par.y * 1), qt = Math.round(par.y * 1.8), ql = Math.round(par.y * 2.5);
+  ctx.clearRect(0, 0, W, H);
+  ctx.drawImage(backC, -M + pb, -M + qb);
+  ctx.save(); ctx.translate(OX + pc, OY + qb); GUESTS.forEach(G => drawGuest(ctx, G, t)); ctx.restore();
+  ctx.drawImage(tableC, -M + pt, -M + qt);
+  ctx.save(); ctx.translate(OX + pt, OY + qt); GUESTS.forEach(G => drawArms(ctx, G, t)); drawCat(ctx, t); ctx.restore();
+  ctx.drawImage(lettersC, -M + pl, -M + ql);
+  ctx.save(); ctx.translate(OX + pl, OY + ql); drawDverka(ctx, t); ctx.restore();
+
+  // light: quantised with an ordered dither — the “рябь”
+  const img = ctx.getImageData(0, 0, W, H), d = img.data, flick = 1 + Math.sin(t * 7) * .012;
+  for (let y = 0; y < H; y++) {
+    const by = (y & 3) * 4;
+    for (let x = 0; x < W; x++) {
+      const i = y * W + x, j = i * 4, L = LUM[i] * flick;
+      const q = rip ? Math.floor(L * 5 + BAY[by + (x & 3)]) / 5 : L;
+      d[j] = Math.min(255, d[j] * q * TR[i]); d[j + 1] = Math.min(255, d[j + 1] * q * TG[i]); d[j + 2] = Math.min(255, d[j + 2] * q * TB[i]);
+    }
+  }
+  ctx.putImageData(img, 0, 0);
+  ctx.save(); ctx.translate(OX + pc, OY + qb);
+  GUESTS.forEach(G => { const f = G.id === 'bag' ? (G.t.blink ? FACES.bag1 : FACES.bag0) : G.lit, sh = G.id === 'troll2' && G.t.act ? (Math.floor(t * 20) % 2) : 0; ctx.drawImage(f, Math.round(G.cx - f.width / 2), Math.round(124 - f.height + G.t.bob - sh)); });
+  ctx.restore();
+
+  // things that glow on their own
+  ctx.save(); ctx.translate(OX + pb, OY + qb);
+  if ((nightT -= dt) < 0) { nightT = .1; drawNight(t); }
+  for (let x = Math.ceil(WIN.xl); x < WIN.xr; x++) {
+    const y0 = Math.ceil(WIN.tq(x)), y1 = Math.floor(WIN.bq(x)), u = (x - WIN.xl) / (WIN.xr - WIN.xl);
+    for (let y = y0; y < y1; y++) { const v = (y - y0) / (y1 - y0), k = ((v * 59 | 0) * 40 + (u * 39 | 0)) * 4; ctx.fillStyle = `rgb(${NIGHTD[k]},${NIGHTD[k + 1]},${NIGHTD[k + 2]})`; ctx.fillRect(x, y, 1, 1); }
+  }
+  const xm = (WIN.xl + WIN.xr) / 2; line(ctx, xm, WIN.tq(xm), xm, WIN.bq(xm), '#8f8b82'); line(ctx, WIN.xl, (WIN.tq(WIN.xl) + WIN.bq(WIN.xl)) * .42, WIN.xr, (WIN.tq(WIN.xr) + WIN.bq(WIN.xr)) * .42, '#8f8b82');
+  rect(ctx, 303, 112, 25, 20, '#dfe9d6'); rect(ctx, 303, 112, 25, 2, '#7a9a6a');
+  const off = (t * 3 | 0) % 24; for (let i = 0; i < 8; i++) { const [x, w, pic] = MON[(i + off) % 24], y = 115 + i * 2; if (pic) { rect(ctx, 304 + x, y, 3, 2, '#9fb4c6'); rect(ctx, 308 + x, y, w - 4, 1, '#6a8a6a'); } else rect(ctx, 304 + x, y, w, 1, i % 3 ? '#4a5a4a' : '#b84a4a'); }
+  const cols = ['#ff5a5a', '#ffd46a', '#6fdc8c', '#6ab8ff', '#e79bff'];
+  GARLAND.forEach(([x, y, n]) => { const on = Math.sin(t * 2.4 + n * 1.7) > -.3; rect(ctx, x, y, 2, 2, on ? cols[n % 5] : '#3a3040'); if (on && rip) { dot(ctx, x - 1, y, cols[n % 5] + '66'); dot(ctx, x + 2, y + 1, cols[n % 5] + '66'); } });
+  TREE_LIGHTS.forEach(([x, y, n]) => { if (Math.sin(t * 3 + n * 2.1) > -.2) dot(ctx, x, y, cols[n % 5]); });
+  rect(ctx, 79, 82, 3, 3, '#ffe38a'); dot(ctx, 80, 81, '#fff6c8');
+  [[183, 16], [192, 17], [201, 16]].forEach(([x, y]) => { rect(ctx, x - 1, y - 1, 3, 3, '#fff1c9'); dot(ctx, x, y - 2, '#fff8e0'); });
+  ctx.restore();
+  ctx.save(); ctx.translate(OX + pt, OY + qt);
+  rect(ctx, 273, 131 - (Math.random() < .3 ? 1 : 0), 2, 3, '#ffcf5a'); dot(ctx, 273, 130, '#fff3c0');
+  ctx.restore();
+
+  // bubbles
+  GUESTS.forEach(G => { const [x, y] = toCss(G.cx + OX + pc, 78 + OY + qb); G.bubble.style.left = x + 'px'; G.bubble.style.top = y + 'px'; });
+  mbT -= dt; if (mbT <= 0) mb.classList.remove('on');
+  const [mx, my] = toCss(DV.x + OX + pl, DV.y - 24 + OY + ql); mb.style.left = mx + 'px'; mb.style.top = my + 'px';
+  requestAnimationFrame(frame);
+}
+
+addEventListener('resize', resize);
+resize(); drawNight(0);
+setTimeout(() => say('Привет! Я Дверка', 3), 600);
+requestAnimationFrame(frame);
+
+</script>
