@@ -1,13 +1,9 @@
 {
- "updated": "2026-11-16T15:01:53Z",
+ "updated": "2026-11-17T01:40:35Z",
  "week": {
-  "ai_lines": 16168,
-  "human_lines": 1963,
+  "ai_lines": 13529,
+  "human_lines": 1633,
   "days": [
-   {
-    "date": "2026-11-10",
-    "seconds": 44559
-   },
    {
     "date": "2026-11-11",
     "seconds": 34608
@@ -30,22 +26,26 @@
    },
    {
     "date": "2026-11-16",
-    "seconds": 28578
+    "seconds": 44557
+   },
+   {
+    "date": "2026-11-17",
+    "seconds": 0
    }
   ]
  },
  "all_time": {
-  "total_seconds": 8371435,
-  "daily_average": 8738,
+  "total_seconds": 8373847,
+  "daily_average": 8732,
   "start": "2023-01-01T21:00:00Z",
   "languages": [
    {
     "name": "Java",
-    "seconds": 6359075
+    "seconds": 6359361
    },
    {
     "name": "SQL",
-    "seconds": 481798
+    "seconds": 481820
    },
    {
     "name": "YAML",
@@ -57,7 +57,7 @@
    },
    {
     "name": "Markdown",
-    "seconds": 123198
+    "seconds": 123206
    },
    {
     "name": "Groovy",
@@ -65,7 +65,7 @@
    },
    {
     "name": "JSON",
-    "seconds": 106502
+    "seconds": 106626
    },
    {
     "name": "Python",
@@ -85,7 +85,7 @@
    },
    {
     "name": "HTML",
-    "seconds": 51524
+    "seconds": 51539
    },
    {
     "name": "TypeScript",
@@ -121,7 +121,7 @@
    },
    {
     "name": "CSS",
-    "seconds": 6074
+    "seconds": 6108
    },
    {
     "name": "Smali",
@@ -137,7 +137,7 @@
    },
    {
     "name": "PowerShell",
-    "seconds": 3214
+    "seconds": 3379
    },
    {
     "name": "Nginx configuration file",
@@ -224,6 +224,10 @@
     "seconds": 311
    },
    {
+    "name": "VB.NET",
+    "seconds": 251
+   },
+   {
     "name": "Lua",
     "seconds": 243
    },
@@ -291,11 +295,11 @@
    },
    {
     "name": "Claude Code",
-    "seconds": 1168827
+    "seconds": 1177488
    },
    {
     "name": "Warp",
-    "seconds": 307569
+    "seconds": 316505
    },
    {
     "name": "GoLand",
@@ -325,7 +329,7 @@
   "models": [
    {
     "name": "Opus",
-    "lines": 64630
+    "lines": 66043
    },
    {
     "name": "Claude",
