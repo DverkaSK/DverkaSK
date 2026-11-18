@@ -150,7 +150,7 @@
 
 <!-- playlist:start -->
 <p align="center">
-  <a href="https://music.yandex.ru/users/itsfunkylegend/playlists/1002"><picture><source media="(prefers-color-scheme: dark)" srcset="cards/playlist-dark.svg" /><img src="cards/playlist-light.svg" alt="Stood the test of time: The Birthday Massacre — Red Stars; Король и Шут — Кукла колдуна; Thirty Seconds to Mars — Edge Of The Earth; Cryptospital — Death's Hourglass; Bleed — Through The Cylinder" /></picture></a>
+  <a href="https://music.yandex.ru/users/itsfunkylegend/playlists/1002"><picture><source media="(prefers-color-scheme: dark)" srcset="cards/playlist-dark.svg" /><img src="cards/playlist-light.svg" alt="Stood the test of time: t.A.T.u. — Я сошла с ума; Земфира — П.М.М.Л.; Slaughter to Prevail — Viking; SEREBRO — СЛАДКО; Порнофильмы — Праздник" /></picture></a>
 </p>
 <!-- playlist:end -->
 

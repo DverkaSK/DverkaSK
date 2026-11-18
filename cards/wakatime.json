@@ -1,13 +1,9 @@
 {
- "updated": "2026-11-17T15:37:14Z",
+ "updated": "2026-11-18T00:39:04Z",
  "week": {
-  "ai_lines": 14615,
-  "human_lines": 1660,
+  "ai_lines": 13812,
+  "human_lines": 1587,
   "days": [
-   {
-    "date": "2026-11-11",
-    "seconds": 34608
-   },
    {
     "date": "2026-11-12",
     "seconds": 41056
@@ -30,22 +26,26 @@
    },
    {
     "date": "2026-11-17",
-    "seconds": 28594
+    "seconds": 41757
+   },
+   {
+    "date": "2026-11-18",
+    "seconds": 0
    }
   ]
  },
  "all_time": {
-  "total_seconds": 8373847,
-  "daily_average": 8732,
+  "total_seconds": 8377378,
+  "daily_average": 8726,
   "start": "2023-01-01T21:00:00Z",
   "languages": [
    {
     "name": "Java",
-    "seconds": 6359361
+    "seconds": 6359789
    },
    {
     "name": "SQL",
-    "seconds": 481820
+    "seconds": 481821
    },
    {
     "name": "YAML",
@@ -53,11 +53,11 @@
    },
    {
     "name": "XML",
-    "seconds": 130833
+    "seconds": 130847
    },
    {
     "name": "Markdown",
-    "seconds": 123206
+    "seconds": 123574
    },
    {
     "name": "Groovy",
@@ -69,7 +69,7 @@
    },
    {
     "name": "Python",
-    "seconds": 79593
+    "seconds": 79800
    },
    {
     "name": "Kotlin",
@@ -85,7 +85,7 @@
    },
    {
     "name": "HTML",
-    "seconds": 51539
+    "seconds": 51562
    },
    {
     "name": "TypeScript",
@@ -105,7 +105,7 @@
    },
    {
     "name": "JavaScript",
-    "seconds": 15447
+    "seconds": 16713
    },
    {
     "name": "Java Properties",
@@ -117,11 +117,11 @@
    },
    {
     "name": "Bash",
-    "seconds": 8015
+    "seconds": 8032
    },
    {
     "name": "CSS",
-    "seconds": 6108
+    "seconds": 6162
    },
    {
     "name": "Smali",
@@ -295,11 +295,11 @@
    },
    {
     "name": "Claude Code",
-    "seconds": 1177488
+    "seconds": 1189346
    },
    {
     "name": "Warp",
-    "seconds": 316505
+    "seconds": 321222
    },
    {
     "name": "GoLand",
@@ -329,7 +329,7 @@
   "models": [
    {
     "name": "Opus",
-    "lines": 66043
+    "lines": 69156
    },
    {
     "name": "Claude",
