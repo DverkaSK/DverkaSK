@@ -1,13 +1,9 @@
 {
- "updated": "2026-11-18T15:14:41Z",
+ "updated": "2026-11-18T23:57:57Z",
  "week": {
-  "ai_lines": 13812,
-  "human_lines": 1587,
+  "ai_lines": 12932,
+  "human_lines": 1022,
   "days": [
-   {
-    "date": "2026-11-12",
-    "seconds": 41056
-   },
    {
     "date": "2026-11-13",
     "seconds": 51485
@@ -26,17 +22,21 @@
    },
    {
     "date": "2026-11-17",
-    "seconds": 41757
+    "seconds": 41852
    },
    {
     "date": "2026-11-18",
+    "seconds": 8696
+   },
+   {
+    "date": "2026-11-19",
     "seconds": 0
    }
   ]
  },
  "all_time": {
-  "total_seconds": 8377378,
-  "daily_average": 8726,
+  "total_seconds": 8377404,
+  "daily_average": 8717,
   "start": "2023-01-01T21:00:00Z",
   "languages": [
    {
@@ -57,7 +57,7 @@
    },
    {
     "name": "Markdown",
-    "seconds": 123574
+    "seconds": 123575
    },
    {
     "name": "Groovy",
@@ -295,11 +295,11 @@
    },
    {
     "name": "Claude Code",
-    "seconds": 1189346
+    "seconds": 1189441
    },
    {
     "name": "Warp",
-    "seconds": 321222
+    "seconds": 321874
    },
    {
     "name": "GoLand",

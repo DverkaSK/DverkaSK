@@ -150,7 +150,7 @@
 
 <!-- playlist:start -->
 <p align="center">
-  <a href="https://music.yandex.ru/users/itsfunkylegend/playlists/1002"><picture><source media="(prefers-color-scheme: dark)" srcset="cards/playlist-dark.svg" /><img src="cards/playlist-light.svg" alt="Stood the test of time: chrome.fm — Like Waves; Slaughter to Prevail — Viking; Земфира — П.М.М.Л.; chrome.fm — Daystar; Порнофильмы — Прости. Прощай. Привет" /></picture></a>
+  <a href="https://music.yandex.ru/users/itsfunkylegend/playlists/1002"><picture><source media="(prefers-color-scheme: dark)" srcset="cards/playlist-dark.svg" /><img src="cards/playlist-light.svg" alt="Stood the test of time: pyrokinesis — Девочка из Кони-Айленд; pyrokinesis — Сахарная вата; Arctic Monkeys — 505; chrome.fm — Like Waves; Земфира — ромашки" /></picture></a>
 </p>
 <!-- playlist:end -->
 
