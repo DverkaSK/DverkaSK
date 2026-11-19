@@ -150,7 +150,7 @@
 
 <!-- playlist:start -->
 <p align="center">
-  <a href="https://music.yandex.ru/users/itsfunkylegend/playlists/1002"><picture><source media="(prefers-color-scheme: dark)" srcset="cards/playlist-dark.svg" /><img src="cards/playlist-light.svg" alt="Stood the test of time: pyrokinesis — Девочка из Кони-Айленд; pyrokinesis — Сахарная вата; Arctic Monkeys — 505; chrome.fm — Like Waves; Земфира — ромашки" /></picture></a>
+  <a href="https://music.yandex.ru/users/itsfunkylegend/playlists/1002"><picture><source media="(prefers-color-scheme: dark)" srcset="cards/playlist-dark.svg" /><img src="cards/playlist-light.svg" alt="Stood the test of time: Порнофильмы — Праздник; chrome.fm — Daystar; David Bowie — The Man Who Sold the World; Vinnie Dixie — Cyberpunk 2077; Bleed — Fixate" /></picture></a>
 </p>
 <!-- playlist:end -->
 
