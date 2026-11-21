@@ -1,0 +1,7 @@
+# third-party archive (Aiwan + Artists sets) and its regenerable defringe output
+src/
+fixed/
+palettes/
+__pycache__/
+chr_*/
+_freeze.html
