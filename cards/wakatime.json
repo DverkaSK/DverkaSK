@@ -1,13 +1,9 @@
 {
- "updated": "2026-11-20T19:41:12Z",
+ "updated": "2026-11-21T05:56:46Z",
  "week": {
-  "ai_lines": 8231,
-  "human_lines": 1022,
+  "ai_lines": 5561,
+  "human_lines": 600,
   "days": [
-   {
-    "date": "2026-11-14",
-    "seconds": 38833
-   },
    {
     "date": "2026-11-15",
     "seconds": 30656
@@ -30,13 +26,17 @@
    },
    {
     "date": "2026-11-20",
-    "seconds": 0
+    "seconds": 3352
+   },
+   {
+    "date": "2026-11-21",
+    "seconds": 1330
    }
   ]
  },
  "all_time": {
-  "total_seconds": 8379812,
-  "daily_average": 8711,
+  "total_seconds": 8379820,
+  "daily_average": 8702,
   "start": "2023-01-01T21:00:00Z",
   "languages": [
    {
@@ -295,11 +295,11 @@
    },
    {
     "name": "Claude Code",
-    "seconds": 1197341
+    "seconds": 1197484
    },
    {
     "name": "Warp",
-    "seconds": 329574
+    "seconds": 329682
    },
    {
     "name": "GoLand",
