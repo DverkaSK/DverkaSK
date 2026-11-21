@@ -150,7 +150,7 @@
 
 <!-- playlist:start -->
 <p align="center">
-  <a href="https://music.yandex.ru/users/itsfunkylegend/playlists/1002"><picture><source media="(prefers-color-scheme: dark)" srcset="cards/playlist-dark.svg" /><img src="cards/playlist-light.svg" alt="Stood the test of time: Arctic Monkeys — 505; Vinnie Dixie — Cyberpunk 2077; Thirty Seconds to Mars — Edge Of The Earth; Bring Me The Horizon — Can You Feel My Heart; Bleed — Fixate" /></picture></a>
+  <a href="https://music.yandex.ru/users/itsfunkylegend/playlists/1002"><picture><source media="(prefers-color-scheme: dark)" srcset="cards/playlist-dark.svg" /><img src="cards/playlist-light.svg" alt="Stood the test of time: Nirvana — Smells Like Teen Spirit; Lead Horizon — Afterlife; Bleed — Slip; Земфира — П.М.М.Л.; Bleed — Fixate" /></picture></a>
 </p>
 <!-- playlist:end -->
 
