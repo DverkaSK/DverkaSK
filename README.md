@@ -150,7 +150,7 @@
 
 <!-- playlist:start -->
 <p align="center">
-  <a href="https://music.yandex.ru/users/itsfunkylegend/playlists/1002"><picture><source media="(prefers-color-scheme: dark)" srcset="cards/playlist-dark.svg" /><img src="cards/playlist-light.svg" alt="Stood the test of time: chrome.fm — Like Waves; Король и Шут — Кукла колдуна; Bleed — Cynical; Slaughter to Prevail — Viking; mzlff, STED.D — однополярности" /></picture></a>
+  <a href="https://music.yandex.ru/users/itsfunkylegend/playlists/1002"><picture><source media="(prefers-color-scheme: dark)" srcset="cards/playlist-dark.svg" /><img src="cards/playlist-light.svg" alt="Stood the test of time: mzlff, STED.D — однополярности; Lead Horizon — Afterlife; Грибы, Sимптом — Копы; Bleed — Cynical; Another Day's Armor — Fallen For" /></picture></a>
 </p>
 <!-- playlist:end -->
 
