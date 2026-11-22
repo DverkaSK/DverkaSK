@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-21T22:51:10Z",
+ "updated": "2026-11-22T05:31:04Z",
  "week": {
   "ai_lines": 5968,
   "human_lines": 813,
@@ -30,13 +30,13 @@
    },
    {
     "date": "2026-11-22",
-    "seconds": 5579
+    "seconds": 5889
    }
   ]
  },
  "all_time": {
-  "total_seconds": 8379820,
-  "daily_average": 8702,
+  "total_seconds": 8382282,
+  "daily_average": 8695,
   "start": "2023-01-01T21:00:00Z",
   "languages": [
    {
@@ -57,7 +57,7 @@
    },
    {
     "name": "Markdown",
-    "seconds": 123738
+    "seconds": 123820
    },
    {
     "name": "Groovy",
@@ -69,7 +69,7 @@
    },
    {
     "name": "Python",
-    "seconds": 79876
+    "seconds": 81206
    },
    {
     "name": "Kotlin",
@@ -295,11 +295,11 @@
    },
    {
     "name": "Claude Code",
-    "seconds": 1197484
+    "seconds": 1202051
    },
    {
     "name": "Warp",
-    "seconds": 329682
+    "seconds": 333233
    },
    {
     "name": "GoLand",
@@ -329,7 +329,7 @@
   "models": [
    {
     "name": "Opus",
-    "lines": 69529
+    "lines": 70598
    },
    {
     "name": "Claude",
