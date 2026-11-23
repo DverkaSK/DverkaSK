@@ -150,7 +150,7 @@
 
 <!-- playlist:start -->
 <p align="center">
-  <a href="https://music.yandex.ru/users/itsfunkylegend/playlists/1002"><picture><source media="(prefers-color-scheme: dark)" srcset="cards/playlist-dark.svg" /><img src="cards/playlist-light.svg" alt="Stood the test of time: Lead Horizon — Afterlife; Земфира — ромашки; Darke Complex — Void; The Birthday Massacre — Red Stars; Cryptospital — Death's Hourglass" /></picture></a>
+  <a href="https://music.yandex.ru/users/itsfunkylegend/playlists/1002"><picture><source media="(prefers-color-scheme: dark)" srcset="cards/playlist-dark.svg" /><img src="cards/playlist-light.svg" alt="Stood the test of time: VIOLENT VIRA — I Don't Care; Bring Me The Horizon — Can You Feel My Heart; Thirty Seconds to Mars — Edge Of The Earth; pyrokinesis — Сахарная вата; Bleed — Fixate" /></picture></a>
 </p>
 <!-- playlist:end -->
 
