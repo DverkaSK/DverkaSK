@@ -150,7 +150,7 @@
 
 <!-- playlist:start -->
 <p align="center">
-  <a href="https://music.yandex.ru/users/itsfunkylegend/playlists/1002"><picture><source media="(prefers-color-scheme: dark)" srcset="cards/playlist-dark.svg" /><img src="cards/playlist-light.svg" alt="Stood the test of time: Bleed — Slip; Король и Шут — Кукла колдуна; Lead Horizon — Totally Spies; VIOLENT VIRA — I Don't Care; pyrokinesis — Девочка из Кони-Айленд" /></picture></a>
+  <a href="https://music.yandex.ru/users/itsfunkylegend/playlists/1002"><picture><source media="(prefers-color-scheme: dark)" srcset="cards/playlist-dark.svg" /><img src="cards/playlist-light.svg" alt="Stood the test of time: Lead Horizon — Afterlife; Земфира — ромашки; Darke Complex — Void; The Birthday Massacre — Red Stars; Cryptospital — Death's Hourglass" /></picture></a>
 </p>
 <!-- playlist:end -->
 
