@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-23T23:29:48Z",
+ "updated": "2026-11-24T08:48:25Z",
  "week": {
   "ai_lines": 2392,
   "human_lines": 611,
@@ -30,18 +30,18 @@
    },
    {
     "date": "2026-11-24",
-    "seconds": 1643
+    "seconds": 4909
    }
   ]
  },
  "all_time": {
-  "total_seconds": 8382312,
-  "daily_average": 8686,
+  "total_seconds": 8384575,
+  "daily_average": 8680,
   "start": "2023-01-01T21:00:00Z",
   "languages": [
    {
     "name": "Java",
-    "seconds": 6360082
+    "seconds": 6361014
    },
    {
     "name": "SQL",
@@ -49,7 +49,7 @@
    },
    {
     "name": "YAML",
-    "seconds": 406032
+    "seconds": 406063
    },
    {
     "name": "XML",
@@ -57,7 +57,7 @@
    },
    {
     "name": "Markdown",
-    "seconds": 123820
+    "seconds": 123928
    },
    {
     "name": "Groovy",
@@ -65,11 +65,11 @@
    },
    {
     "name": "JSON",
-    "seconds": 106684
+    "seconds": 106795
    },
    {
     "name": "Python",
-    "seconds": 81206
+    "seconds": 81225
    },
    {
     "name": "Kotlin",
@@ -105,7 +105,7 @@
    },
    {
     "name": "JavaScript",
-    "seconds": 17056
+    "seconds": 17149
    },
    {
     "name": "Java Properties",
@@ -117,7 +117,7 @@
    },
    {
     "name": "Bash",
-    "seconds": 8032
+    "seconds": 8039
    },
    {
     "name": "CSS",
@@ -295,11 +295,11 @@
    },
    {
     "name": "Claude Code",
-    "seconds": 1202404
+    "seconds": 1211610
    },
    {
     "name": "Warp",
-    "seconds": 333778
+    "seconds": 337468
    },
    {
     "name": "GoLand",
@@ -329,7 +329,7 @@
   "models": [
    {
     "name": "Opus",
-    "lines": 70598
+    "lines": 71548
    },
    {
     "name": "Claude",
