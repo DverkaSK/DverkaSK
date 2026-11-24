@@ -150,7 +150,7 @@
 
 <!-- playlist:start -->
 <p align="center">
-  <a href="https://music.yandex.ru/users/itsfunkylegend/playlists/1002"><picture><source media="(prefers-color-scheme: dark)" srcset="cards/playlist-dark.svg" /><img src="cards/playlist-light.svg" alt="Stood the test of time: Bring Me The Horizon — Can You Feel My Heart; Lead Horizon — Afterlife; Halou — Honeythief; Thirty Seconds to Mars — Edge Of The Earth; Bleed — Cynical" /></picture></a>
+  <a href="https://music.yandex.ru/users/itsfunkylegend/playlists/1002"><picture><source media="(prefers-color-scheme: dark)" srcset="cards/playlist-dark.svg" /><img src="cards/playlist-light.svg" alt="Stood the test of time: pyrokinesis — Девочка из Кони-Айленд; Bleed — Slip; Arctic Monkeys — 505; t.A.T.u. — Я сошла с ума; Bleed — Fixate" /></picture></a>
 </p>
 <!-- playlist:end -->
 
