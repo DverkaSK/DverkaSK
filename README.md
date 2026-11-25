@@ -150,7 +150,7 @@
 
 <!-- playlist:start -->
 <p align="center">
-  <a href="https://music.yandex.ru/users/itsfunkylegend/playlists/1002"><picture><source media="(prefers-color-scheme: dark)" srcset="cards/playlist-dark.svg" /><img src="cards/playlist-light.svg" alt="Stood the test of time: Bleed — Cynical; Cryptospital — Death's Hourglass; Земфира — П.М.М.Л.; Slaughter to Prevail — Viking; Порнофильмы — Прости. Прощай. Привет" /></picture></a>
+  <a href="https://music.yandex.ru/users/itsfunkylegend/playlists/1002"><picture><source media="(prefers-color-scheme: dark)" srcset="cards/playlist-dark.svg" /><img src="cards/playlist-light.svg" alt="Stood the test of time: Bleed — Through The Cylinder; VIOLENT VIRA — I Don't Care; t.A.T.u. — Я сошла с ума; Грибы, Sимптом — Копы; Nirvana — Smells Like Teen Spirit" /></picture></a>
 </p>
 <!-- playlist:end -->
 
