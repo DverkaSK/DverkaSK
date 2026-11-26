@@ -1,13 +1,9 @@
 {
- "updated": "2026-11-26T07:12:21Z",
+ "updated": "2026-11-26T21:01:32Z",
  "week": {
-  "ai_lines": 5690,
-  "human_lines": 603,
+  "ai_lines": 5933,
+  "human_lines": 710,
   "days": [
-   {
-    "date": "2026-11-20",
-    "seconds": 3352
-   },
    {
     "date": "2026-11-21",
     "seconds": 33768
@@ -30,18 +26,22 @@
    },
    {
     "date": "2026-11-26",
-    "seconds": 560
+    "seconds": 23872
+   },
+   {
+    "date": "2026-11-27",
+    "seconds": 0
    }
   ]
  },
  "all_time": {
-  "total_seconds": 8389482,
-  "daily_average": 8667,
+  "total_seconds": 8390286,
+  "daily_average": 8659,
   "start": "2023-01-01T21:00:00Z",
   "languages": [
    {
     "name": "Java",
-    "seconds": 6361042
+    "seconds": 6361174
    },
    {
     "name": "SQL",
@@ -57,7 +57,7 @@
    },
    {
     "name": "Markdown",
-    "seconds": 124366
+    "seconds": 124401
    },
    {
     "name": "Groovy",
@@ -65,7 +65,7 @@
    },
    {
     "name": "JSON",
-    "seconds": 106795
+    "seconds": 106801
    },
    {
     "name": "Python",
@@ -105,7 +105,7 @@
    },
    {
     "name": "JavaScript",
-    "seconds": 17670
+    "seconds": 17792
    },
    {
     "name": "Java Properties",
@@ -295,11 +295,11 @@
    },
    {
     "name": "Claude Code",
-    "seconds": 1226167
+    "seconds": 1229704
    },
    {
     "name": "Warp",
-    "seconds": 344603
+    "seconds": 348232
    },
    {
     "name": "GoLand",
@@ -329,7 +329,7 @@
   "models": [
    {
     "name": "Opus",
-    "lines": 75170
+    "lines": 75413
    },
    {
     "name": "Claude",

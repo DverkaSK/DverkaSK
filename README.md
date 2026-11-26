@@ -150,7 +150,7 @@
 
 <!-- playlist:start -->
 <p align="center">
-  <a href="https://music.yandex.ru/users/itsfunkylegend/playlists/1002"><picture><source media="(prefers-color-scheme: dark)" srcset="cards/playlist-dark.svg" /><img src="cards/playlist-light.svg" alt="Stood the test of time: chrome.fm — Daystar; Slaughter to Prevail — Viking; Грибы, Sимптом — Копы; The Birthday Massacre — Red Stars; pyrokinesis — Сахарная вата" /></picture></a>
+  <a href="https://music.yandex.ru/users/itsfunkylegend/playlists/1002"><picture><source media="(prefers-color-scheme: dark)" srcset="cards/playlist-dark.svg" /><img src="cards/playlist-light.svg" alt="Stood the test of time: Lead Horizon — Totally Spies; SEREBRO — СЛАДКО; VIOLENT VIRA — I Don't Care; Bleed — Cynical; David Bowie — The Man Who Sold the World" /></picture></a>
 </p>
 <!-- playlist:end -->
 
