@@ -150,7 +150,7 @@
 
 <!-- playlist:start -->
 <p align="center">
-  <a href="https://music.yandex.ru/users/itsfunkylegend/playlists/1002"><picture><source media="(prefers-color-scheme: dark)" srcset="cards/playlist-dark.svg" /><img src="cards/playlist-light.svg" alt="Stood the test of time: Lead Horizon — Totally Spies; SEREBRO — СЛАДКО; VIOLENT VIRA — I Don't Care; Bleed — Cynical; David Bowie — The Man Who Sold the World" /></picture></a>
+  <a href="https://music.yandex.ru/users/itsfunkylegend/playlists/1002"><picture><source media="(prefers-color-scheme: dark)" srcset="cards/playlist-dark.svg" /><img src="cards/playlist-light.svg" alt="Stood the test of time: Порнофильмы — Прости. Прощай. Привет; Bleed — Through The Cylinder; The Birthday Massacre — Red Stars; Bring Me The Horizon — Can You Feel My Heart; t.A.T.u. — Я сошла с ума" /></picture></a>
 </p>
 <!-- playlist:end -->
 
