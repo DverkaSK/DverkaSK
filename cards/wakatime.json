@@ -1,13 +1,9 @@
 {
- "updated": "2026-11-27T20:46:25Z",
+ "updated": "2026-11-28T06:41:31Z",
  "week": {
-  "ai_lines": 6672,
-  "human_lines": 2647,
+  "ai_lines": 5603,
+  "human_lines": 2418,
   "days": [
-   {
-    "date": "2026-11-21",
-    "seconds": 33768
-   },
    {
     "date": "2026-11-22",
     "seconds": 30849
@@ -30,18 +26,22 @@
    },
    {
     "date": "2026-11-27",
-    "seconds": 32659
+    "seconds": 32836
+   },
+   {
+    "date": "2026-11-28",
+    "seconds": 3593
    }
   ]
  },
  "all_time": {
-  "total_seconds": 8390286,
-  "daily_average": 8659,
+  "total_seconds": 8397348,
+  "daily_average": 8657,
   "start": "2023-01-01T21:00:00Z",
   "languages": [
    {
     "name": "Java",
-    "seconds": 6361174
+    "seconds": 6361714
    },
    {
     "name": "SQL",
@@ -57,11 +57,11 @@
    },
    {
     "name": "Markdown",
-    "seconds": 124401
+    "seconds": 125271
    },
    {
     "name": "Groovy",
-    "seconds": 110150
+    "seconds": 111779
    },
    {
     "name": "JSON",
@@ -69,7 +69,7 @@
    },
    {
     "name": "Python",
-    "seconds": 81815
+    "seconds": 84788
    },
    {
     "name": "Kotlin",
@@ -105,7 +105,7 @@
    },
    {
     "name": "JavaScript",
-    "seconds": 17792
+    "seconds": 17959
    },
    {
     "name": "Java Properties",
@@ -137,7 +137,7 @@
    },
    {
     "name": "PowerShell",
-    "seconds": 3878
+    "seconds": 3902
    },
    {
     "name": "Nginx configuration file",
@@ -295,11 +295,11 @@
    },
    {
     "name": "Claude Code",
-    "seconds": 1229704
+    "seconds": 1234018
    },
    {
     "name": "Warp",
-    "seconds": 348232
+    "seconds": 352980
    },
    {
     "name": "GoLand",
@@ -329,7 +329,7 @@
   "models": [
    {
     "name": "Opus",
-    "lines": 75413
+    "lines": 75683
    },
    {
     "name": "Claude",
@@ -349,7 +349,7 @@
    },
    {
     "name": "Opencode-Cli",
-    "lines": 500
+    "lines": 969
    },
    {
     "name": "OpenCode",
